@@ -81,8 +81,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    MEN_FRANC
+                    <br> (237) 670 256 150 / 696 559 339 menkam35@gmail.com
                 </div>
+
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
