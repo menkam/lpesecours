@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class tlist_acreditation implements Rule
+class Tlist_acreditation implements Rule
 {
     /**
      * Create a new rule instance.

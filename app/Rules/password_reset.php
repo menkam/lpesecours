@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class password_reset implements Rule
+class Password_reset implements Rule
 {
     /**
      * Create a new rule instance.

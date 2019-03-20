@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tlist_operations;
+use App\Models\Tlist_operation;
 use Illuminate\Http\Request;
 
-class TlistOperationsController extends Controller
+class TlistOperationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TlistOperationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tlist_operations  $tlist_operations
+     * @param  \App\Models\Tlist_operation  $tlist_operation
      * @return \Illuminate\Http\Response
      */
-    public function show(tlist_operations $tlist_operations)
+    public function show(Tlist_operation $tlist_operation)
     {
         //
     }
@@ -52,10 +52,10 @@ class TlistOperationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tlist_operations  $tlist_operations
+     * @param  \App\Models\Tlist_operation  $tlist_operation
      * @return \Illuminate\Http\Response
      */
-    public function edit(tlist_operations $tlist_operations)
+    public function edit(Tlist_operation $tlist_operation)
     {
         //
     }
@@ -64,10 +64,10 @@ class TlistOperationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tlist_operations  $tlist_operations
+     * @param  \App\Models\Tlist_operation  $tlist_operation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tlist_operations $tlist_operations)
+    public function update(Request $request, Tlist_operation $tlist_operation)
     {
         //
     }
@@ -75,10 +75,10 @@ class TlistOperationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tlist_operations  $tlist_operations
+     * @param  \App\Models\Tlist_operation  $tlist_operation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tlist_operations $tlist_operations)
+    public function destroy(Tlist_operation $tlist_operation)
     {
         //
     }

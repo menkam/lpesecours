@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tlist_acreditations;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 
-class TlistAcreditationsController extends Controller
+class OperationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TlistAcreditationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tlist_acreditations  $tlist_acreditations
+     * @param  \App\Models\Operation  $operation
      * @return \Illuminate\Http\Response
      */
-    public function show(tlist_acreditations $tlist_acreditations)
+    public function show(Operation $operation)
     {
         //
     }
@@ -52,10 +52,10 @@ class TlistAcreditationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tlist_acreditations  $tlist_acreditations
+     * @param  \App\Models\Operation  $operation
      * @return \Illuminate\Http\Response
      */
-    public function edit(tlist_acreditations $tlist_acreditations)
+    public function edit(Operation $operation)
     {
         //
     }
@@ -64,10 +64,10 @@ class TlistAcreditationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tlist_acreditations  $tlist_acreditations
+     * @param  \App\Models\Operation  $operation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tlist_acreditations $tlist_acreditations)
+    public function update(Request $request, Operation $operation)
     {
         //
     }
@@ -75,10 +75,10 @@ class TlistAcreditationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tlist_acreditations  $tlist_acreditations
+     * @param  \App\Models\Operation  $operation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tlist_acreditations $tlist_acreditations)
+    public function destroy(Operation $operation)
     {
         //
     }

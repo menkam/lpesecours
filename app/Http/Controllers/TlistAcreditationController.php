@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tlist_groupe_users;
+use App\Models\Tlist_acreditation;
 use Illuminate\Http\Request;
 
-class TlistGroupeUsersController extends Controller
+class TlistAcreditationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TlistGroupeUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tlist_groupe_users  $tlist_groupe_users
+     * @param  \App\Models\Tlist_acreditation  $tlist_acreditation
      * @return \Illuminate\Http\Response
      */
-    public function show(tlist_groupe_users $tlist_groupe_users)
+    public function show(Tlist_acreditation $tlist_acreditation)
     {
         //
     }
@@ -52,10 +52,10 @@ class TlistGroupeUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tlist_groupe_users  $tlist_groupe_users
+     * @param  \App\Models\Tlist_acreditation  $tlist_acreditation
      * @return \Illuminate\Http\Response
      */
-    public function edit(tlist_groupe_users $tlist_groupe_users)
+    public function edit(Tlist_acreditation $tlist_acreditation)
     {
         //
     }
@@ -64,10 +64,10 @@ class TlistGroupeUsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tlist_groupe_users  $tlist_groupe_users
+     * @param  \App\Models\Tlist_acreditation  $tlist_acreditation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tlist_groupe_users $tlist_groupe_users)
+    public function update(Request $request, Tlist_acreditation $tlist_acreditation)
     {
         //
     }
@@ -75,10 +75,10 @@ class TlistGroupeUsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tlist_groupe_users  $tlist_groupe_users
+     * @param  \App\Models\Tlist_acreditation  $tlist_acreditation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tlist_groupe_users $tlist_groupe_users)
+    public function destroy(Tlist_acreditation $tlist_acreditation)
     {
         //
     }

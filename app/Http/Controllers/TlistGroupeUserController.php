@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tlist_messages;
+use App\Models\Tlist_groupe_user;
 use Illuminate\Http\Request;
 
-class TlistMessagesController extends Controller
+class TlistGroupeUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TlistMessagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tlist_messages  $tlist_messages
+     * @param  \App\Models\Tlist_groupe_user  $tlist_groupe_user
      * @return \Illuminate\Http\Response
      */
-    public function show(tlist_messages $tlist_messages)
+    public function show(Tlist_groupe_user $tlist_groupe_user)
     {
         //
     }
@@ -52,10 +52,10 @@ class TlistMessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tlist_messages  $tlist_messages
+     * @param  \App\Models\Tlist_groupe_user  $tlist_groupe_user
      * @return \Illuminate\Http\Response
      */
-    public function edit(tlist_messages $tlist_messages)
+    public function edit(Tlist_groupe_user $tlist_groupe_user)
     {
         //
     }
@@ -64,10 +64,10 @@ class TlistMessagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tlist_messages  $tlist_messages
+     * @param  \App\Models\Tlist_groupe_user  $tlist_groupe_user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tlist_messages $tlist_messages)
+    public function update(Request $request, Tlist_groupe_user $tlist_groupe_user)
     {
         //
     }
@@ -75,10 +75,10 @@ class TlistMessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tlist_messages  $tlist_messages
+     * @param  \App\Models\Tlist_groupe_user  $tlist_groupe_user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tlist_messages $tlist_messages)
+    public function destroy(Tlist_groupe_user $tlist_groupe_user)
     {
         //
     }

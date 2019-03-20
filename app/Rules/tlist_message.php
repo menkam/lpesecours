@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class tlist_message implements Rule
+class Tlist_message implements Rule
 {
     /**
      * Create a new rule instance.

@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ope_user_user extends Model
+class Message extends Model
 {
     protected $guarded = array();
 
     protected $fillable = [
-   		'id_operation',
-   		'id_user',
-   		'id_user2'
+   		'type_message',
+   		'objet',
+   		'libelle',
+   		'statut'
    	];
 
    	protected $hidden = [

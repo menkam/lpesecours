@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\password_reset;
+use App\Models\Password_reset;
 use Illuminate\Http\Request;
 
 class PasswordResetController extends Controller
@@ -41,10 +41,10 @@ class PasswordResetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\password_reset  $password_reset
+     * @param  \App\Models\Password_reset  $password_reset
      * @return \Illuminate\Http\Response
      */
-    public function show(password_reset $password_reset)
+    public function show(Password_reset $password_reset)
     {
         //
     }
@@ -52,10 +52,10 @@ class PasswordResetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\password_reset  $password_reset
+     * @param  \App\Models\Password_reset  $password_reset
      * @return \Illuminate\Http\Response
      */
-    public function edit(password_reset $password_reset)
+    public function edit(Password_reset $password_reset)
     {
         //
     }
@@ -64,10 +64,10 @@ class PasswordResetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\password_reset  $password_reset
+     * @param  \App\Models\Password_reset  $password_reset
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, password_reset $password_reset)
+    public function update(Request $request, Password_reset $password_reset)
     {
         //
     }
@@ -75,10 +75,10 @@ class PasswordResetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\password_reset  $password_reset
+     * @param  \App\Models\Password_reset  $password_reset
      * @return \Illuminate\Http\Response
      */
-    public function destroy(password_reset $password_reset)
+    public function destroy(Password_reset $password_reset)
     {
         //
     }

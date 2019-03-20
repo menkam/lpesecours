@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ope_user_mes;
+use App\Models\Tlist_message;
 use Illuminate\Http\Request;
 
-class OpeUserMesController extends Controller
+class TlistMessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OpeUserMesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ope_user_mes  $ope_user_mes
+     * @param  \App\Models\Tlist_message  $tlist_message
      * @return \Illuminate\Http\Response
      */
-    public function show(ope_user_mes $ope_user_mes)
+    public function show(Tlist_message $tlist_message)
     {
         //
     }
@@ -52,10 +52,10 @@ class OpeUserMesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ope_user_mes  $ope_user_mes
+     * @param  \App\Models\Tlist_message  $tlist_message
      * @return \Illuminate\Http\Response
      */
-    public function edit(ope_user_mes $ope_user_mes)
+    public function edit(Tlist_message $tlist_message)
     {
         //
     }
@@ -64,10 +64,10 @@ class OpeUserMesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ope_user_mes  $ope_user_mes
+     * @param  \App\Models\Tlist_message  $tlist_message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ope_user_mes $ope_user_mes)
+    public function update(Request $request, Tlist_message $tlist_message)
     {
         //
     }
@@ -75,10 +75,10 @@ class OpeUserMesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ope_user_mes  $ope_user_mes
+     * @param  \App\Models\Tlist_message  $tlist_message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ope_user_mes $ope_user_mes)
+    public function destroy(Tlist_message $tlist_message)
     {
         //
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ope_user_user;
+use App\Models\Ope_user_user;
 use Illuminate\Http\Request;
 
 class OpeUserUserController extends Controller
@@ -41,10 +41,10 @@ class OpeUserUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ope_user_user  $ope_user_user
+     * @param  \App\Models\Ope_user_user  $ope_user_user
      * @return \Illuminate\Http\Response
      */
-    public function show(ope_user_user $ope_user_user)
+    public function show(Ope_user_user $ope_user_user)
     {
         //
     }
@@ -52,10 +52,10 @@ class OpeUserUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ope_user_user  $ope_user_user
+     * @param  \App\Models\Ope_user_user  $ope_user_user
      * @return \Illuminate\Http\Response
      */
-    public function edit(ope_user_user $ope_user_user)
+    public function edit(Ope_user_user $ope_user_user)
     {
         //
     }
@@ -64,10 +64,10 @@ class OpeUserUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ope_user_user  $ope_user_user
+     * @param  \App\Models\Ope_user_user  $ope_user_user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ope_user_user $ope_user_user)
+    public function update(Request $request, Ope_user_user $ope_user_user)
     {
         //
     }
@@ -75,10 +75,10 @@ class OpeUserUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ope_user_user  $ope_user_user
+     * @param  \App\Models\Ope_user_user  $ope_user_user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ope_user_user $ope_user_user)
+    public function destroy(Ope_user_user $ope_user_user)
     {
         //
     }

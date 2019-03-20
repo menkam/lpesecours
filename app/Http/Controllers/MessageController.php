@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\operations;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class OperationsController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OperationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\operations  $operations
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(operations $operations)
+    public function show(Message $message)
     {
         //
     }
@@ -52,10 +52,10 @@ class OperationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\operations  $operations
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(operations $operations)
+    public function edit(Message $message)
     {
         //
     }
@@ -64,10 +64,10 @@ class OperationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\operations  $operations
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, operations $operations)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -75,10 +75,10 @@ class OperationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\operations  $operations
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(operations $operations)
+    public function destroy(Message $message)
     {
         //
     }
