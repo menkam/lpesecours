@@ -75,6 +75,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="">
+            @yield('content_footer')
+        </footer>
     </div>
 </body>
 </html>
