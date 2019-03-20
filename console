@@ -1,1 +1,1 @@
-heroku config:set APP_KEY=base64:kt7vh/WKKuf+H+YDmVcvXWZsNm0xy3fdiRcwgWfdUfg=
+git commit -m "Procfile and nginx.conf added"
