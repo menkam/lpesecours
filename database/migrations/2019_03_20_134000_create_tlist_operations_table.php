@@ -15,7 +15,7 @@ class CreateTlistOperationsTable extends Migration
     {
         Schema::create('tlist_operations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('code');
+            $table->text('code')->unique();
             $table->text('libelle');
             $table->timestamps();
         });

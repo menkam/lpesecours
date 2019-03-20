@@ -16,8 +16,6 @@ class CreateOperationsTable extends Migration
         Schema::create('operations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('type_operation');
-            $table->timestamp('start');
-            $table->timestamp('stop')->nullable();
             $table->timestamps();
 
             $table->foreign('type_operation')->references('id')->on('tlist_operations');

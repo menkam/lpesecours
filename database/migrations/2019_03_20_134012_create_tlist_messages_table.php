@@ -15,7 +15,7 @@ class CreateTlistMessagesTable extends Migration
     {
         Schema::create('tlist_messages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('code');
+            $table->text('code')->unique();
             $table->text('libelle');
             $table->timestamps();
         });

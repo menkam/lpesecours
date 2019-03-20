@@ -15,9 +15,9 @@ class CreateTlistGroupeUsersTable extends Migration
     {
         Schema::create('tlist_groupe_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('code');
+            $table->text('code')->unique();
             $table->text('libelle');
-            $table->integer('statut');
+            $table->integer('statut')->default(1);
             $table->timestamps();
         });
     }

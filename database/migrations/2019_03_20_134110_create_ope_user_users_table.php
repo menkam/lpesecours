@@ -14,12 +14,12 @@ class CreateOpeUserUsersTable extends Migration
     public function up()
     {
         Schema::create('ope_user_users', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->integer('id_operation');
             $table->integer('id_user');
             $table->integer('id_user2');
             $table->timestamps();
 
+            $table->primary(['id_operation','id_user']);
             $table->foreign('id_operation')->references('id')->on('operations');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_user2')->references('id')->on('users');

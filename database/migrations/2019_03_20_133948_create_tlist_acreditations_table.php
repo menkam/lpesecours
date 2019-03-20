@@ -16,8 +16,8 @@ class CreateTlistAcreditationsTable extends Migration
         Schema::create('tlist_acreditations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('libelle');
-            $table->integer('numero');
-            $table->integer('statut');
+            $table->integer('numero')->unique();
+            $table->integer('statut')->default(1);
             $table->timestamps();
         });
     }
