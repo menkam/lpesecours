@@ -1,1 +1,0 @@
-heroku config:set DB_HOST= "ec2-23-23-195-205.compute-1.amazonaws.com"
