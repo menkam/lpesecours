@@ -1,0 +1,16 @@
+/* Trigger de suppression ---------------------------------------------*/
+TRIGGER PROCEDURE FOR DELETE OF TLIST_OPERATIONS.
+
+     /* Interdire la suppression d'une occurrence de TLIST_OPERATIONS s'il existe des
+     occurrences correspondantes de la table OPERATIONS. */
+
+     IF CAN-FIND(OPERATIONS WHERE
+          OPERATIONS.ID_TLIST_OPERATION = TLIST_OPERATIONS.ID_TLIST_OPERATION)
+     THEN DO: 
+          MESSAGE "Impossible de supprimer TLIST_OPERATIONS car OPERATIONS existe.".
+          RETURN ERROR.
+     END.
+
+
+
+

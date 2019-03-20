@@ -1,0 +1,17 @@
+/* Trigger d'insertion ----------------------------------------------*/
+TRIGGER PROCEDURE FOR CREATE OF MESSAGES.
+NEW inserted.
+
+     /* Interdire la cr‚ation d'une occurrence de MESSAGES s'il n'existe pas 
+     d'occurrence correspondante dans la table TLIST_MESSAGES. */
+
+     IF NOT(CAN-FIND(TLIST_MESSAGES WHERE
+          inserted.ID_TLIST_MESSAGE = TLIST_MESSAGES.ID_TLIST_MESSAGE))
+     THEN DO:
+          MESSAGE "Impossible d'ins‚rer MESSAGES car TLIST_MESSAGES n'existe pas.".
+          RETURN ERROR.
+     END.
+
+
+
+

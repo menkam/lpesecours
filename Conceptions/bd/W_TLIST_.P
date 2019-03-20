@@ -1,0 +1,19 @@
+/* Trigger de modification ------------------------------------------*/
+TRIGGER PROCEDURE FOR WRITE OF TLIST_OPERATIONS
+NEW inserted OLD deleted.
+
+     /* R‚percuter la modification de la cl‚ primaire de TLIST_OPERATIONS sur les 
+     occurrences correspondantes de la table OPERATIONS. */
+
+     IF
+          deleted.ID_TLIST_OPERATION <> inserted.ID_TLIST_OPERATION
+     THEN DO:
+          FOR EACH OPERATIONS WHERE
+               OPERATIONS.ID_TLIST_OPERATION = deleted.ID_TLIST_OPERATION:
+                    ASSIGN OPERATIONS.ID_TLIST_OPERATION = inserted.ID_TLIST_OPERATION.
+          END.
+     END.
+
+
+
+

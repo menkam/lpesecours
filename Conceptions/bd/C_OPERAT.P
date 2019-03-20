@@ -1,0 +1,17 @@
+/* Trigger d'insertion ----------------------------------------------*/
+TRIGGER PROCEDURE FOR CREATE OF OPERATIONS.
+NEW inserted.
+
+     /* Interdire la cr‚ation d'une occurrence de OPERATIONS s'il n'existe pas 
+     d'occurrence correspondante dans la table TLIST_OPERATIONS. */
+
+     IF NOT(CAN-FIND(TLIST_OPERATIONS WHERE
+          inserted.ID_TLIST_OPERATION = TLIST_OPERATIONS.ID_TLIST_OPERATION))
+     THEN DO:
+          MESSAGE "Impossible d'ins‚rer OPERATIONS car TLIST_OPERATIONS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+
+
+

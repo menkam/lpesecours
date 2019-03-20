@@ -1,0 +1,27 @@
+/* Trigger de modification ------------------------------------------*/
+TRIGGER PROCEDURE FOR WRITE OF OPE_USER_USER
+NEW inserted OLD deleted.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table OPE_USER_USER s'il 
+     n'existe pas d'occurrence correspondante de la table USERS. */
+
+     IF NOT(CAN-FIND(USERS WHERE
+          inserted.ID_USER = USERS.ID_USER))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour OPE_USER_USER car USERS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table OPE_USER_USER s'il 
+     n'existe pas d'occurrence correspondante de la table OPERATIONS. */
+
+     IF NOT(CAN-FIND(OPERATIONS WHERE
+          inserted.ID_OPERATION = OPERATIONS.ID_OPERATION))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour OPE_USER_USER car OPERATIONS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+
+
+

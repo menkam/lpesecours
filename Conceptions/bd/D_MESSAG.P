@@ -1,0 +1,12 @@
+/* Trigger de suppression ---------------------------------------------*/
+TRIGGER PROCEDURE FOR DELETE OF MESSAGES.
+
+     /* Supprimer les occurrences correspondantes de la table OPE_USER_MES. */
+
+     FOR EACH OPE_USER_MES OF MESSAGES:
+          DELETE OPE_USER_MES.
+     END.
+
+
+
+

@@ -1,0 +1,41 @@
+/* Trigger de modification ------------------------------------------*/
+TRIGGER PROCEDURE FOR WRITE OF OPERATIONS
+NEW inserted OLD deleted.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table OPERATIONS s'il 
+     n'existe pas d'occurrence correspondante de la table TLIST_OPERATIONS. */
+
+     IF NOT(CAN-FIND(TLIST_OPERATIONS WHERE
+          inserted.ID_TLIST_OPERATION = TLIST_OPERATIONS.ID_TLIST_OPERATION))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour OPERATIONS car TLIST_OPERATIONS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* R‚percuter la modification de la cl‚ primaire de OPERATIONS sur les 
+     occurrences correspondantes de la table OPE_USER_USER. */
+
+     IF
+          deleted.ID_OPERATION <> inserted.ID_OPERATION
+     THEN DO:
+          FOR EACH OPE_USER_USER WHERE
+               OPE_USER_USER.ID_OPERATION = deleted.ID_OPERATION:
+                    ASSIGN OPE_USER_USER.ID_OPERATION = inserted.ID_OPERATION.
+          END.
+     END.
+
+     /* R‚percuter la modification de la cl‚ primaire de OPERATIONS sur les 
+     occurrences correspondantes de la table OPE_USER_MES. */
+
+     IF
+          deleted.ID_OPERATION <> inserted.ID_OPERATION
+     THEN DO:
+          FOR EACH OPE_USER_MES WHERE
+               OPE_USER_MES.ID_OPERATION = deleted.ID_OPERATION:
+                    ASSIGN OPE_USER_MES.ID_OPERATION = inserted.ID_OPERATION.
+          END.
+     END.
+
+
+
+

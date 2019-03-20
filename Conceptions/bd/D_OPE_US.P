@@ -1,0 +1,6 @@
+/* Trigger de suppression ---------------------------------------------*/
+TRIGGER PROCEDURE FOR DELETE OF OPE_USER_USER.
+
+
+
+

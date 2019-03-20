@@ -1,0 +1,22 @@
+/* Trigger de suppression ---------------------------------------------*/
+TRIGGER PROCEDURE FOR DELETE OF USERS.
+
+     /* Interdire la suppression d'une occurrence de USERS s'il existe des
+     occurrences correspondantes de la table OPE_USER_USER. */
+
+     IF CAN-FIND(OPE_USER_USER WHERE
+          OPE_USER_USER.ID_USER = USERS.ID_USER)
+     THEN DO: 
+          MESSAGE "Impossible de supprimer USERS car OPE_USER_USER existe.".
+          RETURN ERROR.
+     END.
+
+     /* Supprimer les occurrences correspondantes de la table OPE_USER_MES. */
+
+     FOR EACH OPE_USER_MES OF USERS:
+          DELETE OPE_USER_MES.
+     END.
+
+
+
+

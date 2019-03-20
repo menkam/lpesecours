@@ -1,0 +1,51 @@
+/* Trigger de modification ------------------------------------------*/
+TRIGGER PROCEDURE FOR WRITE OF USERS
+NEW inserted OLD deleted.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table USERS s'il 
+     n'existe pas d'occurrence correspondante de la table TLIST_GROUPE_USERS. */
+
+     IF NOT(CAN-FIND(TLIST_GROUPE_USERS WHERE
+          inserted.IDTLIST_GROUPE_USER = TLIST_GROUPE_USERS.IDTLIST_GROUPE_USER))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour USERS car TLIST_GROUPE_USERS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table USERS s'il 
+     n'existe pas d'occurrence correspondante de la table TLIST_ACREDITATIONS. */
+
+     IF NOT(CAN-FIND(TLIST_ACREDITATIONS WHERE
+          inserted.ID_ACREDITATION = TLIST_ACREDITATIONS.ID_ACREDITATION))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour USERS car TLIST_ACREDITATIONS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* R‚percuter la modification de la cl‚ primaire de USERS sur les 
+     occurrences correspondantes de la table OPE_USER_USER. */
+
+     IF
+          deleted.ID_USER <> inserted.ID_USER
+     THEN DO:
+          FOR EACH OPE_USER_USER WHERE
+               OPE_USER_USER.ID_USER = deleted.ID_USER:
+                    ASSIGN OPE_USER_USER.ID_USER = inserted.ID_USER.
+          END.
+     END.
+
+     /* R‚percuter la modification de la cl‚ primaire de USERS sur les 
+     occurrences correspondantes de la table OPE_USER_MES. */
+
+     IF
+          deleted.ID_USER <> inserted.ID_USER
+     THEN DO:
+          FOR EACH OPE_USER_MES WHERE
+               OPE_USER_MES.ID_USER = deleted.ID_USER:
+                    ASSIGN OPE_USER_MES.ID_USER = inserted.ID_USER.
+          END.
+     END.
+
+
+
+

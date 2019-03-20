@@ -1,0 +1,27 @@
+/* Trigger d'insertion ----------------------------------------------*/
+TRIGGER PROCEDURE FOR CREATE OF USERS.
+NEW inserted.
+
+     /* Interdire la cr‚ation d'une occurrence de USERS s'il n'existe pas 
+     d'occurrence correspondante dans la table TLIST_GROUPE_USERS. */
+
+     IF NOT(CAN-FIND(TLIST_GROUPE_USERS WHERE
+          inserted.IDTLIST_GROUPE_USER = TLIST_GROUPE_USERS.IDTLIST_GROUPE_USER))
+     THEN DO:
+          MESSAGE "Impossible d'ins‚rer USERS car TLIST_GROUPE_USERS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* Interdire la cr‚ation d'une occurrence de USERS s'il n'existe pas 
+     d'occurrence correspondante dans la table TLIST_ACREDITATIONS. */
+
+     IF NOT(CAN-FIND(TLIST_ACREDITATIONS WHERE
+          inserted.ID_ACREDITATION = TLIST_ACREDITATIONS.ID_ACREDITATION))
+     THEN DO:
+          MESSAGE "Impossible d'ins‚rer USERS car TLIST_ACREDITATIONS n'existe pas.".
+          RETURN ERROR.
+     END.
+
+
+
+

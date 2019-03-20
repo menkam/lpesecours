@@ -1,0 +1,29 @@
+/* Trigger de modification ------------------------------------------*/
+TRIGGER PROCEDURE FOR WRITE OF MESSAGES
+NEW inserted OLD deleted.
+
+     /* Interdire la modification de la cl‚ ‚trangŠre de la table MESSAGES s'il 
+     n'existe pas d'occurrence correspondante de la table TLIST_MESSAGES. */
+
+     IF NOT(CAN-FIND(TLIST_MESSAGES WHERE
+          inserted.ID_TLIST_MESSAGE = TLIST_MESSAGES.ID_TLIST_MESSAGE))
+     THEN DO:
+          MESSAGE "Impossible de mettre … jour MESSAGES car TLIST_MESSAGES n'existe pas.".
+          RETURN ERROR.
+     END.
+
+     /* R‚percuter la modification de la cl‚ primaire de MESSAGES sur les 
+     occurrences correspondantes de la table OPE_USER_MES. */
+
+     IF
+          deleted.ID_MESSAGE <> inserted.ID_MESSAGE
+     THEN DO:
+          FOR EACH OPE_USER_MES WHERE
+               OPE_USER_MES.ID_MESSAGE = deleted.ID_MESSAGE:
+                    ASSIGN OPE_USER_MES.ID_MESSAGE = inserted.ID_MESSAGE.
+          END.
+     END.
+
+
+
+

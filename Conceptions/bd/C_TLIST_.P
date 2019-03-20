@@ -1,0 +1,7 @@
+/* Trigger d'insertion ----------------------------------------------*/
+TRIGGER PROCEDURE FOR CREATE OF TLIST_OPERATIONS.
+NEW inserted.
+
+
+
+
