@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Tlist_groupe_userSeeder::class);
         $this->call(Tlist_messageSeeder::class);
         $this->call(Tlist_operationSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
