@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         $object = new User();
         $object->groupe_user = $groupeSystem['id'];
         $object->acreditation = $acreditationSystem['id'];
-        $object->name = 'ROOT2';
+        $object->name = 'ROOT';
         $object->surname = 'Admin';
         $object->date_nais = '21/03/2019';
         $object->sexe = 'M';
