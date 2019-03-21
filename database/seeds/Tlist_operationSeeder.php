@@ -42,5 +42,10 @@ class Tlist_operationSeeder extends Seeder
         $object->libelle = 'Desactivation';
         $object->save();
 
+        $object = new Tlist_operation();
+        $object->code = 'CRE';
+        $object->libelle = 'Creation';
+        $object->save();
+
     }
 }

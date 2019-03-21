@@ -13,6 +13,11 @@ class Tlist_groupe_userSeeder extends Seeder
     public function run()
     {
         $object = new Tlist_groupe_user();
+        $object->code = 'SYSTE';
+        $object->libelle = 'Systeme';
+        $object->save();
+
+        $object = new Tlist_groupe_user();
         $object->code = 'ADMIN';
         $object->libelle = 'Administrateur';
         $object->save();
