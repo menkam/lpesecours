@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Tlist_message;
 
 class Message extends Model
 {
@@ -17,6 +18,12 @@ class Message extends Model
 
    	protected $hidden = [
     ];
+
+    public function type_message()
+    {
+        return $this->belongsToMany(Tlist_message::class);
+    }
+
 
     protected $casts = [
         

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Operation;
 
 class Ope_user_user extends Model
 {
@@ -16,6 +18,16 @@ class Ope_user_user extends Model
 
    	protected $hidden = [
     ];
+
+    public function id_operation()
+    {
+        return $this->belongsToMany(Operation::class);
+    }
+
+    public function id_user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     protected $casts = [
         
