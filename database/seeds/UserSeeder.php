@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         $object->acreditation = $acreditationSystem['id'];
         $object->name = 'ROOT';
         $object->surname = 'Admin';
-        $object->date_nais = '21-03-2019';
+        $object->date_nais = '21/03/2019';
         $object->sexe = 'M';
         $object->telephone = '+237670928110';
         $object->email = 'lpesecours@gmail.com';
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         $object->acreditation = $acreditationVsiteur['id'];
         $object->name = 'VISITEUR';
         $object->surname = 'invite';
-        $object->date_nais = '21-03-2019';
+        $object->date_nais = '21/03/2019';
         $object->sexe = 'M';
         $object->telephone = '+237600000000';
         $object->email = 'visiteur@gmail.com';
