@@ -1,0 +1,4 @@
+php artisan make:seed Tlist_groupe_userSeeder
+php artisan make:seed Tlist_acreditationSeeder
+php artisan make:seed Tlist_operationSeeder
+php artisan make:seed Tlist_messageSeeder

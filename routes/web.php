@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('forms','FormController');
+
+Route::post('getOptionGroupeUser',['as'=>'getOptionGroupeUser','uses'=>'TlistGroupeUserController@getOptionGroupeUser']);

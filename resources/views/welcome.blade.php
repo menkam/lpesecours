@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <script src="{{asset('bootstrap/js/jquery.js')}}"></script>
+
         <!-- Styles -->
         <style>
             html, body {
@@ -89,5 +92,8 @@
                 </div>
             </div>
         </div>
+    <script type="text/javascript">
+
+    </script>
     </body>
 </html>

@@ -1,0 +1,10 @@
+php artisan make:model Models\\Tlist_groupe_user -crm
+php artisan make:model Models\\Tlist_acreditation -crm
+php artisan make:model Models\\Tlist_operation -crm
+php artisan make:model Models\\Tlist_message -crm
+php artisan make:model Models\\User -crm
+php artisan make:model Models\\Password_reset -crm
+php artisan make:model Models\\Message -crm
+php artisan make:model Models\\Operation -crm
+php artisan make:model Models\\Ope_user_user -crm
+php artisan make:model Models\\Ope_user_me -crm
