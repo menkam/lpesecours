@@ -27,18 +27,18 @@ class HomeController extends Controller
     public function index()
     {
 
-       /* $sol = '';
+        $sol = '';
         $div = '';
-        $galeries = $this->findImageGalerie(1);
+        $galeries = $this->findImageGalerie("1");
         $nbr = 0;
-        foreach ($galeries as $galerie){
+        foreach ($galeries as $value){
             if($nbr==0){
                 $sol = $sol.'<li data-target="carousel" data-slide-to="'.$nbr.'" class="active"></li>';
-                $div = $div.'<div class="item active"><img src="images/galerie_accueil/'.$galerie['nom_image_galerie'].'" alt="'.$galerie['nom_image_galerie'].'"/></div>';
+                $div = $div.'<div class="item active"><img src="images/galerie_accueil/'.$galeries[0]->libelle.'" alt="'.$galeries[0]->id.'"/></div>';
                 $nbr++;
             }else{
                 $sol = $sol.'<li data-target="carousel" data-slide-to="'.$nbr.'"></li>';
-                $div = $div.'<div class="item"><img src="images/galerie_accueil/'.$galerie['nom_image_galerie'].'" alt="'.$galerie['nom_image_galerie'].'"/></div>';
+                $div = $div.'<div class="item"><img src="images/galerie_accueil/'.$galeries[0]->libelle.'" alt="'.$galeries[0]->id.'"/></div>';
                 $nbr++;
             }
         }
@@ -48,8 +48,10 @@ class HomeController extends Controller
             <a class="right carousel-control" href="#carousel" data-slide="next"><span style="color: aqua" class="icon-next"></span></a></div>
             <script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 5000 }); }) </script>';
 
-        //return view('home', compact('galerie'));*/
-        dd("salut");
+        //return view('home', compact('galerie'));
+        //$galeries = $this->findImageGalerie("1");
+        dd($galeries);
+        //return response()->json($object);
     }
 
     public function findImageGalerie($statut)
