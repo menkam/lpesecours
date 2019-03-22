@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Galerie_images_accueil;
+use DB;
 
 
 class HomeController extends Controller
@@ -25,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $sol = '';
+       /* $sol = '';
         $div = '';
         $galeries = $this->findImageGalerie(1);
         $nbr = 0;
@@ -46,15 +48,22 @@ class HomeController extends Controller
             <a class="right carousel-control" href="#carousel" data-slide="next"><span style="color: aqua" class="icon-next"></span></a></div>
             <script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 5000 }); }) </script>';
 
-        return view('home', compact('galerie'));
+        //return view('home', compact('galerie'));*/
+        dd("salut");
     }
 
     public function findImageGalerie($statut)
     {
-        $query = "SELECT * FROM galerie_images_accueil WHERE statut_image_galerie = ?;";
-        $params = array($statut);
-        $sol = $con->getRows($query, $params);
-        return $sol;
+        return DB::select("
+            SELECT 
+              galerie_images_accueils.id, 
+              galerie_images_accueils.libelle, 
+              galerie_images_accueils.statut
+            FROM 
+              public.galerie_images_accueils
+            WHERE 
+              galerie_images_accueils.statut = '$statut';
+        ");
     }
 
 
