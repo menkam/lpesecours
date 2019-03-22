@@ -546,6 +546,8 @@
 <script src="assets/js/bootstrap.min.js"></script>
 
 <!-- page specific plugin scripts -->
+<!-- customer scripts-->
+@yield('scripts')
 
 <!--[if lte IE 8]>
 <script src="assets/js/excanvas.min.js"></script>
@@ -781,5 +783,7 @@
 
     })
 </script>
+
+
 </body>
 </html>

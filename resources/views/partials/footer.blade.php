@@ -3,7 +3,7 @@
         <div class="footer-content">
             <span class="bigger-120">
                 <span class="blue bolder">men_franc </span>
-                Application  &copy; 2019
+                Application  &copy; 2019  tout drois reservés
             </span>            &nbsp; &nbsp;
             <span class="action-buttons">
                 <a href="#">
