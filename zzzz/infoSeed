@@ -1,8 +1,0 @@
-Seeding: Tlist_acreditationSeeder
-Seeding: Tlist_groupe_userSeeder
-Seeding: Tlist_messageSeeder
-Seeding: Tlist_operationSeeder
-Seeding: UserSeeder
-Seeding: OperationSeeder
-Seeding: Ope_user_userSeeser
-Database seeding completed successfully.
