@@ -21,7 +21,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////1//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = '1.png';
+        $object->libelle = '1.jpg';
         $object->info = 'MENKAM Francis ';
         $object->position = '1';
         $idLastGalerie = $object->save();
@@ -38,7 +38,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////2//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'billetInvitationVIP.png';
+        $object->libelle = 'billetInvitationVIP.jpg';
         $object->info = 'billetInvitationVIP';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -55,7 +55,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////3//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'carteInvitationEnBoisVIP.png';
+        $object->libelle = 'carteInvitationEnBoisVIP.jpg';
         $object->info = 'carteInvitationEnBoisVIP';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -72,7 +72,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////4//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'chemise&SousMain.png';
+        $object->libelle = 'chemise&SousMain.jpg';
         $object->info = 'chemise  & SousMain';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -89,7 +89,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////5//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireAcrylic&Guach.png';
+        $object->libelle = 'comptoireAcrylic&Guach.jpg';
         $object->info = 'comptoireAcrylicGuach';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -106,7 +106,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////6//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireAgenda.png';
+        $object->libelle = 'comptoireAgenda.jpg';
         $object->info = 'comptoireAgenda';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -123,7 +123,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////7//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireAgrafes.png';
+        $object->libelle = 'comptoireAgrafes.jpg';
         $object->info = 'comptoireAgrafes';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -140,7 +140,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////8//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireAgrafeuses.png';
+        $object->libelle = 'comptoireAgrafeuses.jpg';
         $object->info = 'comptoireAgrafeuses';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -157,7 +157,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////9//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireBlockNote.png';
+        $object->libelle = 'comptoireBlockNote.jpg';
         $object->info = 'comptoireBlockNote';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -174,7 +174,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////10//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireBlockNoteVIP.png';
+        $object->libelle = 'comptoireBlockNoteVIP.jpg';
         $object->info = 'comptoireBlockNoteVIP';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -191,7 +191,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////11//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireBobinettes.png';
+        $object->libelle = 'comptoireBobinettes.jpg';
         $object->info = 'comptoireBobinettes';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -208,7 +208,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////12//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireBoitierCachets.png';
+        $object->libelle = 'comptoireBoitierCachets.jpg';
         $object->info = 'comptoireBoitierCachets';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -225,7 +225,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////13//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCalculatrices.png';
+        $object->libelle = 'comptoireCalculatrices.jpg';
         $object->info = 'comptoireCalculatrices';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -242,7 +242,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////14//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCollePapiers.png';
+        $object->libelle = 'comptoireCollePapiers.jpg';
         $object->info = 'comptoireCollePapiers';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -259,7 +259,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////15//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCouvertures&Regles.png';
+        $object->libelle = 'comptoireCouvertures&Regles.jpg';
         $object->info = 'comptoireCouverturesRegles';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -276,7 +276,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////16//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCouvertures&Regles2.png';
+        $object->libelle = 'comptoireCouvertures&Regles2.jpg';
         $object->info = 'comptoireCouverturesRegles2';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -293,7 +293,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////17//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCraies.png';
+        $object->libelle = 'comptoireCraies.jpg';
         $object->info = 'comptoireCraies';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -310,7 +310,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////18//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCrayon&TailleCrayons&Marqueurs.png';
+        $object->libelle = 'comptoireCrayon&TailleCrayons&Marqueurs.jpg';
         $object->info = 'comptoireCrayonTailleCrayonsMarqueurs';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -327,7 +327,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////19//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireCrayonCouleur.png';
+        $object->libelle = 'comptoireCrayonCouleur.jpg';
         $object->info = 'comptoireCrayonCouleur';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -344,7 +344,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////20//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireEncreDeskJet.png';
+        $object->libelle = 'comptoireEncreDeskJet.jpg';
         $object->info = 'comptoireEncreDeskJet';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -361,7 +361,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////21//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireEncreLaserJet.png';
+        $object->libelle = 'comptoireEncreLaserJet.jpg';
         $object->info = 'comptoireEncreLaserJet';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -378,7 +378,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////22//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireEnveloppe.png';
+        $object->libelle = 'comptoireEnveloppe.jpg';
         $object->info = 'comptoireEnveloppe';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -395,7 +395,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////23//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireEnveloppe2.png';
+        $object->libelle = 'comptoireEnveloppe2.jpg';
         $object->info = 'comptoireEnveloppe2';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -412,7 +412,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////24//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireExterieur.png';
+        $object->libelle = 'comptoireExterieur.jpg';
         $object->info = 'comptoireExterieur';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -429,7 +429,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////25//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireExterieur2.png';
+        $object->libelle = 'comptoireExterieur2.jpg';
         $object->info = 'comptoireExterieur2';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -446,7 +446,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////26//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireFormatA4.png';
+        $object->libelle = 'comptoireFormatA4.jpg';
         $object->info = 'comptoireFormatA4';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -463,7 +463,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////27//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireGomme&tailleCrayon.png';
+        $object->libelle = 'comptoireGomme&tailleCrayon.jpg';
         $object->info = 'comptoireGommetailleCrayon';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -480,7 +480,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////28//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireInterieur.png';
+        $object->libelle = 'comptoireInterieur.jpg';
         $object->info = 'comptoireInterieur';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -497,7 +497,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////29//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireManifolds.png';
+        $object->libelle = 'comptoireManifolds.jpg';
         $object->info = 'comptoireManifolds';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -514,7 +514,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////30//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireMarqueurs&couleurs&feutres.png';
+        $object->libelle = 'comptoireMarqueurs&couleurs&feutres.jpg';
         $object->info = 'comptoireMarqueurscouleursfeutres';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -531,7 +531,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////31//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireMarqueursPermanant&Surligneur.png';
+        $object->libelle = 'comptoireMarqueursPermanant&Surligneur.jpg';
         $object->info = 'comptoireMarqueursPermanantSurligneur';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -548,7 +548,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////32//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireMarqueursWhiteBoard.png';
+        $object->libelle = 'comptoireMarqueursWhiteBoard.jpg';
         $object->info = 'comptoireMarqueursWhiteBoard';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -565,7 +565,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////33//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireMemo.png';
+        $object->libelle = 'comptoireMemo.jpg';
         $object->info = 'comptoireMemo';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -582,7 +582,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////34//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireOmduleur&RegulateurTension.png';
+        $object->libelle = 'comptoireOmduleur&RegulateurTension.jpg';
         $object->info = 'comptoire Omduleur Regulateur de Tension';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -599,7 +599,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////35//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoirePerforateurs.png';
+        $object->libelle = 'comptoirePerforateurs.jpg';
         $object->info = 'comptoirePerforateurs';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -616,7 +616,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////36//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireRecus&Facturier.png';
+        $object->libelle = 'comptoireRecus&Facturier.jpg';
         $object->info = 'comptoireRecusFacturier';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -633,7 +633,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////37//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireRegistre&BlockNote.png';
+        $object->libelle = 'comptoireRegistre&BlockNote.jpg';
         $object->info = 'comptoireRegistreBlockNote';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -650,7 +650,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////38//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireRegle&TailleCrayons.png';
+        $object->libelle = 'comptoireRegle&TailleCrayons.jpg';
         $object->info = 'comptoireRegleTailleCrayons';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -667,7 +667,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////39//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireStylos.png';
+        $object->libelle = 'comptoireStylos.jpg';
         $object->info = 'comptoireStylos';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -684,7 +684,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////40//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireStylos2.png';
+        $object->libelle = 'comptoireStylos2.jpg';
         $object->info = 'comptoireStylos2';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -701,7 +701,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////41//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireStylosRegles.png';
+        $object->libelle = 'comptoireStylosRegles.jpg';
         $object->info = 'comptoireStylosRegles';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -718,7 +718,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////42//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireStylosVIP&Scotch.png';
+        $object->libelle = 'comptoireStylosVIP&Scotch.jpg';
         $object->info = 'comptoireStylosVIPScotch';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -735,7 +735,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////43//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireStylosVIP.png';
+        $object->libelle = 'comptoireStylosVIP.jpg';
         $object->info = 'comptoireStylosVIP';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -752,7 +752,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////44//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'comptoireTamponEncreur.png';
+        $object->libelle = 'comptoireTamponEncreur.jpg';
         $object->info = 'comptoireTamponEncreur';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -769,7 +769,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////45//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'ecranPlat.png';
+        $object->libelle = 'ecranPlat.jpg';
         $object->info = 'ecranPlat';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -786,7 +786,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////46//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'livres&Calculatrices.png';
+        $object->libelle = 'livres&Calculatrices.jpg';
         $object->info = 'livres et Calculatrices';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -803,7 +803,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////47//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'photocopieuse.png';
+        $object->libelle = 'photocopieuse.jpg';
         $object->info = 'photocopieuse';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -820,7 +820,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////48//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'plaque.png';
+        $object->libelle = 'plaque.jpg';
         $object->info = 'plaque';
         $object->position = '2';
         $idLastGalerie = $object->save();
@@ -837,7 +837,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////49//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'porteStylo.png';
+        $object->libelle = 'porteStylo.jpg';
         $object->info = 'porteStylo';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -854,7 +854,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////50//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'sacADosAldulte.png';
+        $object->libelle = 'sacADosAldulte.jpg';
         $object->info = 'sacADosAldulte';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -871,7 +871,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////51//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'sacADosEnfants.png';
+        $object->libelle = 'sacADosEnfants.jpg';
         $object->info = 'sacADosEnfants';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -888,7 +888,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////52//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'tableauBlanc.png';
+        $object->libelle = 'tableauBlanc.jpg';
         $object->info = 'tableauBlanc';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -905,7 +905,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////53//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'tableauBlanc2.png';
+        $object->libelle = 'tableauBlanc2.jpg';
         $object->info = 'tableauBlanc2';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -922,7 +922,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////54//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'trophets.png';
+        $object->libelle = 'trophets.jpg';
         $object->info = 'trophets';
         $object->position = '1000';
         $idLastGalerie = $object->save();
@@ -939,7 +939,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////55//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'vueAerieneInterieur.png';
+        $object->libelle = 'vueAerieneInterieur.jpg';
         $object->info = 'vueAerieneInterieur';
         $object->position = '6';
         $idLastGalerie = $object->save();
@@ -956,7 +956,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////56//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'vueAerieneInterieur2.png';
+        $object->libelle = 'vueAerieneInterieur2.jpg';
         $object->info = 'vueAerieneInterieur2';
         $object->position = '6';
         $idLastGalerie = $object->save();
@@ -973,7 +973,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////57//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VueLateraleInterieur.png';
+        $object->libelle = 'VueLateraleInterieur.jpg';
         $object->info = 'VueLateraleInterieur';
         $object->position = '5';
         $idLastGalerie = $object->save();
@@ -990,7 +990,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////58//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VueLateraleInterieur2.png';
+        $object->libelle = 'VueLateraleInterieur2.jpg';
         $object->info = 'VueLateraleInterieur2';
         $object->position = '5';
         $idLastGalerie = $object->save();
@@ -1007,7 +1007,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////59//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VueLateraleInterieur3.png';
+        $object->libelle = 'VueLateraleInterieur3.jpg';
         $object->info = 'VueLateraleInterieur3';
         $object->position = '5';
         $idLastGalerie = $object->save();
@@ -1024,7 +1024,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////60//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VueLateraleInterieur4.png';
+        $object->libelle = 'VueLateraleInterieur4.jpg';
         $object->info = 'VueLateraleInterieur4';
         $object->position = '5';
         $idLastGalerie = $object->save();
@@ -1041,7 +1041,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////61//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VueLateraleInterieur5.png';
+        $object->libelle = 'VueLateraleInterieur5.jpg';
         $object->info = 'VueLateraleInterieur5';
         $object->position = '5';
         $idLastGalerie = $object->save();
@@ -1058,7 +1058,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////62//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'vuePrincipaleExterieur.png';
+        $object->libelle = 'vuePrincipaleExterieur.jpg';
         $object->info = 'vuePrincipaleExterieur';
         $object->position = '3';
         $idLastGalerie = $object->save();
@@ -1075,7 +1075,7 @@ class Galerie_images_accueilSeeder extends Seeder
 
         /////////63//////////
         $object = new Galerie_images_accueil();
-        $object->libelle = 'VuePrincipaleInterieur.png';
+        $object->libelle = 'VuePrincipaleInterieur.jpg';
         $object->info = 'VuePrincipaleInterieur';
         $object->position = '4';
         $idLastGalerie = $object->save();
