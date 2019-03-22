@@ -11,6 +11,8 @@ class Galerie_images_accueil extends Model
     protected $fillable = [
         'id',
         'lebelle',
+        'info',
+        'position',
         'statut'
     ];
 

@@ -17,6 +17,7 @@ class CreateGalerieImagesAccueilsTable extends Migration
             $table->bigIncrements('id');
             $table->text('libelle')->unique();
             $table->text('info')->default("Image LPE SECOURS");
+            $table->integer('position')->default('1000');
             $table->integer('statut')->default('1');
             $table->timestamps();
         });
