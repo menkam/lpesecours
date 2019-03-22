@@ -16,11 +16,6 @@
 
                             <div class="col-md-6">
                                 <select id="groupe_user" class="form-control{{ $errors->has('groupe_user') ? ' is-invalid' : '' }}" name="groupe_user" value="{{ old('groupe_user') }}" required autofocus>
-                                    <option value="">----------------</option>
-                                    <option value="1">Inviter</option>
-                                    <option value="2">Membre</option>
-                                    <option value="3">Personnel</option>
-                                    <option value="4">Super utilisateur</option>
                                 </select>
 
                                 @if ($errors->has('groupe_user'))
@@ -36,11 +31,6 @@
 
                             <div class="col-md-6">
                                 <select id="acreditation" class="form-control{{ $errors->has('acreditation') ? ' is-invalid' : '' }}" name="acreditation" value="{{ old('acreditation') }}" required autofocus>
-                                    <option value="">----------------</option>
-                                    <option value="1">1</option>
-                                    <option value="2">12</option>
-                                    <option value="3">123</option>
-                                    <option value="4">1234 utilisateur</option>
                                 </select>
 
 
@@ -85,9 +75,6 @@
 
                             <div class="col-md-6">
                                 <select id="sexe" class="form-control{{ $errors->has('sexe') ? ' is-invalid' : '' }}" name="sexe" value="{{ old('sexe') }}" required autofocus>
-                                    <option value="">----------------</option>
-                                    <option value="F">Féminin</option>
-                                    <option value="M">Masculin</option>
                                 </select>
 
                                 @if ($errors->has('sexe'))
@@ -161,4 +148,5 @@
         </div>
     </div>
 </div>
+    <script src="js/auth.js" type="text/javascript"></script>
 @endsection

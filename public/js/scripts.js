@@ -16,12 +16,29 @@ function getOptionSexe(position) {
     position.append(rows).slideDown();
 }
 
+function getOptionGroupeUser(position) {
+    var rows = '<option value="">-----------------</option>';
+    var position = $("#"+position+"");
+    rows = rows + '<option value="5">Visiteur</option>';
+    position.empty();
+    position.append(rows).slideDown();
+}
+
+function getOptionAcreditation(position) {
+    var rows = '<option value="">-----------------</option>';
+    var position = $("#"+position+"");
+    rows = rows + '<option value="1">Lecture</option>';
+    position.empty();
+    position.append(rows).slideDown();
+}
+
 
 
 /**
  * Get option groupe users
  * @param position
  */
+/*
 function getOptionGroupeUser(position) {
     var rows = '<option value="">-----------------</option>';
     var position = $("#"+position+"");
@@ -36,16 +53,16 @@ function getOptionGroupeUser(position) {
             rows = rows + '<option value="">'+data+'</option>';
             position.empty();
 
-            /*for(var i=0; i < data.length; i++) {
+            for(var i=0; i < data.length; i++) {
                 rows = rows + '<option value="'+data[i].id+'">'+data[i].libelle+'=>'+data[i].code+'</option>';
                 position.empty();
                 position.append(rows).slideDown();
-            }*/
+            }
         }
     });
 
     position.append(rows).slideDown();
-}
+}*/
 
 /**
  * Toast d'avertissement
