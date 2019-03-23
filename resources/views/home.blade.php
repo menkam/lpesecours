@@ -14,5 +14,5 @@
 
 @section('scripts')
     <script src="js/home.js"></script>
-    <script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 5000 }); }) </script>
+    <script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 9000 }); }) </script>
 @endsection

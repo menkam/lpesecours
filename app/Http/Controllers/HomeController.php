@@ -33,11 +33,11 @@ class HomeController extends Controller
         foreach ($galeries as $value){
             if($nbr==0){
                 $sol = $sol.'<li data-target="carousel" data-slide-to="'.$nbr.'" class="active"></li>';
-                $div = $div.'<div class="item active">'.$value->info.'<img src="images/galerie_accueil/'.$value->libelle.'" alt="'.$value->info.'"/></div>';
+                $div = $div.'<div class="item active">'.$value->info.'<img src="images/galerie_accueil/'.$value->libelle.'" alt="'.$value->info.'"/><strong style="text-align: left">'.($nbr+1).'/'.count($galeries).'<strong></div>';
                 $nbr++;
             }else{
                 $sol = $sol.'<li data-target="carousel" data-slide-to="'.$nbr.'"></li>';
-                $div = $div.'<div class="item">'.$value->info.'<img src="images/galerie_accueil/'.$value->libelle.'" alt="'.$value->info.'"/></div>';
+                $div = $div.'<div class="item">'.$value->info.'<img src="images/galerie_accueil/'.$value->libelle.'" alt="'.$value->info.'"/><strong style="text-align: left">'.($nbr+1).'/'.count($galeries).'<strong></div>';
                 $nbr++;
             }
         }
