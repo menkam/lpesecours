@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home0', function () {
-    return view('home0');
-});
-
 Auth::routes();
 
+Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile',['as'=>'profile','uses'=>'ProfileController@index']);
+Route::get('/inbox',['as'=>'inbox','uses'=>'MessageController@index']);
+Route::get('/license', function () { return view('license'); });
 
 Route::resource('forms','FormController');
 

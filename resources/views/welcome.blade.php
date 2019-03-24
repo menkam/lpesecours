@@ -1,99 +1,50 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.template')
+@section('title')
+<title>Welcome</title>
+<meta name="description" content="Mailbox with some customizations as described in docs" />
+@endsection
 
-        <title>Men_Franc</title>
+@section('style')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@endsection
 
-        <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-        <script src="{{asset('bootstrap/js/jquery.js')}}"></script>
+@section('breadcrumb')
+<ul class="breadcrumb">
+    <li>
+        <i class="ace-icon fa fa-home home-icon"></i>
+        <a href="/homme">Home</a>
+    </li>
+</ul>
+@endsection
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+@section('page-header')
+<h1>
+    Home
+    <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        Page d'accueil
+    </small>
+</h1>
+@endsection
 
-            .full-height {
-                height: 100vh;
-            }
+@section('content')
+<div class="col-xs-12 col-md-2 col-sm-2 col-lg-2"></div>
+<div class="col-xs-12 col-md-8 col-sm-8 col-lg-8 panel panel-primary">
+    <div class="panel-heading titre">
+        <marquee>Bienvenue a la Librairie Papeterie Claire Fontaine</marquee>
+    </div>
+    <div class="panel-body">
+        <?= $galerie ?>
+    </div>
+    <div class="panel-footer"></div>
+</div>
+@endsection
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+@section('scripts')
 
-            .position-ref {
-                position: relative;
-            }
+@endsection
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    MEN_FRANC                    
-                </div>
-
-                <div class="links">
-                    (237) 670 256 150 / 696 559 339 <a href="mailto:menkam35@gmail.com"><u>Contactez-moi</u> </a>
-                </div>
-            </div>
-        </div>
-    <script type="text/javascript">
-
-    </script>
-    </body>
-</html>
+@section('scripts2')
+<script src="js/home.js"></script>
+<script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 9000 }); }) </script>
+@endsection
