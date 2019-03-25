@@ -29,7 +29,7 @@ class MenuSeeder extends Seeder
         $object->libelle = 'Nouveau';
         $object->lien = 'Utilisateurs/Nouveau';
         $object->route = 'NewUser';
-        $object->icon = 'add';
+        $object->icon = 'user';
         $object->position = '1';
         $object->save();
 
@@ -40,7 +40,7 @@ class MenuSeeder extends Seeder
         $object->libelle = 'Modifier';
         $object->lien = 'Utilisateurs/Modifier';
         $object->route = 'UpdateUser';
-        $object->icon = 'add';
+        $object->icon = 'user';
         $object->position = '2';
         $object->save();
 
@@ -50,7 +50,7 @@ class MenuSeeder extends Seeder
         $object->idfils = '1';
         $object->libelle = 'Test0';
         $object->lien = 'Test0';
-        $object->icon = 'Test0';
+        $object->icon = 'user';
         $object->position = '1';
         $object->save();
 
@@ -60,7 +60,7 @@ class MenuSeeder extends Seeder
         $object->idfils = '2';
         $object->libelle = 'test1';
         $object->lien = 'Test0/Test1';
-        $object->icon = 'add';
+        $object->icon = 'user';
         $object->position = '1';
         $object->save();
 
@@ -71,7 +71,7 @@ class MenuSeeder extends Seeder
         $object->libelle = 'test2';
         $object->lien = 'Test0/Test1/Test2';
         $object->route = 'test2';
-        $object->icon = 'add';
+        $object->icon = 'user';
         $object->position = '1';
         $object->save();
     }
