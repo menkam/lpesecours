@@ -15,10 +15,11 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile',['as'=>'profile','uses'=>'ProfileController@index']);
-Route::get('/inbox',['as'=>'inbox','uses'=>'MessageController@index']);
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/inbox', 'MessageController@index')->name('inbox');
+
+Route::post('menu', 'MenuController@show');
+
+Route::get('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
+
 Route::get('/license', function () { return view('license'); });
-
-Route::resource('forms','FormController');
-
-Route::post('getOptionGroupeUser',['as'=>'getOptionGroupeUser','uses'=>'TlistGroupeUserController@getOptionGroupeUser']);

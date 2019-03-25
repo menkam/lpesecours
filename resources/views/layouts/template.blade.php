@@ -125,6 +125,31 @@
         <!--[if lte IE 8]>
           <script src="assets/js/excanvas.min.js"></script>
         <![endif]-->
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+               navList = $("#navList");
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: 'menu',
+
+                    success: function(data){
+
+                        navList.empty();
+                        navList.append(data).slideDown();
+
+                    }
+                });
+
+            });
+        </script>
         @yield('scripts')
 
         <!-- ace scripts -->

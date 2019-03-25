@@ -45,6 +45,5 @@
 @endsection
 
 @section('scripts2')
-<script src="js/home.js"></script>
 <script type="text/javascript">  $(function(){ $(".carousel").carousel({ interval: 9000 }); }) </script>
 @endsection
