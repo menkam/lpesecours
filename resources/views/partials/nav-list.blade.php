@@ -6,7 +6,9 @@
         </a>
         <b class="arrow"></b>
     </li>
-    <li id="navList"></li>
 
-    <!--?= $menu ?-->
+    <?php
+    if(Session::has('menus'))
+        echo (Session::get('menus'));
+    ?>
 </ul>

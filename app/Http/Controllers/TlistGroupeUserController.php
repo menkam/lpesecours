@@ -31,7 +31,7 @@ class TlistGroupeUserController extends Controller
     public function getOptionGroupeUser(Request $request)
     {
         //$id = $request->id;
-        /*return DB::select("
+        $groupes = DB::select("
             SELECT 
               tlist_groupe_users.id, 
               tlist_groupe_users.code, 
@@ -40,8 +40,9 @@ class TlistGroupeUserController extends Controller
               public.tlist_groupe_users
             WHERE 
               tlist_groupe_users.statut = '1';
-      ");*/
-        return 1;
+      ");
+
+        return response()->json($groupes);
     }
     public function getOptionGroupeUser0(Request $request)
     {

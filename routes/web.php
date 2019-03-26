@@ -10,16 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['web']], function () {
+    Auth::routes();
 
-Auth::routes();
+    Route::get('/', 'WelcomeController@index')->name('welcome');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::get('/inbox', 'MessageController@index')->name('inbox');
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/inbox', 'MessageController@index')->name('inbox');
+    Route::post('loadMenu', 'MenuController@show');
+    Route::get('loadMenu', 'MenuController@show');
 
-Route::post('menu', 'MenuController@show');
+//Route::post('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
+    Route::post('getOptionGroupeUser', ['as' => 'getOptionGroupeUser', 'uses' => 'TlistGroupeUserController@getOptionGroupeUser']);
 
-Route::get('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
+    Route::get('/license', function () {
+        return view('license');
+    });
 
-Route::get('/license', function () { return view('license'); });
+});

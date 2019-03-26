@@ -3,7 +3,9 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @yield('title')
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
@@ -12,7 +14,7 @@
 
         <!-- page specific plugin styles -->
         @yield('style')
-        
+
 
         <!-- text fonts -->
         <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -41,6 +43,10 @@
         <script src="assets/js/html5shiv.min.js"></script>
         <script src="assets/js/respond.min.js"></script>
         <![endif]-->
+
+        <!-- toastr -->
+        <link href="{{ asset('ajax/libs/toastr.js/latest/css/toastr.min.css') }}" rel="stylesheet">
+
     </head>
 
     <body class="no-skin">
@@ -83,7 +89,7 @@
 
                             @include('partials.setting-box')<!-- /.ace-settings-box -->
                         </div><!-- /.ace-settings-container -->
-                        <div class="page-header">                            
+                        <div class="page-header">
                             @yield('page-header')
                         </div><!-- /.page-header -->
 
@@ -125,38 +131,46 @@
         <!--[if lte IE 8]>
           <script src="assets/js/excanvas.min.js"></script>
         <![endif]-->
-        <script type="text/javascript">
-
-            $(document).ready(function () {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-               navList = $("#navList");
-
-                $.ajax({
-                    type: "POST",
-                    dataType: 'json',
-                    url: 'menu',
-
-                    success: function(data){
-
-                        navList.empty();
-                        navList.append(data).slideDown();
-
-                    }
-                });
-
-            });
-        </script>
         @yield('scripts')
 
         <!-- ace scripts -->
         <script src="assets/js/ace-elements.min.js"></script>
         <script src="assets/js/ace.min.js"></script>
 
+        <!-- globale scripts -->
+        <script src="js/scripts.js"></script>
+
+        <script type="text/javascript" src="{{ asset('ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('ajax/libs/toastr.js/latest/js/toastr.min.js') }}"></script>
+        <script src="{{ asset('ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js') }}"></script>
+
         <!-- inline scripts related to this page -->
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $(document).ready(function () {
+
+            });
+            //loadMenu();
+            function loadMenu() {
+                var rows = '<option value="">-----</option>';
+                var position = $("#navList");
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: 'loadMenu',
+                    success: function(data){
+                        position.empty();
+                        position.append(data);
+                    },error: function () {
+                        tostErreur("lors du chargement des menus");
+                    }
+                });
+            }
+        </script>
         @yield('scripts2')
     </body>
 </html>
