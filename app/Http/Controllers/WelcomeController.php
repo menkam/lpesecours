@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Galerie_images_accueil;
+use App\Models\Menu;
 use DB;
 
 class WelcomeController extends Controller
@@ -73,6 +74,9 @@ class WelcomeController extends Controller
         }
 
         echo $content;*/
+
+        //$menu = new Menu();
+        //dd($menu->genererMenuSeeder());
 
     }
 }

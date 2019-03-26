@@ -17,6 +17,8 @@ class Menu extends Model
         'lien',
         'route',
         'icon',
+        'contoller',
+        'groupeuser',
         'position',
         'statut'
     ];
@@ -44,7 +46,10 @@ class Menu extends Model
               menus.lien, 
               menus.icon, 
               menus.route, 
-              menus.position
+              menus.contoller, 
+              menus.groupeuser, 
+              menus.position, 
+              menus.statut
             FROM 
               public.menus
             WHERE 
@@ -52,6 +57,26 @@ class Menu extends Model
               menus.idfils = '1'
             ORDER BY
               menus.position ASC;
+        ");
+    }
+    public function getAllMenu(){
+        return DB::select("
+            SELECT 
+              menus.id, 
+              menus.idparent, 
+              menus.idfils, 
+              menus.libelle, 
+              menus.lien, 
+              menus.icon, 
+              menus.route, 
+              menus.contoller, 
+              menus.groupeuser, 
+              menus.position, 
+              menus.statut
+            FROM 
+              public.menus
+            ORDER BY
+              menus.id ASC;
         ");
     }
     public function getSMenu($idmenu){
@@ -84,5 +109,36 @@ class Menu extends Model
             menus.statut = '1' AND 
             menus.idparent = '$idmenu';
         ")[0]->count;
+    }
+
+
+
+
+    /**
+     ** gérération galerie_accueilSeeder
+     **/
+    public function genererMenuSeeder(){
+        $content = '';
+        $menus = $this->getAllMenu();
+        foreach ($menus as $value){
+
+            $content = $content.'
+                $object = new Menu();<br>
+                $object->id = \''.$value->id.'\';<br>
+                $object->idparent = \''.$value->idparent.'\';<br>
+                $object->idfils = \''.$value->idfils.'\';<br>
+                $object->libelle = \''.$value->libelle.'\';<br>
+                $object->lien = \''.$value->lien.'\';<br>
+                $object->icon = \''.$value->icon.'\';<br>
+                $object->route = \''.$value->route.'\';<br>
+                $object->contoller = \''.$value->contoller.'\';<br>
+                $object->groupeuser = \''.$value->groupeuser.'\';<br>
+                $object->position = \''.$value->position.'\';<br>
+                $object->position = \''.$value->statut.'\';<br>
+                $object->save();<br><br>
+            ';
+        }
+
+        echo $content;
     }
 }

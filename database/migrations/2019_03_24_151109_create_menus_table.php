@@ -18,12 +18,16 @@ class CreateMenusTable extends Migration
             $table->integer('idparent');
             $table->integer('idfils');
             $table->text('libelle')->unique();
-            $table->text('lien');
-            $table->text('icon');
+            $table->text('lien')->nullable();
+            $table->text('icon')->nullable();
             $table->text('route')->nullable();
+            $table->text('contoller')->nullable();
+            $table->integer('groupeuser');
             $table->integer('position')->default('100');
             $table->integer('statut')->default('1');
             $table->timestamps();
+
+            $table->foreign('groupeuser')->references('id')->on('tlist_groupe_users');
         });
     }
 
