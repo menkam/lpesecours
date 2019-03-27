@@ -21,7 +21,9 @@ class CreateMenusTable extends Migration
             $table->text('lien')->nullable();
             $table->text('icon')->nullable();
             $table->text('route')->nullable();
-            $table->text('contoller')->nullable();
+            $table->text('controller')->nullable();
+            $table->text('fichierController')->nullable();
+            $table->text('fichierView')->nullable();
             $table->integer('groupeuser');
             $table->integer('position')->default('100');
             $table->integer('statut')->default('1');

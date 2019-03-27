@@ -69,7 +69,7 @@ class HomeController extends Controller
     {
         $menus = new Menu();
         $menu = '';
-        foreach ($menus->getMenu() as $value0){
+        foreach (Menu::getMenu() as $value0){
             $idmenu = $value0->id;
 
             if($menus->isSMenu($idmenu)){

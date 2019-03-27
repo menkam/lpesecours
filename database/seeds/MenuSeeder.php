@@ -20,7 +20,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = 'cogs';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '2';
         $object->position = '1';
         $object->position = '1';
@@ -34,7 +34,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = 'user';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '3';
         $object->position = '2';
         $object->position = '1';
@@ -48,7 +48,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = 'users';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '2';
         $object->position = '3';
         $object->position = '1';
@@ -62,7 +62,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = 'folder';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '3';
         $object->position = '4';
         $object->position = '1';
@@ -76,7 +76,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Contacts';
         $object->icon = 'contact';
         $object->route = 'contact';
-        $object->contoller = 'ContactController@index';
+        $object->controller = 'ContactController@index';
         $object->groupeuser = '4';
         $object->position = '5';
         $object->position = '1';
@@ -90,7 +90,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Messagerie';
         $object->icon = 'inbox';
         $object->route = 'inbox';
-        $object->contoller = 'InboxController@index';
+        $object->controller = 'InboxController@index';
         $object->groupeuser = '4';
         $object->position = '6';
         $object->position = '1';
@@ -104,7 +104,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Galeries';
         $object->icon = 'camera-retro';
         $object->route = 'galerie';
-        $object->contoller = 'GalerieController@index';
+        $object->controller = 'GalerieController@index';
         $object->groupeuser = '4';
         $object->position = '7';
         $object->position = '1';
@@ -118,7 +118,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = 'cog';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '4';
         $object->position = '8';
         $object->position = '1';
@@ -132,7 +132,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Apropos';
         $object->icon = 'certificate';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '4';
         $object->position = '9';
         $object->position = '1';
@@ -146,7 +146,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Application\Maintenance';
         $object->icon = 'cog';
         $object->route = 'maintenance';
-        $object->contoller = 'ApplicationController@Maintenance';
+        $object->controller = 'ApplicationController@Maintenance';
         $object->groupeuser = '2';
         $object->position = '1';
         $object->position = '1';
@@ -160,7 +160,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Utilisateurs\Nouveau';
         $object->icon = 'pencil-square-o';
         $object->route = 'addUser';
-        $object->contoller = 'UserController@nouveau';
+        $object->controller = 'UserController@nouveau';
         $object->groupeuser = '2';
         $object->position = '1';
         $object->position = '1';
@@ -174,7 +174,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Utilisateurs\Modification';
         $object->icon = 'pencil-square-o';
         $object->route = 'updateUser';
-        $object->contoller = 'UserController@modification';
+        $object->controller = 'UserController@modification';
         $object->groupeuser = '3';
         $object->position = '2';
         $object->position = '1';
@@ -188,7 +188,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'GroupeUtilisateur\Nouveau';
         $object->icon = 'pencil-square-o';
         $object->route = 'addGroupeUser';
-        $object->contoller = 'TlistGroupeUserController@nouveau';
+        $object->controller = 'TlistGroupeUserController@nouveau';
         $object->groupeuser = '2';
         $object->position = '1';
         $object->position = '1';
@@ -202,7 +202,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'GroupeUtilisateur\Modification';
         $object->icon = 'pencil-square-o';
         $object->route = 'updateGroupeUser';
-        $object->contoller = 'TlistGroupeUserController@modification';
+        $object->controller = 'TlistGroupeUserController@modification';
         $object->groupeuser = '3';
         $object->position = '2';
         $object->position = '1';
@@ -216,7 +216,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = '';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '3';
         $object->position = '1';
         $object->position = '1';
@@ -230,7 +230,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = '';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '3';
         $object->position = '2';
         $object->position = '1';
@@ -244,7 +244,7 @@ class MenuSeeder extends Seeder
         $object->lien = '';
         $object->icon = '';
         $object->route = '';
-        $object->contoller = '';
+        $object->controller = '';
         $object->groupeuser = '3';
         $object->position = '3';
         $object->position = '1';
@@ -258,7 +258,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Personnelle';
         $object->icon = 'bookmark-o';
         $object->route = 'gestionPerso';
-        $object->contoller = 'GestionController@personnelle';
+        $object->controller = 'GestionController@personnelle';
         $object->groupeuser = '4';
         $object->position = '4';
         $object->position = '1';
@@ -272,7 +272,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Parametre\Profile';
         $object->icon = 'user';
         $object->route = 'profile';
-        $object->contoller = 'ParametreController@profile';
+        $object->controller = 'ParametreController@profile';
         $object->groupeuser = '4';
         $object->position = '1';
         $object->position = '1';
@@ -286,7 +286,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Cachet\Recettes';
         $object->icon = 'adjust';
         $object->route = 'recetteCachet';
-        $object->contoller = 'GestionsController@recetteCachet';
+        $object->controller = 'GestionsController@recetteCachet';
         $object->groupeuser = '3';
         $object->position = '1';
         $object->position = '1';
@@ -300,7 +300,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Cachet\Depenses';
         $object->icon = 'exchange';
         $object->route = 'depenseCachet';
-        $object->contoller = 'GestionsController@depenseCachet';
+        $object->controller = 'GestionsController@depenseCachet';
         $object->groupeuser = '2';
         $object->position = '2';
         $object->position = '1';
@@ -314,7 +314,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Cachet\Bilan';
         $object->icon = 'bar-chart-o';
         $object->route = 'bilanCachet';
-        $object->contoller = 'GestionsController@bilanCachet';
+        $object->controller = 'GestionsController@bilanCachet';
         $object->groupeuser = '2';
         $object->position = '3';
         $object->position = '1';
@@ -328,7 +328,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Photos\Recettes';
         $object->icon = 'adjust';
         $object->route = 'recette';
-        $object->contoller = 'GestionsController@recettePhoto';
+        $object->controller = 'GestionsController@recettePhoto';
         $object->groupeuser = '3';
         $object->position = '1';
         $object->position = '1';
@@ -342,7 +342,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Photos\Depenses';
         $object->icon = 'exchange';
         $object->route = 'depense';
-        $object->contoller = 'GestionsController@depensePhoto';
+        $object->controller = 'GestionsController@depensePhoto';
         $object->groupeuser = '2';
         $object->position = '2';
         $object->position = '1';
@@ -356,7 +356,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\Photos\Bilan';
         $object->icon = 'bar-chart-o';
         $object->route = 'bilan';
-        $object->contoller = 'GestionsController@bilanPhoto';
+        $object->controller = 'GestionsController@bilanPhoto';
         $object->groupeuser = '2';
         $object->position = '3';
         $object->position = '1';
@@ -370,7 +370,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\MoMo\Recette';
         $object->icon = 'adjust';
         $object->route = 'recette';
-        $object->contoller = 'GestionsController@recetteMoMo';
+        $object->controller = 'GestionsController@recetteMoMo';
         $object->groupeuser = '3';
         $object->position = '1';
         $object->position = '1';
@@ -384,7 +384,7 @@ class MenuSeeder extends Seeder
         $object->lien = 'Gestions\MoMo\Bilan';
         $object->icon = 'bar-chart-o';
         $object->route = 'bilan';
-        $object->contoller = 'GestionsController@bilanMoMo';
+        $object->controller = 'GestionsController@bilanMoMo';
         $object->groupeuser = '2';
         $object->position = '2';
         $object->position = '1';

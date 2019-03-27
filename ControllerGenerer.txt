@@ -1,0 +1,6 @@
+php artisan make:controller generer\\ContactController -r
+php artisan make:controller generer\\InboxController -r
+php artisan make:controller generer\\GalerieController -r
+php artisan make:controller generer\\ApplicationController -r
+php artisan make:controller generer\\GestionController -r
+php artisan make:controller generer\\ParametreController -r

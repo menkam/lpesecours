@@ -41,42 +41,5 @@ class WelcomeController extends Controller
         return view('welcome', compact('galerie'));
         //dd($galerie);
         //return response()->json($object);
-        
-        /**
-        ** gérération galerie_accueilSeeder
-        **/
-        /*
-        $content = '';
-        $nbr = 1;
-        $galeri = Galerie_images_accueil::all();
-        foreach ($galeri as $value){
-
-          $content = $content.'
-            /////////'.$nbr.'//////////<br>
-            $object = new Galerie_images_accueil();<br>
-            $object->libelle = \''.$value->libelle.'\';<br>
-            $object->info = \''.$value->info.'\';<br>
-            $object->position = \''.$value->position.'\';<br>
-            $idLastGalerie = $object->save();<br><br>
-
-            $object = new Operation();<br>
-            $object->type_operation = $typeOperation[\'id\'];<br>
-            $idLastOperation = $object->save();<br><br>
-
-            $object = new Ope_user_gale();<br>
-            $object->id_operation = $idLastOperation;<br>
-            $object->id_user = $user[\'id\'];<br>
-            $object->id_galerie = $idLastGalerie;<br>
-            $object->save();<br>
-            <br>
-          ';
-          $nbr++;
-        }
-
-        echo $content;*/
-
-        //$menu = new Menu();
-        //dd($menu->genererMenuSeeder());
-
     }
 }

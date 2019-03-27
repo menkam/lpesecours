@@ -36,7 +36,7 @@ class Menu extends Model
 
     ];
 
-    public function getMenu(){
+    public static function getMenu(){
         return DB::select("
             SELECT 
               menus.id, 
@@ -59,7 +59,7 @@ class Menu extends Model
               menus.position ASC;
         ");
     }
-    public function getAllMenu(){
+    public static function getAllMenu(){
         return DB::select("
             SELECT 
               menus.id, 
@@ -69,7 +69,7 @@ class Menu extends Model
               menus.lien, 
               menus.icon, 
               menus.route, 
-              menus.contoller, 
+              menus.controller, 
               menus.groupeuser, 
               menus.position, 
               menus.statut
@@ -79,7 +79,31 @@ class Menu extends Model
               menus.id ASC;
         ");
     }
-    public function getSMenu($idmenu){
+    public static function getAllMenuGener(){
+        return DB::select("
+            SELECT 
+              menus.id, 
+              menus.idparent, 
+              menus.idfils, 
+              menus.libelle, 
+              menus.lien, 
+              menus.icon, 
+              menus.route, 
+              menus.controller, 
+              menus.fichierController, 
+              menus.fichierView, 
+              menus.groupeuser, 
+              menus.position, 
+              menus.statut
+            FROM 
+              public.menus
+            WHERE 
+                menus.route NOT LIKE ''
+            ORDER BY
+              menus.id ASC;
+        ");
+    }
+    public static function getSMenu($idmenu){
         return DB::select("
             SELECT 
               menus.id, 
@@ -99,7 +123,7 @@ class Menu extends Model
               menus.position ASC;
         ");
     }
-    public function isSMenu($idmenu){
+    public static function isSMenu($idmenu){
         return DB::select("
           SELECT 
             count(*) 
@@ -117,9 +141,9 @@ class Menu extends Model
     /**
      ** gérération galerie_accueilSeeder
      **/
-    public function genererMenuSeeder(){
+    public static  function genererMenuSeeder(){
         $content = '';
-        $menus = $this->getAllMenu();
+        $menus = getAllMenu();
         foreach ($menus as $value){
 
             $content = $content.'
