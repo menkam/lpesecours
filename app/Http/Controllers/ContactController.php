@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+//use App\Models\Contacts;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    public function nouveau(){ return view("NouveauUtilisateur");}
-
-    public function modification(){ return view("ModifierUtilisateur");}
+    
+    public function index(){ return view("Contacts"); }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -45,21 +41,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contacts  $Classe
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Contacts $objet)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contacts  $objet
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Contacts $objet)
     {
         //
     }
@@ -68,10 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contacts  $objet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Contacts $objet)
     {
         //
     }
@@ -79,11 +75,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contacts  $objet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Contacts $objet)
     {
         //
     }
+    
 }

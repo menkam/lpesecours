@@ -2,24 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+//use App\Models\Gestions;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+
+class GestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    public function nouveau(){ return view("NouveauUtilisateur");}
-
-    public function modification(){ return view("ModifierUtilisateur");}
+    
+    public function recetteCachet(){ return view("RecettesCachet"); }
+    
+    public function depenseCachet(){ return view("DepensesCachet"); }
+    
+    public function bilanCachet(){ return view("BilanCachet"); }
+    
+    public function recettePhoto(){ return view("RecettePhoto"); }
+    
+    public function depensePhoto(){ return view("DepensePhoto"); }
+    
+    public function bilanPhoto(){ return view("BilanPhoto"); }
+    
+    public function recetteMoMo(){ return view("Recettes MoMo"); }
+    
+    public function bilanMoMo(){ return view("BilanMoMo"); }
+    
+    public function personnelle(){ return view("Personnelle");}
+    
 
     /**
      * Show the form for creating a new resource.
@@ -45,21 +57,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Gestions  $Classe
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Gestions $objet)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Gestions  $objet
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Gestions $objet)
     {
         //
     }
@@ -68,10 +80,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Gestions  $objet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Gestions $objet)
     {
         //
     }
@@ -79,11 +91,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Gestions  $objet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Gestions $objet)
     {
         //
     }
+    
 }

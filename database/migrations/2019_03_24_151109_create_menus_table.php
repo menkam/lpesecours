@@ -22,10 +22,11 @@ class CreateMenusTable extends Migration
             $table->text('icon')->nullable();
             $table->text('route')->nullable();
             $table->text('controller')->nullable();
-            $table->text('fichierController')->nullable();
-            $table->text('fichierView')->nullable();
+            $table->text('fichiercontoller')->nullable();
+            $table->text('fichierview')->nullable();
             $table->integer('groupeuser');
-            $table->integer('position')->default('100');
+            $table->integer('rang')->default('100');
+            $table->integer('valide')->default('0');
             $table->integer('statut')->default('1');
             $table->timestamps();
 

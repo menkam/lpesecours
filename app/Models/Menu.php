@@ -17,9 +17,12 @@ class Menu extends Model
         'lien',
         'route',
         'icon',
-        'contoller',
+        'controller ',
+        'fichiercontroller ',
+        'fichierview',
         'groupeuser',
-        'position',
+        'rang',
+        'valide',
         'statut'
     ];
 
@@ -46,9 +49,9 @@ class Menu extends Model
               menus.lien, 
               menus.icon, 
               menus.route, 
-              menus.contoller, 
+              menus.controller , 
               menus.groupeuser, 
-              menus.position, 
+              menus.rang, 
               menus.statut
             FROM 
               public.menus
@@ -56,7 +59,7 @@ class Menu extends Model
               menus.statut = '1' AND 
               menus.idfils = '1'
             ORDER BY
-              menus.position ASC;
+              menus.rang ASC;
         ");
     }
     public static function getAllMenu(){
@@ -71,7 +74,7 @@ class Menu extends Model
               menus.route, 
               menus.controller, 
               menus.groupeuser, 
-              menus.position, 
+              menus.rang, 
               menus.statut
             FROM 
               public.menus
@@ -90,15 +93,33 @@ class Menu extends Model
               menus.icon, 
               menus.route, 
               menus.controller, 
-              menus.fichierController, 
-              menus.fichierView, 
+              menus.fichiercontroller, 
+              menus.fichierview, 
               menus.groupeuser, 
-              menus.position, 
+              menus.rang, 
               menus.statut
             FROM 
               public.menus
             WHERE 
                 menus.route NOT LIKE ''
+            ORDER BY
+              menus.id ASC;
+        ");
+    }
+    public static function getMenuForController(){
+        return DB::select("
+            SELECT 
+              menus.id, 
+              menus.libelle, 
+              menus.route, 
+              menus.controller, 
+              menus.fichiercontroller, 
+              menus.fichierview, 
+              menus.groupeuser
+            FROM 
+              public.menus
+            WHERE 
+                menus.fichiercontroller NOT LIKE ''
             ORDER BY
               menus.id ASC;
         ");
@@ -112,15 +133,18 @@ class Menu extends Model
               menus.libelle, 
               menus.lien, 
               menus.icon, 
+              menus.controller, 
+              menus.fichiercontroller, 
+              menus.fichierview, 
               menus.route, 
-              menus.position
+              menus.rang
             FROM 
               public.menus
             WHERE 
               menus.statut = '1' AND 
               menus.idparent = '$idmenu'
             ORDER BY
-              menus.position ASC;
+              menus.rang ASC;
         ");
     }
     public static function isSMenu($idmenu){
@@ -155,10 +179,10 @@ class Menu extends Model
                 $object->lien = \''.$value->lien.'\';<br>
                 $object->icon = \''.$value->icon.'\';<br>
                 $object->route = \''.$value->route.'\';<br>
-                $object->contoller = \''.$value->contoller.'\';<br>
+                $object->controller = \''.$value->controller .'\';<br>
                 $object->groupeuser = \''.$value->groupeuser.'\';<br>
-                $object->position = \''.$value->position.'\';<br>
-                $object->position = \''.$value->statut.'\';<br>
+                $object->rang = \''.$value->rang.'\';<br>
+                $object->rang = \''.$value->statut.'\';<br>
                 $object->save();<br><br>
             ';
         }

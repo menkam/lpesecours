@@ -14,8 +14,24 @@ class ConceptionContoller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
     {
+        $titre = '';
+        $breadcrumb1 = 'Home';
+        $breadcrumb2 = '';
+        $breadcrumb3 = '';
+        $pageheader = '';
+        $libelle = '';
+        $liens = '';
+        $icon = '';
+        $route = '';
+        $controller = '';
+        $fichierController = '';
+        $fichierView = '';
+
         /**
          ** gérération galerie_accueilSeeder
          **/
@@ -60,45 +76,214 @@ class ConceptionContoller extends Controller
             echo "-création du dossier views <br>";
         if(@mkdir($chemin."models"))
             echo "-création du dossier models <br>";
-        if(@mkdir($chemin."Controleurs"))
+        if(@mkdir($chemin."controlleurs"))
             echo "-création du dossier controllers <br>";
         if(@mkdir($chemin."Routes"))
             echo "-création du dossier routes <br>";
 
-        foreach (Menu::getAllMenuGener() as $value)
+        foreach (Menu::getMenuForController() as $value0)
         {
-            $fichier_route = fopen($chemin."Routes/web.php", "w+");
-            echo "-création du fichier php".$chemin."Routes/web.php <br>";
-            $fichier_view = fopen($chemin."views/".$value->fichierView.".blade.php", "w+");
-            echo "-création du fichier php".$chemin."views".$value->fichierView.".blade.php <br>";
-
-            $route = 'Route::get(\''.$value->route.'\', \''.$value->controller.'\')->name(\''.$value->libelle.'\');<br>';
-            fwrite($fichier_route, $route);
-            echo "-création du contenu du fichier ".$chemin."Routes/web.php <br>";
-
-            $fileView = 'touch resources/views/generer/'.$value->libelle.'.blade.php<br>';
-            fwrite($fichier_view, $fileView);
-            echo "-création du contenu du fichier ".$chemin."views/".$value->fichierView.".blade.php <br>";
-
-            //$fileController = $fileController.'php artisan make:controller generer\\\\'.$value->controller.' -r<br>';
-        }
+            $fichier_controller = fopen($chemin."controlleurs/".$value0->fichiercontroller.".php", "w+");
+            echo "-création du fichier php : ".$chemin."controlleurs".$value0->fichiercontroller.".php <br>";
 
 
-        //echo "Routes<br>$route<br>Views<br>$fileView<br>Controller<br>$fileController";
+            $idmenu = $value0->id;
+            $classeControlleur = $value0->fichiercontroller;
+            $classeview = $value0->fichierview;
+            $viewReturn = '';
+
+            if(Menu::isSMenu($idmenu)){
+                foreach (Menu::getSMenu($idmenu) as $value1){
+                    $idsmenu = $value1->id;
+
+                    if(Menu::isSMenu($idsmenu)){
+                        foreach (Menu::getSMenu($idsmenu) as $value2){
+                            $controlleurs = explode("@", $value2->controller);
+                            $methode = $controlleurs[1];
+                            $viewReturn = $viewReturn.'
+    public function '.$methode.'(){ return view("'.$value2->fichierview.'"); }
+    ';
+                        }
+                    }else{
+                        $controlleurs = explode("@", $value1->controller);
+                        $methode = $controlleurs[1];
+                        $viewReturn = $viewReturn.'
+    public function '.$methode.'(){ return view("'.$value1->fichierview.'");}
+    ';
+                    }
+                }
+            }else{
+                $viewReturn = $viewReturn.'
+    public function index(){ return view("'.$value0->fichierview.'"); }
+    ';
+            }
+
+            $pages =
+'<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\\'.$classeview.';
+use Illuminate\Http\Request;
 
 
+class '.$classeControlleur.' extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    '.$viewReturn.'
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-       /* fwrite($fichier_model, $contenu_model);
-        echo "-création du contenu du fichier $chemin_model$dossier.php <br>";
-        fwrite($fichier_view, $contenu_view);
-        echo "-création du contenu du fichier $chemin_view$dossier.php <br>";
-        fwrite($fichier_controller, $contenu_controller);
-        echo "-création du contenu du fichier $chemin_controller$dossier.php <hr><br>";*/
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\\'.$classeview.'  $Classe
+     * @return \Illuminate\Http\Response
+     */
+    public function show('.$classeview.' $objet)
+    {
 
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\\'.$classeview.'  $objet
+     * @return \Illuminate\Http\Response
+     */
+    public function edit('.$classeview.' $objet)
+    {
+        //
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\\'.$classeview.'  $objet
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, '.$classeview.' $objet)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\\'.$classeview.'  $objet
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy('.$classeview.' $objet)
+    {
+        //
+    }
+    
+}';
+            fwrite($fichier_controller, $pages);
+            echo "-création du contenu du fichier ".$chemin."controlleurs/".$value0->fichiercontroller.".blade.php <br>";
+        }
+
+
+        //////////////////////////////////
+
+        foreach (Menu::getAllMenuGener() as $value)
+        {
+            $fichier_route = fopen($chemin."Routes/web.php", "a+");
+            echo "-création du fichier php".$chemin."Routes/web.php <br>";
+            $fichier_view = fopen($chemin."views/".$value->fichierview.".blade.php", "w+");
+            echo "-création du fichier php".$chemin."views".$value->fichierview.".blade.php <br>";
+
+            $froute = 'Route::get(\''.$value->route.'\', \''.$value->controller.'\')->name(\''.$value->libelle.'\');';
+            fwrite($fichier_route, $froute."\n");
+            echo "-création du contenu du fichier ".$chemin."Routes/web.php <br>";
+
+            $lien = explode("\\", $value->lien);
+            $nbrlien = count($lien);
+            $route = $value->route;
+            $pageheader = $value->libelle;
+
+
+            if($nbrlien==1){
+                $breadcrumb2 = '<li class="active"><a href="'.$route.'">'.$lien[0].'</a></li>';
+            }elseif ($nbrlien==2){
+                $breadcrumb2 = '<li><a href="#">'.$lien[0].'</a></li>';
+                $breadcrumb3 = '<li class="active"><a href="'.$route.'">'.$lien[1].'</a></li>';
+            }elseif ($nbrlien==3){
+                $breadcrumb1 = $lien[0];
+                $breadcrumb2 = '<li><a href="#">'.$lien[1].'</a></li>';
+                $breadcrumb3 = '<li class="active"><a href="'.$route.'">'.$lien[2].'</a></li>';
+            }
+
+            $pages = '@extends("layouts.template")
+@section("title")
+<title>'.$titre.'</title>
+<meta name="description" content=" with some customizations as described in docs" />
+@endsection
+
+@section("style")
+
+@endsection
+
+@section("breadcrumb")
+<ul class="breadcrumb">
+    <li>
+        <i class="ace-icon fa fa-home home-icon"></i>
+        <a href="/">'.$breadcrumb1.'</a>
+    </li>
+    '.$breadcrumb2.'
+    '.$breadcrumb3.'
+</ul>
+@endsection
+
+@section("page-header")
+<h1>
+    '.$pageheader.'
+    <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        Common form elements and layouts
+    </small>
+</h1>
+@endsection
+
+@section("content")
+<div class="">Pages '.$value->fichierview.'.php en cours de developpement...</div>
+@endsection
+
+@section("scripts")
+
+@endsection
+
+@section("scripts2")
+
+@endsection';
+
+            fwrite($fichier_view, $pages);
+            echo "-création du contenu du fichier ".$chemin."views/".$value->fichierview.".blade.php <br>";
+        }
+
+    }
 }
