@@ -17,8 +17,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'WelcomeController@index')->name('welcome');
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::post('loadMenu', 'MenuController@show');
-    Route::get('loadMenu', 'MenuController@show');
 
 //Route::post('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
     Route::post('getOptionGroupeUser', ['as' => 'getOptionGroupeUser', 'uses' => 'TlistGroupeUserController@getOptionGroupeUser']);
@@ -26,6 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/license', function () {
         return view('license');
     });
+
 
     /**
      * Menu
@@ -49,5 +48,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('bilan', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('inbox', 'MessageController@index')->name('inbox');
+    Route::get('apropos', function () { return view('Apropos'); });
 
 });

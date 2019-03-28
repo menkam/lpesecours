@@ -73,6 +73,8 @@ class Menu extends Model
               menus.icon, 
               menus.route, 
               menus.controller, 
+              menus.fichiercontroller, 
+              menus.fichierview, 
               menus.groupeuser, 
               menus.rang, 
               menus.statut
@@ -167,7 +169,7 @@ class Menu extends Model
      **/
     public static  function genererMenuSeeder(){
         $content = '';
-        $menus = getAllMenu();
+        $menus = Menu::getAllMenu();
         foreach ($menus as $value){
 
             $content = $content.'
@@ -176,15 +178,23 @@ class Menu extends Model
                 $object->idparent = \''.$value->idparent.'\';<br>
                 $object->idfils = \''.$value->idfils.'\';<br>
                 $object->libelle = \''.$value->libelle.'\';<br>
-                $object->lien = \''.$value->lien.'\';<br>
-                $object->icon = \''.$value->icon.'\';<br>
-                $object->route = \''.$value->route.'\';<br>
-                $object->controller = \''.$value->controller .'\';<br>
                 $object->groupeuser = \''.$value->groupeuser.'\';<br>
                 $object->rang = \''.$value->rang.'\';<br>
-                $object->rang = \''.$value->statut.'\';<br>
-                $object->save();<br><br>
             ';
+            if(!empty($value->lien))
+                $content = $content.'$object->lien = \''.$value->lien.'\';<br>';
+            if(!empty($value->icon))
+                $content = $content.'$object->icon = \''.$value->icon.'\';<br>';
+            if(!empty($value->route))
+                $content = $content.'$object->route = \''.$value->route.'\';<br>';
+            if(!empty($value->controller))
+                $content = $content.'$object->controller = \''.$value->controller.'\';<br>';
+            if(!empty($value->fichiercontroller))
+                $content = $content.'$object->fichiercontroller = \''.$value->fichiercontroller.'\';<br>';
+            if(!empty($value->fichierview))
+                $content = $content.'$object->fichierview = \''.$value->fichierview.'\';<br>';
+
+            $content = $content.'$object->save();<br><br>';
         }
 
         echo $content;

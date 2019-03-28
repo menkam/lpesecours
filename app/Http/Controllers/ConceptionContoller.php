@@ -19,30 +19,29 @@ class ConceptionContoller extends Controller
 
     public function index()
     {
-        $titre = '';
-        $breadcrumb1 = 'Home';
-        $breadcrumb2 = '';
-        $breadcrumb3 = '';
-        $pageheader = '';
-        $libelle = '';
-        $liens = '';
-        $icon = '';
-        $route = '';
-        $controller = '';
-        $fichierController = '';
-        $fichierView = '';
 
-        /**
-         ** gérération galerie_accueilSeeder
-         **/
 
+
+
+    Menu::genererMenuSeeder();
+
+
+
+
+    }
+
+    /**
+     ** gérération galerie_accueilSeeder
+     **/
+    public function seedGalerie()
+    {
         $content = '';
         $nbr = 1;
-        /*
+
         $galeri = Galerie_images_accueil::all();
         foreach ($galeri as $value){
 
-          /*$content = $content.'
+            $content = $content.'
             /////////'.$nbr.'//////////<br>
             $object = new Galerie_images_accueil();<br>
             $object->libelle = \''.$value->libelle.'\';<br>
@@ -61,9 +60,15 @@ class ConceptionContoller extends Controller
             $object->save();<br>
             <br>
           ';
-          $nbr++;
+            $nbr++;
         }
-        */
+    }
+    public function initApp()
+    {
+        $titre = '';
+        $breadcrumb1 = 'Home';
+        $breadcrumb2 = '';
+        $breadcrumb3 = '';
 
         $route = "";
         $fileView ="";
@@ -119,7 +124,7 @@ class ConceptionContoller extends Controller
             }
 
             $pages =
-'<?php
+                '<?php
 
 namespace App\Http\Controllers;
 
@@ -284,6 +289,5 @@ class '.$classeControlleur.' extends Controller
             fwrite($fichier_view, $pages);
             echo "-création du contenu du fichier ".$chemin."views/".$value->fichierview.".blade.php <br>";
         }
-
     }
 }

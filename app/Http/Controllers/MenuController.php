@@ -16,8 +16,6 @@ class MenuController extends Controller
     public function index()
     {
 
-
-
         //return view('welcome', compact('menu','galerie'));
         //dd($menu);
     }
@@ -89,8 +87,6 @@ class MenuController extends Controller
     {
         //
     }
-
-
 
 }
 
