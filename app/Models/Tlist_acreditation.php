@@ -33,7 +33,7 @@ class Tlist_acreditation extends Model
               public.tlist_acreditations
             WHERE 
               tlist_acreditations.statut = '1' AND 
-              tlist_acreditations.id <= '3' ;
+              tlist_acreditations.id <= '3';
         ");
 
         $option = '<option value="">-----------------</option>';
