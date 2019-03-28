@@ -25,7 +25,8 @@
                         {{ __('Groupe Utilisateur :') }}
                         <span class="block input-icon input-icon-right">
                             <select id="groupe_user" class="form-control{{ $errors->has('groupe_user') ? ' is-invalid' : '' }}" name="groupe_user" value="{{ old('groupe_user') }}" required autofocus>
-                                </select>
+                                <?php if(isset($optionGroupeUser)) echo $optionGroupeUser; ?>
+                            </select>
                             <i class="ace-icon fa fa-users"></i>
                         </span>
                         @if ($errors->has('groupe_user'))
@@ -39,7 +40,8 @@
                         {{ __('Acréditation :') }}
                         <span class="block input-icon input-icon-right">
                             <select id="acreditation" class="form-control{{ $errors->has('acreditation') ? ' is-invalid' : '' }}" name="acreditation" value="{{ old('acreditation') }}" required autofocus>
-                                </select>
+                                <?php if(isset($optionAcreditation)) echo $optionAcreditation; ?>
+                            </select>
                             <i class="ace-icon fa fa-retweet"></i>
                         </span>
                         @if ($errors->has('acreditation'))

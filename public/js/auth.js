@@ -3,8 +3,7 @@ $(document).ready(function () {
 
 });
 getOptionSexe("sexe");
-getOptionGroupeUser("groupe_user");
-getOptionAcreditation("acreditation");
+
 /*
 jQuery(function($) {
  $(document).on('click', '.toolbar a[data-target]', function(e) {
