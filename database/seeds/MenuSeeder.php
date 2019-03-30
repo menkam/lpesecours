@@ -147,14 +147,14 @@ class MenuSeeder extends Seeder
         $object->id = '21';
         $object->idparent = '2';
         $object->idfils = '2';
-        $object->libelle = 'Nouveau Utilisateur';
+        $object->libelle = 'nouvel Utilisateur';
         $object->groupeuser = '2';
         $object->rang = '1';
-        $object->lien = 'Utilisateurs\Nouveau';
+        $object->lien = 'Utilisateurs\nouvel';
         $object->icon = 'pencil-square-o';
         $object->route = 'addUser';
-        $object->controller = 'UserController@nouveau';
-        $object->fichierview = 'NouveauUtilisateur';
+        $object->controller = 'UserController@nouvel';
+        $object->fichierview = 'nouvelUtilisateur';
         $object->save();
 
         $object = new Menu();
@@ -175,14 +175,14 @@ class MenuSeeder extends Seeder
         $object->id = '31';
         $object->idparent = '3';
         $object->idfils = '2';
-        $object->libelle = 'Nouveau Groupe Utilisateur';
+        $object->libelle = 'nouvel Groupe Utilisateur';
         $object->groupeuser = '2';
         $object->rang = '1';
-        $object->lien = 'GroupeUtilisateur\Nouveau';
+        $object->lien = 'GroupeUtilisateur\nouvel';
         $object->icon = 'pencil-square-o';
         $object->route = 'addGroupeUser';
-        $object->controller = 'TlistGroupeUserController@nouveau';
-        $object->fichierview = 'NouveauGroupeUtilisateur';
+        $object->controller = 'TlistGroupeUserController@nouvel';
+        $object->fichierview = 'nouvelGroupeUtilisateur';
         $object->save();
 
         $object = new Menu();
