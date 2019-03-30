@@ -17,9 +17,9 @@ class UserController extends Controller
         //
     }
 
-    public function nouveau(){ return view("NouveauUtilisateur");}
+    public function nouveau(){ return view("utilisateurs/NouvelUtilisateur");}
 
-    public function modification(){ return view("ModifierUtilisateur");}
+    public function modification(){ return view("utilisateurs/ModifierUtilisateur");}
 
     /**
      * Show the form for creating a new resource.

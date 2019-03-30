@@ -14,23 +14,23 @@ class GestionsController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function recetteCachet(){ return view("RecettesCachet"); }
+    public function recetteCachet(){ return view("gestions/RecettesCachet"); }
     
-    public function depenseCachet(){ return view("DepensesCachet"); }
+    public function depenseCachet(){ return view("gestions/DepensesCachet"); }
     
-    public function bilanCachet(){ return view("BilanCachet"); }
+    public function bilanCachet(){ return view("gestions/BilanCachet"); }
     
-    public function recettePhoto(){ return view("RecettePhoto"); }
+    public function recettePhoto(){ return view("gestions/RecettePhoto"); }
     
-    public function depensePhoto(){ return view("DepensePhoto"); }
+    public function depensePhoto(){ return view("gestions/DepensePhoto"); }
     
-    public function bilanPhoto(){ return view("BilanPhoto"); }
+    public function bilanPhoto(){ return view("gestions/BilanPhoto"); }
     
-    public function recetteMoMo(){ return view("Recettes MoMo"); }
+    public function recetteMoMo(){ return view("gestions/Recettes MoMo"); }
     
-    public function bilanMoMo(){ return view("BilanMoMo"); }
+    public function bilanMoMo(){ return view("gestions/BilanMoMo"); }
     
-    public function personnelle(){ return view("Personnelle");}
+    public function personnelle(){ return view("gestions/Personnelle");}
     
 
     /**

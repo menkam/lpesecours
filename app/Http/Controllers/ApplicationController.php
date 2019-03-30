@@ -14,7 +14,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function Maintenance(){ return view("Maintenance");}
+    public function Maintenance(){ return view("applications/Maintenance");}
     
 
     /**

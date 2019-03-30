@@ -14,14 +14,14 @@
         <i class="ace-icon fa fa-home home-icon"></i>
         <a href="/">Home</a>
     </li>
-    <li><a href="#">Utilisateurs</a></li>
-    <li class="active"><a href="addUser">Nouveau</a></li>
+    <li><a href="#">GroupeUtilisateur</a></li>
+    <li class="active"><a href="addGroupeUser">Nouveau</a></li>
 </ul>
 @endsection
 
 @section("page-header")
 <h1>
-    Nouveau Utilisateur
+    Nouvel Groupe Utilisateur
     <small>
         <i class="ace-icon fa fa-angle-double-right"></i>
         Common form elements and layouts
@@ -30,7 +30,7 @@
 @endsection
 
 @section("content")
-<div class="">Pages NouveauUtilisateur.php en cours de developpement...</div>
+<div class="">Pages NouveauGroupeUtilisateur.php en cours de developpement...</div>
 @endsection
 
 @section("scripts")

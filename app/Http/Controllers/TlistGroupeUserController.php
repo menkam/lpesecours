@@ -18,9 +18,9 @@ class TlistGroupeUserController extends Controller
         //
     }
 
-    public function nouveau(){ return view("NouveauGroupeUtilisateur");}
+    public function nouveau(){ return view("utilisateurs/NouvelGroupeUtilisateur");}
 
-    public function modification(){ return view("ModifierGroupeUtilisateur");}
+    public function modification(){ return view("utilisateurs/ModifierGroupeUtilisateur");}
 
     /**
      * Show the form for creating a new resource.
