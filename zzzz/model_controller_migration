@@ -1,0 +1,2 @@
+
+php artisan make:model Models\\Ope_user_gest -crm

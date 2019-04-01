@@ -1,0 +1,11 @@
+
+php artisan make:rule User
+php artisan make:rule Password_reset
+php artisan make:rule Operation
+php artisan make:rule Message
+php artisan make:rule Ope_user_user
+php artisan make:rule Ope_user_me
+php artisan make:rule Tlist_groupe_user
+php artisan make:rule Tlist_acreditation
+php artisan make:rule Tlist_operation
+php artisan make:rule Tlist_message
