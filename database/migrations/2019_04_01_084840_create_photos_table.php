@@ -15,12 +15,14 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('libelle');
+            $table->date('date');
+            $table->integer('type');
             $table->integer('nombre');
             $table->integer('prix_unitaire');
+            $table->integer('statut')->default('1');
             $table->timestamps();
 
-            $table->foreign('libelle')->references('id')->on('tlist_photos');
+            $table->foreign('type')->references('id')->on('tlist_photos');
         });
     }
 

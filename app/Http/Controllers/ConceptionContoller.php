@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Galerie_images_accueil;
 use App\Models\Menu;
+use App\Models\Cachet;
+use App\Models\Photo;
+use App\Models\Mobile_money;
 use DB;
 
 class ConceptionContoller extends Controller
@@ -23,8 +26,10 @@ class ConceptionContoller extends Controller
 
 
 
-    Menu::genererMenuSeeder();
-
+    //Menu::genererMenuSeeder();
+    //Cachet::Seeder();
+    //Photo::Seeder();
+    Mobile_money::Seeder();
 
 
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Cachet;
+use App\Models\Tlist_cachet;
 
 class CachetSeeder extends Seeder
 {
@@ -11,6 +13,11 @@ class CachetSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $object = new Cachet();
+        $object->date = 'SYSTE';
+        $object->type = 'SYSTE';
+        $object->nombre = 'Systeme';
+        $object->prix_unitaire = 'Systeme';
+        $object->save();
     }
 }

@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Tlist_ope_gestion;
-use App\Models\Ope_user_gale;
 
 class Tlist_ope_gestionSeeder extends Seeder
 {
@@ -13,10 +12,20 @@ class Tlist_ope_gestionSeeder extends Seeder
      */
     public function run()
     {
-        $object = new Tlist_groupe_user();
-        $object->code = 'SYSTE';
-        $object->libelle = 'Systeme';
-        $id = $object->save();
+        $object = new Tlist_ope_gestion();
+        $object->code = 'GESMO';
+        $object->libelle = 'Mobile Money';
+        $object->save();
+
+        $object = new Tlist_ope_gestion();
+        $object->code = 'GESCA';
+        $object->libelle = 'Cachet';
+        $object->save();
+
+        $object = new Tlist_ope_gestion();
+        $object->code = 'GESPH';
+        $object->libelle = 'Photo';
+        $object->save();
 
     }
 }
