@@ -1,5 +1,11 @@
-
-
+php artisan make:seed Tlist_groupe_userSeeder
+php artisan make:seed Tlist_acreditationSeeder
+php artisan make:seed Tlist_operationSeeder
+php artisan make:seed Tlist_messageSeeder
 php artisan make:seed Tlist_ope_gestionSeeder
 php artisan make:seed Tlist_photoSeeder
 php artisan make:seed Tlist_cachetSeeder
+php artisan make:seed MenuSeeder
+php artisan make:seed CachetSeeder
+php artisan make:seed PhotoSeeder
+php artisan make:seed MoMoSeeder
