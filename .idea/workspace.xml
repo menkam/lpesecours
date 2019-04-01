@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bffc3edb-046b-400c-bda3-fd9a4bae63a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Mobile_money.php" afterPath="$PROJECT_DIR$/app/Models/Mobile_money.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Ope_user_gest.php" afterPath="$PROJECT_DIR$/app/Models/Ope_user_gest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Tlist_cachet.php" afterPath="$PROJECT_DIR$/app/Models/Tlist_cachet.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Tlist_ope_gestion.php" afterPath="$PROJECT_DIR$/app/Models/Tlist_ope_gestion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Tlist_photo.php" afterPath="$PROJECT_DIR$/app/Models/Tlist_photo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084739_create_tlist_ope_gestions_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084739_create_tlist_ope_gestions_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084805_create_tlist_photos_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084805_create_tlist_photos_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084817_create_tlist_cachets_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084817_create_tlist_cachets_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084840_create_photos_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084840_create_photos_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084851_create_cachets_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084851_create_cachets_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_084903_create_mobile_moneys_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_084903_create_mobile_moneys_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_090241_create_ope_user_gests_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_090241_create_ope_user_gests_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zzzz/model_controller_migration" afterPath="$PROJECT_DIR$/zzzz/model_controller_migration" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zzzz/seed" afterPath="$PROJECT_DIR$/zzzz/seed" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +13,18 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="seed" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zzzz/seed">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,7 +76,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/partials/nav-list.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/footer.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Galerie_images_accueil.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -128,6 +126,7 @@
         <option value="$PROJECT_DIR$/app/Models/Tlist_photo.php" />
         <option value="$PROJECT_DIR$/app/Models/Ope_user_gest.php" />
         <option value="$PROJECT_DIR$/app/Models/Tlist_cachet.php" />
+        <option value="$PROJECT_DIR$/zzzz/seed" />
       </list>
     </option>
   </component>
@@ -243,6 +242,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lpesecours" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lpesecours" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rules" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,12 +423,12 @@
       <workItem from="1553756732712" duration="21387000" />
       <workItem from="1553793139435" duration="6114000" />
       <workItem from="1553962493273" duration="1996000" />
-      <workItem from="1554107919198" duration="3149000" />
+      <workItem from="1554107919198" duration="3488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160232000" />
+    <option name="totallyTimeSpent" value="160571000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,8 +441,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="732" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22181553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34919474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -465,8 +483,6 @@
     </find-history>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/fichierGenerer/Routes/web.php" />
-    <entry file="file://$PROJECT_DIR$/public/fichierGenerer/controlleurs/UserController.php" />
     <entry file="file://$PROJECT_DIR$/public/fichierGenerer/controlleurs/TlistGroupeUserController.php" />
     <entry file="file://$PROJECT_DIR$/database/seeds/UserSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -857,6 +873,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zzzz/infoSeed">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zzzz/seed">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
