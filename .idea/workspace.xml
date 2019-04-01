@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bffc3edb-046b-400c-bda3-fd9a4bae63a7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/InboxController.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/BilanCachet.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/BilanCachet.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/BilanMoMo.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/BilanMoMo.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/BilanPhoto.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/BilanPhoto.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/DepensePhoto.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/DepensePhoto.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/DepensesCachet.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/DepensesCachet.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/Maintenance.blade.php" afterPath="$PROJECT_DIR$/resources/views/applications/Maintenance.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/ModifierGroupeUtilisateur.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/ModifierGroupeUtilisateur.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/ModifierUtilisateur.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/ModifierUtilisateur.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/NouveauGroupeUtilisateur.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/NouvelGroupeUtilisateur.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/NouveauUtilisateur.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/NouvelUtilisateur.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/Personnelle.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/Personnelle.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/RecettePhoto.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/RecettePhoto.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/Recettes MoMo.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/Recettes MoMo.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/RecettesCachet.blade.php" afterPath="$PROJECT_DIR$/resources/views/gestions/RecettesCachet.blade.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/GestionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/GestionsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-    </list>
+    <list default="true" id="bffc3edb-046b-400c-bda3-fd9a4bae63a7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,53 +11,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="e#7#389#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TlistGroupeUserController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
-              <folding>
-                <marker date="1553965615612" expanded="true" signature="807:1056" ph="SELECT tlist... tlist_groupe_users" />
-                <marker date="1553965615612" expanded="true" signature="1368:1647" ph="SELECT tlist... tlist_groupe_users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProfileController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TlistAcreditationController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TlistAcreditationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -132,7 +63,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_22_115445_create_galerie_images_accueils_table.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/errors/4040.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
@@ -183,6 +113,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php" />
+        <option value="$PROJECT_DIR$/zzzz/model_controller_migration" />
       </list>
     </option>
   </component>
@@ -251,6 +182,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="zzzz" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lpesecours" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lpesecours" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -265,79 +210,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utilisateurs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpesecours" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,6 +225,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Models" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,8 +274,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,11 +396,12 @@
       <workItem from="1553756732712" duration="21387000" />
       <workItem from="1553793139435" duration="6114000" />
       <workItem from="1553962493273" duration="1996000" />
+      <workItem from="1554107919198" duration="991000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157083000" />
+    <option name="totallyTimeSpent" value="158074000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,9 +413,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1374" height="732" extended-state="0" />
+    <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21961933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26281112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -577,7 +455,6 @@
     </find-history>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/fichierGenerer/views/NouveauGroupeUtilisateur.blade.php" />
     <entry file="file://$PROJECT_DIR$/public/fichierGenerer/views/ModifierUtilisateur.blade.php" />
     <entry file="file://$PROJECT_DIR$/public/fichierGenerer/views/Depenses Cachet.blade.php" />
     <entry file="file://$PROJECT_DIR$/public/fichierGenerer/views/Profile.blade.php" />
@@ -721,7 +598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,9 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#74#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,9 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding>
-            <element signature="e#45#65#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -756,16 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1553794273002" expanded="true" signature="9:27" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="38:45" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="178:185" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="210:222" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="464:477" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="684:693" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="757:766" ph="..." />
-            <marker date="1553794273002" expanded="true" signature="791:801" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,7 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,16 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <marker date="1553965253027" expanded="true" signature="9:27" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="38:45" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="170:177" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="202:214" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="481:494" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="683:692" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="800:809" ph="..." />
-            <marker date="1553965253027" expanded="true" signature="834:844" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,16 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding>
-            <marker date="1553965265350" expanded="true" signature="9:27" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="38:45" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="170:177" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="202:214" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="470:483" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="665:674" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="776:785" ph="..." />
-            <marker date="1553965265350" expanded="true" signature="810:820" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -865,14 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/InboxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/InboxController.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OperationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -897,6 +729,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+          <folding>
+            <marker date="1553965615612" expanded="true" signature="807:1056" ph="SELECT tlist... tlist_groupe_users" />
+            <marker date="1553965615612" expanded="true" signature="1368:1647" ph="SELECT tlist... tlist_groupe_users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#389#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TlistAcreditationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -905,24 +758,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TlistGroupeUserController.php">
+    <entry file="file://$PROJECT_DIR$/zzzz/model_controller_migration">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
-          <folding>
-            <marker date="1553965615612" expanded="true" signature="807:1056" ph="SELECT tlist... tlist_groupe_users" />
-            <marker date="1553965615612" expanded="true" signature="1368:1647" ph="SELECT tlist... tlist_groupe_users" />
-          </folding>
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
