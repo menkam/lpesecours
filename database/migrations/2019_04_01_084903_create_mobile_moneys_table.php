@@ -15,6 +15,13 @@ class CreateMobileMoneysTable extends Migration
     {
         Schema::create('mobile_moneys', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('fond');
+            $table->integer('pret');
+            $table->integer('espece');
+            $table->integer('compte_momo');
+            $table->integer('compte2');
+            $table->integer('frais_transfert');
+            $table->integer('commission');
             $table->timestamps();
         });
     }

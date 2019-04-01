@@ -15,6 +15,8 @@ class CreateTlistPhotosTable extends Migration
     {
         Schema::create('tlist_photos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

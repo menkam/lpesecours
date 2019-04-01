@@ -1,4 +1,4 @@
-?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,6 +15,8 @@ class CreateTlistOpeGestionsTable extends Migration
     {
         Schema::create('tlist_ope_gestions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

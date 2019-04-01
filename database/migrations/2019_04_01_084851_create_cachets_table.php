@@ -15,7 +15,12 @@ class CreateCachetsTable extends Migration
     {
         Schema::create('cachets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('libelle');
+            $table->integer('nombre');
+            $table->integer('prix_unitaire');
             $table->timestamps();
+
+            $table->foreign('libelle')->references('id')->on('tlist_cachets');
         });
     }
 

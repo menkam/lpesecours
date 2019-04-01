@@ -15,6 +15,8 @@ class CreateTlistCachetsTable extends Migration
     {
         Schema::create('tlist_cachets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code');
+            $table->string('libelle');
             $table->timestamps();
         });
     }
