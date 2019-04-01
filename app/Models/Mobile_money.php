@@ -40,6 +40,7 @@ class Mobile_money extends Model
             $content = $content.'
                 $object = new Mobile_money();<br>
                 $object->id = \''.$value->id.'\';<br>
+                $object->date = \''.$value->date.'\';<br>
                 $object->fond = \''.$value->fond.'\';<br>
                 $object->pret = \''.$value->pret.'\';<br>
                 $object->espece = \''.$value->espece.'\';<br>

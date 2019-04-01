@@ -22,14 +22,13 @@ class ConceptionContoller extends Controller
 
     public function index()
     {
-
-
-
+        Mobile_money::Seeder();
+        //echo "RAS";
 
     //Menu::genererMenuSeeder();
     //Cachet::Seeder();
     //Photo::Seeder();
-    Mobile_money::Seeder();
+
 
 
 

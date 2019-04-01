@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call(Tlist_operationSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(Galerie_images_accueilSeeder::class);
-        $this->call(MenuSeeder::class);
+        $this->call(MenuSeeder::class);*/
         $this->call(Tlist_ope_gestionSeeder::class);
         $this->call(Tlist_cachetSeeder::class);
-        $this->call(Tlist_photoSeeder::class);*/
+        $this->call(Tlist_photoSeeder::class);
 
         $this->call(MoMoSeeder::class);
         $this->call(PhotoSeeder::class);
