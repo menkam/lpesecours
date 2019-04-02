@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Models\Cachet;
 use App\Models\Photo;
 use App\Models\Mobile_money;
+use App\Models\Fonctions;
 use DB;
 
 class ConceptionContoller extends Controller
@@ -28,9 +29,8 @@ class ConceptionContoller extends Controller
         //$result = Menu::genererMenuSeeder();
         //$result = Cachet::Seeder();
         //$result = Photo::Seeder();
-        //$result = Mobile_money::Seeder();
-
-
+        //$result = Mobile_money::Seeder();   654321
+        $result = Fonctions::formatPrix("1000000");
 
 
         return view("applications/Maintenance", compact('result'));

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\Fonctions;
 
 class Mobile_money extends Model
 {
@@ -63,8 +64,8 @@ class Mobile_money extends Model
 
 
             $margeEC2 =  ($totalEC2[$nbr] +(integer)$value->frais_transfert - ($totalEC2[$nbr-1] + (integer)$value->pret));
-            if($margeEC2<0) $valMargerEC2 = '<td><span class="label label-sm label-warning">'.$margeEC2.'</span></td>';
-            elseif($margeEC2>=0) $valMargerEC2 = '<td><span class="label label-sm label-success">'.$margeEC2.'</span></td>';
+            if($margeEC2<0) $valMargerEC2 = '<td><span class="label label-sm label-warning">'.Fonctions::formatPrix($margeEC2).'</span></td>';
+            elseif($margeEC2>=0) $valMargerEC2 = '<td><span class="label label-sm label-success">'.Fonctions::formatPrix($margeEC2).'</span></td>';
             $diffCom = (integer)$value->commission - $commission[$nbr-1];
             $Supplement = ($totalEC2[$nbr]-((integer)$value->fond));
             if((((integer)$value->fond+(integer)$value->pret))<=$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-success">Bon</span></td>';
@@ -83,17 +84,17 @@ class Mobile_money extends Model
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
                 <td>'.$value->date.'</td> <!-- date -->
-                <td>'.$value->fond.'</td> <!-- fond -->
-                <td>'.$value->pret.'</td> <!-- prêt -->
-                <td>'.$value->espece.'</td> <!-- espèces -->
-                <td>'.$value->compte_momo.'</td> <!-- compteMoMo -->
-                <td>'.$value->compte2.'</td> <!-- Compte2 -->
-                <td>'.$value->frais_transfert.'</td> <!-- frais transfert -->
-                <td>'.$value->commission.'</td> <!-- commission -->
-                <td>'.$totalEC2[$nbr].'</td> <!-- TotalEC2 -->
+                <td>'.Fonctions::formatPrix($value->fond).'</td> <!-- fond -->
+                <td>'.Fonctions::formatPrix($value->pret).'</td> <!-- prêt -->
+                <td>'.Fonctions::formatPrix($value->espece).'</td> <!-- espèces -->
+                <td>'.Fonctions::formatPrix($value->compte_momo).'</td> <!-- compteMoMo -->
+                <td>'.Fonctions::formatPrix($value->compte2).'</td> <!-- Compte2 -->
+                <td>'.Fonctions::formatPrix($value->frais_transfert).'</td> <!-- frais transfert -->
+                <td>'.Fonctions::formatPrix($value->commission).'</td> <!-- commission -->
+                <td>'.Fonctions::formatPrix($totalEC2[$nbr]).'</td> <!-- TotalEC2 -->
                 '.$valMargerEC2.'<!-- MargeEC2 -->
-                <td>'.$diffCom.'</td> <!-- DiffCom -->
-                <td>'.$Supplement.'</td> <!-- Supplement -->
+                <td>'.Fonctions::formatPrix($diffCom).'</td> <!-- DiffCom -->
+                <td>'.Fonctions::formatPrix($Supplement).'</td> <!-- Supplement -->
                 '.$msgStatut.' <!-- statut -->
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">
@@ -147,6 +148,14 @@ class Mobile_money extends Model
             </tr>';
             $nbr++;
         }
+        $somPret = Fonctions::formatPrix($somPret);
+        $somFrais = Fonctions::formatPrix($somFrais);
+        $maxComm = Fonctions::formatPrix($maxComm);
+        $somMEC2 = Fonctions::formatPrix($somMEC2);
+        $maxSup = Fonctions::formatPrix($maxSup);
+        $lastFond = Fonctions::formatPrix($lastFond);
+        $lastStatut = Fonctions::formatPrix($lastStatut);
+        $lastTotal = Fonctions::formatPrix($lastTotal);
         return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut,$lastTotal]);
     }
 
@@ -171,5 +180,5 @@ class Mobile_money extends Model
 
         return $content;
     }
-    
+
 }

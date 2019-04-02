@@ -53,17 +53,17 @@
                                 <span class="lbl"></span>
                             </label>
                         </th> <!-- checbx -->
-                        <th>Dates</th> <!-- date -->
+                        <th>Dates_Oppération</th> <!-- date -->
                         <th>Fond</th> <!-- fond -->
                         <th>Prêts</th> <!-- prêt -->
                         <th>Espèces</th> <!-- espèces -->
-                        <th>Compte MoMo</th> <!-- compteMoMo -->
-                        <th>Compte 2</th> <!-- Compte2 -->
-                        <th>Frais Transfert</th> <!-- Frais Transfert -->
+                        <th>Compte_1</th> <!-- compteMoMo -->
+                        <th>Compte_2</th> <!-- Compte2 -->
+                        <th>Frais_Transfert</th> <!-- Frais Transfert -->
                         <th>Commissions</th> <!-- commission -->
-                        <th>Total E.C2</th> <!-- TotalEC2 -->
-                        <th>Marge E.C2</th> <!-- MargeEC2 -->
-                        <th>Diff. Comm.</th> <!-- DiffCom -->
+                        <th>Total_E.C2</th> <!-- TotalEC2 -->
+                        <th>Marge_E.C2</th> <!-- MargeEC2 -->
+                        <th>Diff._Comm.</th> <!-- DiffCom -->
                         <th>Supplements</th> <!-- Supplements -->
                         <th>Status</th> <!-- statut -->
                         <th>Actions</th> <!-- action -->
