@@ -58,11 +58,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
     Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
     Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
-    Route::get('bilan', 'GestionsController@bilanPhoto')->name('Bilan Photo');
-    Route::get('bilan', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
+    Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
+    Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
     Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
     Route::get('gestionPerso', 'GestionsController@personnelle')->name('Personnelle');
-    
+
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('inbox', 'MessageController@index')->name('inbox');
 

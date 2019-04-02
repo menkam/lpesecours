@@ -52,8 +52,9 @@ class GestionsController extends Controller
         $maxSup = $resulMoMo[5];
         $lastFond = $resulMoMo[6];
         $lastStatut = $resulMoMo[7];
+        $lastTotal = $resulMoMo[8];
 
-        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut'));
+        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut','lastTotal'));
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}
@@ -82,13 +83,12 @@ class GestionsController extends Controller
                 'frais_transfert' => $request['frais_transfert'],
                 'commission' => $request['commission'],
             ]);
-            if($save)
+            if($save->id)
                 return response()->json(['success'=>'Added new records.']);
-            return response()->json(['error'=>$save]);
+            return response()->json(['error'=>'error']);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
-
     public function saveRecettePhoto(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -112,7 +112,6 @@ class GestionsController extends Controller
         return response()->json(['error'=>$validator->errors()->all()]);
 
     }
-
     public function saveRecetteCachet(Request $request)
     {
         $validator = Validator::make($request->all(), [

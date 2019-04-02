@@ -84,7 +84,7 @@
                         <td></td>
                         <td><b><?php if(isset($somFrais)) echo $somFrais; ?></b></td>
                         <td><b><?php if(isset($maxComm)) echo $maxComm; ?></b></td>
-                        <td></td>
+                        <td><b><?php if(isset($lastTotal)) echo $lastTotal; ?></b></td>
                         <td><b><?php if(isset($somMEC2)) echo $somMEC2; ?></b></td>
                         <td></td>
                         <td><b><?php if(isset($maxSup)) echo $maxSup; ?></b></td>

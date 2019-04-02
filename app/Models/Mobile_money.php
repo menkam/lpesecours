@@ -30,7 +30,7 @@ class Mobile_money extends Model
 
     public static function getAllLine()
     {
-        return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+        return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date DESC ;");
     }
 
     /**
@@ -51,6 +51,7 @@ class Mobile_money extends Model
         $maxSup=0;
         $lastFond=0;
         $lastStatut='';
+        $lastTotal=0;
 
         $totalEC2[0] = 200000;
         $commission[0] = 23753;
@@ -76,6 +77,7 @@ class Mobile_money extends Model
             $maxSup = $Supplement;
             $lastFond = (integer)$value->fond;
             $lastStatut = $msgStatut;
+            $lastTotal = $totalEC2[$nbr];
 
 
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
@@ -145,7 +147,7 @@ class Mobile_money extends Model
             </tr>';
             $nbr++;
         }
-        return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut]);
+        return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut,$lastTotal]);
     }
 
     public static  function seeder(){

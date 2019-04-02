@@ -336,7 +336,7 @@ class MenuSeeder extends Seeder
         $object->rang = '3';
         $object->lien = 'Gestions\Photos\Bilan';
         $object->icon = 'bar-chart-o';
-        $object->route = 'bilan';
+        $object->route = 'bilanPhoto';
         $object->controller = 'GestionsController@bilanPhoto';
         $object->fichierview = 'BilanPhoto';
         $object->save();
@@ -364,7 +364,7 @@ class MenuSeeder extends Seeder
         $object->rang = '2';
         $object->lien = 'Gestions\MoMo\Bilan';
         $object->icon = 'bar-chart-o';
-        $object->route = 'bilan';
+        $object->route = 'bilanMoMo';
         $object->controller = 'GestionsController@bilanMoMo';
         $object->fichierview = 'BilanMoMo';
         $object->save();
