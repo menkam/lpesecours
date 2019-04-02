@@ -31,7 +31,7 @@ class Mobile_money extends Model
 
     public static function getAllLine()
     {
-        return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date DESC ;");
+        return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
     }
 
     /**

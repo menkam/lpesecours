@@ -170,7 +170,7 @@ class Menu extends Model
     public static  function genererMenuSeeder(){
         $content = '';
         $menus = Menu::getAllMenu();
-        
+
         foreach ($menus as $value){
 
             $content = $content.'
@@ -199,5 +199,69 @@ class Menu extends Model
         }
 
         return $content;
+    }
+    public static function loadMenus()
+    {
+        $menus = new Menu();
+        $menu = '';
+        foreach (Menu::getMenu() as $value0){
+            $idmenu = $value0->id;
+
+            if($menus->isSMenu($idmenu)){
+                $menu = $menu.'<li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-'.$value0->icon.'"></i>
+                        <span class="menu-text">'.$value0->libelle.'</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>            
+                    <b class="arrow"></b>            
+                    <ul class="submenu">';
+
+                foreach ($menus->getSMenu($idmenu) as $value1){
+                    $idsmenu = $value1->id;
+
+                    if($menus->isSMenu($idsmenu)){
+                        $menu = $menu.'<li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-'.$value1->icon.'"></i>
+                            '.$value1->libelle.'
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+        
+                        <b class="arrow"></b>
+        
+                        <ul class="submenu">';
+                        foreach ($menus->getSMenu($idsmenu) as $value2){
+                            $menu = $menu.'<li class="">
+                                <a href="'.$value2->route.'">
+                                    <i class="menu-icon fa fa-'.$value2->icon.'"></i>
+                                    '.$value2->libelle.'
+                                </a>        
+                                <b class="arrow"></b>
+                            </li>';
+                        }
+                        $menu = $menu.'</ul></li>';
+                    }else{
+                        $menu = $menu.'<li class="">
+                            <a href="'.$value1->route.'" class="">
+                                <i class="menu-icon fa fa-'.$value1->icon.'"></i>
+                                '.$value1->libelle.'
+                            </a>
+                        </li>';
+                    }
+                }
+                $menu = $menu.'</ul></li>';
+
+            }else{
+                $menu = $menu.'<li class="">
+                    <a href="'.$value0->route.'">
+                        <i class="menu-icon fa fa-'.$value0->icon.'"></i>
+                        <span class="menu-text">'.$value0->libelle.'</span>
+                    </a>
+                </li>';
+            }
+
+        }
+        return $menu;
     }
 }
