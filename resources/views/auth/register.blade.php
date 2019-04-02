@@ -22,36 +22,6 @@
                 <fieldset>
 
                     <label class="block clearfix">
-                        {{ __('Groupe Utilisateur :') }}
-                        <span class="block input-icon input-icon-right">
-                            <select id="groupe_user" class="form-control{{ $errors->has('groupe_user') ? ' is-invalid' : '' }}" name="groupe_user" value="{{ old('groupe_user') }}" required autofocus>
-                                <?php if(isset($optionGroupeUser)) echo $optionGroupeUser; ?>
-                            </select>
-                            <i class="ace-icon fa fa-users"></i>
-                        </span>
-                        @if ($errors->has('groupe_user'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('groupe_user') }}</strong>
-                            </span>
-                        @endif
-                    </label>
-
-                    <label class="block clearfix">
-                        {{ __('Acréditation :') }}
-                        <span class="block input-icon input-icon-right">
-                            <select id="acreditation" class="form-control{{ $errors->has('acreditation') ? ' is-invalid' : '' }}" name="acreditation" value="{{ old('acreditation') }}" required autofocus>
-                                <?php if(isset($optionAcreditation)) echo $optionAcreditation; ?>
-                            </select>
-                            <i class="ace-icon fa fa-retweet"></i>
-                        </span>
-                        @if ($errors->has('acreditation'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('acreditation') }}</strong>
-                            </span>
-                        @endif
-                    </label>
-
-                    <label class="block clearfix">
                         {{ __('Name :') }}
                         <span class="block input-icon input-icon-right">
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
