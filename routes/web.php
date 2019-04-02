@@ -52,15 +52,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('updateUser', 'UserController@modification')->name('Modifier Utilisateur');
     Route::get('addGroupeUser', 'TlistGroupeUserController@nouveau')->name('Nouveau Groupe Utilisateur');
     Route::get('updateGroupeUser', 'TlistGroupeUserController@modification')->name('Modifier Groupe Utilisateur');
-    Route::get('gestionPerso', 'GestionsController@personnelle')->name('Personnelle');
-    Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
+
     Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
-    Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
-    Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
     Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
-    Route::get('bilan', 'GestionsController@bilanPhoto')->name('Bilan Photo');
+    Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
     Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
+    Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
+    Route::get('bilan', 'GestionsController@bilanPhoto')->name('Bilan Photo');
     Route::get('bilan', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
+    Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
+    Route::get('gestionPerso', 'GestionsController@personnelle')->name('Personnelle');
+    
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('inbox', 'MessageController@index')->name('inbox');
 

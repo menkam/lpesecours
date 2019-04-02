@@ -350,7 +350,7 @@ class MenuSeeder extends Seeder
         $object->rang = '1';
         $object->lien = 'Gestions\MoMo\Recette';
         $object->icon = 'adjust';
-        $object->route = 'recetteMoMO';
+        $object->route = 'recetteMoMo';
         $object->controller = 'GestionsController@recetteMoMo';
         $object->fichierview = 'RecettesMoMo';
         $object->save();

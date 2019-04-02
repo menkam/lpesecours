@@ -30,10 +30,10 @@ class GestionsController extends Controller
     public function recettePhoto()
     {
         $optionTypePhoto = Tlist_photo::getOption();
-        return view("gestions/RecettePhoto", compact('optionTypePhoto'));
+        return view("gestions/RecettesPhoto", compact('optionTypePhoto'));
     }
     public function recetteMoMo()
-    { return view("gestions/Recettes MoMo"); }
+    { return view("gestions/RecettesMoMo"); }
     
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
     
@@ -47,7 +47,7 @@ class GestionsController extends Controller
     
     public function personnelle(){ return view("gestions/Personnelle");}
 
-    public function saveRecetteMomo(Request $request)
+    public function saveRecetteMoMo(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'date' => 'required|date',
