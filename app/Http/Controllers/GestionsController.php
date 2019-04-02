@@ -36,14 +36,16 @@ class GestionsController extends Controller
     { return view("gestions/RecettesMoMo"); }
     
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
-    
-    public function bilanCachet(){ return view("gestions/BilanCachet"); }
-    
     public function depensePhoto(){ return view("gestions/DepensePhoto"); }
     
     public function bilanPhoto(){ return view("gestions/BilanPhoto"); }
-    
-    public function bilanMoMo(){ return view("gestions/BilanMoMo"); }
+    public function bilanCachet(){ return view("gestions/BilanCachet"); }
+    public function bilanMoMo()
+    {
+        $rowBilanMoMo = Mobile_money::showBilan();
+
+        return view("gestions/BilanMoMo", compact('rowBilanMoMo'));
+    }
     
     public function personnelle(){ return view("gestions/Personnelle");}
 

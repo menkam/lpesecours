@@ -202,12 +202,12 @@ class MoMoSeeder extends Seeder
         $object = new Mobile_money();
         $object->date = '2019-04-01';
         $object->fond = '250000';
-        $object->pret = '0';
-        $object->espece = '92100';
-        $object->compte_momo = '200675';
+        $object->pret = '400';
+        $object->espece = '209500';
+        $object->compte_momo = '83675';
         $object->compte2 = '282';
         $object->frais_transfert = '50';
-        $object->commission = '28250';
+        $object->commission = '28534';
         $object->save();
 
     }
