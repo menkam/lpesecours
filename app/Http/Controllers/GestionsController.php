@@ -42,9 +42,17 @@ class GestionsController extends Controller
     public function bilanCachet(){ return view("gestions/BilanCachet"); }
     public function bilanMoMo()
     {
-        $rowBilanMoMo = Mobile_money::showBilan();
+        $resulMoMo = Mobile_money::showBilan();
+        //dd($resulMoMo);
+        $rowBilanMoMo = $resulMoMo[0];
+        $somPret = $resulMoMo[1];
+        $somFrais = $resulMoMo[2];
+        $maxComm = $resulMoMo[3];
+        $somMEC2 = $resulMoMo[4];
+        $maxSup = $resulMoMo[5];
+        $lastFond = $resulMoMo[6];
 
-        return view("gestions/BilanMoMo", compact('rowBilanMoMo'));
+        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond'));
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}

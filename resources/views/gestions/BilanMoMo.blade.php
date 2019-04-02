@@ -66,13 +66,32 @@
                         <th>Diff. Comm.</th> <!-- DiffCom -->
                         <th>Supplements</th> <!-- Supplements -->
                         <th>Status</th> <!-- statut -->
-                        <th></th> <!-- action -->
+                        <th>Actions</th> <!-- action -->
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php if(isset($rowBilanMoMo)) echo $rowBilanMoMo; ?>
                 </tbody>
+                <tfoot style="background-color: #98bc1b; tab-size: 14px">
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td></td>
+                        <td><b><?php if(isset($lastFond)) echo $lastFond; ?></b></td>
+                        <td><b><?php if(isset($somPret)) echo $somPret; ?></b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b><?php if(isset($somFrais)) echo $somFrais; ?></b></td>
+                        <td><b><?php if(isset($maxComm)) echo $maxComm; ?></b></td>
+                        <td></td>
+                        <td><b><?php if(isset($somMEC2)) echo $somMEC2; ?></b></td>
+                        <td></td>
+                        <td><b><?php if(isset($maxSup)) echo $maxSup; ?></b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
