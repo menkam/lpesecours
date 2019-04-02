@@ -51,8 +51,9 @@ class GestionsController extends Controller
         $somMEC2 = $resulMoMo[4];
         $maxSup = $resulMoMo[5];
         $lastFond = $resulMoMo[6];
+        $lastStatut = $resulMoMo[7];
 
-        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond'));
+        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut'));
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}

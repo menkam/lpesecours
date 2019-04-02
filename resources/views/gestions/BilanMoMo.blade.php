@@ -88,7 +88,7 @@
                         <td><b><?php if(isset($somMEC2)) echo $somMEC2; ?></b></td>
                         <td></td>
                         <td><b><?php if(isset($maxSup)) echo $maxSup; ?></b></td>
-                        <td></td>
+                        <b><?php if(isset($lastStatut)) echo $lastStatut; ?></b>
                         <td></td>
                     </tr>
                 </tfoot>
@@ -146,7 +146,7 @@
                         { "bSortable": false },
                         { "bSortable": false },
                         { "bSortable": false },
-                        { "bSortable": false },
+                        null,
                         { "bSortable": false },
                         { "bSortable": false },
                         null,

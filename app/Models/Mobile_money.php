@@ -50,6 +50,7 @@ class Mobile_money extends Model
         $somMEC2=0;
         $maxSup=0;
         $lastFond=0;
+        $lastStatut='';
 
         $totalEC2[0] = 200000;
         $commission[0] = 23753;
@@ -74,6 +75,7 @@ class Mobile_money extends Model
             $somMEC2 = $somMEC2 + $margeEC2;
             $maxSup = $Supplement;
             $lastFond = (integer)$value->fond;
+            $lastStatut = $msgStatut;
 
 
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
@@ -143,7 +145,7 @@ class Mobile_money extends Model
             </tr>';
             $nbr++;
         }
-        return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond]);
+        return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut]);
     }
 
     public static  function seeder(){
