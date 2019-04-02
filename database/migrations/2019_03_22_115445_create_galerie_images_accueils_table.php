@@ -14,7 +14,7 @@ class CreateGalerieImagesAccueilsTable extends Migration
     public function up()
     {
         Schema::create('galerie_images_accueils', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->text('libelle')->unique();
             $table->text('info')->default("Image LPE SECOURS");
             $table->integer('position')->default('1000');

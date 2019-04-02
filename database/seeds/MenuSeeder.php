@@ -308,7 +308,7 @@ class MenuSeeder extends Seeder
         $object->rang = '1';
         $object->lien = 'Gestions\Photos\Recettes';
         $object->icon = 'adjust';
-        $object->route = 'recette';
+        $object->route = 'recettePhoto';
         $object->controller = 'GestionsController@recettePhoto';
         $object->fichierview = 'RecettePhoto';
         $object->save();
@@ -322,7 +322,7 @@ class MenuSeeder extends Seeder
         $object->rang = '2';
         $object->lien = 'Gestions\Photos\Depenses';
         $object->icon = 'exchange';
-        $object->route = 'depense';
+        $object->route = 'depensePhoto';
         $object->controller = 'GestionsController@depensePhoto';
         $object->fichierview = 'DepensePhoto';
         $object->save();
@@ -350,9 +350,9 @@ class MenuSeeder extends Seeder
         $object->rang = '1';
         $object->lien = 'Gestions\MoMo\Recette';
         $object->icon = 'adjust';
-        $object->route = 'recette';
+        $object->route = 'recetteMoMO';
         $object->controller = 'GestionsController@recetteMoMo';
-        $object->fichierview = 'Recettes MoMo';
+        $object->fichierview = 'RecettesMoMo';
         $object->save();
 
         $object = new Menu();

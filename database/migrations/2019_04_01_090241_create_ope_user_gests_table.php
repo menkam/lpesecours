@@ -14,7 +14,7 @@ class CreateOpeUserGestsTable extends Migration
     public function up()
     {
         Schema::create('ope_user_gests', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('id_operation');
             $table->integer('id_user');
             $table->integer('type');

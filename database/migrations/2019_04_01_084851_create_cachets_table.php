@@ -14,7 +14,7 @@ class CreateCachetsTable extends Migration
     public function up()
     {
         Schema::create('cachets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->date('date');
             $table->integer('type');
             $table->integer('nombre');

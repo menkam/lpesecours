@@ -1,5 +1,11 @@
 <?php
 
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/license', function () { return view('license'); });
+Route::get('apropos', function () { return view('Apropos'); });
+
+Auth::routes();
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,26 +16,35 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['web']], function () {
-    Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
 
     Route::get('config', 'ConceptionContoller@index')->name('name config');
-    Route::get('/', 'WelcomeController@index')->name('welcome');
     Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Route::post('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
-    Route::post('getOptionGroupeUser', ['as' => 'getOptionGroupeUser', 'uses' => 'TlistGroupeUserController@getOptionGroupeUser']);
 
-    Route::get('/license', function () {
-        return view('license');
-    });
+
+
+
+    /*
+     * Formulaire
+     */
+    Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
+    Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
+    Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
+
+
+    /**
+     * Option Menu
+     */
+    Route::post('getOptionTypePhoto', ['as' => 'getOptionTypePhoto', 'uses' => 'GestionsController@getOptionTypePhoto']);
+    Route::post('getOptionTypeCachet', ['as' => 'getOptionTypeCachet', 'uses' => 'GestionsController@getOptionTypeCachet']);
 
 
     /**
      * Menu
     */
-
     Route::get('contact', 'ContactController@index')->name('Contacts');
     Route::get('galerie', 'GalerieController@index')->name('Galeries');
     Route::get('maintenance', 'ApplicationController@Maintenance')->name('Maintenance');
@@ -41,13 +56,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
     Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
     Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
-    Route::get('recette', 'GestionsController@recettePhoto')->name('Recette Photo');
+    Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
     Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
     Route::get('bilan', 'GestionsController@bilanPhoto')->name('Bilan Photo');
-    Route::get('recette', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
+    Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
     Route::get('bilan', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
     Route::get('profile', 'ProfileController@index')->name('profile');
     Route::get('inbox', 'MessageController@index')->name('inbox');
-    Route::get('apropos', function () { return view('Apropos'); });
+
 
 });

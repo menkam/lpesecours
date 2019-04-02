@@ -14,7 +14,7 @@ class CreateMobileMoneysTable extends Migration
     public function up()
     {
         Schema::create('mobile_moneys', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->date('date');
             $table->integer('fond');
             $table->integer('pret');

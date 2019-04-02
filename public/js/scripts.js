@@ -32,6 +32,31 @@ function getOptionAcreditation(position) {
     position.append(rows).slideDown();
 }
 
+function getOptionTypePhoto(position)
+{
+    var position = $("#"+position+"");
+    $.ajax({
+        url: "getOptionTypePhoto",
+        type:'POST',
+        success: function(data) {
+            position.empty();
+            position.append(data).slideDown();
+        }
+    });
+}
+
+function getOptionTypeCachet(position)
+{
+    var position = $("#"+position+"");
+    $.ajax({
+        url: "getOptionTypeCachet",
+        type:'POST',
+        success: function(data) {
+            position.empty();
+            position.append(data).slideDown();
+        }
+    });
+}
 
 
 /**

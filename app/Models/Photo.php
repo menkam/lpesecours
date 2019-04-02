@@ -38,7 +38,6 @@ class Photo extends Model
 
             $content = $content.'$object->save();<br><br>';
         }
-
         echo $content;
     }
 }
