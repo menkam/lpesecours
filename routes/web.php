@@ -18,7 +18,7 @@ Auth::routes();
 */
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('config', 'ConceptionContoller@index')->name('name config');
+    Route::get('maintenance', 'ConceptionContoller@index')->name('maintenance');
     Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     */
     Route::get('contact', 'ContactController@index')->name('Contacts');
     Route::get('galerie', 'GalerieController@index')->name('Galeries');
-    Route::get('maintenance', 'ApplicationController@Maintenance')->name('Maintenance');
+    //Route::get('maintenance', 'ApplicationController@Maintenance')->name('Maintenance');
     Route::get('addUser', 'UserController@nouveau')->name('Nouveau Utilisateur');
     Route::get('updateUser', 'UserController@modification')->name('Modifier Utilisateur');
     Route::get('addGroupeUser', 'TlistGroupeUserController@nouveau')->name('Nouveau Groupe Utilisateur');

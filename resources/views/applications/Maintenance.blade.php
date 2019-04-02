@@ -30,7 +30,7 @@
 @endsection
 
 @section("content")
-<div class="">Pages Maintenance.php en cours de developpement...</div>
+<div class=""><?php if(isset($result)) echo $result; ?></div>
 @endsection
 
 @section("scripts")

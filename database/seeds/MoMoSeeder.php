@@ -12,9 +12,7 @@ class MoMoSeeder extends Seeder
      */
     public function run()
     {
-
         $object = new Mobile_money();
-        $object->id = '1';
         $object->date = '2019-03-15';
         $object->fond = '200000';
         $object->pret = '0';
@@ -26,7 +24,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '2';
         $object->date = '2019-03-16';
         $object->fond = '200000';
         $object->pret = '0';
@@ -38,7 +35,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '3';
         $object->date = '2019-03-17';
         $object->fond = '200000';
         $object->pret = '0';
@@ -50,7 +46,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '4';
         $object->date = '2019-03-18';
         $object->fond = '200000';
         $object->pret = '0';
@@ -62,7 +57,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '5';
         $object->date = '2019-03-19';
         $object->fond = '200000';
         $object->pret = '0';
@@ -74,7 +68,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '6';
         $object->date = '2019-03-20';
         $object->fond = '200000';
         $object->pret = '0';
@@ -86,7 +79,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '7';
         $object->date = '2019-03-21';
         $object->fond = '200000';
         $object->pret = '0';
@@ -98,7 +90,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '8';
         $object->date = '2019-03-22';
         $object->fond = '200000';
         $object->pret = '50000';
@@ -110,7 +101,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '9';
         $object->date = '2019-03-23';
         $object->fond = '200000';
         $object->pret = '0';
@@ -122,7 +112,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '10';
         $object->date = '2019-03-24';
         $object->fond = '200000';
         $object->pret = '0';
@@ -134,7 +123,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '11';
         $object->date = '2019-03-25';
         $object->fond = '200000';
         $object->pret = '-50000';
@@ -146,7 +134,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '12';
         $object->date = '2019-03-26';
         $object->fond = '200000';
         $object->pret = '0';
@@ -158,7 +145,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '13';
         $object->date = '2019-03-27';
         $object->fond = '200000';
         $object->pret = '0';
@@ -170,7 +156,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '14';
         $object->date = '2019-03-28';
         $object->fond = '250000';
         $object->pret = '50000';
@@ -182,7 +167,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '15';
         $object->date = '2019-03-29';
         $object->fond = '250000';
         $object->pret = '0';
@@ -194,7 +178,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '16';
         $object->date = '2019-03-30';
         $object->fond = '250000';
         $object->pret = '0';
@@ -206,7 +189,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '17';
         $object->date = '2019-03-31';
         $object->fond = '250000';
         $object->pret = '-10000';
@@ -218,7 +200,6 @@ class MoMoSeeder extends Seeder
         $object->save();
 
         $object = new Mobile_money();
-        $object->id = '18';
         $object->date = '2019-04-01';
         $object->fond = '250000';
         $object->pret = '0';

@@ -22,27 +22,18 @@ class ConceptionContoller extends Controller
 
     public function index()
     {
-        //Mobile_money::Seeder();
-        //echo "RAS";
 
-    //Menu::genererMenuSeeder();
-    //Cachet::Seeder();
-    //Photo::Seeder();
+        $result = "RAS";
 
-        $save = Mobile_money::create([
-            'date' => '2019-04-02',
-            'fond' => '250000',
-            'pret' => '40000',
-            'espece' => '555',
-            'compte_momo' => '555',
-            'compte2' => '256',
-            'frais_transfert' => '50',
-            'commission' => '30000',
-        ]);
-        //$save = Mobile_money::all();
-        if($save)
-            return response()->json(['success'=>'Added new records.']);
-        return response()->json(['error'=>$save]);
+        //$result = Menu::genererMenuSeeder();
+        //$result = Cachet::Seeder();
+        //$result = Photo::Seeder();
+        $result = Mobile_money::Seeder();
+
+
+
+
+        return view("applications/Maintenance", compact('result'));
 
 
     }

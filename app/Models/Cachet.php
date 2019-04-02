@@ -29,7 +29,6 @@ class Cachet extends Model
 
             $content = $content.'
                 $object = new Cachet();<br>
-                $object->id = \''.$value->id.'\';<br>
                 $object->date = \''.$value->date.'\';<br>
                 $object->type = \''.$value->type.'\';<br>
                 $object->nombre = \''.$value->nombre.'\';<br>

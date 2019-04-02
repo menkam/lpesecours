@@ -170,6 +170,7 @@ class Menu extends Model
     public static  function genererMenuSeeder(){
         $content = '';
         $menus = Menu::getAllMenu();
+        
         foreach ($menus as $value){
 
             $content = $content.'
@@ -197,6 +198,6 @@ class Menu extends Model
             $content = $content.'$object->save();<br><br>';
         }
 
-        echo $content;
+        return $content;
     }
 }

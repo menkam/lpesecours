@@ -29,7 +29,6 @@ class Photo extends Model
 
             $content = $content.'
                 $object = new Photo();<br>
-                $object->id = \''.$value->id.'\';<br>
                 $object->date = \''.$value->date.'\';<br>
                 $object->type = \''.$value->type.'\';<br>
                 $object->nombre = \''.$value->nombre.'\';<br>
@@ -38,6 +37,6 @@ class Photo extends Model
 
             $content = $content.'$object->save();<br><br>';
         }
-        echo $content;
+        return $content;
     }
 }
