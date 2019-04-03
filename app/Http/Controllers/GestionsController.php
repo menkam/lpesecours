@@ -47,21 +47,37 @@ class GestionsController extends Controller
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
     public function depensePhoto(){ return view("gestions/DepensePhoto"); }
     
-    public function bilanPhoto(){ return view("gestions/BilanPhoto"); }
-    public function bilanCachet(){ return view("gestions/BilanCachet"); }
+    public function bilanPhoto()
+    {
+        $resul = Photo::showBilan();
+        $rowBilan = $resul[0];
+        $somQte = $resul[1];
+        $total = $resul[2];
+
+        return view("gestions/BilanPhoto", compact('rowBilan','somQte','total'));
+    }
+    public function bilanCachet()
+    {
+        $resul = Cachet::showBilan();
+        $rowBilan = $resul[0];
+        $somQte = $resul[1];
+        $total = $resul[2];
+
+        return view("gestions/BilanCachet", compact('rowBilan','somQte','total'));
+    }
     public function bilanMoMo()
     {
-        $resulMoMo = Mobile_money::showBilan();
-        //dd($resulMoMo);
-        $rowBilanMoMo = $resulMoMo[0];
-        $somPret = $resulMoMo[1];
-        $somFrais = $resulMoMo[2];
-        $maxComm = $resulMoMo[3];
-        $somMEC2 = $resulMoMo[4];
-        $maxSup = $resulMoMo[5];
-        $lastFond = $resulMoMo[6];
-        $lastStatut = $resulMoMo[7];
-        $lastTotal = $resulMoMo[8];
+        $resul = Mobile_money::showBilan();
+        //dd($resul);
+        $rowBilanMoMo = $resul[0];
+        $somPret = $resul[1];
+        $somFrais = $resul[2];
+        $maxComm = $resul[3];
+        $somMEC2 = $resul[4];
+        $maxSup = $resul[5];
+        $lastFond = $resul[6];
+        $lastStatut = $resul[7];
+        $lastTotal = $resul[8];
 
         return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut','lastTotal'));
     }

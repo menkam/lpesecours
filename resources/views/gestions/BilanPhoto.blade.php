@@ -1,4 +1,4 @@
-@extends("layouts.template")
+@extends("gestions.Bilans")
 @section("title")
 <title></title>
 <meta name="description" content=" with some customizations as described in docs" />
@@ -29,14 +29,21 @@
 </h1>
 @endsection
 
-@section("content")
-<div class="">Pages BilanPhoto.php en cours de developpement...</div>
-@endsection
+@section("content_bilan")
+    <div class="row">
+        <div class="col-xs-12">
 
-@section("scripts")
+            <div class="clearfix">
+                <div class="pull-right tableTools-container"></div>
+            </div>
+            <div class="table-header">
+                Results for "Latest Registered"
+            </div>
 
-@endsection
+            <!-- div.table-responsive -->
 
-@section("scripts2")
-
+            <!-- div.dataTables_borderWrap -->
+            @include('gestions.TableBilan')
+        </div>
+    </div>
 @endsection

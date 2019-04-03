@@ -31,6 +31,21 @@ class Tlist_cachet extends Model
     {
         return DB::select("SELECT * FROM  public.tlist_cachets WHERE  tlist_cachets.statut = '1'; ");
     }
+
+    public static function getLibelle($id)
+    {
+        $result = DB::select("
+            SELECT 
+              tlist_cachets.code, 
+              tlist_cachets.libelle
+            FROM 
+              public.tlist_cachets
+            WHERE 
+              tlist_cachets.id = '$id';
+        ");
+
+        return $result[0]->libelle;
+    }
     public static function getOption()
     {
         $option = '<option value="">------------------</option>';

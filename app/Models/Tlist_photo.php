@@ -26,6 +26,20 @@ class Tlist_photo extends Model
     {
         return DB::select("SELECT * FROM  public.tlist_photos WHERE  tlist_photos.statut = '1'; ");
     }
+    public static function getLibelle($id)
+    {
+        $result = DB::select("
+            SELECT 
+              tlist_photos.code, 
+              tlist_photos.libelle
+            FROM 
+              public.tlist_photos
+            WHERE 
+              tlist_photos.id = '$id';
+        ");
+
+        return $result[0]->libelle;
+    }
     public static function getOption()
     {
         $option = '<option value="">------------------</option><br>';
