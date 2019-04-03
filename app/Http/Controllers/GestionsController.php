@@ -33,7 +33,16 @@ class GestionsController extends Controller
         return view("gestions/RecettesPhoto", compact('optionTypePhoto'));
     }
     public function recetteMoMo()
-    { return view("gestions/RecettesMoMo"); }
+    {
+        $result = Mobile_money::infoUtile();
+        $lastDate = $result[0];
+        $lastFond = $result[1];
+        $pret = $result[2];
+        $lastComm = $result[3];
+        $total = $result[4];
+
+        return view("gestions/RecettesMoMo", compact('lastDate','lastFond','pret','lastComm','total'));
+    }
     
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
     public function depensePhoto(){ return view("gestions/DepensePhoto"); }

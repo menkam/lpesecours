@@ -181,4 +181,37 @@ class Mobile_money extends Model
         return $content;
     }
 
+    public static function infoUtile()
+    {
+        $info1 = DB::select("
+            SELECT 
+              mobile_moneys.date, 
+              mobile_moneys.fond, 
+              mobile_moneys.commission
+            FROM 
+              public.mobile_moneys
+            WHERE 
+              mobile_moneys.date in(
+              SELECT 
+              MAX(mobile_moneys.date)
+            FROM 
+              public.mobile_moneys);
+        ");
+        $info2 = DB::select("
+            SELECT 
+              SUM(mobile_moneys.pret)
+            FROM 
+              public.mobile_moneys;
+        ");
+
+        return ([
+            $info1[0]->date,
+            Fonctions::formatPrix($info1[0]->fond),
+            Fonctions::formatPrix($info2[0]->sum),
+            Fonctions::formatPrix($info1[0]->commission),
+            Fonctions::formatPrix((int)$info1[0]->fond+(int)$info2[0]->sum)
+        ]);
+
+    }
+
 }

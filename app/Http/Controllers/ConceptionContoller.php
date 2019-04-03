@@ -30,9 +30,9 @@ class ConceptionContoller extends Controller
         //$result = Cachet::Seeder();
         //$result = Photo::Seeder();
         //$result = Mobile_money::Seeder();   654321
-        $result = Fonctions::formatPrix("1000000");
+        //$result = Mobile_money::infoUtile();
 
-
+        //dd($result);
         return view("applications/Maintenance", compact('result'));
 
 

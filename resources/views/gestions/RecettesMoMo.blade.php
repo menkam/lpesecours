@@ -33,22 +33,27 @@
 <div class="col-xl-12 col-md-1 col-lg-2">
     <table class="table table-warning">
         <thead>
-            <td colspan="2">Informations Utiles :</td>
+            <th colspan="2">Informations Utiles : <br><?php if(isset($lastDate)) echo $lastDate; ?></th>
         </thead>
         <tbody>
             <tr>
                 <td>Fond</td>
-                <td>250.000</td>
+                <td><?php if(isset($lastFond)) echo $lastFond; ?></td>
             </tr>
             <tr>
-                <td>Prêt</td>
-                <td>40.000</td>
+                <td>Prêts</td>
+                <td><?php if(isset($pret)) echo $pret; ?></td>
+            </tr>
+            <tr>
+                <td>TOTAL :</td>
+                <td><?php if(isset($total)) echo $total; ?></td>
+            </tr>
+            <tr>
+                <td>Commissions</td>
+                <td><?php if(isset($lastComm)) echo $lastComm; ?></td>
             </tr>
         </tbody>
-        <tfoot>
-            <td>TOTAL :</td>
-            <td>290.000</td>
-        </tfoot>
+
     </table>
 </div>
 <div class="table-responsive col-xl-12 col-md-10 col-lg-8">
