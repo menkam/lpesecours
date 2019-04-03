@@ -33,7 +33,7 @@
 <div class="col-xl-12 col-md-1 col-lg-2">
     <table class="table table-warning">
         <thead>
-            <th colspan="2">Informations Utiles : <br><?php if(isset($lastDate)) echo $lastDate; ?></th>
+            <th colspan="2">Informations Utiles : <br>du <?php if(isset($lastDate)) echo $lastDate; ?></th>
         </thead>
         <tbody>
             <tr>
