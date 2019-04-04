@@ -37,7 +37,7 @@
                     <h6 class="modal-title" id="myModalLabel">Modification</h6>
                 </div>
                 <div class="modal-body">
-                    <form data-toggle="validator" id="formUpdaterecetteMomo" action="{{ route('updateRecetteMomo') }}" method="POST">
+                    <form data-toggle="validator" id="formUpdaterecetteMomo" action="#" method="POST">
                     {{ csrf_field() }}
                         <div id="bodyUpdateBilan"></div>
                         <div class="form-group">
@@ -79,18 +79,37 @@
                     </div>
                     <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
                         <div class="ui-dialog-buttonset">
-                            <button type="button" class="btn btn-danger btn-minier ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button">
-                                <span class="ui-button-text">
-                                    <i class="ace-icon fa fa-trash-o bigger-110"></i>&nbsp;
-                                        Delete all items
-                                </span>
-                            </button>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="ui-button-text">
-                                    <i class="ace-icon fa fa-times bigger-110"></i>&nbsp;
-                                    Cancel
-                                </span>
-                            </button>
+                            <form data-toggle="validator" id="formUpdaterecetteMomo" action="#" method="POST">
+                                {{ csrf_field() }}
+                                <div id="bodyDeleteBilan"></div>
+                                <div class="form-group">
+                                    <button id="deleteRecetteMomo" type="submit" type="button" class="btn btn-danger btn-minier ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"  style="display: none">
+                                        <span class="ui-button-text">
+                                            <i class="ace-icon fa fa-trash-o bigger-110"></i>&nbsp;
+                                                Confiermer
+                                        </span>
+                                    </button>
+                                    <button id="deleteRecettePhoto" type="submit" type="button" class="btn btn-danger btn-minier ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"  style="display: none">
+                                        <span class="ui-button-text">
+                                            <i class="ace-icon fa fa-trash-o bigger-110"></i>&nbsp;
+                                                Confiermer
+                                        </span>
+                                    </button>
+                                    <button id="deleteRecetteCachet" type="submit" type="button" class="btn btn-danger btn-minier ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"  style="display: none">
+                                        <span class="ui-button-text">
+                                            <i class="ace-icon fa fa-trash-o bigger-110"></i>&nbsp;
+                                                Confiermer
+                                        </span>
+                                    </button>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span class="ui-button-text">
+                                            <i class="ace-icon fa fa-times bigger-110"></i>&nbsp;
+                                            Annuler
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

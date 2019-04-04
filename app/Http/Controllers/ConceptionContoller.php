@@ -34,10 +34,12 @@ class ConceptionContoller extends Controller
 
         //dd($result);
 
-        $update = Mobile_money::getAllLine(19);
+        //$update = Mobile_money::getAllLine(19);
+        $data['statut']=0;
+        //$update = Mobile_money::find('18')->update($data);
 
-        dd($update);
-        //return view("applications/Maintenance", compact('result'));
+        //dd($update);
+        return view("applications/Maintenance", compact('result'));
     }
 
     public function test(Request $request)

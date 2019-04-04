@@ -214,6 +214,85 @@ $(document).ready(function() {
 
     });
 
+    $("#deleteRecetteMomo").click(function (e) {
+        e.preventDefault();
+        var _token = $("input[name='_token']").val();
+        var id = $("input[name='id']").val();
+
+        $.ajax({
+            url: "deleteRecetteMomo",
+            type:'POST',
+            data: {
+                _token:_token,
+                id:id
+            },
+            success: function(data) {
+                if($.isEmptyObject(data.error)){
+                    tostSuccess(data.success);
+                    resetInputMomo();
+
+                }else{
+                    //printErrorMsg(data.error);
+                    tostErreur(data.error);
+                }
+                //alert(data);
+            },
+            error: function () {
+                tostErreur("erreur");
+            }
+        });
+
+    });
+    $("#deleteRecettePhoto").click(function (e){
+        e.preventDefault();
+
+        var _token = $("input[name='_token']").val();
+        var id = $("input[name='id']").val();
+
+        $.ajax({
+            url: "deleteRecettePhoto",
+            type:'POST',
+            data: {
+                _token:_token,
+                id:id
+            },
+            success: function(data) {
+                if($.isEmptyObject(data.error)){
+                    tostSuccess(data.success);
+                    resetInputPhotoCachet();
+                }else{
+                    //printErrorMsg(data.error);
+                    tostErreur(data.error);
+                }
+            }
+        });
+    });
+    $("#deleteRecetteCachet").click(function (e){
+        e.preventDefault();
+
+        var _token = $("input[name='_token']").val();
+        var id = $("input[name='id']").val();
+
+        $.ajax({
+            url: "deleteRecetteCachet",
+            type:'POST',
+            data: {
+                _token:_token,
+                id:id
+            },
+            success: function(data) {
+                if($.isEmptyObject(data.error)){
+                    tostSuccess(data.success);
+                    resetInputPhotoCachet();
+                }else{
+                    //printErrorMsg(data.error);
+                    tostErreur(data.error);
+                }
+            }
+        });
+
+    });
+
     /**
      * init val form
      */
@@ -273,4 +352,40 @@ function loadContentUpdateBilan(typeGestion,id) {
         }
     });
 
+}
+function updateStatutBilan(typeGestion,id) {
+    var position = $("#bodyDeleteBilan");
+    var bouton;
+
+    if (typeGestion == "momo") bouton = $("#deleteRecetteMomo");
+    else if (typeGestion == "photo") bouton = $("#deleteRecettePhoto");
+    else if (typeGestion == "cachet") bouton = $("#deleteRecetteCachet");
+
+
+    $.ajax({
+         url: "updateStatutBilan",
+         type:'POST',
+         data: {
+             id:id,
+             typeGestion:typeGestion
+         },
+         success: function(data) {
+             if($.isEmptyObject(data.error)){
+             $("#deleteRecetteMomo").hide();
+             $("#deleteRecettePhoto").hide();
+             $("#deleteRecetteCachet").hide();
+             bouton.show().slideDown();
+             position.empty();
+             position.append(data).slideDown();
+
+             }else{
+             //printErrorMsg(data.error);
+             tostErreur(data.error);
+             }
+             //alert(data);
+         },
+             error: function () {
+             tostErreur("erreur");
+         }
+     });
 }

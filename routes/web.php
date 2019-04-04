@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
+    Route::post('updateStatutBilan', 'GestionsController@updateStatutBilan')->name('updateStatutBilan');
 
     /**
      * Option Menu

@@ -332,6 +332,40 @@ class GestionsController extends Controller
         return $page;
     }
 
+    public function deleteRecetteMomo(Request $request)
+    {
+        $validator = Validator::make($request->all(), ['id' => 'required|integer']);
+        if ($validator->passes()) {
+            $update = Mobile_money::find($request->id)->update(['statut' => '0']);
+            if($update)
+                return response()->json(['success'=>'Suppression réussite.']);
+            return response()->json(['error'=>'error']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+    public function deleteRecettePhoto(Request $request)
+    {
+        $validator = Validator::make($request->all(), ['id' => 'required|integer']);
+        if ($validator->passes()) {
+            $update = Photo::find($request->id)->update(['statut' => '0']);
+            if($update)
+                return response()->json(['success'=>'Suppression réussite.']);
+            return response()->json(['error'=>'error']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+    public function deleteRecetteCachet(Request $request)
+    {
+        $validator = Validator::make($request->all(), ['id' => 'required|integer']);
+        if ($validator->passes()) {
+            $update = Cachet::find($request->id)->update(['statut' => '0']);
+            if($update)
+                return response()->json(['success'=>'Suppression réussite.']);
+            return response()->json(['error'=>'error']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
     public function loadContentUpdateBilan(Request $request)
     {
         $page = 'ras';
@@ -339,6 +373,18 @@ class GestionsController extends Controller
         elseif ($request['typeGestion']=="photo")   $page = $this->getRecettePhoto($request['id']);
         elseif ($request['typeGestion']=="cachet")  $page = $this->getRecetteCachet($request['id']);
         //return response()->json($page);
+        return $page;
+    }
+    public function updateStatutBilan(Request $request)
+    {
+        $page = 'ras';
+        $sol = '';
+        if ($request['typeGestion']=="momo") $sol = Mobile_money::getAllLine($request['id']);
+        elseif ($request['typeGestion']=="photo") $sol = Photo::getAllLine($request['id']);
+        elseif ($request['typeGestion']=="cachet") $sol = Cachet::getAllLine($request['id']);
+
+        $page ='<input type="hidden" id="id" value="'.$sol->id.'" name="id">';
+
         return $page;
     }
 

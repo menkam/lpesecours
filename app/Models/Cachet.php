@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cachet extends Model
 {
     protected $fillable = [
-        'id',
         'date',
         'type',
         'nombre',
+        'statut',
         'prix_unitaire'
     ];
 
@@ -62,7 +62,9 @@ class Cachet extends Model
         foreach (Cachet::getAllLine() as $value)
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
-            $onclick = 'onclick="loadContentUpdateBilan(\'cachet\',\''.$value->id.'\');"';
+            $onclickView = 'onclick="loadContentUpdateBilan(\'cachet\',\''.$value->id.'\');"';
+            $onclickUpdate = 'onclick="loadContentUpdateBilan(\'cachet\',\''.$value->id.'\');"';
+            $onclickDelete = 'onclick="updateStatutBilan(\'cachet\',\''.$value->id.'\');"';
 
             $rowBilan = $rowBilan.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
@@ -73,38 +75,18 @@ class Cachet extends Model
                 <td>'.Fonctions::formatPrix($nxpu).'</td> <!-- nombre * PU -->
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">
-                        <a class="blue" href="#" data-toggle="modal" data-target="#viewBilan">
+                        <a class="blue" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#viewBilan">
                             <i class="ace-icon fa fa-search-plus bigger-130"></i>
                         </a>
 
-                        <a class="green" href="#" '.$onclick.' data-toggle="modal" data-target="#updateBilan">
+                        <a class="green" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#updateBilan">
                             <i class="ace-icon fa fa-pencil bigger-130"></i>
                         </a>
 
-                        <a class="red" href="#" data-toggle="modal" data-target="#deleteBilan">
+                        <a class="red" href="#" '.$onclickDelete.'  data-toggle="modal" data-target="#deleteBilan">
                             <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>
-                    
-                    
-                    <!--div class="hidden-sm hidden-xs btn-group">
-                        <button class="btn btn-xs btn-success">
-                            <i class="ace-icon fa fa-check bigger-120"></i>
-                        </button>
-        
-                        <button class="btn btn-xs btn-info">
-                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                        </button>
-        
-                        <button class="btn btn-xs btn-danger">
-                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                        </button>
-        
-                        <button class="btn btn-xs btn-warning">
-                            <i class="ace-icon fa fa-flag bigger-120"></i>
-                        </button>
-                    </div-->
-                    
 
                     <div class="hidden-md hidden-lg">
                         <div class="inline pos-rel">
@@ -114,7 +96,7 @@ class Cachet extends Model
 
                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
+                                    <a href="#" class="tooltip-info" '.$onclickView.' data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
                                         <span class="blue">
                                             <i class="ace-icon fa fa-search-plus bigger-120"></i>
                                         </span>
@@ -122,7 +104,7 @@ class Cachet extends Model
                                 </li>
 
                                 <li>
-                                    <a href="#" class="tooltip-success" '.$onclick.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
+                                    <a href="#" class="tooltip-success" '.$onclickUpdate.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
                                         <span class="green">
                                             <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                         </span>
@@ -131,7 +113,7 @@ class Cachet extends Model
                                 
 
                                 <li>
-                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
+                                    <a href="#" class="tooltip-error" '.$onclickDelete.' data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
                                         <span class="red">
                                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                         </span>
