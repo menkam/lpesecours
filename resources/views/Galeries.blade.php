@@ -34,8 +34,8 @@
 <div>
     <ul class="ace-thumbnails clearfix">
         <li>
-            <a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+            <a href="assets/images/gallery/images/image-1.jpg" title="Photo Title" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-1.jpg" />
             </a>
 
             <div class="tags">
@@ -76,8 +76,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg" />
+            <a href="assets/images/gallery/images/image-2.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-2.jpg" />
                 <div class="text">
                     <div class="inner">Sample Caption on Hover</div>
                 </div>
@@ -85,8 +85,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-3.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-3.jpg" />
+            <a href="assets/images/gallery/images/image-3.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-3.jpg" />
                 <div class="text">
                     <div class="inner">Sample Caption on Hover</div>
                 </div>
@@ -112,8 +112,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-4.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-4.jpg" />
+            <a href="assets/images/gallery/images/image-4.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-4.jpg" />
                 <div class="tags">
                     <span class="label-holder">
                         <span class="label label-info arrowed">fountain</span>
@@ -146,13 +146,13 @@
 
         <li>
             <div>
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-5.jpg" />
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-5.jpg" />
                 <div class="text">
                     <div class="inner">
                         <span>Some Title!</span>
 
                         <br />
-                        <a href="assets/images/gallery/image-5.jpg" data-rel="colorbox">
+                        <a href="assets/images/gallery/images/image-5.jpg" data-rel="colorbox">
                             <i class="ace-icon fa fa-search-plus"></i>
                         </a>
 
@@ -169,8 +169,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-6.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-6.jpg" />
+            <a href="assets/images/gallery/images/image-6.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-6.jpg" />
             </a>
 
             <div class="tools tools-right">
@@ -193,8 +193,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-1.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+            <a href="assets/images/gallery/images/image-1.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-1.jpg" />
             </a>
 
             <div class="tools">
@@ -217,8 +217,8 @@
         </li>
 
         <li>
-            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox">
-                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg" />
+            <a href="assets/images/gallery/images/image-2.jpg" data-rel="colorbox">
+                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-2.jpg" />
             </a>
 
             <div class="tools tools-top in">
@@ -239,6 +239,8 @@
                 </a>
             </div>
         </li>
+
+
     </ul>
 </div>
 @endsection
