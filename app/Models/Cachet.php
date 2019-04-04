@@ -28,9 +28,9 @@ class Cachet extends Model
         {
             if(!empty($id))
                 return DB::select("SELECT * FROM public.cachets WHERE  cachets.id = '$id' AND cachets.statut = '1';")[0];
-            else return DB::select("SELECT * FROM public.cachets WHERE  cachets.statut = '1' ORDER BY  cachets.date ASC;");
+            else return DB::select("SELECT * FROM public.cachets WHERE  cachets.statut = '1' ORDER BY  cachets.date DESC;");
         }
-        else return DB::select("SELECT * FROM public.cachets ORDER BY  cachets.date ASC;");
+        else return DB::select("SELECT * FROM public.cachets ORDER BY  cachets.date DESC;");
     }
 
     public static  function seeder(){

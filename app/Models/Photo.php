@@ -26,9 +26,9 @@ class Photo extends Model
         if(empty($statut)) {
             if (!empty($id))
                 return DB::select("SELECT * FROM public.photos WHERE  photos.id = '$id' AND photos.statut = '1';")[0];
-            else return DB::select("SELECT * FROM public.photos WHERE  photos.statut = '1' ORDER BY  photos.date ASC;");
+            else return DB::select("SELECT * FROM public.photos WHERE  photos.statut = '1' ORDER BY  photos.date DESC ;");
         }
-        else return DB::select("SELECT * FROM public.photos ORDER BY  photos.date ASC;");
+        else return DB::select("SELECT * FROM public.photos ORDER BY  photos.date DESC ;");
     }
 
     public static  function seeder(){
