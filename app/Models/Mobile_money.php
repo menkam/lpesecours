@@ -29,13 +29,49 @@ class Mobile_money extends Model
 
     ];
 
-    public static function getAllLine($id = null, $statut=null)
+    public static function getAllLine($statut= null, $id=null, $last=null)
     {
-        if(empty($statut)) {
-            if (!empty($id)) return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='1' AND  mobile_moneys.id='$id';")[0];
-            else return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='1' ORDER BY  mobile_moneys.date ASC;");
+        if(!empty($statut))
+        {
+            if(!empty($id))
+                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' AND  mobile_moneys.id='$id';")[0];
+            elseif(!empty($last))
+                return DB::select("
+                        SELECT 
+                          *
+                        FROM 
+                          public.mobile_moneys
+                        WHERE 
+                            mobile_moneys.date in(
+                            SELECT 
+                              MAX(mobile_moneys.date)
+                            FROM 
+                              public.mobile_moneys
+                            WHERE
+                              mobile_moneys.statut='$statut');
+                    ")[0];
+            else
+                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' ORDER BY  mobile_moneys.date ASC;");
         }
-        else return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+        else
+        {
+            return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+        }
+    }
+
+    /**
+     * somme des commission
+     */
+    public static function somCommission()
+    {
+        return DB::select("
+            SELECT 
+              SUM(mobile_moneys.pret)
+            FROM 
+              public.mobile_moneys
+            WHERE 
+              mobile_moneys.statut='1';
+        ")[0];
     }
 
     /**
@@ -61,7 +97,7 @@ class Mobile_money extends Model
         $totalEC2[0] = 200000;
         $commission[0] = 23753;
 
-        foreach (Mobile_money::getAllLine() as $value)
+        foreach (Mobile_money::getAllLine('1') as $value)
         {
             $totalEC2[$nbr] = (integer)$value->espece + (integer)$value->compte_momo + (integer)$value->compte2;
             $commission[$nbr] = (integer)$value->commission;
@@ -170,7 +206,7 @@ class Mobile_money extends Model
 
     public static  function seeder(){
         $content = '';
-        foreach (Mobile_money::getAllLine() as $value){
+        foreach (Mobile_money::getAllLine('1') as $value){
 
             $content = $content.'
                 $object = new Mobile_money();<br>
@@ -192,33 +228,17 @@ class Mobile_money extends Model
 
     public static function infoUtile()
     {
-        $info1 = DB::select("
-            SELECT 
-              mobile_moneys.date, 
-              mobile_moneys.fond, 
-              mobile_moneys.commission
-            FROM 
-              public.mobile_moneys
-            WHERE 
-              mobile_moneys.date in(
-              SELECT 
-              MAX(mobile_moneys.date)
-            FROM 
-              public.mobile_moneys);
-        ");
-        $info2 = DB::select("
-            SELECT 
-              SUM(mobile_moneys.pret)
-            FROM 
-              public.mobile_moneys;
-        ");
+        $info1 = Mobile_money::getAllLine('1',null,'ok');
+        $info2 = Mobile_money::somCommission();
+        //dd($info1);
 
         return ([
-            $info1[0]->date,
-            Fonctions::formatPrix($info1[0]->fond),
-            Fonctions::formatPrix($info2[0]->sum),
-            Fonctions::formatPrix($info1[0]->commission),
-            Fonctions::formatPrix((int)$info1[0]->fond+(int)$info2[0]->sum)
+            $info1->date,
+            Fonctions::formatPrix($info1->fond),
+            Fonctions::formatPrix($info2->sum),
+            Fonctions::formatPrix($info1->commission),
+            Fonctions::formatPrix((int)$info1->fond+(int)$info2->sum),
+            $info1->fond
         ]);
 
     }

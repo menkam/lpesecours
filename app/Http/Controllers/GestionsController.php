@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\Models\Gestions;
+use App\Models\Fonctions;
 use App\Models\Tlist_photo;
 use Validator;
 use App\Models\Mobile_money;
@@ -19,6 +20,19 @@ class GestionsController extends Controller
     /**
      * Return View.
      */
+    public function recetteMoMo()
+    {
+        $result = Mobile_money::infoUtile();
+        $lastDate = $result[0];
+        $lastFond = $result[1];
+        $pret = $result[2];
+        $lastComm = $result[3];
+        $total = $result[4];
+        $lastFond2 = $result[5];
+        $courentdate = Fonctions::getCurentDate();
+
+        return view("gestions/RecettesMoMo", compact('lastDate','lastFond','pret','lastComm','total','lastFond2','courentdate'));
+    }
     public function recetteCachet()
     {
         $optionTypeCachet = Tlist_cachet::getOption();
@@ -29,21 +43,26 @@ class GestionsController extends Controller
         $optionTypePhoto = Tlist_photo::getOption();
         return view("gestions/RecettesPhoto", compact('optionTypePhoto'));
     }
-    public function recetteMoMo()
-    {
-        $result = Mobile_money::infoUtile();
-        $lastDate = $result[0];
-        $lastFond = $result[1];
-        $pret = $result[2];
-        $lastComm = $result[3];
-        $total = $result[4];
 
-        return view("gestions/RecettesMoMo", compact('lastDate','lastFond','pret','lastComm','total'));
-    }
-    
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
     public function depensePhoto(){ return view("gestions/DepensePhoto"); }
-    
+
+    public function bilanMoMo()
+    {
+        $resul = Mobile_money::showBilan();
+        //dd($resul);
+        $rowBilanMoMo = $resul[0];
+        $somPret = $resul[1];
+        $somFrais = $resul[2];
+        $maxComm = $resul[3];
+        $somMEC2 = $resul[4];
+        $maxSup = $resul[5];
+        $lastFond = $resul[6];
+        $lastStatut = $resul[7];
+        $lastTotal = $resul[8];
+
+        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut','lastTotal'));
+    }
     public function bilanPhoto()
     {
         $resul = Photo::showBilan();
@@ -61,22 +80,6 @@ class GestionsController extends Controller
         $total = $resul[2];
 
         return view("gestions/BilanCachet", compact('rowBilan','somQte','total'));
-    }
-    public function bilanMoMo()
-    {
-        $resul = Mobile_money::showBilan();
-        //dd($resul);
-        $rowBilanMoMo = $resul[0];
-        $somPret = $resul[1];
-        $somFrais = $resul[2];
-        $maxComm = $resul[3];
-        $somMEC2 = $resul[4];
-        $maxSup = $resul[5];
-        $lastFond = $resul[6];
-        $lastStatut = $resul[7];
-        $lastTotal = $resul[8];
-
-        return view("gestions/BilanMoMo", compact('rowBilanMoMo','somPret','somFrais','maxComm','somMEC2','maxSup','lastFond','lastStatut','lastTotal'));
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}
@@ -235,7 +238,7 @@ class GestionsController extends Controller
 
     public function getRecetteMomo($id)
     {
-        $sol = Mobile_money::getAllLine($id);
+        $sol = Mobile_money::getAllLine('1',$id);
         $page = "ras";
         $page ='
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
@@ -336,7 +339,7 @@ class GestionsController extends Controller
     {
         $validator = Validator::make($request->all(), ['id' => 'required|integer']);
         if ($validator->passes()) {
-            $update = Mobile_money::find($request->id)->update(['statut' => '0']);
+            $update = Mobile_money::find($request->id)->update(['statut' => '-1']);
             if($update)
                 return response()->json(['success'=>'Suppression réussite.']);
             return response()->json(['error'=>'error']);
@@ -347,7 +350,7 @@ class GestionsController extends Controller
     {
         $validator = Validator::make($request->all(), ['id' => 'required|integer']);
         if ($validator->passes()) {
-            $update = Photo::find($request->id)->update(['statut' => '0']);
+            $update = Photo::find($request->id)->update(['statut' => '-1']);
             if($update)
                 return response()->json(['success'=>'Suppression réussite.']);
             return response()->json(['error'=>'error']);
@@ -358,7 +361,7 @@ class GestionsController extends Controller
     {
         $validator = Validator::make($request->all(), ['id' => 'required|integer']);
         if ($validator->passes()) {
-            $update = Cachet::find($request->id)->update(['statut' => '0']);
+            $update = Cachet::find($request->id)->update(['statut' => '-1']);
             if($update)
                 return response()->json(['success'=>'Suppression réussite.']);
             return response()->json(['error'=>'error']);
@@ -379,7 +382,7 @@ class GestionsController extends Controller
     {
         $page = 'ras';
         $sol = '';
-        if ($request['typeGestion']=="momo") $sol = Mobile_money::getAllLine($request['id']);
+        if ($request['typeGestion']=="momo") $sol = Mobile_money::getAllLine('1',$request['id']);
         elseif ($request['typeGestion']=="photo") $sol = Photo::getAllLine($request['id']);
         elseif ($request['typeGestion']=="cachet") $sol = Cachet::getAllLine($request['id']);
 

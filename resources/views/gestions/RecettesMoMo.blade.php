@@ -65,12 +65,13 @@
             <tbody>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="date">{{ __('Date') }}</label> </td>
-                    <td><input id="date" type="date" class="form-control" name="date" value="{{ old('date') }}" required autofocus>
+                    <td><input id="date" type="date" class="form-control datej" name="date" value="<?php if(isset($courentdate)) echo $courentdate; ?>" required autofocus>
                     </td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="fond">{{ __('Fond') }}</label> </td>
-                    <td><input class="form-control " type="number" id="fond" name="fond" required></td>
+                    <td><input class="form-control " type="text" id="" name="" value="<?php if(isset($lastFond)) echo $lastFond; ?> FCFA" disabled></td>
+                    <input class="form-control " type="hidden" id="fond" name="fond" value="<?php if(isset($lastFond2)) echo $lastFond2; ?>" required>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="pret">{{ __('Prêt') }}</label> </td>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $("#saveRecetteMoMo").click(function(e){
         e.preventDefault();
         var _token = $("input[name='_token']").val();

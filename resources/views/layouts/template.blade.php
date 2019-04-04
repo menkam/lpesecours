@@ -50,6 +50,22 @@
 </head>
 
 <body class="no-skin">
+<?php
+    $dateCourante = "";
+    $date = getDate();
+    if((int)$date["mon"] < 10 && (int)$date["mday"] < 10){
+        $dateCourante = $date["year"]."-0".$date["mon"]."-0".$date["mday"];
+    }
+    if((int)$date["mon"] < 10 && (int)$date["mday"] >= 10){
+        $dateCourante = $date["year"]."-0".$date["mon"]."-".$date["mday"];
+    }
+    if((int)$date["mon"] >= 10 && (int)$date["mday"] < 10){
+        $dateCourante = $date["year"]."-".$date["mon"]."-0".$date["mday"];
+    }
+    if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
+        $dateCourante = $date["year"]."-".$date["mon"]."-".$date["mday"];
+    }
+?>
 <div id="navbar" class="navbar navbar-default          ace-save-state">
 @include('partials.navbar-container')<!-- /.navbar-container -->
 </div>
@@ -146,8 +162,10 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
-
+    var dateCourante = "<?= $dateCourante?>";
+    //alert("nous somme le, "+dateCourante);
 </script>
+
 @yield('scripts2')
 </body>
 </html>

@@ -29,4 +29,22 @@ class Fonctions extends Model
         }
         return $signe.$newPrix;
     }
+    public static function getCurentDate()
+    {
+        $dateCourante = "";
+        $date = getDate();
+        if((int)$date["mon"] < 10 && (int)$date["mday"] < 10){
+            $dateCourante = $date["year"]."-0".$date["mon"]."-0".$date["mday"];
+        }
+        if((int)$date["mon"] < 10 && (int)$date["mday"] >= 10){
+            $dateCourante = $date["year"]."-0".$date["mon"]."-".$date["mday"];
+        }
+        if((int)$date["mon"] >= 10 && (int)$date["mday"] < 10){
+            $dateCourante = $date["year"]."-".$date["mon"]."-0".$date["mday"];
+        }
+        if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
+            $dateCourante = $date["year"]."-".$date["mon"]."-".$date["mday"];
+        }
+        return $dateCourante;
+    }
 }

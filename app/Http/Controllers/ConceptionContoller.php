@@ -37,6 +37,7 @@ class ConceptionContoller extends Controller
         //$update = Mobile_money::getAllLine(19);
         $data['statut']=0;
         //$update = Mobile_money::find('18')->update($data);
+        //$update = Mobile_money::getAllLine('1');
 
         //dd($update);
         return view("applications/Maintenance", compact('result'));
