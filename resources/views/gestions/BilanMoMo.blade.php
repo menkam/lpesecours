@@ -53,13 +53,13 @@
                                 <span class="lbl"></span>
                             </label>
                         </th> <!-- checbx -->
-                        <th>Dates_Oppération</th> <!-- date -->
+                        <th>Dates_Opp.</th> <!-- date -->
                         <th>Fond</th> <!-- fond -->
                         <th>Prêts</th> <!-- prêt -->
                         <th>Espèces</th> <!-- espèces -->
                         <th>Compte_1</th> <!-- compteMoMo -->
                         <th>Compte_2</th> <!-- Compte2 -->
-                        <th>Frais_Transfert</th> <!-- Frais Transfert -->
+                        <th>Frais</th> <!-- Frais Transfert -->
                         <th>Commissions</th> <!-- commission -->
                         <th>Total_E.C2</th> <!-- TotalEC2 -->
                         <th>Marge_E.C2</th> <!-- MargeEC2 -->
@@ -246,12 +246,16 @@
             });
 
 
-
+/*
             $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
                 e.stopImmediatePropagation();
                 e.stopPropagation();
                 e.preventDefault();
-            });
+            });*/
+
+            //alert("ok");
         })
+
+
     </script>
 @endsection

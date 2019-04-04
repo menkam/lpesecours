@@ -4,6 +4,8 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
 
+Route::get('test', 'ConceptionContoller@test')->name('test');
+
 Auth::routes();
 
 /*
@@ -34,6 +36,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
     Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
 
+    Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');
+    Route::post('updateRecettePhoto', 'GestionsController@updateRecettePhoto')->name('updateRecettePhoto');
+    Route::post('updateRecetteCachet', 'GestionsController@updateRecetteCachet')->name('updateRecetteCachet');
+
+    Route::post('deleteRecetteMomo', 'GestionsController@deleteRecetteMomo')->name('deleteRecetteMomo');
+    Route::post('deleteRecettePhoto', 'GestionsController@deleteRecettePhoto')->name('deleteRecettePhoto');
+    Route::post('deleteRecetteCachet', 'GestionsController@deleteRecetteCachet')->name('deleteRecetteCachet');
+
+
+    Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
 
     /**
      * Option Menu

@@ -107,7 +107,7 @@
                                 <span class="bigger-50">{{ __('Reset') }}</span>
                             </button>
 
-                            <button type="submit" id="saveRecetteMomo" class="width-10 pull-right btn btn-sm btn-success">
+                            <button type="submit" id="saveRecetteMoMo" class="width-10 pull-right btn btn-sm btn-success">
                                 <span class="bigger-50">{{ __('Save') }}</span>
                                 <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
                             </button>
@@ -126,61 +126,5 @@
 @endsection
 
 @section("scripts2")
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#saveRecetteMomo").click(function(e){
-            e.preventDefault();
-
-            var _token = $("input[name='_token']").val();
-            var date = $("input[name='date']").val();
-            var fond = $("input[name='fond']").val();
-            var pret = $("input[name='pret']").val();
-            var espece = $("input[name='espece']").val();
-            var compte_momo = $("input[name='compte_momo']").val();
-            var compte2 = $("input[name='compte2']").val();
-            var frais_transfert = $("input[name='frais_transfert']").val();
-            var commission = $("input[name='commission']").val();
-
-            //alert ("date:"+date+"\nfond:"+fond+"\npret:"+pret+"\nespece:"+espece+"\ncompte_momo:"+compte_momo+"\ncompte2:"+compte2+"\nfrais_transfert:"+frais_transfert+"\ncommission:"+commission);
-
-            $.ajax({
-                url: "saveRecetteMomo",
-                type:'POST',
-                data: {
-                    _token:_token,
-                    date:date,
-                    fond:fond,
-                    pret:pret,
-                    espece:espece,
-                    compte_momo:compte_momo,
-                    compte2:compte2,
-                    frais_transfert:frais_transfert,
-                    commission:commission
-                },
-                success: function(data) {
-                    if($.isEmptyObject(data.error)){
-                        tostSuccess(data.success);
-                        $("#saveRecetteMomo").reset;
-                    }else{
-                        //printErrorMsg(data.error);
-                        tostErreur(data.error);
-                    }
-                }
-            });
-
-        });
-
-
-        /*function printErrorMsg (msg) {
-            $(".print-error-msg").find("ul").empty();
-            $(".print-error-msg").find("ul").html('');
-            $(".print-error-msg").css('display','block');
-            $.each( msg, function( key, value ) {
-                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-            });
-        }*/
-    });
-
-
-</script>
+<script type="text/javascript" src="js/gestions.js"></script>
 @endsection

@@ -29,8 +29,10 @@ class Mobile_money extends Model
 
     ];
 
-    public static function getAllLine()
+    public static function getAllLine($id = null)
     {
+        if(!empty($id))
+            return DB::select("SELECT * FROM public.mobile_moneys WHERE  mobile_moneys.id='$id';")[0];
         return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
     }
 
@@ -79,6 +81,7 @@ class Mobile_money extends Model
             $lastFond = (integer)$value->fond;
             $lastStatut = $msgStatut;
             $lastTotal = $totalEC2[$nbr];
+            $onclick = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
 
 
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
@@ -95,21 +98,41 @@ class Mobile_money extends Model
                 '.$valMargerEC2.'<!-- MargeEC2 -->
                 <td>'.Fonctions::formatPrix($diffCom).'</td> <!-- DiffCom -->
                 <td>'.Fonctions::formatPrix($Supplement).'</td> <!-- Supplement -->
-                '.$msgStatut.' <!-- statut -->
+                '.$msgStatut.' <!-- statut -->                
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">
-                        <a class="blue" href="#">
+                        <a class="blue" href="#" data-toggle="modal" data-target="#viewBilan">
                             <i class="ace-icon fa fa-search-plus bigger-130"></i>
                         </a>
 
-                        <a class="green" href="#">
+                        <a class="green" href="#" '.$onclick.' data-toggle="modal" data-target="#updateBilan">
                             <i class="ace-icon fa fa-pencil bigger-130"></i>
                         </a>
 
-                        <a class="red" href="#">
+                        <a class="red" href="#" data-toggle="modal" data-target="#deleteBilan">
                             <i class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>
+                    
+                    
+                    <!--div class="hidden-sm hidden-xs btn-group">
+                        <button class="btn btn-xs btn-success">
+                            <i class="ace-icon fa fa-check bigger-120"></i>
+                        </button>
+        
+                        <button class="btn btn-xs btn-info">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </button>
+        
+                        <button class="btn btn-xs btn-danger">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
+        
+                        <button class="btn btn-xs btn-warning">
+                            <i class="ace-icon fa fa-flag bigger-120"></i>
+                        </button>
+                    </div-->
+                    
 
                     <div class="hidden-md hidden-lg">
                         <div class="inline pos-rel">
@@ -119,7 +142,7 @@ class Mobile_money extends Model
 
                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                    <a href="#" class="tooltip-info" data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
                                         <span class="blue">
                                             <i class="ace-icon fa fa-search-plus bigger-120"></i>
                                         </span>
@@ -127,15 +150,16 @@ class Mobile_money extends Model
                                 </li>
 
                                 <li>
-                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                    <a href="#" class="tooltip-success" '.$onclick.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
                                         <span class="green">
                                             <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                         </span>
                                     </a>
                                 </li>
+                                
 
                                 <li>
-                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
                                         <span class="red">
                                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                         </span>

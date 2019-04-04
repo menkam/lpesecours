@@ -46,13 +46,14 @@ class Tlist_cachet extends Model
 
         return $result[0]->libelle;
     }
-    public static function getOption()
+    public static function getOption($id=null)
     {
         $option = '<option value="">------------------</option>';
 
         foreach (Tlist_cachet::allCachet() as $value)
         {
-            $option = $option.'<option value="'.$value->id.'">'.$value->libelle.'</option>';
+            if(!empty($id) && $id==$value->id) $option = $option.'<option value="'.$value->id.'" selected>'.$value->libelle.'        -> (oldValue)</option>';
+            else $option = $option.'<option value="'.$value->id.'">'.$value->libelle.'</option>';
         }
         return $option;
     }

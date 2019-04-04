@@ -1,176 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta charset="utf-8" />
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        @yield('title')
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('title')
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-        <!-- bootstrap & fontawesome -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-        <!-- page specific plugin styles -->
-        @yield('style')
+    <!-- page specific plugin styles -->
+@yield('style')
 
 
-        <!-- text fonts -->
-        <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+<!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
-        <!-- ace styles -->
-        <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
-        <!--[if lte IE 9]>
-            <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-        <![endif]-->
-        <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-        <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
-        <!--[if lte IE 9]>
-          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-        <![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
 
-        <!-- inline styles related to this page -->
+    <!-- inline styles related to this page -->
 
-        <!-- ace settings handler -->
-        <script src="assets/js/ace-extra.min.js"></script>
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.min.js"></script>
 
-        <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
-        <!--[if lte IE 8]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
+    <!--[if lte IE 8]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
 
-        <!-- toastr -->
-        <link href="{{ asset('ajax/libs/toastr.js/latest/css/toastr.min.css') }}" rel="stylesheet">
+    <!-- toastr -->
+    <link href="{{ asset('ajax/libs/toastr.js/latest/css/toastr.min.css') }}" rel="stylesheet">
 
-    </head>
+</head>
 
-    <body class="no-skin">
-        <div id="navbar" class="navbar navbar-default          ace-save-state">
-            @include('partials.navbar-container')<!-- /.navbar-container -->
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+@include('partials.navbar-container')<!-- /.navbar-container -->
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+    </script>
+
+    <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+        <script type="text/javascript">
+            try{ace.settings.loadState('sidebar')}catch(e){}
+        </script>
+
+    @include('partials.sidebar-shortcuts')<!-- /.sidebar-shortcuts -->
+
+    @include('partials.nav-list')<!-- /.nav-list -->
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
         </div>
+    </div>
 
-        <div class="main-container ace-save-state" id="main-container">
-            <script type="text/javascript">
-                try{ace.settings.loadState('main-container')}catch(e){}
-            </script>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            @yield('breadcrumb')<!-- /.breadcrumb -->
 
-            <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
-                <script type="text/javascript">
-                    try{ace.settings.loadState('sidebar')}catch(e){}
-                </script>
-
-                @include('partials.sidebar-shortcuts')<!-- /.sidebar-shortcuts -->
-
-                @include('partials.nav-list')<!-- /.nav-list -->
-
-                <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                    <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-                </div>
+            @include('partials.nav-search')<!-- /.nav-search -->
             </div>
 
-            <div class="main-content">
-                <div class="main-content-inner">
-                    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                        @yield('breadcrumb')<!-- /.breadcrumb -->
-
-                        @include('partials.nav-search')<!-- /.nav-search -->
+            <div class="page-content">
+                <div class="ace-settings-container" id="ace-settings-container">
+                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                        <i class="ace-icon fa fa-cog bigger-130"></i>
                     </div>
 
-                    <div class="page-content">
-                        <div class="ace-settings-container" id="ace-settings-container">
-                            <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                                <i class="ace-icon fa fa-cog bigger-130"></i>
-                            </div>
+                @include('partials.setting-box')<!-- /.ace-settings-box -->
+                </div><!-- /.ace-settings-container -->
+                <div class="page-header">
+                    @yield('page-header')
+                </div><!-- /.page-header -->
 
-                            @include('partials.setting-box')<!-- /.ace-settings-box -->
-                        </div><!-- /.ace-settings-container -->
-                        <div class="page-header">
-                            @yield('page-header')
-                        </div><!-- /.page-header -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                    @yield('content')
+                    <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                @yield('content')
-                                <!-- PAGE CONTENT ENDS -->
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.page-content -->
-                </div>
-            </div><!-- /.main-content -->
+    @include('partials.footer')
 
-            @include('partials.footer')
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
 
-            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-                <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-            </a>
-        </div><!-- /.main-container -->
+<!-- basic scripts -->
 
-        <!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="assets/js/jquery-2.1.4.min.js"></script>
 
-        <!--[if !IE]> -->
-        <script src="assets/js/jquery-2.1.4.min.js"></script>
+<!-- <![endif]-->
 
-        <!-- <![endif]-->
-
-        <!--[if IE]>
+<!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
-        <script type="text/javascript">
-            if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-        </script>
-        <script src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="assets/js/bootstrap.min.js"></script>
 
-        <!-- page specific plugin scripts -->
+<!-- page specific plugin scripts -->
 
-        <!--[if lte IE 8]>
-          <script src="assets/js/excanvas.min.js"></script>
-        <![endif]-->
-        @yield('scripts')
+<!--[if lte IE 8]>
+<script src="assets/js/excanvas.min.js"></script>
+<![endif]-->
+@yield('scripts')
 
-        <!-- ace scripts -->
-        <script src="assets/js/ace-elements.min.js"></script>
-        <script src="assets/js/ace.min.js"></script>
+<!-- ace scripts -->
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
 
-        <!-- globale scripts -->
-        <script src="js/scripts.js"></script>
+<!-- globale scripts -->
+<script src="js/scripts.js"></script>
 
-        <script type="text/javascript" src="{{ asset('ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('ajax/libs/toastr.js/latest/js/toastr.min.js') }}"></script>
-        <script src="{{ asset('ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('ajax/libs/toastr.js/latest/js/toastr.min.js') }}"></script>
+<script src="{{ asset('ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js') }}"></script>
 
-        <!-- inline scripts related to this page -->
-        <script type="text/javascript">
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $(document).ready(function () {
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
 
-            });
-            //loadMenu();
-            function loadMenu() {
-                var rows = '<option value="">-----</option>';
-                var position = $("#navList");
-                $.ajax({
-                    type: "POST",
-                    dataType: 'json',
-                    url: 'loadMenu',
-                    success: function(data){
-                        position.empty();
-                        position.append(data);
-                    },error: function () {
-                        tostErreur("lors du chargement des menus");
-                    }
-                });
-            }
-        </script>
-        @yield('scripts2')
-    </body>
+</script>
+@yield('scripts2')
+</body>
 </html>

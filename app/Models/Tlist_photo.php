@@ -40,13 +40,14 @@ class Tlist_photo extends Model
 
         return $result[0]->libelle;
     }
-    public static function getOption()
+    public static function getOption($id=null)
     {
         $option = '<option value="">------------------</option><br>';
 
         foreach (Tlist_photo::allPhoto() as $value)
         {
-            $option = $option.'<option value="'.$value->id.'">'.$value->libelle.'</option><br>';
+            if(!empty($id) && $id==$value->id) $option = $option.'<option value="'.$value->id.'" selected>'.$value->libelle.'        -> (oldValue)</option>';
+            else  $option = $option.'<option value="'.$value->id.'">'.$value->libelle.'</option><br>';
         }
         return $option;
     }
