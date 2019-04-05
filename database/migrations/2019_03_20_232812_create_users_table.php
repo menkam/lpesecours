@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('acreditation')->default(1);
             $table->text('name');
             $table->text('surname');
-            $table->binary('photo')->unique()->nullable();
+            $table->text('photo')->unique()->nullable();
             $table->date('date_nais')->nullable();
             $table->text('sexe');
             $table->text('telephone')->unique();

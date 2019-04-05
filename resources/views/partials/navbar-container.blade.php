@@ -286,14 +286,16 @@
                         </li>
                     </ul>
                 </li>
-
+                
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="assets/images/avatars/<?php 
-                        if(!empty(Auth::user()->photo)) echo Auth::user()->photo;
-                        else echo "user.jpg";?>" alt="<?php 
-                        if(!empty(Auth::user()->name)) echo Auth::user()->name;
-                        else echo "Lpe Secours";?>" />                       
+                        <!--img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" /-->
+                        <?php 
+                            if(!empty(Auth::user()->photo)) 
+                                echo '<img class="nav-user-photo" src="assets/images/avatars/'.Auth::user()->photo.'" alt="'.Auth::user()->name.'" />';
+                            else {?>
+                        <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Lpe Secours" />
+                        <?php }?>
                         <span class="user-info">
                             <small>Welcome,</small>
                             {{ Auth::user()->name }} {{ Auth::user()->surname }}
