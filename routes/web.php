@@ -6,6 +6,8 @@ Route::get('apropos', function () { return view('Apropos'); });
 
 Route::get('test', 'ConceptionContoller@test')->name('test');
 
+Route::get('galerie', 'GalerieController@index')->name('Galeries');
+
 Auth::routes();
 
 /*
@@ -59,7 +61,6 @@ Route::group(['middleware' => ['auth']], function () {
      * Menu
     */
     Route::get('contact', 'ContactController@index')->name('Contacts');
-    Route::get('galerie', 'GalerieController@index')->name('Galeries');
     //Route::get('maintenance', 'ApplicationController@Maintenance')->name('Maintenance');
     Route::get('addUser', 'UserController@nouveau')->name('Nouveau Utilisateur');
     Route::get('updateUser', 'UserController@modification')->name('Modifier Utilisateur');
