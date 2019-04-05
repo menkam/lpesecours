@@ -13,8 +13,38 @@ class GalerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     
-    public function index(){ return view("Galeries"); }
+
+    
+    public function index()
+    { 
+        $galeries ='';
+
+        for($i=1; $i<36; $i++)
+        {
+             $galeries = $galeries.'<li>
+                <a href="assets/images/gallery/images/image-'.$i.'.jpg" data-rel="colorbox">
+                    <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumbs/thumb-'.$i.'.jpg" />
+                </a>
+                <div class="tools tools-top in">
+                    <a href="#">
+                        <i class="ace-icon fa fa-link"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ace-icon fa fa-paperclip"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ace-icon fa fa-times red"></i>
+                    </a>
+                </div>
+            </li>';
+        }
+        return view("Galeries", compact('galeries')); 
+    }
     
 
     /**

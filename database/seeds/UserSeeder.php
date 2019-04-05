@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
         $object->name = 'ROOT';
         $object->surname = 'Admin';
         $object->date_nais = '02/03/1992';
+        $object->photo = 'admin.jpg';
         $object->sexe = 'M';
         $object->telephone = '+237670928110';
         $object->email = 'lpesecours@gmail.com';
@@ -57,6 +58,7 @@ class UserSeeder extends Seeder
         $object->surname = 'invite';
         $object->date_nais = '02/03/1992';
         $object->sexe = 'M';
+        $object->photo = 'visiteur.png';
         $object->telephone = '+237600000000';
         $object->email = 'visiteur@gmail.com';
         $object->password = bcrypt('12345678');
