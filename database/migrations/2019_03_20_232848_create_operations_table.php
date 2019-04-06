@@ -18,7 +18,7 @@ class CreateOperationsTable extends Migration
             $table->integer('type_operation');
             $table->timestamps();
 
-            $table->foreign('type_operation')->references('id')->on('tlist_operations')->on('users')->onDelete('cascade');
+            $table->foreign('type_operation')->references('id')->on('tlist_operations')->onDelete('cascade');
         });
     }
 

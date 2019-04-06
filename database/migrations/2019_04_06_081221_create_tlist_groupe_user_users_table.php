@@ -11,7 +11,7 @@ class CreateTlistGroupeUserUsersTable extends Migration
      *
      * @return void
      */
-    public function up() 
+    public function up()
     {
         Schema::create('tlist_groupe_user_user', function (Blueprint $table) {
             $table->increments('id');

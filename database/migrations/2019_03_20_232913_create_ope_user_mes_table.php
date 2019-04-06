@@ -21,9 +21,9 @@ class CreateOpeUserMesTable extends Migration
             $table->timestamps();
 
             //$table->primary(['id_operation','id_user','id_message']);
-            $table->foreign('id_operation')->references('id')->on('operations')->on('users')->onDelete('cascade');
-            $table->foreign('id_user')->references('id')->on('users')->on('users')->onDelete('cascade');
-            $table->foreign('id_message')->references('id')->on('messages')->on('users')->onDelete('cascade');
+            $table->foreign('id_operation')->references('id')->on('operations')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_message')->references('id')->on('messages')->onDelete('cascade');
         });
     }
 

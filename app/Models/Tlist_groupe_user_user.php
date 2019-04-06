@@ -10,6 +10,6 @@ class Tlist_groupe_user_user extends Model
 
 
     protected $fillable = [
-        'role_id', 'user_id',
+        'tlist_groupe_user_id', 'user_id',
     ];
 }

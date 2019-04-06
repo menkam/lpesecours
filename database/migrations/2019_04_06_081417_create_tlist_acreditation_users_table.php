@@ -11,15 +11,15 @@ class CreateTlistAcreditationUsersTable extends Migration
      *
      * @return void
      */
-    public function up() 
+    public function up()
     {
         Schema::create('tlist_acreditation_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('tlist_acreditation_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('tlist_acreditation_id')->references('id')->on('tlist_acreditations')->on('users')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('tlist_acreditation_id')->references('id')->on('tlist_acreditations');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

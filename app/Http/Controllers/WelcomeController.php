@@ -38,7 +38,7 @@ class WelcomeController extends Controller
         $galerie = '<div id="carousel" class="carousel slide">'.$sol2.$div2.'<a class="left carousel-control" href="#carousel" data-slide="prev"><span style="color: aqua" class="icon-prev"></span></a>
             <a class="right carousel-control" href="#carousel" data-slide="next"><span style="color: aqua" class="icon-next"></span></a></div>';
 
-        session(['menus' => Menu::loadMenus()]);
+        //session(['menus' => Menu::loadMenus()]);
 
         return view('welcome', compact('galerie'));
         //dd($galerie);

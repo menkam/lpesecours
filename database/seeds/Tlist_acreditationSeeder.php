@@ -41,5 +41,6 @@ class Tlist_acreditationSeeder extends Seeder
         $object->libelle = 'Suppression';
         $object->numero = '6';
         $object->save();
+
     }
 }

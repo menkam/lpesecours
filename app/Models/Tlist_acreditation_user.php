@@ -10,6 +10,6 @@ class Tlist_acreditation_user extends Model
 
 
     protected $fillable = [
-        'role_id', 'user_id',
+        'tlist_acreditation_id', 'user_id',
     ];
 }

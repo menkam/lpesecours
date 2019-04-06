@@ -21,9 +21,9 @@ class CreateOpeUserUsersTable extends Migration
             $table->timestamps();
 
             //$table->primary(['id_operation','id_user']);
-            $table->foreign('id_operation')->references('id')->on('operations')->on('users')->onDelete('cascade');
-            $table->foreign('id_user')->references('id')->on('users')->on('users')->onDelete('cascade');
-            $table->foreign('id_user2')->references('id')->on('users')->on('users')->onDelete('cascade');
+            $table->foreign('id_operation')->references('id')->on('operations')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_user2')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
