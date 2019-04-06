@@ -9,6 +9,8 @@ class Menu extends Model
 {
     protected $guarded = array();
 
+    protected $groupeuser;
+
     protected $fillable = [
         'id',
         'idparent',
@@ -26,8 +28,14 @@ class Menu extends Model
         'statut'
     ];
 
+    public function __construct($groupeuser=null)
+    {
+        $this->groupeuser = $groupeuser;
+    }
+
     protected $hidden = [
     ];
+
 
     public function type_message()
     {
@@ -39,7 +47,7 @@ class Menu extends Model
 
     ];
 
-    public static function getMenu(){
+    public function getMenu(){
         return DB::select("
             SELECT 
               menus.id, 
@@ -56,13 +64,14 @@ class Menu extends Model
             FROM 
               public.menus
             WHERE 
+              menus.groupeuser >= $this->groupeuser AND 
               menus.statut = '1' AND 
               menus.idfils = '1'
             ORDER BY
               menus.rang ASC;
         ");
     }
-    public static function getAllMenu(){
+    public function getAllMenu(){
         return DB::select("
             SELECT 
               menus.id, 
@@ -80,6 +89,8 @@ class Menu extends Model
               menus.statut
             FROM 
               public.menus
+            WHERE 
+              menus.groupeuser >= $this->groupeuser
             ORDER BY
               menus.id ASC;
         ");
@@ -126,7 +137,7 @@ class Menu extends Model
               menus.id ASC;
         ");
     }
-    public static function getSMenu($idmenu){
+    public function getSMenu($idmenu){
         return DB::select("
             SELECT 
               menus.id, 
@@ -143,19 +154,21 @@ class Menu extends Model
             FROM 
               public.menus
             WHERE 
+              menus.groupeuser >= $this->groupeuser AND 
               menus.statut = '1' AND 
               menus.idparent = '$idmenu'
             ORDER BY
               menus.rang ASC;
         ");
     }
-    public static function isSMenu($idmenu){
+    public function isSMenu($idmenu){
         return DB::select("
           SELECT 
             count(*) 
           FROM 
             menus 
           WHERE 
+            menus.groupeuser >= $this->groupeuser AND 
             menus.statut = '1' AND 
             menus.idparent = '$idmenu';
         ")[0]->count;
@@ -200,11 +213,11 @@ class Menu extends Model
 
         return $content;
     }
-    public static function loadMenus()
+    public static function loadMenus($groupeuser=null)
     {
-        $menus = new Menu();
+        $menus = new Menu($groupeuser);
         $menu = '';
-        foreach (Menu::getMenu() as $value0){
+        foreach ($menus->getMenu() as $value0){
             $idmenu = $value0->id;
 
             if($menus->isSMenu($idmenu)){

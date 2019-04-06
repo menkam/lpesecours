@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\User;
+
+use Illuminate\Database\Eloquent\Model;
+
 
 class Tlist_groupe_user extends Model
 {
@@ -21,6 +24,11 @@ class Tlist_groupe_user extends Model
     protected $casts = [
         
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public static function getOptionGroupeUser()
     {
@@ -45,4 +53,5 @@ class Tlist_groupe_user extends Model
         }
         return $option;
     }
+
 }
