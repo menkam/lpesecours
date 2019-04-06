@@ -31,11 +31,34 @@
 
 @section("content")
 <div class=""><?php if(isset($result)) echo $result; ?>
-    <form method="POST">
-      <input type="hidden" name="_token" value="Q6eCVDWjm9g4zidNkwtmsb4rqAUBdD11ljtTfFVS">
-      <input type="text" name="param" id="param" value="param">
-      <input type="submit" name="send" id="send">
-    </form>
+    <form id="formsaveRecettemomo" name="" method="post" action="">
+            {{ csrf_field() }}
+            <tbody>
+                <tr class="form-group-sm">
+                    <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="type">{{ __('Type') }}</label> </td>
+                    <td><input type="text" class="form-control " id="type" name="type" required>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            <tr class="form-group-sm">
+                <td class=""><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="saverecettemomo">{{ __('Action') }}</label> </td>
+                <td>
+                    <div class="clearfix">
+                        <button type="reset" class="width-10 pull-left btn btn-sm">
+                            <i class="ace-icon fa fa-refresh"></i>
+                            <span class="bigger-50">{{ __('Reset') }}</span>
+                        </button>
+
+                        <button type="submit" id="sendtest" class="width-10 pull-right btn btn-sm btn-success">
+                            <span class="bigger-50">{{ __('Save') }}</span>
+                            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </form>
     <p>
       Reponse : <small id="reponse"></small>
     </p>
@@ -47,5 +70,32 @@
 @endsection
 
 @section("scripts2")
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        $("#sendtest").click(function(e){
+            e.preventDefault();
+            var _token = $("input[name='_token']").val();
+            var param = $("input[name='type']").val();
+            var reponse = $("#reponse");
+
+            //alert ("date:"+date+"\nfond:"+fond+"\npret:"+pret+"\nespece:"+espece+"\ncompte_momo:"+compte_momo+"\ncompte2:"+compte2+"\nfrais_transfert:"+frais_transfert+"\ncommission:"+commission);
+
+            $.ajax({
+                //url: "http://127.0.0.1/test_http2/",
+                url: "testpost",
+                type:'POST',
+                data: {
+                    _token:_token,
+                    param:param
+                },
+                success: function(data) {
+                    reponse.empty();
+                    reponse.append(data);
+                }
+            });
+
+        });
+    });
+</script>
 @endsection

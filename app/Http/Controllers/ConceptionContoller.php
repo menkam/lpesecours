@@ -53,8 +53,14 @@ class ConceptionContoller extends Controller
 
     public function test(Request $request)
     {
-
         return view("applications/test");
+    }
+
+    public function testpost(Request $request)
+    {
+        $sol ="";
+        //dd($sol);
+        return "ok";
     }
 
     /**
