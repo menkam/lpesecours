@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
+use DB;
+
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use DB;
+
+
 
 class RegisterController extends Controller
 {
@@ -76,6 +80,7 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],            
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Str::random(60),
         ]);
     }
 }
