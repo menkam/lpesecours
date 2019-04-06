@@ -1,5 +1,5 @@
 <?php
-
+Route::singularResourceParameters();
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,7 @@ Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
 Route::get('bloquer', function () { return view('bloquer'); });
 
-Route::post('test', function () { return "ok"; });
+Route::post('testpost', function ($param) { return "le parametre esr $param"; });
 
 
 Route::get('galerie', 'GalerieController@index')->name('Galeries');

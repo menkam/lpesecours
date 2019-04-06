@@ -43,22 +43,9 @@ class ConceptionContoller extends Controller
         //$update = Mobile_money::getAllLine('1');
         //$test = Tlist_groupe_user::verifGroupeUserConnect(auth()->user(),'SYSTE');
 
-        /*partie à modifier*/
-        $name = 'www.site.com';//nom du site
-         
-        //pour ne pas devoir calculer à la main la longueur du corps, on le stocke dans une variable et la fonction strlen() nous la donne.
-        $data = 'variable=valeur&variable2=valeur2';
-         
-        //la requête
-        $envoi  = "POST / HTTP/1.1\r\n";
-        $envoi .= "Host: ".$name."\r\n";
-        $envoi .= "Connection: Close\r\n";
-        $envoi .= "Content-type: application/x-www-form-urlencoded\r\n";
-        $envoi .= "Content-Length: ".strlen($data)."\r\n\r\n";
-        $envoi .= $data."\r\n";
-        /*/partie à modifier*/
-
-        
+        if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
+        //$result = auth::user()->getGroupe_user();
+        $result = $groupeUser;
         //dd($result->id);
        // if($test) $result="ok"; else $result="non";
         return view("applications/Maintenance", compact('result'));
