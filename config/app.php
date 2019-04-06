@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'LPE SECOURS TEST'),
+    'name' => env('APP_NAME', 'LPE SECOURS'),
 
     /*
     |--------------------------------------------------------------------------
