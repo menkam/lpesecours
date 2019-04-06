@@ -15,6 +15,9 @@ class Bloquer
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(\Auth::user()->hasGroupe_user('BLOQU')){
+            return $next($request);
+        }
+        return redirect('home');
     }
 }

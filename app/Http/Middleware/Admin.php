@@ -15,6 +15,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+
+        if(\Auth::user()->hasGroupe_user('ADMIN')){
+            return $next($request);
+        }
+        abort(401, 'This action is unauthorized.');
     }
 }
