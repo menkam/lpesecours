@@ -30,7 +30,16 @@
 @endsection
 
 @section("content")
-<div class=""><?php if(isset($result)) echo $result; ?></div>
+<div class=""><?php if(isset($result)) echo $result; ?>
+    <form method="POST">
+      <input type="hidden" name="_token" value="Q6eCVDWjm9g4zidNkwtmsb4rqAUBdD11ljtTfFVS">
+      <input type="text" name="param" id="param" value="param">
+      <input type="submit" name="send" id="send">
+    </form>
+    <p>
+      Reponse : <small id="reponse"></small>
+    </p>
+</div>
 @endsection
 
 @section("scripts")

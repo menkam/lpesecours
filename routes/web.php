@@ -18,8 +18,7 @@ Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
 Route::get('bloquer', function () { return view('bloquer'); });
 
-Route::post('testpost', function ($param) { return "le parametre esr $param"; });
-
+Route::post('testpost', function ($param) { return "le parametre esr $param"; })->name('testpost');
 
 Route::get('galerie', 'GalerieController@index')->name('Galeries');
 
