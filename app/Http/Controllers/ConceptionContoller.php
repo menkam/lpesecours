@@ -58,9 +58,9 @@ class ConceptionContoller extends Controller
 
     public function testpost(Request $request)
     {
-        $sol ="";
+        $sol = "le rapametre est ".$request->param;
         //dd($sol);
-        return "ok";
+        return $sol;
     }
 
     /**
