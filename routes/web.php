@@ -72,17 +72,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
         Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
         Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
-
-
-        Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
+        
         Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
         Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
         Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
         Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
         Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
-        Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
-        Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
-        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
 
     });
 
@@ -98,6 +93,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('addGroupeUser', 'TlistGroupeUserController@nouveau')->name('Nouveau Groupe Utilisateur');
         Route::get('updateGroupeUser', 'TlistGroupeUserController@modification')->name('Modifier Groupe Utilisateur');
         Route::post('updateStatutBilan', 'GestionsController@updateStatutBilan')->name('updateStatutBilan');
+        Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
+        Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
+        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
 
 
         Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');

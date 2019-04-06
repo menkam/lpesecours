@@ -65,7 +65,10 @@
             <tbody>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="date">{{ __('Date') }}</label> </td>
-                    <td><input id="date" type="date" class="form-control datej" name="date" value="<?php if(isset($courentdate)) echo $courentdate; ?>" required autofocus>
+                    <td><input id="date" type="date" class="form-control hasDatepicker" name="date" value="<?php if(isset($courentdate)) echo $courentdate; ?>" required autofocus>
+                        <!--span class="input-group-addon">
+                            <i class="ace-icon fa fa-calendar"></i>
+                        </span-->
                     </td>
                 </tr>
                 <tr class="form-group-sm">
