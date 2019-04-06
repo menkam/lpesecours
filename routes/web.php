@@ -1,15 +1,5 @@
 <?php
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('/license', function () { return view('license'); });
-Route::get('apropos', function () { return view('Apropos'); });
-
-Route::get('test', 'ConceptionContoller@test')->name('test');
-
-Route::get('galerie', 'GalerieController@index')->name('Galeries');
-
-Auth::routes();
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,65 +10,104 @@ Auth::routes();
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Auth::routes();
+
+Route::get('/license', function () { return view('license'); });
+Route::get('apropos', function () { return view('Apropos'); });
+Route::get('bloquer', function () { return view('bloquer'); });
+
+
+Route::get('galerie', 'GalerieController@index')->name('Galeries');
+
+
+/*
+ * utilisateur déconnecté
+ */
+Route::group(['middleware' => ['guest']], function() {
+    Route::get('/', 'WelcomeController@index')->name('welcome');
+    /*Route::get('/', function () {
+        //return view('welcome');
+        return view('auth.login');
+    });*/
+});
+
+/*
+ * utilisateur connecté
+ */
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('maintenance', 'ConceptionContoller@index')->name('maintenance');
-    Route::get('/home', 'HomeController@index')->name('home');
+    /*
+    * Visiteur
+    */
+    Route::group(['middleware' => ['visiteur']], function() {
 
+        Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::post('getOptionGroupeUser', 'TlistGroupeUserController@getOptionGroupeUser')->name('getOptionGroupeUser');
+        /**
+         * Option Menu
+         */
+        Route::post('getOptionTypePhoto', ['as' => 'getOptionTypePhoto', 'uses' => 'GestionsController@getOptionTypePhoto']);
+        Route::post('getOptionTypeCachet', ['as' => 'getOptionTypeCachet', 'uses' => 'GestionsController@getOptionTypeCachet']);
+        Route::get('contact', 'ContactController@index')->name('Contacts');
+        Route::get('gestionPerso', 'GestionsController@personnelle')->name('Personnelle');
+        Route::get('profile', 'ProfileController@index')->name('profile');
+        Route::get('inbox', 'MessageController@index')->name('inbox');
 
-
-
+    });
 
     /*
-     * Formulaire
-     */
-    Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
-    Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
-    Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
+        * Membre
+        */
+    Route::group(['middleware' => ['membre']], function() {
 
-    Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');
-    Route::post('updateRecettePhoto', 'GestionsController@updateRecettePhoto')->name('updateRecettePhoto');
-    Route::post('updateRecetteCachet', 'GestionsController@updateRecetteCachet')->name('updateRecetteCachet');
+    });
 
-    Route::post('deleteRecetteMomo', 'GestionsController@deleteRecetteMomo')->name('deleteRecetteMomo');
-    Route::post('deleteRecettePhoto', 'GestionsController@deleteRecettePhoto')->name('deleteRecettePhoto');
-    Route::post('deleteRecetteCachet', 'GestionsController@deleteRecetteCachet')->name('deleteRecetteCachet');
-
-
-    Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
-    Route::post('updateStatutBilan', 'GestionsController@updateStatutBilan')->name('updateStatutBilan');
-
-    /**
-     * Option Menu
-     */
-    Route::post('getOptionTypePhoto', ['as' => 'getOptionTypePhoto', 'uses' => 'GestionsController@getOptionTypePhoto']);
-    Route::post('getOptionTypeCachet', ['as' => 'getOptionTypeCachet', 'uses' => 'GestionsController@getOptionTypeCachet']);
-
-
-    /**
-     * Menu
+    /*
+    * Personnel
     */
-    Route::get('contact', 'ContactController@index')->name('Contacts');
-    //Route::get('maintenance', 'ApplicationController@Maintenance')->name('Maintenance');
-    Route::get('addUser', 'UserController@nouveau')->name('Nouveau Utilisateur');
-    Route::get('updateUser', 'UserController@modification')->name('Modifier Utilisateur');
-    Route::get('addGroupeUser', 'TlistGroupeUserController@nouveau')->name('Nouveau Groupe Utilisateur');
-    Route::get('updateGroupeUser', 'TlistGroupeUserController@modification')->name('Modifier Groupe Utilisateur');
+    Route::group(['middleware' => ['personnel']], function() {
 
-    Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
-    Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
-    Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
-    Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
-    Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
-    Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
-    Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
-    Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
-    Route::get('gestionPerso', 'GestionsController@personnelle')->name('Personnelle');
+        Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
+        Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
+        Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
 
-    Route::get('profile', 'ProfileController@index')->name('profile');
-    Route::get('inbox', 'MessageController@index')->name('inbox');
 
+        Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
+        Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
+        Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
+        Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
+        Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
+        Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
+        Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
+        Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
+        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
+
+    });
+
+    /*
+    * Administrateur
+    */
+    Route::group(['middleware' => ['admin']], function() {
+
+        Route::get('maintenance', 'ConceptionContoller@index')->name('maintenance');
+        Route::get('test', 'ConceptionContoller@test')->name('test');
+        Route::get('addUser', 'UserController@nouveau')->name('Nouveau Utilisateur');
+        Route::get('updateUser', 'UserController@modification')->name('Modifier Utilisateur');
+        Route::get('addGroupeUser', 'TlistGroupeUserController@nouveau')->name('Nouveau Groupe Utilisateur');
+        Route::get('updateGroupeUser', 'TlistGroupeUserController@modification')->name('Modifier Groupe Utilisateur');
+        Route::post('updateStatutBilan', 'GestionsController@updateStatutBilan')->name('updateStatutBilan');
+
+
+        Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');
+        Route::post('updateRecettePhoto', 'GestionsController@updateRecettePhoto')->name('updateRecettePhoto');
+        Route::post('updateRecetteCachet', 'GestionsController@updateRecetteCachet')->name('updateRecetteCachet');
+
+        Route::post('deleteRecetteMomo', 'GestionsController@deleteRecetteMomo')->name('deleteRecetteMomo');
+        Route::post('deleteRecettePhoto', 'GestionsController@deleteRecettePhoto')->name('deleteRecettePhoto');
+        Route::post('deleteRecetteCachet', 'GestionsController@deleteRecetteCachet')->name('deleteRecetteCachet');
+
+    });
 
 });
