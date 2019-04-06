@@ -162,7 +162,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '2';
         $object->idfils = '2';
         $object->libelle = 'Modifier Utilisateur';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '2';
         $object->lien = 'Utilisateurs\Modification';
         $object->icon = 'pencil-square-o';
@@ -262,7 +262,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Recettes Cachet';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '1';
         $object->lien = 'Gestions\Cachet\Recettes';
         $object->icon = 'adjust';
@@ -276,7 +276,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Depenses Cachet';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '2';
         $object->lien = 'Gestions\Cachet\Depenses';
         $object->icon = 'exchange';
@@ -290,7 +290,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Bilan Cachet';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '3';
         $object->lien = 'Gestions\Cachet\Bilan';
         $object->icon = 'bar-chart-o';
@@ -304,7 +304,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '42';
         $object->idfils = '3';
         $object->libelle = 'Recette Photo';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '1';
         $object->lien = 'Gestions\Photos\Recettes';
         $object->icon = 'adjust';
@@ -318,7 +318,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '42';
         $object->idfils = '3';
         $object->libelle = 'Depense Photo';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '2';
         $object->lien = 'Gestions\Photos\Depenses';
         $object->icon = 'exchange';
@@ -332,7 +332,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '42';
         $object->idfils = '3';
         $object->libelle = 'Bilan Photo';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '3';
         $object->lien = 'Gestions\Photos\Bilan';
         $object->icon = 'bar-chart-o';
@@ -346,7 +346,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '43';
         $object->idfils = '3';
         $object->libelle = 'Recettes MoMo';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '1';
         $object->lien = 'Gestions\MoMo\Recette';
         $object->icon = 'adjust';
