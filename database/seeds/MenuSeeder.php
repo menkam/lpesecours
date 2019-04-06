@@ -29,7 +29,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Utilisateurs';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '2';
         $object->icon = 'user';
         $object->fichiercontroller = 'UserController';
@@ -53,7 +53,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Gestions';
-        $object->groupeuser = '3';
+        $object->groupeuser = '5';
         $object->rang = '4';
         $object->icon = 'folder';
         $object->fichiercontroller = 'GestionsController';
@@ -65,7 +65,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Contacts';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '5';
         $object->lien = 'Contacts';
         $object->icon = 'contact';
@@ -80,7 +80,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Messagerie';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '6';
         $object->lien = 'Messagerie';
         $object->icon = 'inbox';
@@ -95,7 +95,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Galeries';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '7';
         $object->lien = 'Galeries';
         $object->icon = 'camera-retro';
@@ -110,7 +110,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Parametre';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '8';
         $object->icon = 'cog';
         $object->fichiercontroller = 'ParametreController';
@@ -122,7 +122,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '0';
         $object->idfils = '1';
         $object->libelle = 'Apropos';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '9';
         $object->lien = 'Apropos';
         $object->icon = 'certificate';
@@ -190,7 +190,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '3';
         $object->idfils = '2';
         $object->libelle = 'Modifier Groupe Utilisateur';
-        $object->groupeuser = '3';
+        $object->groupeuser = '2';
         $object->rang = '2';
         $object->lien = 'GroupeUtilisateur\Modification';
         $object->icon = 'pencil-square-o';
@@ -234,7 +234,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '4';
         $object->idfils = '2';
         $object->libelle = 'Personnelle';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '4';
         $object->lien = 'Gestions\Personnelle';
         $object->icon = 'bookmark-o';
@@ -248,7 +248,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '8';
         $object->idfils = '2';
         $object->libelle = 'Profile';
-        $object->groupeuser = '4';
+        $object->groupeuser = '5';
         $object->rang = '1';
         $object->lien = 'Parametre\Profile';
         $object->icon = 'user';
@@ -276,7 +276,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Depenses Cachet';
-        $object->groupeuser = '2';
+        $object->groupeuser = '3';
         $object->rang = '2';
         $object->lien = 'Gestions\Cachet\Depenses';
         $object->icon = 'exchange';
@@ -290,7 +290,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Bilan Cachet';
-        $object->groupeuser = '2';
+        $object->groupeuser = '3';
         $object->rang = '3';
         $object->lien = 'Gestions\Cachet\Bilan';
         $object->icon = 'bar-chart-o';
@@ -318,7 +318,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '42';
         $object->idfils = '3';
         $object->libelle = 'Depense Photo';
-        $object->groupeuser = '2';
+        $object->groupeuser = '3';
         $object->rang = '2';
         $object->lien = 'Gestions\Photos\Depenses';
         $object->icon = 'exchange';
@@ -332,7 +332,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '42';
         $object->idfils = '3';
         $object->libelle = 'Bilan Photo';
-        $object->groupeuser = '2';
+        $object->groupeuser = '3';
         $object->rang = '3';
         $object->lien = 'Gestions\Photos\Bilan';
         $object->icon = 'bar-chart-o';

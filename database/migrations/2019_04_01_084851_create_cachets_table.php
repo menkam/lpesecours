@@ -22,7 +22,7 @@ class CreateCachetsTable extends Migration
             $table->integer('statut')->default('1');
             $table->timestamps();
 
-            $table->foreign('type')->references('id')->on('tlist_cachets');
+            $table->foreign('type')->references('id')->on('tlist_cachets')->on('users')->onDelete('cascade');
         });
     }
 

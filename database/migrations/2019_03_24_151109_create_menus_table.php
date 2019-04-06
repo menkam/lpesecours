@@ -30,7 +30,7 @@ class CreateMenusTable extends Migration
             $table->integer('statut')->default('1');
             $table->timestamps();
 
-            $table->foreign('groupeuser')->references('id')->on('tlist_groupe_users');
+            $table->foreign('groupeuser')->references('id')->on('tlist_groupe_users')->on('users')->onDelete('cascade');
         });
     }
 

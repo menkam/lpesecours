@@ -40,83 +40,86 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function groupe_user()
+    public function groupe_users()
     {
         return $this->belongsToMany(Tlist_groupe_user::class);
     }
 
-    public function acreditation()
+    public function acreditations()
     {
         return $this->belongsToMany(Tlist_acreditation::class);
+    }
+
+
+    /**
+     *
+     */
+    public function authorizeGroupe_users($groupe_user)
+    {
+        if (is_array($groupe_user)) {
+            return $this->hasAnyGroupe_user($groupe_user) || abort(401, 'This action is unauthorized.');
+        }
+        return $this->hasGroupe_user($groupe_user) || abort(401, 'This action is unauthorized.');
     }
 
     /**
      *
      */
-    public function authorizeAcreditation($acreditation)
+    public function authorizeAcreditation($libelle)
     {
-        if (is_array($acreditation)) {
-            return $this->hasAnyAcreditation($acreditation) || abort(401, 'This action is unauthorized.');
+        if (is_array($libelle)) {
+            return $this->hasAnyAcreditation($libelle) || abort(401, 'This action is unauthorized.');
         }
-        return $this->hasAcreditation($acreditation) || abort(401, 'This action is unauthorized.');
+        return $this->hasAcreditation($libelle) || abort(401, 'This action is unauthorized.');
+    }
+
+
+    /**
+     * Check multiple groupeuser
+     * @param array $code
+     */
+    public function hasAnyGroupe_user($code)
+    {
+        return null !== $this->groupe_users()->whereIn('code', $code)->first();
     }
 
     /**
      * Check multiple roles
      * @param array $acreditation
      */
-    public function hasAnyAcreditation($acreditation)
+    public function hasAnyAcreditation($libelle)
     {
-        return null !== $this->acreditation()->whereIn('acreditation', $acreditation)->first();
+        return null !== $this->acreditations()->whereIn('libelle', $libelle)->first();
+    }
+
+    /**
+     * Check one groupeuser
+     * @param string $code
+     */
+    public function hasGroupe_user($code)
+    {
+        return null !== $this->groupe_users()->where('code', $code)->first();
     }
 
     /**
      * Check one role
      * @param string $acreditation
      */
-    public function hasAcreditation($acreditation)
+    public function hasAcreditation($libelle)
     {
-        return null !== $this->acreditation()->where('acreditation', $acreditation)->first();
+        return null !== $this->acreditations()->where('libelle', $libelle)->first();
+    }
+
+
+    public function getGroupe_user(){
+        return $this->groupe_users()->first()->id;
+        //return "getGrpupe";
     }
 
     public function getAcreditation(){
-        //$this->user()->id;
-        return ('acreditation');
+        return $this->acreditations()->first()->id;
     }
 
-
-    /**
-     *
-     */
-    public function authorizeGroupe_user($groupe_user)
-    {
-        if (is_array($groupe_user)) {
-            return $this->hasAnyAcreditation($groupe_user) || abort(401, 'This action is unauthorized.');
-        }
-        return $this->hasAcreditation($groupe_user) || abort(401, 'This action is unauthorized.');
-    }
-
-    /**
-     * Check multiple roles
-     * @param array $groupe_user
-     */
-    public function hasAnyGroupe_user($groupe_user)
-    {
-        return null !== $this->groupe_user()->whereIn('groupe_user', $groupe_user)->first();
-    }
-
-    /**
-     * Check one role
-     * @param string $acreditation
-     */
-    public function hasGroupe_user($groupe_user)
-    {
-        return null !== $this->groupe_user()->where('groupe_user', $groupe_user)->first();
-    }
-
-    public function getGroupe_user(){
-        return ('groupe_user');
-    }
 
     /**
      * The attributes that should be cast to native types.

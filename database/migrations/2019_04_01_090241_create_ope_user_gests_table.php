@@ -22,9 +22,9 @@ class CreateOpeUserGestsTable extends Migration
             $table->timestamps();
 
             //$table->primary(['id_operation','id_user','id_message']);
-            $table->foreign('id_operation')->references('id')->on('operations');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('type')->references('id')->on('tlist_ope_gestions');
+            $table->foreign('id_operation')->references('id')->on('operations')->on('users')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->on('users')->onDelete('cascade');
+            $table->foreign('type')->references('id')->on('tlist_ope_gestions')->on('users')->onDelete('cascade');
         });
     }
 

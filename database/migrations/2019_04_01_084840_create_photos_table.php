@@ -22,7 +22,7 @@ class CreatePhotosTable extends Migration
             $table->integer('statut')->default('1');
             $table->timestamps();
 
-            $table->foreign('type')->references('id')->on('tlist_photos');
+            $table->foreign('type')->references('id')->on('tlist_photos')->on('users')->onDelete('cascade');
         });
     }
 

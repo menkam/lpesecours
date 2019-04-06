@@ -30,8 +30,8 @@ class CreateUsersTable extends Migration
             $table->integer('statut')->default(1);
             $table->timestamps();
 
-            $table->foreign('groupe_user')->references('id')->on('tlist_groupe_users');
-            $table->foreign('acreditation')->references('id')->on('tlist_acreditations');
+            $table->foreign('groupe_user')->references('id')->on('tlist_groupe_users')->on('users')->onDelete('cascade');
+            $table->foreign('acreditation')->references('id')->on('tlist_acreditations')->on('users')->onDelete('cascade');
         });
     }
 
