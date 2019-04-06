@@ -48,7 +48,8 @@ class ConceptionContoller extends Controller
         $result = $groupeUser;
         //dd($result->id);
        // if($test) $result="ok"; else $result="non";
-        return view("applications/Maintenance", compact('result'));
+        //return view("applications/Maintenance", compact('result'));
+
     }
 
     public function test(Request $request)
