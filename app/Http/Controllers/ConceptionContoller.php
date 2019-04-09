@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Galerie_images_accueil;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +13,8 @@ use App\Models\Photo;
 use App\Models\Mobile_money;
 use App\Models\Fonctions;
 use DB;
+
+
 
 class ConceptionContoller extends Controller
 {
@@ -38,15 +40,16 @@ class ConceptionContoller extends Controller
         //dd($result);
 
         //$update = Mobile_money::getAllLine(19);
-        $data['statut']=0;
+        //$data['statut']=0;
         //$update = Mobile_money::find('18')->update($data);
         //$update = Mobile_money::getAllLine('1');
         //$test = Tlist_groupe_user::verifGroupeUserConnect(auth()->user(),'SYSTE');
 
-        if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
+        //if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
         //$result = auth::user()->getGroupe_user();
-        $result = $groupeUser;
-        //dd($result->id);
+
+
+        //dd($newUser->id);
        // if($test) $result="ok"; else $result="non";
         //return view("applications/Maintenance", compact('result'));
 

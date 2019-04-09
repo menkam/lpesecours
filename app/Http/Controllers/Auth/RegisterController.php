@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\FonctionAuth;
 
 
 
@@ -40,7 +41,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    use FonctionAuth;
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -104,8 +106,8 @@ class RegisterController extends Controller
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = $newUser;
-        $object->id_user2 = $newUser;
+        $object->id_user = $newUser->id;
+        $object->id_user2 = $newUser->id;
         $object->save();
 
         return $newUser;

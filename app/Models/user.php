@@ -116,6 +116,10 @@ class User extends Authenticatable
         //return "getGrpupe";
     }
 
+    public function getLibelleGroupe_user(){
+        return $this->groupe_users()->first()->libelle;
+    }
+
     public function getAcreditation(){
         return $this->acreditations()->first()->id;
     }

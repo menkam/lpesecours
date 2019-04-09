@@ -312,7 +312,7 @@
                         <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Lpe Secours" />
                         <?php }?>
                         <span class="user-info">
-                            <small>Welcome,</small>
+                            <small>Bienvenue, [{{ Auth::user()->getLibelleGroupe_user() }}]</small>
                             {{ Auth::user()->name }} {{ Auth::user()->surname }}
                         </span>
 
