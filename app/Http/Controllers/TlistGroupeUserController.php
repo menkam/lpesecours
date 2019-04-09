@@ -20,7 +20,11 @@ class TlistGroupeUserController extends Controller
 
     public function nouveau(){ return view("utilisateurs/NouvelGroupeUtilisateur");}
 
-    public function modification(){ return view("utilisateurs/ModifierGroupeUtilisateur");}
+    public function modification()
+    { 
+        $bodyListgroupeUser = Tlist_groupe_user::ListGroupeUsers();
+        return view("utilisateurs/ModifierGroupeUtilisateur", compact('bodyListgroupeUser'));
+    }
 
     /**
      * Show the form for creating a new resource.

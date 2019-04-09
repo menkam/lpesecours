@@ -19,7 +19,12 @@ class UserController extends Controller
 
     public function nouveau(){ return view("utilisateurs/NouvelUtilisateur");}
 
-    public function modification(){ return view("utilisateurs/ModifierUtilisateur");}
+    public function modification()
+    { 
+        $bodyListUsers = '';
+        $bodyListUsers = User::ListUsers();
+        return view("utilisateurs/ModifierUtilisateur", compact('bodyListUsers'));
+    }
 
     /**
      * Show the form for creating a new resource.

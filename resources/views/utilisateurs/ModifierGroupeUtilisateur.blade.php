@@ -56,7 +56,6 @@
                         </th> <!-- checbx -->
                         <th>Id</th> <!-- idMenu -->
                         <th>Code</th> <!-- idPere -->
-                        <th>Libelle</th> <!-- idFils -->
                         <th>Libelle</th> <!-- Libelle -->
                         <th>Status</th> <!-- statut -->
                         <th>Actions</th> <!-- action -->
@@ -96,7 +95,6 @@
                         bAutoWidth: false,
                         "aoColumns": [
                             { "bSortable": false },
-                            null,
                             null,
                             null,
                             null,

@@ -88,7 +88,7 @@
 @endsection
 
 @section('scripts2')
-    <script src="js/menus.js"></script>
+    <script src="js/user.js"></script>
     <script type="text/javascript">
         jQuery(function($) {
             //initiate dataTables plugin

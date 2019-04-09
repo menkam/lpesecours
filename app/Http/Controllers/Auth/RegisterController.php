@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
+use App\Models\Tlist_operation;
+use App\Models\Operation;
+use App\Models\Ope_user_user;
+
+
 use DB;
 
 use Illuminate\Support\Str;
@@ -73,7 +78,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'sexe' => $data['sexe'],
@@ -82,5 +87,27 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
         ]);
+
+
+        $groupe_visiter = Tlist_groupe_user::where('code', 'VSTER')->first();
+        $acc_lect = Tlist_acreditation::where('libelle', 'Lecture')->first();
+        $acc_ecri = Tlist_acreditation::where('libelle', 'Ecriture')->first();
+        $typeOperation = Tlist_operation::where('code', 'CRE')->first();
+
+        $newUser->groupe_users()->attach($groupe_visiter);
+        $newUser->acreditations()->attach($acc_lect);
+        $newUser->acreditations()->attach($acc_ecri);
+
+        $object = new Operation();
+        $object->type_operation = $typeOperation['id'];
+        $idLastOperation = $object->save();
+
+        $object = new Ope_user_user();
+        $object->id_operation = $idLastOperation;
+        $object->id_user = $newUser;
+        $object->id_user2 = $newUser;
+        $object->save();
+
+        return $newUser;
     }
 }

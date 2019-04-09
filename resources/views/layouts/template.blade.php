@@ -122,6 +122,8 @@
                 </div>
             </div><!-- /.main-content -->
         
+            @include('partials.modal')
+
             @include('partials.footer')
         
             <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
