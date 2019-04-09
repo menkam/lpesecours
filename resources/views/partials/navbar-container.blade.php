@@ -9,6 +9,7 @@
         <span class="icon-bar"></span>
     </button>
 
+
     <div class="navbar-header pull-left">
         <a href="{{ url('/') }}" class="navbar-brand">
             <small>
@@ -31,6 +32,20 @@
                     </li>
                 @endif
             @else
+                <li class="">
+                    <button id="btn_show_cal" class="btn btn-info">
+                        <span>
+                            <i class="fa fa-folder-o"></i>
+                            <i class="fa fa-calculator"></i>
+                        </span>
+                                    </button>
+                                    <button id="btn_hide_cal" class="btn btn-warning" style="display: none;">
+                        <span>
+                           <i class="fa fa-folder-open-o"></i>
+                            <i class="fa fa-calculator"></i>
+                        </span>
+                    </button>
+                </li>
 
                 <li class="grey dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">

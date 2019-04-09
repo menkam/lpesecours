@@ -88,6 +88,15 @@ class MenuController extends Controller
         //
     }
 
+
+    public function listMenu(Request $request)
+    {
+        $menu = Menu::loadMenus(\Auth::user()->getGroupe_user());
+        return $menu;
+        //return response()->json($menu);
+    }
+
+    
 }
 
 

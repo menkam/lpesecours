@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <!-- page specific plugin styles -->
-@yield('style')
+
+    @yield('style')
 
 
 <!-- text fonts -->
@@ -107,6 +108,7 @@
                         </div><!-- /.ace-settings-container -->
                         <div class="page-header">
                             @yield('page-header')
+                            @include('partials.calculatrice')
                         </div><!-- /.page-header -->
         
                         <div class="row">
@@ -130,8 +132,8 @@
         <!-- basic scripts -->
         
         <!--[if !IE]> -->
+        <script src="jquery/jquery.min.js"></script>
         <script src="assets/js/jquery-2.1.4.min.js"></script>
-        
         <!-- <![endif]-->
         
         <!--[if IE]>
@@ -154,6 +156,7 @@
         <script src="assets/js/ace.min.js"></script>
         
         <!-- globale scripts -->
+        
         <script src="js/scripts.js"></script>
         
         <script type="text/javascript" src="{{ asset('ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}"></script>
@@ -164,6 +167,7 @@
         <script type="text/javascript">
             var dateCourante = "<?= $dateCourante?>";
             //alert("nous somme le, "+dateCourante);
+
         </script>
         
         @yield('scripts2')

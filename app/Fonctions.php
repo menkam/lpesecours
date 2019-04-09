@@ -27,7 +27,7 @@ class Fonctions extends Model
             else
                 $newPrix = $newPrix.$prix[$i];
         }
-        return $signe.$newPrix;
+        echo $signe.$newPrix;
     }
     public static function getCurentDate()
     {

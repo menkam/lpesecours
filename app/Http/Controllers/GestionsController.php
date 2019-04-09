@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\Models\Gestions;
-use App\Models\Fonctions;
+use App\Fonctions;
 use App\Models\Tlist_photo;
 use Validator;
 use App\Models\Mobile_money;
@@ -87,6 +87,15 @@ class GestionsController extends Controller
     /**
      * From Request AJAX
      */
+    public function saveRecetteGlobalMomo(Request $request)
+    {
+        $bilan = $request->bilan;
+        $requests = explode(":", $bilan);
+        if(count($requests)==8)
+            return response()->json($requests);
+        return response()->json(['error'=>'Le Format de Saisie de Données est Invalide !!!']);
+    }
+
     public function saveRecetteMoMo(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -117,6 +126,7 @@ class GestionsController extends Controller
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
+
     public function saveRecettePhoto(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -401,4 +411,23 @@ class GestionsController extends Controller
         $optionTypePhoto = Tlist_photo::getOption();
         return response()->json($optionTypePhoto);
     }
+
+    public function calculatrice(Request $request)
+    {
+        $opps = explode("+", (string)$request->cal_opp);
+        $sol = '0';
+        
+        if(count($opps)==0)
+            $sol = '0';
+        if(count($opps)==1)
+            $sol = (int) $opps[0];
+        elseif(count($opps)>1){
+            for($i=0; $i<count($opps); $i++)
+            $sol += (int) $opps[$i];
+        }
+        $val = Fonctions::formatPrix($sol);
+        echo $val;
+        //echo $sol;
+    }
+
 }

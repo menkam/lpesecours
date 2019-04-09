@@ -86,6 +86,7 @@ class Menu extends Model
               menus.fichierview, 
               menus.groupeuser, 
               menus.rang, 
+              menus.valide, 
               menus.statut
             FROM 
               public.menus
@@ -175,10 +176,8 @@ class Menu extends Model
     }
 
 
-
-
     /**
-     ** gérération galerie_accueilSeeder
+     ** gérération menu
      **/
     public static  function genererMenuSeeder(){
         $content = '';
@@ -276,5 +275,56 @@ class Menu extends Model
 
         }
         return $menu;
+    }
+
+
+    /**
+     * show list menu
+     */
+    public function ListMenus()
+    {
+        $bodyListMenus = '';
+        $numero = 1;
+        foreach (self::getAllMenu() as $value)
+        {
+            $onclickUpdateMenu = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
+            $onclickViewMenu = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
+            $onclickDeleteMenu = 'onclick="updateStatutBilan(\'momo\',\''.$value->id.'\');"';
+
+
+            $bodyListMenus = $bodyListMenus.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
+            <!--td>'.$numero.'</td-->
+            <td>'.$value->id.'</td>
+            <td>'.$value->idparent.'</td>
+            <td>'.$value->idfils.'</td>
+            <td>'.$value->libelle.'</td>
+            <td>'.$value->groupeuser.'</td>
+            <!--td>'.$value->rang.'</td-->
+            <!--td>'.$value->lien.'</td-->
+            <td><i class="fa fa-'.$value->icon.'"><br>'.$value->icon.'</i> </td>
+            <!--td>'.$value->route.'</td-->
+            <!--td>'.$value->controller.'</td-->
+            <!--td>'.$value->fichiercontroller.'</td-->
+            <!--td>'.$value->fichierview.'</td-->
+            <td>'.$value->valide.'</td>
+            <td>'.$value->statut.'</td>
+            <td><div class="hidden-sm hidden-xs action-buttons">
+            <a class="blue" href="#" '.$onclickUpdateMenu.' data-toggle="modal" data-target="#viewBilan"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>
+            <a class="green" href="#" '.$onclickUpdateMenu.' data-toggle="modal" data-target="#updateBilan"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
+            <a class="red" href="#" '.$onclickDeleteMenu.'  data-toggle="modal" data-target="#deleteBilan"><i class="ace-icon fa fa-trash-o bigger-130"></i></a></div>
+            <div class="hidden-md hidden-lg"><div class="inline pos-rel">
+            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i></button>
+            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+            <li><a href="#" class="tooltip-info" '.$onclickViewMenu.' data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
+            <span class="blue"><i class="ace-icon fa fa-search-plus bigger-120"></i></span></a></li>
+            <li><a href="#" class="tooltip-success" '.$onclickUpdateMenu.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
+            <span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a></li>
+            <li><a href="#" class="tooltip-error" '.$onclickDeleteMenu.' data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
+            <span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span></a></li></ul></div></div></td>
+            </tr>';
+            $numero++;
+        }
+        return $bodyListMenus;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Models\Application;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +15,19 @@ class ApplicationController extends Controller
      */
     
     public function Maintenance(){ return view("applications/Maintenance");}
-    
+    public function menus()
+    {
+        $menu = new Menu(\Auth::user()->getGroupe_user());
+        $bodyListMenus = $menu->ListMenus();
+        return view("applications/Menus", compact('bodyListMenus'));
+    }
+
+    public function listMenu(Request $request){
+        $menu = new Menu(\Auth::user()->getGroupe_user());
+        $menus = $menu->getAllMenu();
+        return ($menus);
+    }
+
 
     /**
      * Show the form for creating a new resource.

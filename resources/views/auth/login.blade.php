@@ -20,7 +20,7 @@
                 <fieldset>
                     <label class="block clearfix">
                         <span class="block input-icon input-icon-right">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus/>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" name="email" value="visiteur@gmail.com" required autofocus/>
                             <i class="ace-icon fa fa-user"></i>
                         </span>
                         @if ($errors->has('email'))
@@ -32,7 +32,7 @@
 
                     <label class="block clearfix">
                         <span class="block input-icon input-icon-right">
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required/>
+                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="12345678" placeholder="Password" required/>
                             <i class="ace-icon fa fa-lock"></i>
                         </span>
                         @if ($errors->has('password'))

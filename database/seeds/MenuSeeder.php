@@ -140,7 +140,21 @@ class MenuSeeder extends Seeder
         $object->icon = 'cog';
         $object->route = 'maintenance';
         $object->controller = 'ApplicationController@Maintenance';
-        $object->fichierview = 'Maintenance';
+        $object->fichierview = 'application\Maintenance';
+        $object->save();
+
+        $object = new Menu();
+        $object->id = '12';
+        $object->idparent = '1';
+        $object->idfils = '2';
+        $object->libelle = 'Menus';
+        $object->groupeuser = '2';
+        $object->rang = '2';
+        $object->lien = 'Application\Menus';
+        $object->icon = 'list';
+        $object->route = 'menus';
+        $object->controller = 'ApplicationController@Menus';
+        $object->fichierview = 'application\Menus';
         $object->save();
 
         $object = new Menu();

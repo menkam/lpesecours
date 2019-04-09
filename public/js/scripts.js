@@ -3,6 +3,69 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+$(document).ready(function(){
+    var btnshow = $("#btn_show_cal");
+    var btnhide = $("#btn_hide_cal");
+    var divcal = $("#div_calucatrice");
+    //loadMenu();
+
+    btnhide.hide();
+    divcal.hide();
+
+    btnshow.click(function(){
+        btnshow.hide();
+        divcal.show('show');
+        btnhide.show();
+    });
+    btnhide.click(function(){
+        btnshow.show();
+        divcal.hide('show');
+        btnhide.hide();
+    });
+
+    $('#cal_opp').keyup(function(){
+      var cal_opp = $(this).val();
+      var cal_sol = $("#cal_sol");
+        if(cal_opp.length > 2){
+          $.ajax({
+            url: "calculatrice",
+            type:'POST',
+            data: {
+                cal_opp:cal_opp
+            },
+            success: function(data) {
+                cal_sol.empty();
+                cal_sol.append(data);
+            }
+        });     
+      }
+    });
+    
+    //alert("yes...");
+});
+
+/**
+ * affiché la liste des menus
+ */
+function loadMenu() {
+    var position = $("#listMenu");
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: 'listMenu',
+        success: function(data){
+            data2 = '<li class="active"><a href="{{ url('/') }}"><i class="menu-icon fa fa-tachometer"></i><span class="menu-text"> Dashboard </span></a><b class="arrow"></b></li>';
+             position.empty();
+             position.append(data2).slideDown();
+        },
+        error: function () {
+            tostErreur("erreur de chargement des menus");
+        }
+    });
+    //alert("listdesmenu");
+}
+
 /**
  * Get option duree
  * @param position

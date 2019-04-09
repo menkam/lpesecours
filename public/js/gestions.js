@@ -1,6 +1,56 @@
 $(document).ready(function() {
 
-    
+    $("#saveRecetteGlobalMomo").click(function(e){
+        e.preventDefault();
+        var _token = $("input[name='_token']").val();
+        var bilan = $("input[name='bilan']").val();
+
+        $.ajax({
+            url: "saveRecetteGlobalMomo",
+            type:'POST',
+            data: { bilan:bilan },
+            success: function(data) {
+                if($.isEmptyObject(data.error)){
+
+                    var date = data[0];
+                    var fond = data[1];
+                    var pret = data[2];
+                    var espece = data[3];
+                    var compte_momo = data[4];
+                    var compte2 = data[5];
+                    var frais_transfert = data[6];
+                    var commission = data[7];
+
+                    //alert ("date:"+date+"\nfond:"+fond+"\npret:"+pret+"\nespece:"+espece+"\ncompte_momo:"+compte_momo+"\ncompte2:"+compte2+"\nfrais_transfert:"+frais_transfert+"\ncommission:"+commission);
+
+                    $.ajax({
+                        url: "saveRecetteMomo",
+                        type:'POST',
+                        data: {
+                            _token:_token,
+                            date:date,
+                            fond:fond,
+                            pret:pret,
+                            espece:espece,
+                            compte_momo:compte_momo,
+                            compte2:compte2,
+                            frais_transfert:frais_transfert,
+                            commission:commission
+                        },
+                        success: function(data) {
+                            if($.isEmptyObject(data.error)){
+                                tostSuccess(data.success);
+                                bilan.empty();
+                            }else{ tostErreur(data.error); }
+                        },
+                        error: function(){tostErreur("Fatal Error2");}
+                    });
+                }else{ tostErreur(data.error); }
+            }, 
+            error: function(){tostErreur("Fatal Error");}
+        });
+    });
+
     $("#saveRecetteMoMo").click(function(e){
         e.preventDefault();
         var _token = $("input[name='_token']").val();
@@ -39,7 +89,6 @@ $(document).ready(function() {
                 }
             }
         });
-
     });
     $("#saveRecettePhoto").click(function(e){
         e.preventDefault();

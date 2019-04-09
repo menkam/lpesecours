@@ -30,8 +30,18 @@
 @endsection
 
 @section("content_bilan")
+
+<div>
+    <form data-toggle="validator" action="" method="POST" action="">
+        {{ csrf_field() }}
+        <label for="bilan">Bilan Brute ici : </label>
+        <input type="text" name="bilan" id="bilan" size="44" placeholder="Date:Fond:Pret:Espece:Compte1:Compte2:Frais:Commission" required>
+        <button type="submit" class="btn btn-success" id="saveRecetteGlobalMomo">Submit</button>
+        <button type="reset" class="btn btn-wanrning" id="saveRecetteGlobalMomo">Reset</button>
+    </form>
+</div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12">       
 
         <div class="clearfix">
             <div class="pull-right tableTools-container"></div>
@@ -40,8 +50,8 @@
             Results for "Latest Registered"
         </div>
 
-        <!-- div.table-responsive -->
-
+        <!-- div.table-responsive 06/04/2019:250000:83125:300:214611:182:0:30487  -->
+        
         <!-- div.dataTables_borderWrap -->
         <div class="table-responsive">
             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
