@@ -158,6 +158,7 @@ function getOptionGroupeUser(position) {
  */
 function tostSuccess(msg){
     toastr.success(msg, 'SUCCESS !!!', {timeOut: 5000});
+    window.location.reload();
 }
 
 /**

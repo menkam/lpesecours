@@ -35,7 +35,7 @@
     <div class="alert alert-danger print-error-msg" style="display:none"><ul></ul></div>
     <table class="table table-hover table-bordered">
         <thead class="row table-header"></thead>
-        <form id="formsaveRecettemomo" name="" method="post" action="{{ route('saveRecetteMomo') }}">
+        <form id="formsaveRecettemomo" name="" method="post" action="{{ route('saveRecetteCachet') }}">
             {{ csrf_field() }}
             <tbody>
                 <tr class="form-group-sm">
