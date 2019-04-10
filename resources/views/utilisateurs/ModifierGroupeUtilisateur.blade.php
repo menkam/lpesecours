@@ -67,8 +67,8 @@
                 </table>
             </div>
         </div>
+        @include('partials.modal')
     </div>
-    @include('applications.ModalMenus')
 @endsection
 
 @section('scripts')
@@ -216,21 +216,25 @@
             });
 
             //select/deselect a row when the checkbox is checked/unchecked
-            $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+            $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){alert("2");
                 var row = $(this).closest('tr').get(0);
                 if(this.checked) myTable.row(row).deselect();
                 else myTable.row(row).select();
             });
 
 
-            /*
+
              $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
              e.stopImmediatePropagation();
              e.stopPropagation();
              e.preventDefault();
-             });*/
+             });
 
-            //alert("ok");
+             $(".sorting").click(function(){
+                 //alert("sorting-click");
+             });
+
+
         })
 
 

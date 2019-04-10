@@ -13,6 +13,7 @@ Route::singularResourceParameters();
 
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
@@ -101,7 +102,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
         Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
-        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
+        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
+
+        Route::post('loadBodyBilan', 'GestionsController@loadBodyBilan')->name('loadBodyBilan');
+        Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
 
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
 

@@ -368,6 +368,25 @@ $(document).ready(function() {
     }
 });
 
+function loadBodyBilan(typeGestion,idBody)
+{
+    var position = $("#"+idBody);
+
+    /*$.ajax({
+        url: "loadBodyBilan",
+        type:'POST',
+        data:{typeGestion:typeGestion},
+        success: function(data) {
+            //alert(data);
+            position.empty();
+            position.append(data).slideDown();
+        },
+        error: function () {
+            tostErreur("erreur");
+        }
+    });*/
+}
+
 function loadContentUpdateBilan(typeGestion,id) {
     var position = $("#bodyUpdateBilan");
     var bouton;
@@ -440,3 +459,4 @@ function updateStatutBilan(typeGestion,id) {
          }
      });
 }
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //use App\Models\Gestions;
 use App\Fonctions;
 use App\Models\Tlist_photo;
+use Illuminate\Http\Response;
 use Validator;
 use App\Models\Mobile_money;
 use App\Models\Photo;
@@ -83,6 +84,16 @@ class GestionsController extends Controller
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}
+
+    public function loadBodyBilan(Request $request)
+    {
+        $typeGestion = $request->typeGestion;
+        if ($typeGestion=="momo") return response()->json(Mobile_money::showBilan());
+        else if ($typeGestion=="photo") return response()->json(Photo::showBilan());
+        else if ($typeGestion=="cachet") return response()->json(Cachet::showBilan());
+
+    }
+
 
     /**
      * From Request AJAX

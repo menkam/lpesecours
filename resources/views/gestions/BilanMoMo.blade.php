@@ -1,4 +1,5 @@
-@extends("gestions.Bilans")
+@extends("layouts.template")
+
 @section("title")
 <title></title>
 <meta name="description" content=" with some customizations as described in docs" />
@@ -29,7 +30,7 @@
 </h1>
 @endsection
 
-@section("content_bilan")
+@section("content")
 
 <div>
     <form data-toggle="validator" action="" method="POST" action="">
@@ -80,7 +81,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="bodyBilanMomo">
                     <?php if(isset($rowBilanMoMo)) echo $rowBilanMoMo; ?>
                 </tbody>
                 <tfoot style="background-color: #98bc1b; tab-size: 14px">
@@ -105,13 +106,38 @@
             </table>
         </div>
     </div>
+    @include('partials.modal')
 </div>
+
+@endsection
+
+@section("scripts")
+
+    <!-- page specific plugin scripts -->
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/buttons.flash.min.js"></script>
+    <script src="assets/js/buttons.html5.min.js"></script>
+    <script src="assets/js/buttons.print.min.js"></script>
+    <script src="assets/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/dataTables.select.min.js"></script>
+
+    <script type="text/javascript">
+
+
+
+    </script>
+
+    <script type="text/javascript" src="js/gestions.js"></script>
+
 @endsection
 
 @section("scripts2")
     <script type="text/javascript">
         jQuery(function($) {
             //initiate dataTables plugin
+            loadBodyBilan("momo","bodyBilanMomo");
             var myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
@@ -263,7 +289,9 @@
                 e.preventDefault();
             });*/
 
-            //alert("ok");
+            $(".sorting").click(function(){
+                loadBodyBilan("momo","bodyBilanMomo");
+            });
         })
 
 

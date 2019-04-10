@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Fonctions;
 use DB;
-use App\Models\Fonctions;
 
 class Mobile_money extends Model
 {
@@ -120,9 +120,10 @@ class Mobile_money extends Model
             $lastStatut = $msgStatut;
             $lastTotal = $totalEC2[$nbr];
 
-            $onclickView = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
+            $action = Fonctions::colActionTable();
+            /*$onclickView = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
             $onclickUpdate = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
-            $onclickDelete = 'onclick="updateStatutBilan(\'momo\',\''.$value->id.'\');"';
+            $onclickDelete = 'onclick="updateStatutBilan(\'momo\',\''.$value->id.'\');"';*/
 
 
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
@@ -140,56 +141,7 @@ class Mobile_money extends Model
                 <td>'.Fonctions::formatPrix($diffCom).'</td> <!-- DiffCom -->
                 <td>'.Fonctions::formatPrix($Supplement).'</td> <!-- Supplement -->
                 '.$msgStatut.' <!-- statut -->                
-                <td>
-                    <div class="hidden-sm hidden-xs action-buttons">
-                        <a class="blue" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#viewBilan">
-                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                        </a>
-
-                        <a class="green" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#updateBilan">
-                            <i class="ace-icon fa fa-pencil bigger-130"></i>
-                        </a>
-
-                        <a class="red" href="#" '.$onclickDelete.'  data-toggle="modal" data-target="#deleteBilan">
-                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                        </a>
-                    </div>
-
-                    <div class="hidden-md hidden-lg">
-                        <div class="inline pos-rel">
-                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                            </button>
-
-                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                <li>
-                                    <a href="#" class="tooltip-info" '.$onclickView.' data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
-                                        <span class="blue">
-                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="tooltip-success" '.$onclickUpdate.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
-                                        <span class="green">
-                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                
-
-                                <li>
-                                    <a href="#" class="tooltip-error" '.$onclickDelete.' data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
-                                        <span class="red">
-                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
+                <td>'.$action.'<\td>
             </tr>';
             $nbr++;
         }

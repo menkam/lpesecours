@@ -71,8 +71,8 @@
                 </table>
             </div>
         </div>
+        @include('partials.modal')
     </div>
-    @include('applications.ModalMenus')
 @endsection
 
 @section('scripts')

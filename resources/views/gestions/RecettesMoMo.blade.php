@@ -126,7 +126,6 @@
 @endsection
 
 @section("scripts")
-
 @endsection
 
 @section("scripts2")

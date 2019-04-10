@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Fonctions;
+use App\Fonctions;
 use App\Models\Tlist_cachet;
 use DB;
 
@@ -62,9 +62,7 @@ class Cachet extends Model
         foreach (Cachet::getAllLine() as $value)
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
-            $onclickView = 'onclick="loadContentUpdateBilan(\'cachet\',\''.$value->id.'\');"';
-            $onclickUpdate = 'onclick="loadContentUpdateBilan(\'cachet\',\''.$value->id.'\');"';
-            $onclickDelete = 'onclick="updateStatutBilan(\'cachet\',\''.$value->id.'\');"';
+            $action = Fonctions::colActionTable();
 
             $rowBilan = $rowBilan.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
@@ -73,56 +71,7 @@ class Cachet extends Model
                 <td>'.$value->nombre.'</td> <!-- nombre -->
                 <td>'.Fonctions::formatPrix($value->prix_unitaire).'</td> <!-- prix_unitaire -->
                 <td>'.Fonctions::formatPrix($nxpu).'</td> <!-- nombre * PU -->
-                <td>
-                    <div class="hidden-sm hidden-xs action-buttons">
-                        <a class="blue" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#viewBilan">
-                            <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                        </a>
-
-                        <a class="green" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#updateBilan">
-                            <i class="ace-icon fa fa-pencil bigger-130"></i>
-                        </a>
-
-                        <a class="red" href="#" '.$onclickDelete.'  data-toggle="modal" data-target="#deleteBilan">
-                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                        </a>
-                    </div>
-
-                    <div class="hidden-md hidden-lg">
-                        <div class="inline pos-rel">
-                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                            </button>
-
-                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                <li>
-                                    <a href="#" class="tooltip-info" '.$onclickView.' data-rel="tooltip" title="View" data-toggle="modal" data-target="#viewBilan">
-                                        <span class="blue">
-                                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="tooltip-success" '.$onclickUpdate.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#updateBilan">
-                                        <span class="green">
-                                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                
-
-                                <li>
-                                    <a href="#" class="tooltip-error" '.$onclickDelete.' data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#deleteBilan">
-                                        <span class="red">
-                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
+                <td>'.$action.'</td>
             </tr>';
 
             $total = $total+$nxpu;

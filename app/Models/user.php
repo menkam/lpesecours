@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Tlist_acreditation;
 use App\Models\Tlist_groupe_user;
+use App\Fonctions;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -143,10 +144,7 @@ class User extends Authenticatable
         $numero = 1;
         foreach (User::all() as $value)
         {
-            $onclickUpdate = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
-            $onclickView = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
-            $onclickDelete = 'onclick="updateStatutBilan(\'momo\',\''.$value->id.'\');"';
-
+            $action = Fonctions::colActionTable();
 
             $bodyListUsers = $bodyListUsers.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
             <td>'.$value->id.'</td>
@@ -157,22 +155,8 @@ class User extends Authenticatable
             <td>'.$value->email.'</td>
             <td>'.$value->id.'</td>
             <td>'.$value->statut.'</td>
-            <td><div class="hidden-sm hidden-xs action-buttons">
-            <a class="blue" href="#" '.$onclickView.' data-toggle="modal" data-target="#modalView"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>
-            <a class="green" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#modalUpdate"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
-            <a class="red" href="#" '.$onclickDelete.'  data-toggle="modal" data-target="#modalDelete"><i class="ace-icon fa fa-trash-o bigger-130"></i></a></div>
-            <div class="hidden-md hidden-lg"><div class="inline pos-rel">
-            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-            <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i></button>
-            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-            <li><a href="#" class="tooltip-info" '.$onclickView.' data-rel="tooltip" title="View" data-toggle="modal" data-target="#modalView">
-            <span class="blue"><i class="ace-icon fa fa-search-plus bigger-120"></i></span></a></li>
-            <li><a href="#" class="tooltip-success" '.$onclickUpdate.' data-rel="tooltip" title="Edit" data-toggle="modal" data-target="#modalUpdate">
-            <span class="green"><i class="ace-icon fa fa-pencil-square-o bigger-120"></i></span></a></li>
-            <li><a href="#" class="tooltip-error" '.$onclickDelete.' data-rel="tooltip" title="Delete" data-toggle="modal" data-target="#modalDelete">
-            <span class="red"><i class="ace-icon fa fa-trash-o bigger-120"></i></span></a></li></ul></div></div></td>
+            <td>'.$action.'</td>
             </tr>';
-            $numero++;
         }
         return $bodyListUsers;
     }
