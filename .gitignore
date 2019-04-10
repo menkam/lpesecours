@@ -1,4 +1,4 @@
-/resources/views/applications/*.php
+/zzzz/*
 /node_modules
 /public/hot
 /public/storage

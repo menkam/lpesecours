@@ -141,7 +141,7 @@ class Mobile_money extends Model
                 <td>'.Fonctions::formatPrix($diffCom).'</td> <!-- DiffCom -->
                 <td>'.Fonctions::formatPrix($Supplement).'</td> <!-- Supplement -->
                 '.$msgStatut.' <!-- statut -->                
-                <td>'.$action.'<\td>
+                <td>'.$action.'</td>
             </tr>';
             $nbr++;
         }
