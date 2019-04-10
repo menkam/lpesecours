@@ -1,3 +1,5 @@
+/resources/views/applications/Maintenance*.php
+/resources/views/applications/test*.php
 /zzzz/*
 /node_modules
 /public/hot
