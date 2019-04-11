@@ -105,7 +105,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
 
         Route::post('loadBodyBilan', 'GestionsController@loadBodyBilan')->name('loadBodyBilan');
-        Route::post('loadContentUpdateBilan', 'GestionsController@loadContentUpdateBilan')->name('loadContentUpdateBilan');
+
+        Route::post('loadContentModalView', 'ModalController@loadContentModalView')->name('loadContentModalView');
+        Route::post('loadContentModalUpdate', 'ModalController@loadContentModalUpdate')->name('loadContentModalUpdate');
+        Route::post('loadContentModalDelete', 'ModalController@loadContentModalDelete')->name('loadContentModalDelete');
 
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
 

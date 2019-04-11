@@ -47,15 +47,35 @@ class Fonctions extends Model
         }
         return $dateCourante;
     }
-
-    public static function colActionTable($view=null,$update=null,$delete=null)
+    public static function compactForm($sol, array $attribut, array $type)
     {
-        $onclickUpdate = 'onclick="loadContentUpdateBilan();"';
-        $onclickView = 'onclick="loadContentUpdateBilan();"';
-        $onclickDelete = 'onclick="updateStatutBilan();"';
+        /*$line ='Ras';
+        if(count($type)==count($attribut))
+        {
+            for($i=0; $i<count($attribut); $i++)
+            {
+                if($type[$i]=='hidden')
+                {
+                    $line =  $line.'<input type="'.$type[$i].'" id="'.$attribut[$i].'" value="'.$sol->$attribut[$i].'" name="'.$attribut[$i].'">';
+                }
+                $line =  $line.'<div class="form-group"  style="">
+                <label class="control-label" for="'.$attribut[$i].'">Fond</label>
+                <input type="'.$type[$i].'" name="'.$attribut[$i].'" id="'.$attribut[$i].'" value="'.$sol->$attribut[$i].'" class="form-control" data-error="'.$attribut[$i].' absent" required >
+                <div class="help-block with-errors"></div>
+            </div>';
+            }
+        }
+        return $line;*/
+        return $sol->$attribut[0];
+    }
+    public static function colActionTable($params=null)
+    {
+        $onclickView = 'onclick="loadContentModalView('.$params.');"';
+        $onclickUpdate = 'onclick="loadContentModalUpdate('.$params.');"';
+        $onclickDelete = 'onclick="loadContentModalDelete('.$params.');"';
 
         $content = '<div class="hidden-sm hidden-xs action-buttons">
-                <a class="blue" href="#" '.$onclickUpdate.' data-toggle="modal" data-target="#modalView">
+                <a class="blue" href="#" '.$onclickView.' data-toggle="modal" data-target="#modalView">
                     <i class="ace-icon fa fa-search-plus bigger-130"></i>
                 </a>
     

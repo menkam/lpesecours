@@ -62,7 +62,7 @@ class Cachet extends Model
         foreach (Cachet::getAllLine() as $value)
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
-            $action = Fonctions::colActionTable();
+            $action = Fonctions::colActionTable("'cachet',$value->id");
 
             $rowBilan = $rowBilan.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
@@ -81,5 +81,32 @@ class Cachet extends Model
         $total = Fonctions::formatPrix($total);
 
         return ([$rowBilan,$somqte,$total]);
+    }
+
+    public static function getRecetteCachet($id)
+    {
+        $sol = Cachet::getAllLine($id);
+        $page = '
+            <input type="hidden" value="'.$sol->id.'" id="id" name="id">
+            <input type="hidden" value="'.$sol->date.'" id="date" name="date">
+            <div class="form-group"  style="">
+                <label class="control-label" for="type">Type de cachet</label>
+                <select name="type" id="type" class="form-control" data-error="Choisir le type de cachet." required >
+                    '.Tlist_cachet::getOption($sol->type).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="nombre">Nombre</label>
+                <input type="number" name="nombre" id="nombre" value="'.$sol->nombre.'" class="form-control" data-error="Entrer le nombre de cachet." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="prix_unitaire">Prix Unitaire</label>
+                <input type="number" name="prix_unitaire" id="prix_unitaire" value="'.$sol->prix_unitaire.'" class="form-control" data-error="Entrer le prix Unitaire." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
     }
 }

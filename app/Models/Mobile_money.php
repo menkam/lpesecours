@@ -120,7 +120,9 @@ class Mobile_money extends Model
             $lastStatut = $msgStatut;
             $lastTotal = $totalEC2[$nbr];
 
-            $action = Fonctions::colActionTable();
+            $params = "'momo',$value->id";
+            $action = Fonctions::colActionTable($params);
+            //$action = Fonctions::colActionTable($params);
             /*$onclickView = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
             $onclickUpdate = 'onclick="loadContentUpdateBilan(\'momo\',\''.$value->id.'\');"';
             $onclickDelete = 'onclick="updateStatutBilan(\'momo\',\''.$value->id.'\');"';*/
@@ -154,6 +156,52 @@ class Mobile_money extends Model
         $lastStatut = Fonctions::formatPrix($lastStatut);
         $lastTotal = Fonctions::formatPrix($lastTotal);
         return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut,$lastTotal]);
+    }
+
+    public static function getRecetteMomo($id)
+    {
+        $sol = Mobile_money::getAllLine('1',$id);
+        $page = "ras";
+        $page ='
+            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
+            <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
+            <div class="form-group"  style="">
+                <label class="control-label" for="fond">Fond</label>
+                <input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="pret">Prêt (+/-)</label>
+                <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="espece">Espèce</label>
+                <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="compte_momo">CompteMomo</label>
+                <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="compte2">Compte2</label>
+                <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="frais_transfert">FraisTransfère</label>
+                <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="commission">Commission</label>
+                <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
     }
 
     public static  function seeder(){

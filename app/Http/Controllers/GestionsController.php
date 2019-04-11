@@ -256,106 +256,6 @@ class GestionsController extends Controller
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 
-
-    public function getRecetteMomo($id)
-    {
-        $sol = Mobile_money::getAllLine('1',$id);
-        $page = "ras";
-        $page ='
-            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
-            <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
-            <div class="form-group"  style="">
-                <label class="control-label" for="fond">Fond</label>
-                <input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="pret">Prêt (+/-)</label>
-                <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="espece">Espèce</label>
-                <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="compte_momo">CompteMomo</label>
-                <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="compte2">Compte2</label>
-                <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="frais_transfert">FraisTransfère</label>
-                <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="commission">Commission</label>
-                <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
-                <div class="help-block with-errors"></div>
-            </div>
-        ';
-        return $page;
-    }
-    public function getRecettePhoto($id)
-    {
-        $sol = Photo::getAllLine($id);
-        $page = "ras";
-        $page = '
-            <input type="hidden" value="'.$sol->id.'" id="id" name="id">
-            <input type="hidden" value="'.$sol->date.'" id="date" name="date">
-            <div class="form-group"  style="">
-                <label class="control-label" for="type">Type de cachet</label>
-                <select name="type" id="type" class="form-control" data-error="Choisir le type de photo." required >
-                    '.Tlist_photo::getOption($sol->type).'
-                </select>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="nombre">Nombre</label>
-                <input type="number" name="nombre" id="nombre" value="'.$sol->nombre.'" class="form-control" data-error="Entrer le nombre de photo." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="prix_unitaire">Prix Unitaire</label>
-                <input type="number" name="prix_unitaire" id="prix_unitaire" value="'.$sol->prix_unitaire.'" class="form-control" data-error="Entrer le prix unitaire." required >
-                <div class="help-block with-errors"></div>
-            </div>
-        ';
-        return $page;
-    }
-    public function getRecetteCachet($id)
-    {
-        $sol = Cachet::getAllLine($id);
-        $page = '
-            <input type="hidden" value="'.$sol->id.'" id="id" name="id">
-            <input type="hidden" value="'.$sol->date.'" id="date" name="date">
-            <div class="form-group"  style="">
-                <label class="control-label" for="type">Type de cachet</label>
-                <select name="type" id="type" class="form-control" data-error="Choisir le type de cachet." required >
-                    '.Tlist_cachet::getOption($sol->type).'
-                </select>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="nombre">Nombre</label>
-                <input type="number" name="nombre" id="nombre" value="'.$sol->nombre.'" class="form-control" data-error="Entrer le nombre de cachet." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="prix_unitaire">Prix Unitaire</label>
-                <input type="number" name="prix_unitaire" id="prix_unitaire" value="'.$sol->prix_unitaire.'" class="form-control" data-error="Entrer le prix Unitaire." required >
-                <div class="help-block with-errors"></div>
-            </div>
-        ';
-        return $page;
-    }
-
     public function deleteRecetteMomo(Request $request)
     {
         $validator = Validator::make($request->all(), ['id' => 'required|integer']);
@@ -390,15 +290,6 @@ class GestionsController extends Controller
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 
-    public function loadContentUpdateBilan(Request $request)
-    {
-        $page = 'ras';
-        if ($request['typeGestion']=="momo")        $page = $this->getRecetteMomo($request['id']);
-        elseif ($request['typeGestion']=="photo")   $page = $this->getRecettePhoto($request['id']);
-        elseif ($request['typeGestion']=="cachet")  $page = $this->getRecetteCachet($request['id']);
-        //return response()->json($page);
-        return $page;
-    }
     public function updateStatutBilan(Request $request)
     {
         $page = 'ras';

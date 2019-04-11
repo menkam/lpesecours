@@ -57,10 +57,7 @@ class Photo extends Model
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
 
-            $onclickView = 'onclick="loadContentUpdateBilan(\'photo\',\''.$value->id.'\');"';
-            $onclickUpdate = 'onclick="loadContentUpdateBilan(\'photo\',\''.$value->id.'\');"';
-            $onclickDelete = 'onclick="updateStatutBilan(\'photo\',\''.$value->id.'\');"';
-            $action = Fonctions::colActionTable();
+            $action = Fonctions::colActionTable("'photo',$value->id");
 
             $rowBilan = $rowBilan.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
@@ -79,5 +76,33 @@ class Photo extends Model
         $total = Fonctions::formatPrix($total);
 
         return ([$rowBilan,$somqte,$total]);
+    }
+
+    public static function getRecettePhoto($id)
+    {
+        $sol = Photo::getAllLine($id);
+        $page = "ras";
+        $page = '
+            <input type="hidden" value="'.$sol->id.'" id="id" name="id">
+            <input type="hidden" value="'.$sol->date.'" id="date" name="date">
+            <div class="form-group"  style="">
+                <label class="control-label" for="type">Type de cachet</label>
+                <select name="type" id="type" class="form-control" data-error="Choisir le type de photo." required >
+                    '.Tlist_photo::getOption($sol->type).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="nombre">Nombre</label>
+                <input type="number" name="nombre" id="nombre" value="'.$sol->nombre.'" class="form-control" data-error="Entrer le nombre de photo." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="prix_unitaire">Prix Unitaire</label>
+                <input type="number" name="prix_unitaire" id="prix_unitaire" value="'.$sol->prix_unitaire.'" class="form-control" data-error="Entrer le prix unitaire." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
     }
 }

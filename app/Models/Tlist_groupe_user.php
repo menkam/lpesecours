@@ -64,7 +64,7 @@ class Tlist_groupe_user extends Model
         $numero = 1;
         foreach (Tlist_groupe_user::all() as $value)
         {
-            $action = Fonctions::colActionTable();
+            $action = Fonctions::colActionTable("'groupeuser',$value->id");
 
 
             $bodyListGroupeUser = $bodyListGroupeUser.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>

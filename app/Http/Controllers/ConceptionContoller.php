@@ -11,7 +11,7 @@ use App\Models\Cachet;
 use App\Models\Tlist_groupe_user;
 use App\Models\Photo;
 use App\Models\Mobile_money;
-use App\Models\Fonctions;
+use App\Fonctions;
 use DB;
 
 
@@ -47,6 +47,57 @@ class ConceptionContoller extends Controller
 
         //if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
         //$result = auth::user()->getGroupe_user();
+
+        $sol = Mobile_money::getAllLine('1',1);
+        $page = "ras";
+        $page = Fonctions::compactForm(
+            $sol,
+            [
+                'id','date','fond','pret','espece','compte_momo','compte2','frais_transfert','commission'
+            ],
+            [
+                'hidden','hidden','number','number','number','number','number','number','number'
+            ]);
+        /*
+            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
+            <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
+            <div class="form-group"  style="">
+                <label class="control-label" for="fond">Fond</label>
+                <input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="pret">Prêt (+/-)</label>
+                <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="espece">Espèce</label>
+                <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="compte_momo">CompteMomo</label>
+                <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="compte2">Compte2</label>
+                <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="frais_transfert">FraisTransfère</label>
+                <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
+                <div class="help-block with-errors"></div>
+            </div>
+                <div class="form-group"  style="">
+                <label class="control-label" for="commission">Commission</label>
+                <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';*/
+        dd($page);
 
 
         //dd($newUser->id);

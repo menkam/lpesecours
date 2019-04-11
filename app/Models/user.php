@@ -144,7 +144,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $numero = 1;
         foreach (User::all() as $value)
         {
-            $action = Fonctions::colActionTable();
+            $action = Fonctions::colActionTable("'user',$value->id");
 
             $bodyListUsers = $bodyListUsers.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
             <td>'.$value->id.'</td>

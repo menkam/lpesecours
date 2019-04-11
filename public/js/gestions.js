@@ -387,42 +387,6 @@ function loadBodyBilan(typeGestion,idBody)
     });*/
 }
 
-function loadContentUpdateBilan(typeGestion,id) {
-    var position = $("#bodyUpdateBilan");
-    var bouton;
-
-    if (typeGestion=="momo") bouton = $("#updateRecetteMomo");
-    else if (typeGestion=="photo") bouton = $("#updateRecettePhoto");
-    else if (typeGestion=="cachet") bouton = $("#updateRecetteCachet");
-
-    $.ajax({
-        url: "loadContentUpdateBilan",
-        type:'POST',
-        data: {
-            id:id,
-            typeGestion:typeGestion
-        },
-        success: function(data) {
-            if($.isEmptyObject(data.error)){
-                $("#updateRecetteMomo").hide();
-                $("#updateRecettePhoto").hide();
-                $("#updateRecetteCachet").hide();
-                bouton.show().slideDown();
-                position.empty();
-                position.append(data).slideDown();
-
-            }else{
-                //printErrorMsg(data.error);
-                tostErreur(data.error);
-            }
-            //alert(data);
-        },
-        error: function () {
-            tostErreur("erreur");
-        }
-    });
-
-}
 function updateStatutBilan(typeGestion,id) {
     var position = $("#bodyDeleteBilan");
     var bouton;

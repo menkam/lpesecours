@@ -6,19 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h6 class="modal-title" id="myModalLabel">Virsualisation</h6>
             </div>
-            <div class="modal-body">
-                <form data-toggle="validator" id="formUpdateModal" action="#" method="POST">
-                    {{ csrf_field() }}
-                    <div id="bodyModalAdd"></div>
-                    <div class="form-group">
-                        <button id="updateRecette" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecettePhoto" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecetteCachet" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button type="reset" class="btn btn-warning crud-reset-edit">Réinitialiser</button>
-                        <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Annuler</button>
-                    </div>
-                </form>
-            </div>
+            <div class="modal-body" id="bodyModalView"></div>
         </div>
     </div>
 </div>
@@ -36,10 +24,8 @@
                     {{ csrf_field() }}
                     <div id="bodyModalAdd"></div>
                     <div class="form-group">
-                        <button id="updateRecette" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecettePhoto" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecetteCachet" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button type="reset" class="btn btn-warning crud-reset-edit">Réinitialiser</button>
+                        <button id="submitModalAdd" type="submit" class="btn btn-success" style="display: none">Ajouter</button>
+                        <button type="reset" class="btn btn-warning crud-reset-edit">Effacer</button>
                         <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Annuler</button>
                     </div>
                 </form>
@@ -58,11 +44,9 @@
             <div class="modal-body">
                 <form data-toggle="validator" id="formUpdaterecette" action="#" method="POST">
                     {{ csrf_field() }}
-                    <div id="bodyModalUpdate"></div>
-                    <div class="form-group">
-                        <button id="updateRecette" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecettePhoto" type="submit" class="btn btn-success" style="display: none">Modifier</button>
-                        <button id="updateRecetteCachet" type="submit" class="btn btn-success" style="display: none">Modifier</button>
+                    <div id="bodyModaleUpdate"></div>
+                    <div class="form-group" id="footerModal">
+                        <button id="submitModalUpdate" type="submit" class="btn btn-success">Modifier</button>
                         <button type="reset" class="btn btn-warning crud-reset-edit">Réinitialiser</button>
                         <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Annuler</button>
                     </div>

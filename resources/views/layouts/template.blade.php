@@ -160,7 +160,8 @@
         <!-- globale scripts -->
         
         <script src="js/scripts.js"></script>
-        
+        <script src="js/modal.js"></script>
+
         <script type="text/javascript" src="{{ asset('ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('ajax/libs/toastr.js/latest/js/toastr.min.js') }}"></script>
         <script src="{{ asset('ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js') }}"></script>

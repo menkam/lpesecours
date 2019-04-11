@@ -288,7 +288,7 @@ class Menu extends Model
         $numero = 1;
         foreach (self::getAllMenu() as $value)
         {
-            $action = Fonctions::colActionTable();
+            $action = Fonctions::colActionTable("'menu',$value->id");
 
 
 
