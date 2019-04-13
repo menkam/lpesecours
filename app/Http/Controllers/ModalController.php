@@ -34,9 +34,12 @@ class ModalController extends Controller
     public function loadContentModalUpdate(Request $request)
     {
         $page = 'Contenu vide';
-        if ($request['typeModal']=="momo")        $page = Mobile_money::getRecetteMomo($request['id']);
-        elseif ($request['typeModal']=="photo")   $page = Photo::getRecettePhoto($request['id']);
-        elseif ($request['typeModal']=="cachet")  $page = Cachet::getRecetteCachet($request['id']);
+        if ($request['typeModal']=="menu")        $page = Menu::getContentUpdate($request['id']);
+        if ($request['typeModal']=="groupeuser")        $page = Tlist_groupe_user::getContentUpdate($request['id']);
+        if ($request['typeModal']=="user")        $page = User::getContentUpdate($request['id']);
+        if ($request['typeModal']=="momo")        $page = Mobile_money::getContentUpdate($request['id']);
+        elseif ($request['typeModal']=="photo")   $page = Photo::getContentUpdate($request['id']);
+        elseif ($request['typeModal']=="cachet")  $page = Cachet::getContentUpdate($request['id']);
         return $page;
         //return response()->json($page);
     }

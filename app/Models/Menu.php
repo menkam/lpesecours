@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Fonctions;
+use App\Models\Tlist_groupe_user;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
@@ -47,6 +48,38 @@ class Menu extends Model
     protected $casts = [
 
     ];
+
+
+    public static function getOptionIdPere($idpere, $idfils)
+    {
+        $option = '<option value="">-----------------</option>';
+        $peres = DB::select("SELECT menus.id, menus.libelle FROM public.menus WHERE menus.idfils < '$idfils';");
+
+        if($peres)
+        {
+            $option = $option.'<option value="0" selected>/</option>';
+            foreach ($peres as $sol)
+            {
+                if($idpere==$sol->id) $option = $option.'<option value="'.$sol->id.'" selected>'.$sol->libelle.' (oldValue)</option>';
+                else $option = $option.'<option value="'.$sol->id.'">'.$sol->libelle.'</option>';
+            }
+        }
+        else
+        {
+            $option = $option.'<option value="0" selected>/</option>';
+        }
+        return $option;
+    }
+    public static function getOptionIdFils($idfils)
+    {
+        $option = '<option value="">-----------------</option>';
+        for ($i=0; $i<5; $i++)
+        {
+            if($idfils==$i) $option = $option.'<option value="'.$i.'" selected>'.$i.' (oldvalue)</option>';
+            else $option = $option.'<option value="'.$i.'">'.$i.'</option>';
+        }
+        return $option;
+    }
 
     public function getMenu(){
         return DB::select("
@@ -175,6 +208,11 @@ class Menu extends Model
             menus.idparent = '$idmenu';
         ")[0]->count;
     }
+    public static function getLibelle($id)
+    {
+        if($id) return DB::select("SELECT libelle FROM menus WHERE menus.id='$id'")[0]->libelle;
+        return "/";
+    }
 
 
     /**
@@ -289,15 +327,14 @@ class Menu extends Model
         foreach (self::getAllMenu() as $value)
         {
             $action = Fonctions::colActionTable("'menu',$value->id");
-
-
+            $infoGroupeUser = Tlist_groupe_user::getInfo($value->groupeuser);
 
             $bodyListMenus = $bodyListMenus.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
             <td>'.$value->id.'</td>
-            <td>'.$value->idparent.'</td>
+            <td>'.Menu::getLibelle($value->idparent).'</td>
             <td>'.$value->idfils.'</td>
             <td>'.$value->libelle.'</td>
-            <td>'.$value->groupeuser.'</td>
+            <td title="'.$infoGroupeUser->libelle.'">'.$infoGroupeUser->code.'</td>
             <!--td>'.$value->rang.'</td-->
             <!--td>'.$value->lien.'</td-->
             <td><i class="fa fa-'.$value->icon.'"><br>'.$value->icon.'</i> </td>
@@ -306,10 +343,104 @@ class Menu extends Model
             <!--td>'.$value->fichiercontroller.'</td-->
             <!--td>'.$value->fichierview.'</td-->
             <td>'.$value->valide.'</td>
-            <td>'.$value->statut.'</td>
+            <td>'.Fonctions::formatStatut($value->statut).'</td>
             <td>'.$action.'</td>
             </tr>';
         }
         return $bodyListMenus;
     }
+
+    public static function getAllLine($id = null, $statut=null)
+    {
+        if(!empty($statut)) return DB::select("SELECT * FROM public.menus WHERE  menus.id = '$id' AND menus.statut = '$statut';")[0];
+        if(!empty($statut)) return DB::select("SELECT * FROM public.menus WHERE menus.statut = '$statut';");
+        if(!empty($id)) return DB::select("SELECT * FROM public.menus WHERE  menus.id = '$id';")[0];
+        else return DB::select("SELECT * FROM public.menus;");
+    }
+
+    public static function getContentUpdate($id)
+    {
+        $sol = Menu::getAllLine($id, null);
+        $page = "ras";
+        $page ='
+            <div class="form-group"  style="">
+                <label class="control-label" for="id">id</label>
+                <input type="number" id="fond" id="id" value="'.$sol->id.'" class="form-control" data-error="Entrer l\'id." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="idparent">parent</label>
+                <select name="idparent" id="idparent" class="form-control" data-error="Choisir le père." required >
+                    '.Menu::getOptionIdPere($sol->idparent,$sol->idfils).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="espece">idfils</label>
+                <select name="idfils" id="idfils" class="form-control" data-error="Choisir l\'id du fils." required >
+                    '.Menu::getOptionIdFils($sol->idfils).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="compte_momo">libelle</label>
+                <input type="text" name="libelle" id="libelle" value="'.$sol->libelle.'" class="form-control" data-error="Entrer Le libelle." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="compte2">lien</label>
+                <input type="text" name="lien" id="lien" value="'.$sol->lien.'" class="form-control" data-error="Entrer le lien." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="frais_transfert">icon</label>
+                <input type="text" name="icon" id="icon" value="'.$sol->icon.'" class="form-control" data-error="Entrer l\icone." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="commission">route</label>
+                <input type="text" name="route" id="route" value="'.$sol->route.'" class="form-control" data-error="Entrer la valeur ."  >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="fond">controller</label>
+                <input type="text" name="controller" id="controller" value="'.$sol->controller.'" class="form-control" data-error="Entrer la valeur ."  >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="pret">fichiercontroller</label>
+                <input type="text" name="fichiercontroller" id="fichiercontroller" value="'.$sol->fichiercontroller.'" class="form-control" data-error="Entrer la valeur ."  >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="espece">fichierview</label>
+                <input type="text" name="fichierview" id="fichierview" value="'.$sol->fichierview.'" class="form-control" data-error="Entrer le nom." >
+                <div class="help-block with-errors"></div>
+            </div>
+            <select class="form-group"  style="">
+                <label class="control-label" for="compte_momo">groupeuser</label>
+                <select name="groupeuser" id="groupeuser"class="form-control" data-error="Choisir le groupe utilisateur accessible au menu." required >
+                    '.Tlist_groupe_user::getOption($sol->groupeuser).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="compte2">Position</label>
+                <input type="number" name="rang" id="rang" value="'.$sol->rang.'" class="form-control" data-error="Entrer la position." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="frais_transfert">valide</label>
+                <input type="number" name="valide" id="valide" value="'.$sol->valide.'" class="form-control" data-error="entere une valeur." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="commission">statut</label>
+                <input type="number" name="statut" id="statut" value="'.$sol->statut.'" class="form-control" data-error="Entrer le statut." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
+    }
+    
 }

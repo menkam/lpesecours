@@ -11,6 +11,7 @@ use App\Models\Cachet;
 use App\Models\Tlist_groupe_user;
 use App\Models\Photo;
 use App\Models\Mobile_money;
+use App\Models\Tlist_groupe_user_user;
 use App\Fonctions;
 use DB;
 
@@ -48,16 +49,10 @@ class ConceptionContoller extends Controller
         //if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
         //$result = auth::user()->getGroupe_user();
 
-        $sol = Mobile_money::getAllLine('1',1);
-        $page = "ras";
-        $page = Fonctions::compactForm(
-            $sol,
-            [
-                'id','date','fond','pret','espece','compte_momo','compte2','frais_transfert','commission'
-            ],
-            [
-                'hidden','hidden','number','number','number','number','number','number','number'
-            ]);
+
+
+        $page = Menu::getOptionIdPere(1, 2);
+
         /*
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
             <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
@@ -99,7 +94,6 @@ class ConceptionContoller extends Controller
         ';*/
         dd($page);
 
-
         //dd($newUser->id);
        // if($test) $result="ok"; else $result="non";
         //return view("applications/Maintenance", compact('result'));
@@ -121,7 +115,7 @@ class ConceptionContoller extends Controller
     /**
      ** gérération galerie_accueilSeeder
      **/
-    public function seedGalerie()
+    /*public function seedGalerie()
     {
         $content = '';
         $nbr = 1;
@@ -150,7 +144,7 @@ class ConceptionContoller extends Controller
           ';
             $nbr++;
         }
-    }
+    }*/
     public function initApp()
     {
         $titre = '';

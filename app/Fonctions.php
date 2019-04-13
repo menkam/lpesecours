@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Http\Request;
 
 class Fonctions extends Model
@@ -124,5 +123,15 @@ class Fonctions extends Model
             </div>';
         return $content;
     }
-
+    public static function formatNom($str)
+    {
+        if($str=="M" || $str=="m") return "Masculin";
+        elseif($str=="F" || $str=="f") return "Féminin";
+        else return "RAS";
+    }
+    public static function formatStatut($statut)
+    {
+        if($statut=="1") return "Actif";
+        else return "Désactivé";
+    }
 }

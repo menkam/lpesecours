@@ -158,7 +158,7 @@ class Mobile_money extends Model
         return ([$rowBilanMoMo,$somPret,$somFrais,$maxComm,$somMEC2,$maxSup,$lastFond,$lastStatut,$lastTotal]);
     }
 
-    public static function getRecetteMomo($id)
+    public static function getContentUpdate($id)
     {
         $sol = Mobile_money::getAllLine('1',$id);
         $page = "ras";
@@ -175,27 +175,27 @@ class Mobile_money extends Model
                 <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
                 <div class="help-block with-errors"></div>
             </div>
-                <div class="form-group"  style="">
+            <div class="form-group"  style="">
                 <label class="control-label" for="espece">Espèce</label>
                 <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
                 <div class="help-block with-errors"></div>
             </div>
-                <div class="form-group"  style="">
+            <div class="form-group"  style="">
                 <label class="control-label" for="compte_momo">CompteMomo</label>
                 <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
                 <div class="help-block with-errors"></div>
             </div>
-                <div class="form-group"  style="">
+            <div class="form-group"  style="">
                 <label class="control-label" for="compte2">Compte2</label>
                 <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
                 <div class="help-block with-errors"></div>
             </div>
-                <div class="form-group"  style="">
+            <div class="form-group"  style="">
                 <label class="control-label" for="frais_transfert">FraisTransfère</label>
                 <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
                 <div class="help-block with-errors"></div>
             </div>
-                <div class="form-group"  style="">
+            <div class="form-group"  style="">
                 <label class="control-label" for="commission">Commission</label>
                 <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
                 <div class="help-block with-errors"></div>

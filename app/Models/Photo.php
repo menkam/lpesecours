@@ -78,7 +78,7 @@ class Photo extends Model
         return ([$rowBilan,$somqte,$total]);
     }
 
-    public static function getRecettePhoto($id)
+    public static function getContentUpdate($id)
     {
         $sol = Photo::getAllLine($id);
         $page = "ras";

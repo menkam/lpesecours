@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Tlist_acreditation;
 use App\Models\Tlist_groupe_user;
+use App\Models\Tlist_groupe_user_user;
 use App\Fonctions;
+use DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -20,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
+        'id',
         'groupe_user', 
         'acreditation', 
         'name', 
@@ -135,6 +138,25 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+
+    public static function getOptionSexe($old)
+    {
+        $option = '<option value="">-----------------</option>';
+
+        if($old=="M"||$old=="m")
+        {
+            $option = $option.'<option value="M" selected>Masculin  (oldValue)</option>';
+            $option = $option.'<option value="F">Féminin</option>';
+        }
+        elseif($old=="F"||$old=="f")
+        {
+            $option = $option.'<option value="M">Masculin</option>';
+            $option = $option.'<option value="F" selected>Féminin  (oldValue)</option>';
+        }
+
+        return $option;
+    }
+
     /**
      * show list menu
      */
@@ -145,19 +167,125 @@ class User extends Authenticatable implements MustVerifyEmail
         foreach (User::all() as $value)
         {
             $action = Fonctions::colActionTable("'user',$value->id");
+            $infoGroupeUser = Tlist_groupe_user_user::getInfo($value->id);
 
             $bodyListUsers = $bodyListUsers.'<tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
             <td>'.$value->id.'</td>
             <td>'.$value->name.'</td>
             <td>'.$value->surname.'</td>
-            <td>'.$value->sexe.'</td>
+            <td>'.Fonctions::formatNom($value->sexe).'</td>
             <td>'.$value->telephone.'</td>
             <td>'.$value->email.'</td>
-            <td>'.$value->id.'</td>
-            <td>'.$value->statut.'</td>
+            <td title="'.$infoGroupeUser->libelle.'">'.$infoGroupeUser->code.'</td>
+            <td>'.Fonctions::formatStatut($value->statut).'</td>
             <td>'.$action.'</td>
             </tr>';
         }
         return $bodyListUsers;
+    }
+
+    public static function getAllLine($id = null, $statut=null)
+    {
+        if(!empty($statut) && !empty($id)) return DB::select("SELECT * FROM public.users WHERE users.id = '$id' AND users.statut = '$statut';")[0];
+        elseif(!empty($statut)) return DB::select("SELECT * FROM public.users WHERE users.statut = '$statut';")[0];
+        elseif(!empty($id)) return DB::select("SELECT * FROM public.users WHERE  users.id = '$id';")[0];
+        else return DB::select("SELECT * FROM public.users;");
+    }
+
+    public static function getContentUpdate($id)
+    {
+        $sol = User::getAllLine($id, null);
+        $page = "ras";
+        $page ='
+            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
+            <div class="form-group"  style="">
+                <label class="control-label" for="name">name</label>
+                <input type="text" name="name" id="name" value="'.$sol->name.'" class="form-control" data-error="Entrer le nom." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="surname">surname</label>
+                <input type="text" name="surname" id="surname" value="'.$sol->surname.'" class="form-control" data-error="Entrer le prenom." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="espece">photo</label>
+                <input type="text" name="photo" id="photo" value="'.$sol->photo.'" class="form-control" data-error="choisir un phonto." >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="compte_momo">date_nais</label>
+                <input type="date" name="date_nais" id="date_nais" value="'.$sol->date_nais.'" class="form-control" data-error="choisir la date de naissance." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="compte2">sexe</label>
+                <select name="sexe" id="sexe" class="form-control" data-error="Choisir le sexe." required >
+                '.User::getOptionSexe($sol->sexe).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="telephone">telephone</label>
+                <input type="phone" name="telephone" id="frais_transfert" value="'.$sol->telephone.'" class="form-control" data-error="Entrer la valeur du telephone." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="email">email</label>
+                <input type="email" name="email" id="email" value="'.$sol->email.'" class="form-control" data-error="Entrer la valeur de l\'email." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="statut">statut</label>
+                <input type="number" name="statut" id="statut" value="'.$sol->statut.'" class="form-control" data-error="Entrer la valeur du statut." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
+    }
+
+    public static function getUser($id)
+    {
+        $sol = User::getAllLine('1',$id);
+        $page = "ras";
+        $page ='
+            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
+            <div class="form-group"  style="">
+                <label class="control-label" for="name">Nom</label>
+                <input type="number" name="name" id="fond" value="'.$sol->name.'" class="form-control" data-error="Entrer le nom." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="surname">Prenom</label>
+                <input type="number" name="surname" id="pret" value="'.$sol->surname.'" class="form-control" data-error="Entrer le prenom." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="sexe">Sexe</label>
+                <input type="number" name="sexe" id="sexe" value="'.$sol->sexe.'" class="form-control" data-error="Entrer le Sexe." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="photo">Photo</label>
+                <input type="number" name="photo" id="photo" value="'.$sol->photo.'" class="form-control" data-error="Choisir une photos." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="date_nais">Date_Nais.</label>
+                <input type="number" name="date_nais" id="date_nais" value="'.$sol->date_nais.'" class="form-control" data-error="Choisir la date de naissance." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="telephone">Phone</label>
+                <input type="number" name="telephone" id="telephone" value="'.$sol->telephone.'" class="form-control" data-error="Entrer le numero de téléphone." required >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
+                <label class="control-label" for="email">Email</label>
+                <input type="number" name="email" id="email" value="'.$sol->email.'" class="form-control" data-error="Entrer l\'adresse e-mail." required >
+                <div class="help-block with-errors"></div>
+            </div>
+        ';
+        return $page;
     }
 }

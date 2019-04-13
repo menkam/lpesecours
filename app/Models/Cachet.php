@@ -83,7 +83,7 @@ class Cachet extends Model
         return ([$rowBilan,$somqte,$total]);
     }
 
-    public static function getRecetteCachet($id)
+    public static function getContentUpdate($id)
     {
         $sol = Cachet::getAllLine($id);
         $page = '
