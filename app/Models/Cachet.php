@@ -22,6 +22,21 @@ class Cachet extends Model
     protected $hidden = [
     ];
 
+    public static function updateCachet($request)
+    {
+        return DB::update("
+            UPDATE 
+              cachets
+            SET 
+              date='".$request['date']."', 
+              type='".$request['type']."', 
+              nombre='".$request['nombre']."', 
+              prix_unitaire='".$request['prix_unitaire']."'
+            WHERE 
+              id='".$request['id']."';
+        ");
+    }
+
     public static function getAllLine($id = null, $statut=null)
     {
         if(empty($statut))

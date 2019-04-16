@@ -110,6 +110,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('loadContentModalUpdate', 'ModalController@loadContentModalUpdate')->name('loadContentModalUpdate');
         Route::post('loadContentModalDelete', 'ModalController@loadContentModalDelete')->name('loadContentModalDelete');
 
+        Route::post('saveModalUpdate', 'ModalController@saveModalUpdate')->name('saveModalUpdate');
+
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
 
         Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');

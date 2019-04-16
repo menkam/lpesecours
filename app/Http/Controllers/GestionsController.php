@@ -137,7 +137,6 @@ class GestionsController extends Controller
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
-
     public function saveRecettePhoto(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -184,77 +183,6 @@ class GestionsController extends Controller
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 
-    public function updateRecetteMomo(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'fond' => 'required|integer',
-            'pret' => 'required|integer',
-            'espece' => 'required|integer',
-            'compte_momo' => 'required|integer',
-            'compte2' => 'required|integer',
-            'frais_transfert' => 'required|integer',
-            'commission' => 'required|integer',
-        ]);
-        if ($validator->passes()) {
-            $update = Mobile_money::find($request->id)->update([
-                'date' => $request['date'],
-                'fond' => $request['fond'],
-                'pret' => $request['pret'],
-                'espece' => $request['espece'],
-                'compte_momo' => $request['compte_momo'],
-                'compte2' => $request['compte2'],
-                'frais_transfert' => $request['frais_transfert'],
-                'commission' => $request['commission'],
-            ]);
-            if($update)
-                return response()->json(['success'=>'Modification réussite.']);
-            return response()->json(['error'=>'error']);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
-    }
-    public function updateRecettePhoto(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'type' => 'required|integer',
-            'nombre' => 'required|integer',
-            'prix_unitaire' => 'required|integer',
-        ]);
-        if ($validator->passes()) {
-            $update = Photo::find($request->id)->update([
-                'date' => $request['date'],
-                'type' => $request['type'],
-                'nombre' => $request['nombre'],
-                'prix_unitaire' => $request['prix_unitaire']
-            ]);
-            if($update)
-                return response()->json(['success'=>'Modification réussite.']);
-            return response()->json(['error'=>'error']);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
-    }
-    public function updateRecetteCachet(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'type' => 'required|integer',
-            'nombre' => 'required|integer',
-            'prix_unitaire' => 'required|integer',
-        ]);
-        if ($validator->passes()) {
-            $update = Cachet::find($request->id)->update([
-                'date' => $request['date'],
-                'type' => $request['type'],
-                'nombre' => $request['nombre'],
-                'prix_unitaire' => $request['prix_unitaire']
-            ]);
-            if($update)
-                return response()->json(['success'=>'Modification réussite.']);
-            return response()->json(['error'=>'error']);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
-    }
 
     public function deleteRecetteMomo(Request $request)
     {

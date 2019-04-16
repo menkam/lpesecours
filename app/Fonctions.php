@@ -134,4 +134,15 @@ class Fonctions extends Model
         if($statut=="1") return "Actif";
         else return "Désactivé";
     }
+    public static function updateStatut($request)
+    {
+        return DB::update("
+            UPDATE 
+              ".$request['table']."
+            SET 
+              statut='-1' 
+            WHERE 
+              id='".$request['id']."';
+        ");
+    }
 }

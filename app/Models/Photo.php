@@ -21,6 +21,21 @@ class Photo extends Model
     protected $hidden = [
     ];
 
+    public static function updatePhoto($request)
+    {
+        return DB::update("
+            UPDATE 
+              photos
+            SET 
+              date='".$request['date']."', 
+              type='".$request['type']."', 
+              nombre='".$request['nombre']."', 
+              prix_unitaire='".$request['prix_unitaire']."'
+            WHERE 
+              id='".$request['id']."';
+        ");
+    }
+
     public static function getAllLine($id = null, $statut=null)
     {
         if(empty($statut)) {

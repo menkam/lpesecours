@@ -29,6 +29,23 @@ class Mobile_money extends Model
 
     ];
 
+    public static function updateMomo($request)
+    {
+        return DB::update("
+            UPDATE 
+              mobile_moneys
+            SET
+              fond='".$request['fond']."',
+              pret='".$request['pret']."', 
+              espece='".$request['espece']."', 
+              compte_momo='".$request['compte_momo']."', 
+              compte2='".$request['compte2']."', 
+              frais_transfert='".$request['frais_transfert']."', 
+              commission='".$request['commission']."' 
+            WHERE  date='".$request['date']."';
+        ");
+    }
+
     public static function getAllLine($statut= null, $id=null, $last=null)
     {
         if(!empty($statut))
@@ -109,7 +126,7 @@ class Mobile_money extends Model
             $diffCom = (integer)$value->commission - $commission[$nbr-1];
             $Supplement = ($totalEC2[$nbr]-((integer)$value->fond));
             if((((integer)$value->fond+(integer)$value->pret))<=$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-success">Bon</span></td>';
-            elseif((((integer)$value->fond+(integer)$value->pret))>$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-success">Mauvais</span></td>';
+            elseif((((integer)$value->fond+(integer)$value->pret))>$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-warning">Mauvais</span></td>';
 
             $somPret = $somPret + (integer)$value->pret;
             $somFrais = $somFrais + (integer)$value->frais_transfert;
@@ -130,15 +147,15 @@ class Mobile_money extends Model
 
             $rowBilanMoMo = $rowBilanMoMo.'<tr>
                 <td class="center"><label class="pos-rel"><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
-                <td>'.$value->date.'</td> <!-- date -->
-                <td>'.Fonctions::formatPrix($value->fond).'</td> <!-- fond -->
-                <td>'.Fonctions::formatPrix($value->pret).'</td> <!-- prêt -->
-                <td>'.Fonctions::formatPrix($value->espece).'</td> <!-- espèces -->
-                <td>'.Fonctions::formatPrix($value->compte_momo).'</td> <!-- compteMoMo -->
-                <td>'.Fonctions::formatPrix($value->compte2).'</td> <!-- Compte2 -->
-                <td>'.Fonctions::formatPrix($value->frais_transfert).'</td> <!-- frais transfert -->
-                <td>'.Fonctions::formatPrix($value->commission).'</td> <!-- commission -->
-                <td>'.Fonctions::formatPrix($totalEC2[$nbr]).'</td> <!-- TotalEC2 -->
+                <td title="Date">'.$value->date.'</td> <!-- date -->
+                <td title="Fond">'.Fonctions::formatPrix($value->fond).'</td> <!-- fond -->
+                <td title="Pret">'.Fonctions::formatPrix($value->pret).'</td> <!-- prêt -->
+                <td title="Espèce">'.Fonctions::formatPrix($value->espece).'</td> <!-- espèces -->
+                <td title="Compte MoMo">'.Fonctions::formatPrix($value->compte_momo).'</td> <!-- compteMoMo -->
+                <td title="Compte2">'.Fonctions::formatPrix($value->compte2).'</td> <!-- Compte2 -->
+                <td title="FraisT">'.Fonctions::formatPrix($value->frais_transfert).'</td> <!-- frais transfert -->
+                <td title="Commission">'.Fonctions::formatPrix($value->commission).'</td> <!-- commission -->
+                <td title="Total">'.Fonctions::formatPrix($totalEC2[$nbr]).'</td> <!-- TotalEC2 -->
                 '.$valMargerEC2.'<!-- MargeEC2 -->
                 <td>'.Fonctions::formatPrix($diffCom).'</td> <!-- DiffCom -->
                 <td>'.Fonctions::formatPrix($Supplement).'</td> <!-- Supplement -->

@@ -51,7 +51,12 @@ class ConceptionContoller extends Controller
 
 
 
-        $page = Menu::getOptionIdPere(1, 2);
+        $page = Tlist_groupe_user::updateGroupeUser([
+            'id' => '1',
+            'code' => 'SYSTE',
+            'libelle' => 'System',
+            'statut' => '1'
+        ]);
 
         /*
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">

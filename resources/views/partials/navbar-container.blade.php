@@ -38,8 +38,8 @@
                             <i class="fa fa-folder-o"></i>
                             <i class="fa fa-calculator"></i>
                         </span>
-                                    </button>
-                                    <button id="btn_hide_cal" class="btn btn-warning" style="display: none;">
+                    </button>
+                    <button id="btn_hide_cal" class="btn btn-warning" style="display: none;">
                         <span>
                            <i class="fa fa-folder-open-o"></i>
                             <i class="fa fa-calculator"></i>

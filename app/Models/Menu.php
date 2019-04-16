@@ -50,6 +50,32 @@ class Menu extends Model
     ];
 
 
+    public static function updateMenu($request)
+    {
+        return DB::update("
+            UPDATE 
+              menus
+            SET 
+              id='".$request['id']."', 
+              idparent='".$request['idparent']."', 
+              idfils='".$request['idfils']."', 
+              libelle='".$request['libelle']."', 
+              lien='".$request['lien']."', 
+              icon='".$request['icon']."', 
+              route='".$request['route']."', 
+              controller='".$request['controller']."', 
+              fichiercontroller='".$request['fichiercontroller']."', 
+              fichierview='".$request['fichierview']."', 
+              groupeuser='".$request['groupeuser']."', 
+              rang='".$request['rang']."', 
+              valide='".$request['valide']."',
+              statut='".$request['statut']."' 
+            WHERE 
+              id='".$request['id']."';
+        ");
+    }
+
+
     public static function getOptionIdPere($idpere, $idfils)
     {
         $option = '<option value="">-----------------</option>';
@@ -104,6 +130,10 @@ class Menu extends Model
             ORDER BY
               menus.rang ASC;
         ");
+    }
+    public function getAllMenus()
+    {
+        return DB::select("SELECT * FROM   public.menus ORDER BY menus.id ASC;");
     }
     public function getAllMenu(){
         return DB::select("
@@ -324,7 +354,7 @@ class Menu extends Model
     {
         $bodyListMenus = '';
         $numero = 1;
-        foreach (self::getAllMenu() as $value)
+        foreach (self::getAllMenus() as $value)
         {
             $action = Fonctions::colActionTable("'menu',$value->id");
             $infoGroupeUser = Tlist_groupe_user::getInfo($value->groupeuser);
@@ -365,7 +395,7 @@ class Menu extends Model
         $page ='
             <div class="form-group"  style="">
                 <label class="control-label" for="id">id</label>
-                <input type="number" id="fond" id="id" value="'.$sol->id.'" class="form-control" data-error="Entrer l\'id." required >
+                <input type="number" name="id" id="id" value="'.$sol->id.'" class="form-control" data-error="Entrer l\'id." required >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
@@ -389,7 +419,7 @@ class Menu extends Model
             </div>
             <div class="form-group"  style="">
                 <label class="control-label" for="compte2">lien</label>
-                <input type="text" name="lien" id="lien" value="'.$sol->lien.'" class="form-control" data-error="Entrer le lien." required >
+                <input type="text" name="lien" id="lien" value="'.$sol->lien.'" class="form-control" data-error="Entrer le lien.">
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
@@ -398,44 +428,44 @@ class Menu extends Model
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="commission">route</label>
+                <label class="control-label" for="route">route</label>
                 <input type="text" name="route" id="route" value="'.$sol->route.'" class="form-control" data-error="Entrer la valeur ."  >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="fond">controller</label>
+                <label class="control-label" for="controller">controller</label>
                 <input type="text" name="controller" id="controller" value="'.$sol->controller.'" class="form-control" data-error="Entrer la valeur ."  >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="pret">fichiercontroller</label>
+                <label class="control-label" for="fichiercontroller">fichiercontroller</label>
                 <input type="text" name="fichiercontroller" id="fichiercontroller" value="'.$sol->fichiercontroller.'" class="form-control" data-error="Entrer la valeur ."  >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="espece">fichierview</label>
+                <label class="control-label" for="fichierview">fichierview</label>
                 <input type="text" name="fichierview" id="fichierview" value="'.$sol->fichierview.'" class="form-control" data-error="Entrer le nom." >
                 <div class="help-block with-errors"></div>
             </div>
-            <select class="form-group"  style="">
-                <label class="control-label" for="compte_momo">groupeuser</label>
+            <div class="form-group"  style="">
+                <label class="control-label" for="groupeuser">groupeuser</label>
                 <select name="groupeuser" id="groupeuser"class="form-control" data-error="Choisir le groupe utilisateur accessible au menu." required >
                     '.Tlist_groupe_user::getOption($sol->groupeuser).'
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="compte2">Position</label>
+                <label class="control-label" for="rang">Position</label>
                 <input type="number" name="rang" id="rang" value="'.$sol->rang.'" class="form-control" data-error="Entrer la position." required >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="frais_transfert">valide</label>
+                <label class="control-label" for="valide">valide</label>
                 <input type="number" name="valide" id="valide" value="'.$sol->valide.'" class="form-control" data-error="entere une valeur." required >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
-                <label class="control-label" for="commission">statut</label>
+                <label class="control-label" for="statut">statut</label>
                 <input type="number" name="statut" id="statut" value="'.$sol->statut.'" class="form-control" data-error="Entrer le statut." required >
                 <div class="help-block with-errors"></div>
             </div>

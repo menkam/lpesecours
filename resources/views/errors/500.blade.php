@@ -1,60 +1,44 @@
 @extends('layouts.template')
 @section('title')
-<title>404 Error Page</title>
-<meta name="description" content="404 Error Page" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Erreur interne</title>
+    <meta name="description" content="401 Error Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 @endsection
 
-@section('page-header1')
-<li>
-    <a href="#">Other Pages</a>
-</li>
-<li class="active">Error 404</li>
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="/home">Home</a>
+        </li>
+        <li class="active">Error 500</li>
+    </ul>
 @endsection
+
+@section('page-header')
+    <h1>
+        ERROR
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            500
+        </small>
+    </h1>
+@endsection
+
 @section('content')
-<div class="error-container">
     <div class="well">
         <h1 class="grey lighter smaller">
-            <span class="blue bigger-125">
-                <i class="ace-icon fa fa-sitemap"></i>
-                404
-            </span>
-            Page Not Found
+			<span class="blue bigger-125">
+				<i class="ace-icon fa fa-random"></i>
+				500
+			</span>
+            Erreur interne
         </h1>
 
         <hr />
-        <h3 class="lighter smaller">We looked everywhere but we couldn't find it!</h3>
-
-        <div>
-            <form class="form-search">
-                <span class="input-icon align-middle">
-                    <i class="ace-icon fa fa-search"></i>
-
-                    <input type="text" class="search-query" placeholder="Give it a search..." />
-                </span>
-                <button class="btn btn-sm" type="button">Go!</button>
-            </form>
-
-            <div class="space"></div>
-            <h4 class="smaller">Try one of the following:</h4>
-
-            <ul class="list-unstyled spaced inline bigger-110 margin-15">
-                <li>
-                    <i class="ace-icon fa fa-hand-o-right blue"></i>
-                    Re-check the url for typos
-                </li>
-
-                <li>
-                    <i class="ace-icon fa fa-hand-o-right blue"></i>
-                    Read the faq
-                </li>
-
-                <li>
-                    <i class="ace-icon fa fa-hand-o-right blue"></i>
-                    Tell us about it
-                </li>
-            </ul>
-        </div>
+        <h3 class="lighter smaller">
+            .
+        </h3>
 
         <hr />
         <div class="space"></div>
@@ -65,11 +49,10 @@
                 Go Back
             </a>
 
-            <a href="{{ url('/home') }}" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class="ace-icon fa fa-tachometer"></i>
-                Home
+                Dashboard
             </a>
         </div>
     </div>
-</div>
 @endsection

@@ -54,6 +54,30 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Tlist_acreditation::class);
     }
 
+    public static function updateUser($request)
+    {
+        $updateUser = DB::update("
+            UPDATE 
+              users
+            SET 
+              name='".$request['name']."', 
+              surname='".$request['surname']."', 
+              photo='".$request['photo']."', 
+              date_nais='".$request['date_nais']."', 
+              sexe='".$request['sexe']."', 
+              telephone='".$request['telephone']."', 
+              email='".$request['email']."', 
+              statut='".$request['statut']."'
+            WHERE 
+              id='".$request['id']."';
+        ");
+
+        $updateGroupe = DB::update("UPDATE tlist_groupe_user_user SET  tlist_groupe_user_id='".$request['tlist_groupe_user_id']."'  WHERE user_id='".$request['id']."';");
+
+        if($updateUser && $updateGroupe) return 1;
+        else return 0;
+    }
+
 
     /**
      *
@@ -138,6 +162,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public static function getAllUsers()
+    {
+        return DB::select("SELECT * FROM   public.users ORDER BY users.id ASC;");
+    }
+
 
     public static function getOptionSexe($old)
     {
@@ -164,7 +193,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $bodyListUsers = '';
         $numero = 1;
-        foreach (User::all() as $value)
+        foreach (User::getAllUsers() as $value)
         {
             $action = Fonctions::colActionTable("'user',$value->id");
             $infoGroupeUser = Tlist_groupe_user_user::getInfo($value->id);
@@ -198,6 +227,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $page = "ras";
         $page ='
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
+            <div class="form-group"  style="">
+                <label class="control-label" for="idGroupeuser">groupeuser</label>
+                <select name="idGroupeuser" id="idGroupeuser"class="form-control" data-error="Choisir le groupe utilisateur accessible au menu." required >
+                    '.Tlist_groupe_user::getOption(null,$sol->id).'
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
             <div class="form-group"  style="">
                 <label class="control-label" for="name">name</label>
                 <input type="text" name="name" id="name" value="'.$sol->name.'" class="form-control" data-error="Entrer le nom." required >

@@ -31,14 +31,50 @@ class Tlist_groupe_user extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public static function getOption($id)
+    public static function getAllGroupeUser()
     {
+        return DB::select("SELECT * FROM   public.tlist_groupe_users ORDER BY tlist_groupe_users.id ASC;");
+    }
+
+    public static function updateGroupeUser($request)
+    {
+        return DB::update("
+            UPDATE 
+              tlist_groupe_users
+            SET 
+              code='".$request['code']."', 
+              libelle='".$request['libelle']."',
+              statut='".$request['statut']."' 
+            WHERE 
+              id='".$request['id']."';
+        ");
+    }
+
+    public static function getOption($idGrpupe=null, $idUser=null)
+    {
+        $oldId=0;
+        if(!empty($idGrpupe)) $oldId = $idGrpupe;
+        elseif(!empty($idUser)) $oldId = DB::select("
+                SELECT 
+                  tlist_groupe_users.id, 
+                  tlist_groupe_users.code, 
+                  tlist_groupe_users.libelle
+                FROM 
+                  public.users, 
+                  public.tlist_groupe_user_user, 
+                  public.tlist_groupe_users
+                WHERE 
+                  tlist_groupe_user_user.user_id = users.id AND
+                  tlist_groupe_user_user.tlist_groupe_user_id = tlist_groupe_users.id AND
+                  users.id = '$idUser';
+            ")[0]->id;
+
         $groupeUser = DB::select("SELECT * FROM public.tlist_groupe_users;");
         $option = '<option value="">-----------------</option>';
         foreach ($groupeUser as $value)
         {
-            if($id==$value->id) $option = $option.'<option value="'.$value->id.'" selected>'.$value->code.'=>['.$value->libelle.']</option>';
-            else $option = $option.'<option value="'.$value->id.'">'.$value->code.'=>['.$value->libelle.']</option>';
+            if($oldId==$value->id) $option = $option.'<option value="'.$value->id.'" title="'.$value->libelle.'" selected>'.$value->code.' (oldValue)</option>';
+            else $option = $option.'<option value="'.$value->id.'" title="'.$value->libelle.'">'.$value->code.'</option>';
         }
         return $option;
     }
@@ -74,7 +110,7 @@ class Tlist_groupe_user extends Model
     {
         $bodyListGroupeUser = '';
         $numero = 1;
-        foreach (Tlist_groupe_user::all() as $value)
+        foreach (Tlist_groupe_user::getAllGroupeUser() as $value)
         {
             $action = Fonctions::colActionTable("'groupeuser',$value->id");
 

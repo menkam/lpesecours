@@ -304,7 +304,7 @@ class MenuSeeder extends Seeder
         $object->idparent = '41';
         $object->idfils = '3';
         $object->libelle = 'Bilan Cachet';
-        $object->groupeuser = '3';
+        $object->groupeuser = '3 ';
         $object->rang = '3';
         $object->lien = 'Gestions\Cachet\Bilan';
         $object->icon = 'bar-chart-o';

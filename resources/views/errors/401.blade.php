@@ -1,25 +1,38 @@
 @extends('layouts.template')
 @section('title')
-<title>Non autorisé</title>
-<meta name="description" content="401 Error Page" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<title>Non autorisé</title>
+	<meta name="description" content="401 Error Page" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 @endsection
 
-@section('page-header1')
-<li>
-    <a href="#">Other Pages</a>
-</li>
-<li class="active">Error 500</li>
+@section('breadcrumb')
+	<ul class="breadcrumb">
+		<li>
+			<i class="ace-icon fa fa-home home-icon"></i>
+			<a href="/home">Home</a>
+		</li>
+		<li class="active">Error 401</li>
+	</ul>
 @endsection
+
+@section('page-header')
+	<h1>
+		ERROR
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			401
+		</small>
+	</h1>
+@endsection
+
 @section('content')
-<div class="error-container">
 	<div class="well">
 		<h1 class="grey lighter smaller">
 			<span class="blue bigger-125">
 				<i class="ace-icon fa fa-random"></i>
 				401
 			</span>
-			Something Went Wrong
+			Accès restraint
 		</h1>
 
 		<hr />
@@ -42,5 +55,4 @@
 			</a>
 		</div>
 	</div>
-</div>
 @endsection

@@ -5,12 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 @endsection
 
-@section('page-header1')
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="/home">Home</a>
+        </li>
+        <li class="active">Error 404</li>
+    </ul>
+@endsection
+
+@section('page-header')
 <li>
     <a href="#">Other Pages</a>
 </li>
 <li class="active">Error 404</li>
 @endsection
+
 @section('content')
 <div class="error-container">
     <div class="well">

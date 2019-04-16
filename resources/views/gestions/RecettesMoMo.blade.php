@@ -123,6 +123,7 @@
     </table>
 </div>
 <div class="col-xl-12 col-md-1 col-lg-2"></div>
+<div class="col-xl-12 col-md-1 col-lg-2"><button class="btn btn-primary"><a href="bilanMoMo">Billan</a></button></div>
 @endsection
 
 @section("scripts")
