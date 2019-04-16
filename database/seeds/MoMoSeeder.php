@@ -210,5 +210,174 @@ class MoMoSeeder extends Seeder
         $object->commission = '28534';
         $object->save();
 
+
+
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-02';
+        $object->fond = '250000';
+        $object->pret = '0';
+        $object->espece = '260200';
+        $object->compte_momo = '32975';
+        $object->compte2 = '282';
+        $object->frais_transfert = '0';
+        $object->commission = '29182';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-03';
+        $object->fond = '250000';
+        $object->pret = '0';
+        $object->espece = '267650';
+        $object->compte_momo = '25475';
+        $object->compte2 = '282';
+        $object->frais_transfert = '0';
+        $object->commission = '29256';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-04';
+        $object->fond = '250000';
+        $object->pret = '-4700';
+        $object->espece = '94250';
+        $object->compte_momo = '194275';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '30048';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-05';
+        $object->fond = '250000';
+        $object->pret = '-1775';
+        $object->espece = '52425';
+        $object->compte_momo = '233925';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '30296';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-06';
+        $object->fond = '250000';
+        $object->pret = '-33700';
+        $object->espece = '38125';
+        $object->compte_momo = '214611';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '30487';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-07';
+        $object->fond = '250000';
+        $object->pret = '0';
+        $object->espece = '40625';
+        $object->compte_momo = '212111';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '30571';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-08';
+        $object->fond = '250000';
+        $object->pret = '350';
+        $object->espece = '121975';
+        $object->compte_momo = '131111';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '31452';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-09';
+        $object->fond = '250000';
+        $object->pret = '-3000';
+        $object->espece = '124975';
+        $object->compte_momo = '125211';
+        $object->compte2 = '82';
+        $object->frais_transfert = '0';
+        $object->commission = '31498';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-10';
+        $object->fond = '250000';
+        $object->pret = '0';
+        $object->espece = '215975';
+        $object->compte_momo = '33861';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '31893';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-12';
+        $object->fond = '250000';
+        $object->pret = '900';
+        $object->espece = '246700';
+        $object->compte_momo = '4891';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '32239';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-11';
+        $object->fond = '250000';
+        $object->pret = '800';
+        $object->espece = '237625';
+        $object->compte_momo = '13061';
+        $object->compte2 = '180';
+        $object->frais_transfert = '0';
+        $object->commission = '32112';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-13';
+        $object->fond = '250000';
+        $object->pret = '12425';
+        $object->espece = '243325';
+        $object->compte_momo = '20691';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '32355';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-14';
+        $object->fond = '250000';
+        $object->pret = '5000';
+        $object->espece = '90525';
+        $object->compte_momo = '178391';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '33110';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-15';
+        $object->fond = '250000';
+        $object->pret = '5000';
+        $object->espece = '61025';
+        $object->compte_momo = '212891';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '33363';
+        $object->save();
+
+        $object = new Mobile_money();
+        $object->date = '2019-04-16';
+        $object->fond = '250000';
+        $object->pret = '800';
+        $object->espece = '83225';
+        $object->compte_momo = '191491';
+        $object->compte2 = '182';
+        $object->frais_transfert = '0';
+        $object->commission = '33570';
+        $object->save();
+
+
     }
 }

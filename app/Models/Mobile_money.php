@@ -223,7 +223,8 @@ class Mobile_money extends Model
 
     public static  function seeder(){
         $content = '';
-        foreach (Mobile_money::getAllLine('1') as $value){
+        $mobile_money = DB::select("SELECT * FROM mobile_moneys WHERE date > '01-04-2019';");
+        foreach ($mobile_money as $value){
 
             $content = $content.'
                 $object = new Mobile_money();<br>

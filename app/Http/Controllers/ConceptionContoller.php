@@ -51,12 +51,7 @@ class ConceptionContoller extends Controller
 
 
 
-        $page = Tlist_groupe_user::updateGroupeUser([
-            'id' => '1',
-            'code' => 'SYSTE',
-            'libelle' => 'System',
-            'statut' => '1'
-        ]);
+        //$result = Mobile_money::seeder();
 
         /*
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
@@ -97,11 +92,11 @@ class ConceptionContoller extends Controller
                 <div class="help-block with-errors"></div>
             </div>
         ';*/
-        dd($page);
+        //echo($page);
 
         //dd($newUser->id);
        // if($test) $result="ok"; else $result="non";
-        //return view("applications/Maintenance", compact('result'));
+        return view("applications/Maintenance", compact('result'));
 
     }
 
