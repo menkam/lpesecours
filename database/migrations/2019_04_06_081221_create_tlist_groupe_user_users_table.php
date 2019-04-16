@@ -16,7 +16,7 @@ class CreateTlistGroupeUserUsersTable extends Migration
         Schema::create('tlist_groupe_user_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tlist_groupe_user_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->unique();
 
             $table->foreign('tlist_groupe_user_id')->references('id')->on('tlist_groupe_users');
             $table->foreign('user_id')->references('id')->on('users');

@@ -218,6 +218,7 @@ function saveModalUpdateUser() {
 function saveModalUpdateMomo() {
     var _token = $("input[name='_token']").val();
     var typeSave = $("input[name='typeSave']").val();
+    var id = $("input[name='id']").val();
     var date = $("input[name='date']").val();
     var fond = $("input[name='fond']").val();
     var pret = $("input[name='pret']").val();
@@ -233,6 +234,7 @@ function saveModalUpdateMomo() {
         data: {
             _token:_token,
             typeModal:typeSave,
+            id:id,
             date:date,
             fond:fond,
             pret:pret,
