@@ -1,9 +1,9 @@
-<!--div class="footer">
+<div class="footer">
     <div class="footer-inner">
         <div class="footer-content">
             <span class="bigger-120">
+                Application  &copy; 2019  tout drois reservés
                 <span class="blue bolder">men_franc </span>
-                Application  &copy; 2019  tout droit reservés
             </span>            &nbsp; &nbsp;
             <span class="action-buttons">
                 <a href="#">
@@ -21,8 +21,8 @@
             <p><MARQUEE bgcolor="#bgbg"  BEHAVIOR000="alternate" style="border:blue 1px SOLID">Ce site est encore en mode <b>développeur</b> donc vous pouvez être par moment déconnecter (une minute au max) et toutes nos excuses pour ce désagrément</MARQUEE ></p>
         </div>
     </div>
-</div-->
-<div class="footer">
+</div>
+<!--div class="footer">
     <div class="footer-inner">
         <div class="footer-content">
             <span class="bigger-120">
@@ -46,4 +46,4 @@
             </span>
         </div>
     </div>
-</div>
+</div-->
