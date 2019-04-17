@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.error')
 @section('title')
     <title>Erreur interne</title>
     <meta name="description" content="401 Error Page" />
@@ -16,43 +16,36 @@
 @endsection
 
 @section('page-header')
-    <h1>
-        ERROR
-        <small>
-            <i class="ace-icon fa fa-angle-double-right"></i>
-            500
-        </small>
-    </h1>
+<h1 class="grey lighter smaller">
+    <span class="blue bigger-125">
+        <i class="ace-icon fa fa-random"></i>
+        500
+    </span>
+    Something Went Wrong
+</h1>
 @endsection
 
 @section('content')
-    <div class="well">
-        <h1 class="grey lighter smaller">
-			<span class="blue bigger-125">
-				<i class="ace-icon fa fa-random"></i>
-				500
-			</span>
-            Erreur interne
-        </h1>
+<h3 class="lighter smaller">
+    But we are working
+    <i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
+    on it!
+</h3>
 
-        <hr />
-        <h3 class="lighter smaller">
-            .
-        </h3>
+<div class="space"></div>
+<div>
+    <h4 class="lighter smaller">Meanwhile, try one of the following:</h4>
 
-        <hr />
-        <div class="space"></div>
+    <ul class="list-unstyled spaced inline bigger-110 margin-15">
+        <li>
+            <i class="ace-icon fa fa-hand-o-right blue"></i>
+            Read the faq
+        </li>
 
-        <div class="center">
-            <a href="javascript:history.back()" class="btn btn-grey">
-                <i class="ace-icon fa fa-arrow-left"></i>
-                Go Back
-            </a>
-
-            <a href="#" class="btn btn-primary">
-                <i class="ace-icon fa fa-tachometer"></i>
-                Dashboard
-            </a>
-        </div>
-    </div>
+        <li>
+            <i class="ace-icon fa fa-hand-o-right blue"></i>
+            Give us more info on how this specific error occurred!
+        </li>
+    </ul>
+</div>
 @endsection

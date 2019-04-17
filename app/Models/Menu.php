@@ -372,7 +372,7 @@ class Menu extends Model
             <!--td>'.$value->controller.'</td-->
             <!--td>'.$value->fichiercontroller.'</td-->
             <!--td>'.$value->fichierview.'</td-->
-            <td>'.$value->valide.'</td>
+            <!--td>'.$value->valide.'</td-->
             <td>'.Fonctions::formatStatut($value->statut).'</td>
             <td>'.$action.'</td>
             </tr>';
