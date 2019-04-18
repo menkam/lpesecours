@@ -57,6 +57,7 @@
                         <th>id</th> <!-- idMenu -->
                         <th>Nom</th> <!-- idPere -->
                         <th>Prenom</th> <!-- idFils -->
+                        <th>DateNais.</th> <!-- idFils -->
                         <th>Sexe</th> <!-- Libelle -->
                         <th>Télephone</th> <!-- groupeUser -->
                         <th>Email</th> <!-- icon -->

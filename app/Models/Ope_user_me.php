@@ -13,8 +13,9 @@ class Ope_user_me extends Model
 
     protected $fillable = [
    		'id_operation',
-   		'id_user',
-   		'id_message'
+   		'id_user_recive',
+   		'id_message',
+   		'statut'
    	];
 
    	protected $hidden = [

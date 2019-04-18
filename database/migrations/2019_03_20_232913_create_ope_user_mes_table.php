@@ -18,6 +18,7 @@ class CreateOpeUserMesTable extends Migration
             $table->integer('id_operation');
             $table->integer('id_user_recive');
             $table->integer('id_message');
+            $table->integer('statut')->default('0');
             $table->timestamps();
 
             //$table->primary(['id_operation','id_user','id_message']);

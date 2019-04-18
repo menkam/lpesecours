@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Tlist_messageSeeder::class);
         $this->call(Tlist_operationSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(MessageSeeder::class);
+        $this->call(Oper_user_mesSeeder::class);
         $this->call(Galerie_images_accueilSeeder::class);
         $this->call(MenuSeeder::class);
         $this->call(Tlist_ope_gestionSeeder::class);

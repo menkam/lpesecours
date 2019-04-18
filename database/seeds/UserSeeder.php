@@ -17,6 +17,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+
         $groupe_system = Tlist_groupe_user::where('code', 'SYSTE')->first();
         $groupe_admin = Tlist_groupe_user::where('code', 'ADMIN')->first();
         $groupe_personnel = Tlist_groupe_user::where('code', 'PERSO')->first();
@@ -63,6 +65,9 @@ class UserSeeder extends Seeder
         $object->id_user2 = $idLastUser;
         $object->save();
 
+        //////////////////////////////////////
+        $userSystem = User::where('email', 'lpesecours@gmail.com')->first();
+
         ///////admin/////////////////
         $object = new User();
         $object->name = 'MENKAM';
@@ -74,6 +79,7 @@ class UserSeeder extends Seeder
         $object->email = 'menkam35@gmail.com';
         $object->password = bcrypt('MENKAMfrancis');
         $idLastUser = $object->save();
+
         $object->groupe_users()->attach($groupe_admin);
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
@@ -88,14 +94,11 @@ class UserSeeder extends Seeder
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = '1';
+        $object->id_user = $userSystem['id'];
         $object->id_user2 = $idLastUser;
         $object->save();
 
-
 ///////////////personnel////////////////////
-
-        $user = User::where('email', 'lpesecours@gmail.com')->first();
 
         $object = new User();
         $object->name = 'PERSONNEL';
@@ -118,14 +121,11 @@ class UserSeeder extends Seeder
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = $user['id'];
+        $object->id_user = $userSystem['id'];
         $object->id_user2 = $idLastUser;
         $object->save();
 
 ///////////////membre////////////////////
-
-        $user = User::where('email', 'lpesecours@gmail.com')->first();
-
         $object = new User();
         $object->name = 'MEMBRE';
         $object->surname = 'Membre';
@@ -146,14 +146,11 @@ class UserSeeder extends Seeder
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = $user['id'];
+        $object->id_user = $userSystem['id'];
         $object->id_user2 = $idLastUser;
         $object->save();
 
 ///////////////visiteur////////////////////
-
-        $user = User::where('email', 'lpesecours@gmail.com')->first();
-
         $object = new User();
         $object->name = 'VISITEUR';
         $object->surname = 'invite';
@@ -174,15 +171,12 @@ class UserSeeder extends Seeder
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = $user['id'];
+        $object->id_user = $userSystem['id'];
         $object->id_user2 = $idLastUser;
         $object->save();
 
 
 ///////////////bloquer////////////////////
-
-        $user = User::where('email', 'lpesecours@gmail.com')->first();
-
         $object = new User();
         $object->name = 'BLOQUER';
         $object->surname = 'Bloquer';
@@ -201,7 +195,7 @@ class UserSeeder extends Seeder
 
         $object = new Ope_user_user();
         $object->id_operation = $idLastOperation;
-        $object->id_user = $user['id'];
+        $object->id_user = $userSystem['id'];
         $object->id_user2 = $idLastUser;
         $object->save();
     }

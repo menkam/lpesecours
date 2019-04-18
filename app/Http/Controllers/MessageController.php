@@ -87,11 +87,15 @@ class MessageController extends Controller
 
     public function showInfoNav(Request $request)
     {
+
+        $typeMessage='SYS';
+        $statut='0';
+
         $idUser = \Auth::user()->getGroupe_user();
         $type = $request->type;
         if($idUser)
         {
-            $infoMenus = Message::showInfoNav($idUser,$type);
+            $infoMenus = Message::showInfoNav($type,$typeMessage,$idUser,$statut);
             if($infoMenus[0])
             {
                 return response()->json(['success'=>$infoMenus[1]]);

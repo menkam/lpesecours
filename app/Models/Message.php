@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Fonctions;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tlist_message;
+use DB;
 
 class Message extends Model
 {
@@ -12,6 +13,7 @@ class Message extends Model
 
     protected $fillable = [
    		'type_message',
+   		'id_user_send',
    		'objet',
    		'libelle',
    		'statut'
@@ -30,7 +32,7 @@ class Message extends Model
         
     ];
 
-    public static function showInfoNav($idUser, $type)
+    public static function showInfoNav($type,$typeMessage,$idUser,$statut)
     {
         $erreur = 0;
         $sol = '';
@@ -39,7 +41,7 @@ class Message extends Model
             if($type=='inbox')
             {
                 $erreur = 1;
-                $sol = Message::findInbox($idUser);
+                $sol = Message::findInbox($typeMessage,$idUser,$statut);
             }
             elseif($type=='notification')
             {
@@ -50,33 +52,79 @@ class Message extends Model
         return ([$erreur,$sol]);
     }
 
-    public static function findInbox($id)
+    public static function getInbox($typeMessage=null, $idUser=null, $statut=null)
+    {
+        return DB::select("
+            SELECT 
+              users.id as id_user, 
+              users.name, 
+              users.surname, 
+              users.photo, 
+              users.sexe, 
+              users.telephone, 
+              users.email, 
+              tlist_messages.code, 
+              tlist_messages.libelle, 
+              messages.id as id_message, 
+              messages.objet, 
+              messages.libelle, 
+              ope_user_mes.id as id_ope_user, 
+              ope_user_mes.id_operation, 
+              ope_user_mes.id_user_recive, 
+              ope_user_mes.id_message,
+              ope_user_mes.created_at, 
+              ope_user_mes.statut
+            FROM 
+              public.users, 
+              public.ope_user_mes, 
+              public.messages, 
+              public.tlist_messages
+            WHERE 
+              ope_user_mes.id_message = messages.id AND
+              messages.id_user_send = users.id AND
+              messages.type_message = tlist_messages.id AND
+              ope_user_mes.id_user_recive = '$idUser' AND 
+              tlist_messages.code = '$typeMessage' AND 
+              ope_user_mes.statut = '$statut'
+            ORDER BY
+              ope_user_mes.created_at DESC;");
+    }
+
+    public static function countInbox($typeMessage=null, $idUser=null, $statut=null)
+    {
+
+    }
+
+    public static function findInbox($typeMessage,$idUser,$statut)
     {
         $ligne = '';
-        $countMsg = 0;
+        $inbox = Message::getInbox($typeMessage, $idUser, $statut);
+        $countMsg = count($inbox);
 
-        $idInbox = 0;
-        $avatar = 'avatar.png';
-        $nameSend = 'Alex';
-        $object = 'Ciao sociis natoque penatibus et auctor';
-        $dateSend = '17/04/2019 17:08';
-        $ligne = '<li>
-                <a href="#" class="clearfix" onclick="lectureInbox(\''.$idInbox.'\')">
-                    <img src="assets/images/avatars/'.$avatar.'" class="msg-photo" alt="'.$nameSend.'\'s Avatar" />
-                    <span class="msg-body">
-                        <span class="msg-title">
-                            <span class="blue">'.$nameSend.':</span>
-                            '.$object.'...
+        foreach ($inbox as $value) {
+            $idInbox = (int)$value->id_user;
+            $avatar = $value->photo;
+            $nameSend = $value->name;
+            $object = $value->objet;
+            $dateSend = $value->created_at;
+
+            $ligne = $ligne.'<li>
+                    <a href="#" class="clearfix" onclick="lectureInbox(\'' . $idInbox . '\')">
+                        <img src="assets/images/avatars/' . $avatar . '" class="msg-photo" alt="' . $nameSend . '\'s Avatar" />
+                        <span class="msg-body">
+                            <span class="msg-title">
+                                <span class="blue">' . $nameSend . ':</span>
+                                ' . $object . '...
+                            </span>
+    
+                            <span class="msg-time">
+                                <i class="ace-icon fa fa-clock-o"></i>
+                                <span>' . Fonctions::calculDuree($dateSend) . '</span>
+                            </span>
                         </span>
-
-                        <span class="msg-time">
-                            <i class="ace-icon fa fa-clock-o"></i>
-                            <span>'.Fonctions::calculDuree($dateSend).'</span>
-                        </span>
-                    </span>
-                </a>
-            </li>';
-
+                    </a>
+                </li>';
+        }
         $sol = '<a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
                         <span class="badge badge-success">'.$countMsg.'</span>

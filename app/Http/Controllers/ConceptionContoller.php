@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use App\Models\Galerie_images_accueil;
 use Illuminate\Support\Facades\Auth;
@@ -31,71 +33,22 @@ class ConceptionContoller extends Controller
     {
 
         $result = "RAS";
+        $tz = '+01:00';
+        //$currentDates = new DateTime('2019-04-18 14:52:00');
+        $now = Carbon::now($tz);
+        //$date = Carbon::createFromDate('2019','04','18', '+01:00');
+        $date = Carbon::create('2019','04','18','17', '26', '00', $tz);
+        //$dif = (Carbon::parse(Carbon::now($tz))->diffInMinutes($date) < 2) ? 'à l\'instant' : $date->diffForHumans($now);
+        /*$dif = Carbon::parse(Carbon::now($tz))->diffInYears($date);
+        $dif = Carbon::parse(Carbon::now($tz))->diffInMonths($date);
+        $dif = Carbon::parse(Carbon::now($tz))->diffInDays($date);
+        $dif = Carbon::parse(Carbon::now($tz))->diffInHours($date);
+        $dif = Carbon::parse(Carbon::now($tz))->diffInMinutes($date);*/
 
-        //$result = Menu::genererMenuSeeder();
-        //$result = Cachet::Seeder();
-        //$result = Photo::Seeder();
-        //$result = Mobile_money::Seeder();   654321
-        //$result = Mobile_money::infoUtile();
 
+        $result = Fonctions::calculDuree('2019-04-18 14:52:00');
         //dd($result);
 
-        //$update = Mobile_money::getAllLine(19);
-        //$data['statut']=0;
-        //$update = Mobile_money::find('18')->update($data);
-        //$update = Mobile_money::getAllLine('1');
-        //$test = Tlist_groupe_user::verifGroupeUserConnect(auth()->user(),'SYSTE');
-
-        //if(!empty(\auth::user()->getGroupe_user())) $groupeUser = auth::user()->getGroupe_user();
-        //$result = auth::user()->getGroupe_user();
-
-
-
-        //$result = Mobile_money::seeder();
-
-        /*
-            <input type="hidden" id="id" value="'.$sol->id.'" name="id">
-            <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
-            <div class="form-group"  style="">
-                <label class="control-label" for="fond">Fond</label>
-                <input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="pret">Prêt (+/-)</label>
-                <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="espece">Espèce</label>
-                <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="compte_momo">CompteMomo</label>
-                <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="compte2">Compte2</label>
-                <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="frais_transfert">FraisTransfère</label>
-                <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-                <div class="form-group"  style="">
-                <label class="control-label" for="commission">Commission</label>
-                <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
-                <div class="help-block with-errors"></div>
-            </div>
-        ';*/
-        //echo($page);
-
-        //dd($newUser->id);
-       // if($test) $result="ok"; else $result="non";
         return view("applications/Maintenance", compact('result'));
 
     }

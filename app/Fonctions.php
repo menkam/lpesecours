@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Faker\Provider\DateTime;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -145,9 +147,22 @@ class Fonctions extends Model
               id='".$request['id']."';
         ");
     }
+    public static function calculAge($dateOfBrith)
+    {
+        return Carbon::parse($dateOfBrith)->age;
+    }
     public static function calculDuree($dateHeur)
     {
         $result = 'a moment ago';
+        $tz = '+01:00';
+        $now = Carbon::now($tz);
+        $dateHeurs = explode(' ',$dateHeur);
+        $dates  = $dateHeurs[0]; $date  = explode('-',$dates); $year = $date[0]; $month = $date[1]; $day = $date[2];
+        $heures = $dateHeurs[1]; $heure = explode(':',$heures); $hour = $heure[0]; $minute = $heure[1]; $second = $heure[2];
+
+        $date = Carbon::create($year,$month,$day,$hour,$minute,$second,$tz);
+        $result = (Carbon::parse(Carbon::now($tz))->diffInMinutes($date) < 2) ? 'à l\'instant' : $date->diffForHumans($now);
+
         return $result;
     }
 }
