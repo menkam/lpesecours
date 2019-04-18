@@ -5,6 +5,81 @@ $.ajaxSetup({
 });
 
 $(document).ready(function(){
+    calculatrice();
+    showInfoInbox();
+    showInfoNotification();
+
+    //alert("yes...");
+});
+
+function showInfoInbox()
+{
+    var row = '';
+    var position = $("#showInfoInbox");
+    $.ajax({
+        url: "showInfoNav",
+        type:'POST',
+        data: {type:'inbox'},
+        success: function(data) {
+            if($.isEmptyObject(data.error)){
+                position.empty();
+                position.append(data.success);
+            }else{
+                tostErreur(data.error);
+            }
+        },
+        error: function (e) {
+            tostErreur("Fatal Error");
+        }
+    });
+}
+function showInfoNotification()
+{
+    var position = $("#showInfoNotification");
+    $.ajax({
+        url: "showInfoNav",
+        type:'POST',
+        data: {type:'notification'},
+        success: function(data) {
+            if($.isEmptyObject(data.error)){
+                position.empty();
+                position.append(data.success);
+            }else{
+                tostErreur(data.error);
+            }
+        },
+        error: function (e) {
+            tostErreur("Fatal Error");
+        }
+    });
+}
+
+
+function lectureInbox(id)
+{
+
+    alert("lue"+id);
+
+    /*$.ajax({
+        url: "showInfoNav",
+        type:'POST',
+        data: {type:'notification'},
+        success: function(data) {
+            if($.isEmptyObject(data.error)){
+                position.empty();
+                position.append(data.success);
+            }else{
+                tostErreur(data.error);
+            }
+        },
+        error: function (e) {
+            tostErreur("Fatal Error");
+        }
+    });*/
+}
+
+
+function calculatrice() {
     var btnshow = $("#btn_show_cal");
     var btnhide = $("#btn_hide_cal");
     var divcal = $("#div_calucatrice");
@@ -24,113 +99,24 @@ $(document).ready(function(){
     });
 
     $('#cal_opp').keyup(function(){
-      var cal_opp = $(this).val();
-      var cal_sol = $("#cal_sol");
+        var cal_opp = $(this).val();
+        var cal_sol = $("#cal_sol");
         if(cal_opp.length > 2){
-          $.ajax({
-            url: "calculatrice",
-            type:'POST',
-            data: {
-                cal_opp:cal_opp
-            },
-            success: function(data) {
-                cal_sol.empty();
-                cal_sol.append(data);
-            }
-        });     
-      }
-    });
-    
-    //alert("yes...");
-});
-
-
-/**
- * Get option duree
- * @param position
- */
-function getOptionSexe(position) {
-    var rows = '<option value="">-----------------</option>';
-    var position = $("#"+position+"");
-    rows = rows + '<option value="F">Féminin</option>';
-    rows = rows + '<option value="M">Masculin</option>';
-    position.empty();
-    position.append(rows).slideDown();
-}
-/*
-function getOptionGroupeUser(position) {
-    var rows = '<option value="">-----------------</option>';
-    var position = $("#"+position+"");
-    rows = rows + '<option value="5">Visiteur</option>';
-    position.empty();
-    position.append(rows).slideDown();
-}*/
-
-function getOptionAcreditation(position) {
-    var rows = '<option value="">-----------------</option>';
-    var position = $("#"+position+"");
-    rows = rows + '<option value="1">Lecture</option>';
-    position.empty();
-    position.append(rows).slideDown();
-}
-
-function getOptionTypePhoto(position)
-{
-    var position = $("#"+position+"");
-    $.ajax({
-        url: "getOptionTypePhoto",
-        type:'POST',
-        success: function(data) {
-            position.empty();
-            position.append(data).slideDown();
+            $.ajax({
+                url: "calculatrice",
+                type:'POST',
+                data: {
+                    cal_opp:cal_opp
+                },
+                success: function(data) {
+                    cal_sol.empty();
+                    cal_sol.append(data);
+                }
+            });
         }
     });
 }
 
-function getOptionTypeCachet(position)
-{
-    var position = $("#"+position+"");
-    $.ajax({
-        url: "getOptionTypeCachet",
-        type:'POST',
-        success: function(data) {
-            position.empty();
-            position.append(data).slideDown();
-        }
-    });
-}
-
-
-/**
- * Get option groupe users
- * @param position
- */
-
-function getOptionGroupeUser(position) {
-    var rows = '<option value="">-----------------</option>';
-    var position = $("#"+position+"");
-
-     $.ajax({
-        type: "POST",
-        dataType: 'json',
-        url: 'getOptionGroupeUser',
-
-        success: function(data){
-
-            rows = rows + '<option value="">'+data+'</option>';
-            position.empty();
-
-            alert("5");
-            /*for(var i=0; i < data.length; i++) {
-                rows = rows + '<option value="'+data[i].id+'">'+data[i].libelle+'=>'+data[i].code+'</option>';
-            }
-            position.empty();
-            position.append(rows).slideDown();*/
-        }
-    });
-
-    //position.append(rows).slideDown();
-}
 /**
  * Toast de success
  * @param msg

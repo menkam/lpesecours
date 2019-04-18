@@ -19,7 +19,6 @@ class CreateOpeUserGestsTable extends Migration
             $table->integer('id_user');
             $table->integer('type');
             $table->date('date');
-            $table->timestamps();
 
             //$table->primary(['id_operation','id_user','id_message']);
             $table->foreign('id_operation')->references('id')->on('operations')->onDelete('cascade');

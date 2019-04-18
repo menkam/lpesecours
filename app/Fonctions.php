@@ -145,4 +145,9 @@ class Fonctions extends Model
               id='".$request['id']."';
         ");
     }
+    public static function calculDuree($dateHeur)
+    {
+        $result = 'a moment ago';
+        return $result;
+    }
 }

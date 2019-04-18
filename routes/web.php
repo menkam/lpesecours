@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/home', 'HomeController@index')->name('home');
         Route::post('calculatrice', 'GestionsController@calculatrice')->name('calculatrice');
+        Route::post('showInfoNav', 'MessageController@showInfoNav')->name('showInfoNav');
+
         /**
          * Option Menu
          */

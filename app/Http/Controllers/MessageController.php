@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MessageController extends Controller
 {
@@ -81,5 +83,24 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         //
+    }
+
+    public function showInfoNav(Request $request)
+    {
+        $idUser = \Auth::user()->getGroupe_user();
+        $type = $request->type;
+        if($idUser)
+        {
+            $infoMenus = Message::showInfoNav($idUser,$type);
+            if($infoMenus[0])
+            {
+                return response()->json(['success'=>$infoMenus[1]]);
+            }
+            else
+                return response()->json(['error'=>'erreur infoMenu']);
+        }
+        else
+            return response()->json(['error'=>'erreur idUser']);
+
     }
 }

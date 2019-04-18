@@ -13,6 +13,11 @@ class Tlist_messageSeeder extends Seeder
     public function run()
     {
         $object = new Tlist_message();
+        $object->code = 'SYS';
+        $object->libelle = 'Systeme';
+        $object->save();
+
+        $object = new Tlist_message();
         $object->code = 'TCH';
         $object->libelle = 'Tchat';
         $object->save();

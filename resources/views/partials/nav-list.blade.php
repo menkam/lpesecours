@@ -6,9 +6,8 @@
         </a>
         <b class="arrow"></b>
     </li>
-
-    <?php
-    if(Session::has('menus'))
-        echo (Session::get('menus'));
+    <?php //if(Session::has('menus')) echo (Session::get('menus')); ?>
+    <?php use App\Models\Menu;
+        if(!empty(Auth::user()->id)) echo Menu::loadMenus(\Auth::user()->getGroupe_user());
     ?>
 </ul>

@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
+        $groupe_system = Tlist_groupe_user::where('code', 'SYSTE')->first();
         $groupe_admin = Tlist_groupe_user::where('code', 'ADMIN')->first();
         $groupe_personnel = Tlist_groupe_user::where('code', 'PERSO')->first();
         $groupe_membre = Tlist_groupe_user::where('code', 'MEBRE')->first();
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
 
         $typeOperation = Tlist_operation::where('code', 'CRE')->first();
 
-        ///////admin/////////////////
+        ///////System/////////////////
         $object = new User();
         $object->name = 'ROOT';
         $object->surname = 'Admin';
@@ -44,6 +44,35 @@ class UserSeeder extends Seeder
         $object->telephone = '+237670928110';
         $object->email = 'lpesecours@gmail.com';
         $object->password = bcrypt('12345678');
+        $idLastUser = $object->save();
+        $object->groupe_users()->attach($groupe_system);
+        $object->acreditations()->attach($acc_lect);
+        $object->acreditations()->attach($acc_ecri);
+        $object->acreditations()->attach($acc_modi);
+        $object->acreditations()->attach($acc_desa);
+        $object->acreditations()->attach($acc_acti);
+        $object->acreditations()->attach($acc_supp);
+
+        $object = new Operation();
+        $object->type_operation = $typeOperation['id'];
+        $idLastOperation = $object->save();
+
+        $object = new Ope_user_user();
+        $object->id_operation = $idLastOperation;
+        $object->id_user = '1';
+        $object->id_user2 = $idLastUser;
+        $object->save();
+
+        ///////admin/////////////////
+        $object = new User();
+        $object->name = 'MENKAM';
+        $object->surname = 'Francis';
+        $object->date_nais = '02/03/1995';
+        $object->photo = 'francis.jpg';
+        $object->sexe = 'M';
+        $object->telephone = '+237670256150';
+        $object->email = 'menkam35@gmail.com';
+        $object->password = bcrypt('MENKAMfrancis');
         $idLastUser = $object->save();
         $object->groupe_users()->attach($groupe_admin);
         $object->acreditations()->attach($acc_lect);

@@ -32,8 +32,6 @@ class HomeController extends Controller
 
         $galerie = Galerie_images_accueil::loadGalerie();
 
-        session(['menus' => Menu::loadMenus(\Auth::user()->getGroupe_user())]);
-
         return view('home', compact('galerie'));
 
         //dd($galerie);
