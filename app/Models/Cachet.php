@@ -24,6 +24,7 @@ class Cachet extends Model
 
     public static function updateCachet($request)
     {
+        $date = Fonctions::getCurentDate();
         return DB::update("
             UPDATE 
               cachets
@@ -31,7 +32,8 @@ class Cachet extends Model
               date='".$request['date']."', 
               type='".$request['type']."', 
               nombre='".$request['nombre']."', 
-              prix_unitaire='".$request['prix_unitaire']."'
+              prix_unitaire='".$request['prix_unitaire']."', 
+              updated_at='$date'
             WHERE 
               id='".$request['id']."';
         ");

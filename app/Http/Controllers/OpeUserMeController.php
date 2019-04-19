@@ -17,69 +17,35 @@ class OpeUserMeController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function readInbox(Request $request)
     {
-        //
+        if(!empty($request->id))
+        {
+            $id = $request->id;
+            $newStatut = 1;
+            return $this->updateStatutMesUser($id,$newStatut);
+        }
+        else
+            return response()->json(['error'=>'erreur']);
+    }
+    public function deleteInbox(Request $request)
+    {
+        if(!empty($request->id))
+        {
+            $id = $request->id;
+            $newStatut = -1;
+            return $this->updateStatutMesUser($id,$newStatut);
+        }
+        else
+            return response()->json(['error'=>'erreur']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updateStatutMesUser($id,$newStatut)
     {
-        //
-    }
+        $result = Ope_user_me::updateStatut($id,$newStatut);
+        if($result)
+            return response()->json(['success'=>'ok']);
+        return response()->json(['error'=>'erreur']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ope_user_me  $ope_user_me
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ope_user_me $ope_user_me)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ope_user_me  $ope_user_me
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ope_user_me $ope_user_me)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ope_user_me  $ope_user_me
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Ope_user_me $ope_user_me)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ope_user_me  $ope_user_me
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ope_user_me $ope_user_me)
-    {
-        //
     }
 }

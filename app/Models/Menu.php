@@ -52,6 +52,7 @@ class Menu extends Model
 
     public static function updateMenu($request)
     {
+        $date = Fonctions::getCurentDate();
         return DB::update("
             UPDATE 
               menus
@@ -69,7 +70,8 @@ class Menu extends Model
               groupeuser='".$request['groupeuser']."', 
               rang='".$request['rang']."', 
               valide='".$request['valide']."',
-              statut='".$request['statut']."' 
+              statut='".$request['statut']."',
+              updated_at='$date' 
             WHERE 
               id='".$request['id']."';
         ");

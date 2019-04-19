@@ -56,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function updateUser($request)
     {
+        $date = Fonctions::getCurentDate();
         $updateUser = DB::update("
             UPDATE 
               users
@@ -67,7 +68,8 @@ class User extends Authenticatable implements MustVerifyEmail
               sexe='".$request['sexe']."', 
               telephone='".$request['telephone']."', 
               email='".$request['email']."', 
-              statut='".$request['statut']."'
+              statut='".$request['statut']."',
+              updated_at='$date'
             WHERE 
               id='".$request['id']."';
         ");

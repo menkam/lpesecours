@@ -38,13 +38,15 @@ class Tlist_groupe_user extends Model
 
     public static function updateGroupeUser($request)
     {
+        $date = Fonctions::getCurentDate();
         return DB::update("
             UPDATE 
               tlist_groupe_users
             SET 
               code='".$request['code']."', 
               libelle='".$request['libelle']."',
-              statut='".$request['statut']."' 
+              statut='".$request['statut']."',
+              updated_at='$date' 
             WHERE 
               id='".$request['id']."';
         ");

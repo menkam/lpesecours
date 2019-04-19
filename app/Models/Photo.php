@@ -23,6 +23,7 @@ class Photo extends Model
 
     public static function updatePhoto($request)
     {
+        $date = Fonctions::getCurentDate();
         return DB::update("
             UPDATE 
               photos
@@ -30,7 +31,8 @@ class Photo extends Model
               date='".$request['date']."', 
               type='".$request['type']."', 
               nombre='".$request['nombre']."', 
-              prix_unitaire='".$request['prix_unitaire']."'
+              prix_unitaire='".$request['prix_unitaire']."',
+              updated_at='$date'
             WHERE 
               id='".$request['id']."';
         ");

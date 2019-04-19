@@ -57,25 +57,7 @@ function showInfoNotification()
 
 function lectureInbox(id)
 {
-
-    alert("lue"+id);
-
-    /*$.ajax({
-        url: "showInfoNav",
-        type:'POST',
-        data: {type:'notification'},
-        success: function(data) {
-            if($.isEmptyObject(data.error)){
-                position.empty();
-                position.append(data.success);
-            }else{
-                tostErreur(data.error);
-            }
-        },
-        error: function (e) {
-            tostErreur("Fatal Error");
-        }
-    });*/
+    $.ajax({url: "readInbox", type:'POST', data: {id:id}});
 }
 
 

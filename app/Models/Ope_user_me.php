@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Fonctions;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Operation;
+use DB;
 
 class Ope_user_me extends Model
 {
@@ -39,4 +41,14 @@ class Ope_user_me extends Model
     protected $casts = [
         
     ];
+
+    public static function updateStatut($id, $newStatut)
+    {
+        if(!empty($id) && !empty($newStatut))
+        {
+            $date = Fonctions::getCurentDate();
+            return DB::update("UPDATE ope_user_mes SET statut='$newStatut', updated_at='$date' WHERE id='$id';");
+        }
+        return 0;
+    }
 }

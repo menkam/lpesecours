@@ -31,6 +31,7 @@ class Mobile_money extends Model
 
     public static function updateMomo($request)
     {
+        $date = Fonctions::getCurentDate();
         return DB::update("
             UPDATE 
               mobile_moneys
@@ -41,7 +42,8 @@ class Mobile_money extends Model
               compte_momo='".$request['compte_momo']."', 
               compte2='".$request['compte2']."', 
               frais_transfert='".$request['frais_transfert']."', 
-              commission='".$request['commission']."' 
+              commission='".$request['commission']."',
+              updated_at='$date' 
             WHERE  date='".$request['date']."';
         ");
     }

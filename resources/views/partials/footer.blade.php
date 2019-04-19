@@ -18,7 +18,7 @@
                     <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
                 </a>
             </span>
-            <p><MARQUEE bgcolor="#bgbg"  BEHAVIOR000="alternate" style="border:blue 1px SOLID">Ce site est encore en mode <b>développeur</b> donc vous pouvez être par moment déconnecter (une minute au max) et toutes nos excuses pour ce désagrément</MARQUEE ></p>
+            <!--p><MARQUEE bgcolor="#bgbg"  BEHAVIOR000="alternate" style="border:blue 1px SOLID">Ce site est encore en mode <b>développeur</b> donc vous pouvez être par moment déconnecter (une minute au max) et toutes nos excuses pour ce désagrément</MARQUEE ></p-->
         </div>
     </div>
 </div>

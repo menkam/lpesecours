@@ -32,21 +32,9 @@ class Fonctions extends Model
     }
     public static function getCurentDate()
     {
-        $dateCourante = "";
-        $date = getDate();
-        if((int)$date["mon"] < 10 && (int)$date["mday"] < 10){
-            $dateCourante = $date["year"]."-0".$date["mon"]."-0".$date["mday"];
-        }
-        if((int)$date["mon"] < 10 && (int)$date["mday"] >= 10){
-            $dateCourante = $date["year"]."-0".$date["mon"]."-".$date["mday"];
-        }
-        if((int)$date["mon"] >= 10 && (int)$date["mday"] < 10){
-            $dateCourante = $date["year"]."-".$date["mon"]."-0".$date["mday"];
-        }
-        if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
-            $dateCourante = $date["year"]."-".$date["mon"]."-".$date["mday"];
-        }
-        return $dateCourante;
+        $tz = '+01:00';
+        $now = Carbon::now($tz);
+        return $now;
     }
     public static function compactForm($sol, array $attribut, array $type)
     {
@@ -153,15 +141,37 @@ class Fonctions extends Model
     }
     public static function calculDuree($dateHeur)
     {
-        $result = 'a moment ago';
+        $result = '';
         $tz = '+01:00';
         $now = Carbon::now($tz);
+        $nows = explode(' ',$now);
+        $nowDates  = $nows[0]; $nowDate  = explode('-',$nowDates); $nowYear = $nowDate[0]; $nowMonth = $nowDate[1]; $nowDay = $nowDate[2];
+        $nowHeures = $nows[1]; $nowHeure = explode(':',$nowHeures); $nowHour = $nowHeure[0]; $nowMinute = $nowHeure[1]; $nowSecond = $nowHeure[2];
+
         $dateHeurs = explode(' ',$dateHeur);
         $dates  = $dateHeurs[0]; $date  = explode('-',$dates); $year = $date[0]; $month = $date[1]; $day = $date[2];
         $heures = $dateHeurs[1]; $heure = explode(':',$heures); $hour = $heure[0]; $minute = $heure[1]; $second = $heure[2];
 
         $date = Carbon::create($year,$month,$day,$hour,$minute,$second,$tz);
         $result = (Carbon::parse(Carbon::now($tz))->diffInMinutes($date) < 2) ? 'à l\'instant' : $date->diffForHumans($now);
+        if(Carbon::parse($now)->diffInDays($date) < 1)
+        {
+            if(Carbon::parse($now)->diffInMinutes($date) < 2)
+            {
+                $result = 'à l\'instant';
+            }
+            else
+            {
+                $today = ((int)$nowDay - (int)$day);
+                if($today)
+                    $result = 'Aujourd\'hui à '.$heures;
+                $result = 'Hier à '.$heures;
+            }
+        }
+        else
+        {
+            $result = $date->diffForHumans($now);
+        }
 
         return $result;
     }

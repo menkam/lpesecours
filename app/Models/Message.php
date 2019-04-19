@@ -102,24 +102,24 @@ class Message extends Model
         $countMsg = count($inbox);
 
         foreach ($inbox as $value) {
-            $idInbox = (int)$value->id_user;
+            $idInbox = (int)$value->id_ope_user;
             $avatar = $value->photo;
             $nameSend = $value->name;
             $object = $value->objet;
             $dateSend = $value->created_at;
 
             $ligne = $ligne.'<li>
-                    <a href="#" class="clearfix" onclick="lectureInbox(\'' . $idInbox . '\')">
-                        <img src="assets/images/avatars/' . $avatar . '" class="msg-photo" alt="' . $nameSend . '\'s Avatar" />
+                    <a href="inbox?'.md5('message').'='.$idInbox.'" class="clearfix" onclick="lectureInbox(\''.$idInbox.'\')">
+                        <img src="assets/images/avatars/'.$avatar.'" class="msg-photo" alt="'.$nameSend.'\'s Avatar" />
                         <span class="msg-body">
                             <span class="msg-title">
-                                <span class="blue">' . $nameSend . ':</span>
-                                ' . $object . '...
+                                <span class="blue">'.$nameSend.':</span>
+                                '.$object.'...
                             </span>
     
                             <span class="msg-time">
                                 <i class="ace-icon fa fa-clock-o"></i>
-                                <span>' . Fonctions::calculDuree($dateSend) . '</span>
+                                <span>'.Fonctions::calculDuree($dateSend).'</span>
                             </span>
                         </span>
                     </a>
