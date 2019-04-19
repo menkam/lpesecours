@@ -124,7 +124,7 @@ if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
                         <div class="col-xs-12 col-md-2 col-sm-2 col-lg-2"></div>
                         <div class="col-xs-12 col-md-8 col-sm-8 col-lg-8 panel panel-primary">
                             <div class="panel-heading titre">
-                                <marquee>Bienvenue a la Librairie Papeterie Claire Fontaine</marquee>
+                                <marquee>Bienvenue à la Librairie Papeterie Claire Fontaine</marquee>
                             </div>
                             <div class="panel-body">
                                 <?= $galerie ?>
