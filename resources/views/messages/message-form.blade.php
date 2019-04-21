@@ -5,7 +5,7 @@
 
             <div class="col-sm-9">
 				<span class="input-icon">
-					<input type="email" name="recipient" id="form-field-recipient" data-value="alex@doe.com" value="alex@doe.com" placeholder="Recipient(s)" />
+					<input type="email" name="recipient" id="form-field-recipient" data-value="email@gmail.com" placeholder="Recipient(s)" />
 					<i class="ace-icon fa fa-user"></i>
 				</span>
             </div>

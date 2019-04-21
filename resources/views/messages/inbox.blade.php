@@ -13,12 +13,7 @@
 	<li>
 		<i class="ace-icon fa fa-home home-icon"></i>
 		<a href="#">Home</a>
-	</li>
-
-	<li>
-		<a href="#">More Pages</a>
-	</li>
-	<li class="active">Inbox</li>
+	</li><li class="active">Inbox</li>
 </ul>
 @endsection
 
@@ -115,7 +110,7 @@
 </div><!-- /.row -->
 
 @include('messages.message-form')
-@include('messages.message-content')<!-- /.message-content -->
+<div class="hide message-content" id="id-message-content"></div><!-- /.message-content -->
 
 @endsection
 
@@ -126,6 +121,7 @@
 @endsection
 
 @section('scripts2')
+<script src="js/inbox2.js"></script>
 <script src="js/inbox.js"></script>
 @endsection
  

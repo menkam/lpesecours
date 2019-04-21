@@ -48,8 +48,12 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/home', 'HomeController@index')->name('home');
         Route::post('calculatrice', 'GestionsController@calculatrice')->name('calculatrice');
+
+        Route::post('sendMessage', 'MessageController@sendMessage')->name('sendMessage');
         Route::post('showInfoNav', 'MessageController@showInfoNav')->name('showInfoNav');
-        Route::post('readInbox', 'OpeUserMeController@readInbox')->name('readInbox');
+        Route::post('readInbox', 'MessageUserController@readInbox')->name('readInbox');
+        Route::post('loadMessageContent', 'MessageUserController@loadMessageContent')->name('loadMessageContent');
+        Route::post('loadListMessage', 'MessageUserController@loadListMessage')->name('loadListMessage');
 
         /**
          * Option Menu

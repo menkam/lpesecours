@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+use App\Models\Message_user;
 use App\Models\User;
 use Carbon\Carbon;
 use Faker\Provider\DateTime;
@@ -9,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Galerie_images_accueil;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
+use App\Models\Message_user_;
 use App\Models\Cachet;
 use App\Models\Tlist_groupe_user;
 use App\Models\Photo;
@@ -44,10 +47,26 @@ class ConceptionContoller extends Controller
         $dif = Carbon::parse(Carbon::now($tz))->diffInDays($date);
         $dif = Carbon::parse(Carbon::now($tz))->diffInHours($date);
         $dif = Carbon::parse(Carbon::now($tz))->diffInMinutes($date);*/
+/*
+ * $result = DB::insert("
+                    INSERT INTO messages(type_message, id_user_send, objet, libelle)
+                    VALUES ('1', '1','Test', 'juste des tests23');");
 
+        dd($result);
+ */
 
-        $result = Fonctions::calculDuree('2019-04-18 14:52:00');
-        //dd($result);
+        /*$object = new Message();
+        $object->type_message = '1';
+        $object->id_user_send = '1';
+        $object->objet = 'Test';
+        $object->libelle = 'juste des tests23';
+        $object->save();*/
+
+        //$result = DB::update("UPDATE message_user SET statut='10', updated_at='$date' WHERE id='1';");
+        $sol=5;
+        $result = $sol==0 ? "ZERO" : "Message envoyé";
+
+        dd($result);
 
         return view("applications/Maintenance", compact('result'));
 

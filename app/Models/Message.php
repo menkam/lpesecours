@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Fonctions;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use App\Models\Tlist_message;
 use DB;
 
@@ -12,6 +13,7 @@ class Message extends Model
     protected $guarded = array();
 
     protected $fillable = [
+   		'id',
    		'type_message',
    		'id_user_send',
    		'objet',
@@ -22,15 +24,35 @@ class Message extends Model
    	protected $hidden = [
     ];
 
-    public function type_message()
+    public function users()
     {
-        return $this->belongsToMany(Tlist_message::class);
+        return $this->belongsToMany(User::class);
     }
 
 
     protected $casts = [
         
     ];
+
+    public static function newMessage($type,$objet,$libelle,$emailRecive)
+    {
+        $type_message = Tlist_message::where('code', $type)->first();
+        $userrecive = User::where('email', $emailRecive)->first();
+        $userSend = \Auth::user()->id;
+
+        $object = new Message();
+        $object->type_message = $type_message['id'];
+        $object->id_user_send = $userSend;
+        $object->objet = $objet;
+        $object->libelle = $libelle;
+        $object->save();
+        $object->users()->attach($userrecive);
+        $id = $object->id;
+        if($id)
+            return $id;
+        else
+            return 0;
+    }
 
     public static function showInfoNav($type,$typeMessage,$idUser,$statut)
     {
@@ -52,42 +74,60 @@ class Message extends Model
         return ([$erreur,$sol]);
     }
 
-    public static function getInbox($typeMessage=null, $idUser=null, $statut=null)
+    public static function getInbox($typeMessages=null, $idUser=null, $statut=null)
     {
+        $typeMessage = "";
+        if($typeMessages=="TCH")
+            $typeMessage = "(tlist_messages.code = '$typeMessages' OR tlist_messages.code = 'SYS')";
+        else $typeMessage = "tlist_messages.code = '$typeMessages'";
         return DB::select("
             SELECT 
               users.id as id_user, 
               users.name, 
               users.surname, 
               users.photo, 
-              users.sexe, 
-              users.telephone, 
-              users.email, 
-              tlist_messages.code, 
-              tlist_messages.libelle, 
               messages.id as id_message, 
               messages.objet, 
-              messages.libelle, 
-              ope_user_mes.id as id_ope_user, 
-              ope_user_mes.id_operation, 
-              ope_user_mes.id_user_recive, 
-              ope_user_mes.id_message,
-              ope_user_mes.created_at, 
-              ope_user_mes.statut
+              message_user.id as id_ope_user, 
+              messages.created_at, 
+              message_user.statut
             FROM 
               public.users, 
-              public.ope_user_mes, 
+              public.message_user, 
               public.messages, 
               public.tlist_messages
             WHERE 
-              ope_user_mes.id_message = messages.id AND
+              message_user.message_id = messages.id AND
               messages.id_user_send = users.id AND
               messages.type_message = tlist_messages.id AND
-              ope_user_mes.id_user_recive = '$idUser' AND 
-              tlist_messages.code = '$typeMessage' AND 
-              ope_user_mes.statut = '$statut'
+              message_user.user_id = '$idUser' AND 
+              ".$typeMessage." AND 
+              message_user.statut ".$statut."
             ORDER BY
-              ope_user_mes.created_at DESC;");
+              messages.created_at DESC;");
+    }
+    public static function getMessage($idOpeUsermes=null, $statut=" >= '0'")
+    {
+        return DB::select("
+            SELECT 
+              users.name, 
+              users.surname, 
+              users.photo,
+              users.email, 
+              messages.objet, 
+              messages.libelle, 
+              message_user.statut, 
+              messages.created_at, 
+              message_user.updated_at
+            FROM 
+              public.users, 
+              public.message_user, 
+              public.messages
+            WHERE 
+              message_user.message_id = messages.id AND
+              messages.id_user_send = users.id AND
+              message_user.id = '$idOpeUsermes' AND 
+              message_user.statut ".$statut.";");
     }
 
     public static function countInbox($typeMessage=null, $idUser=null, $statut=null)
@@ -109,7 +149,7 @@ class Message extends Model
             $dateSend = $value->created_at;
 
             $ligne = $ligne.'<li>
-                    <a href="inbox?'.md5('message').'='.$idInbox.'" class="clearfix" onclick="lectureInbox(\''.$idInbox.'\')">
+                    <a href="/inbox?'.md5('message').'='.$idInbox.'" class="clearfix" onclick="lectureInbox0(\''.$idInbox.'\')">
                         <img src="assets/images/avatars/'.$avatar.'" class="msg-photo" alt="'.$nameSend.'\'s Avatar" />
                         <span class="msg-body">
                             <span class="msg-title">

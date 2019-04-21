@@ -163,9 +163,10 @@ class Fonctions extends Model
             else
             {
                 $today = ((int)$nowDay - (int)$day);
-                if($today)
+                if(!$today)
                     $result = 'Aujourd\'hui à '.$heures;
-                $result = 'Hier à '.$heures;
+                else
+                    $result = 'Hier à '.$heures;
             }
         }
         else

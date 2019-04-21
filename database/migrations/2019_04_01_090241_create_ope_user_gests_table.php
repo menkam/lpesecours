@@ -15,13 +15,11 @@ class CreateOpeUserGestsTable extends Migration
     {
         Schema::create('ope_user_gests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_operation');
             $table->integer('id_user');
             $table->integer('type');
             $table->date('date');
 
             //$table->primary(['id_operation','id_user','id_message']);
-            $table->foreign('id_operation')->references('id')->on('operations')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('type')->references('id')->on('tlist_ope_gestions')->onDelete('cascade');
         });

@@ -296,7 +296,7 @@
 
                     <div class="messagebar-item-right">
                         <i class="ace-icon fa fa-clock-o bigger-110 orange"></i>
-                        <span class="grey">Today, 7:15 pm</span>
+                        <span class="grey">Today, 7:30 pm</span>
                     </div>
                 </div>
             </div>
@@ -325,223 +325,22 @@
                     </div>
 
                     <div class="messagebar-item-right">
-									<span class="inline btn-send-message">
-										<button type="button" class="btn btn-sm btn-primary no-border btn-white btn-round">
-											<span class="bigger-110">Send</span>
+                        <span class="inline btn-send-message">
+                            <button id="btnSendMessage" type="button" class="btn btn-sm btn-primary no-border btn-white btn-round">
+                                <span class="bigger-110">Send</span>
 
-											<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-										</button>
-									</span>
+                                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
             </div>
 
             <div class="message-list-container">
                 <div class="message-list" id="message-list">
-                    <div class="message-item message-unread">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star orange2"></i>
-                        <span class="sender" title="Alex John Red Smith">Alex John Red Smith </span>
-                        <span class="time">1:33 pm</span>
-
-                        <span class="summary">
-										<span class="text">
-											Click to open this message
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item message-unread">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-
-                        <span class="sender" title="John Doe">
-										John Doe
-										<span class="light-grey">(4)</span>
-									</span>
-                        <span class="time">7:15 pm</span>
-
-                        <span class="attachment">
-										<i class="ace-icon fa fa-paperclip"></i>
-									</span>
-
-                        <span class="summary">
-										<span class="badge badge-pink mail-tag"></span>
-										<span class="text">
-											Clik to open this message right here
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Philip Markov">Philip Markov </span>
-                        <span class="time">10:15 am</span>
-
-                        <span class="attachment">
-										<i class="ace-icon fa fa-paperclip"></i>
-									</span>
-
-                        <span class="summary">
-										<span class="message-flags">
-											<i class="ace-icon fa fa-reply light-grey"></i>
-										</span>
-										<span class="text">
-											Photo booth beard raw denim letterpress vegan
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star orange2"></i>
-                        <span class="sender" title="Sabrina">Sabrina </span>
-                        <span class="time">Yesterday</span>
-
-                        <span class="summary">
-										<span class="text">
-											Nullam quis risus eget urna mollis ornare
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Philip Markov">Philip Markov </span>
-                        <span class="time">Yesterday</span>
-
-                        <span class="attachment">
-										<i class="ace-icon fa fa-paperclip"></i>
-									</span>
-
-                        <span class="summary">
-										<span class="badge badge-success mail-tag"></span>
-										<span class="text">
-											Vestibulum id ligula porta felis euismod
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Doctor Gomenz">Doctor Gomenz </span>
-                        <span class="time">April 5</span>
-
-                        <span class="summary">
-										<span class="text">
-											Vim te vivendo convenire, summo fuisset
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Robin Hood">Robin Hood </span>
-                        <span class="time">April 4</span>
-
-                        <span class="summary">
-										<span class="message-flags">
-											<i class="ace-icon fa fa-reply light-grey"></i>
-										</span>
-										<span class="text">
-											No eos veniam equidem mentitum, his porro
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Google Inc">Google Inc </span>
-                        <span class="time">April 3</span>
-
-                        <span class="summary">
-										<span class="badge badge-grey mail-tag"></span>
-										<span class="text">
-											Convallis facilisis euismod urna sodales
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Shrek">Shrek </span>
-                        <span class="time">March 28</span>
-
-                        <span class="attachment">
-										<i class="ace-icon fa fa-paperclip"></i>
-									</span>
-
-                        <span class="summary">
-										<span class="message-flags">
-											<i class="ace-icon fa fa-flag fa-flip-horizontal light-grey"></i>
-										</span>
-										<span class="text">
-											Photo booth beard raw denim letterpress vegan messenger
-										</span>
-									</span>
-                    </div>
-
-                    <div class="message-item">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                        </label>
-
-                        <i class="message-star ace-icon fa fa-star-o light-grey"></i>
-                        <span class="sender" title="Yahoo!">Yahoo! </span>
-                        <span class="time">March 27</span>
-
-                        <span class="summary">
-										<span class="message-flags">
-											<i class="ace-icon fa fa-mail-forward light-grey"></i>
-										</span>
-										<span class="text">
-											Tofu biodiesel williamsburg marfa, four loko mcsweeney
-										</span>
-									</span>
-                    </div>
+                    <?php
+                        if(!empty($message_list)) echo $message_list;
+                    ?>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ class CreateOpeUserUsersTable extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+     *
     public function up()
     {
         Schema::create('ope_user_users', function (Blueprint $table) {
@@ -31,9 +31,9 @@ class CreateOpeUserUsersTable extends Migration
      * Reverse the migrations.
      *
      * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('ope_user_users');
-    }
+    }*/
 }

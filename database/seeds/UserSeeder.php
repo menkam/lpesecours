@@ -4,9 +4,6 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
-use App\Models\Tlist_operation;
-use App\Models\Operation;
-use App\Models\Ope_user_user;
 
 class UserSeeder extends Seeder
 {
@@ -34,7 +31,7 @@ class UserSeeder extends Seeder
         $acc_supp = Tlist_acreditation::where('libelle', 'Suppression')->first();
 
 
-        $typeOperation = Tlist_operation::where('code', 'CRE')->first();
+        /*$typeOperation = Tlist_operation::where('code', 'CRE')->first();*/
 
         ///////System/////////////////
         $object = new User();
@@ -46,7 +43,7 @@ class UserSeeder extends Seeder
         $object->telephone = '+237670928110';
         $object->email = 'lpesecours@gmail.com';
         $object->password = bcrypt('12345678');
-        $idLastUser = $object->save();
+        $object->save();
         $object->groupe_users()->attach($groupe_system);
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
@@ -55,18 +52,7 @@ class UserSeeder extends Seeder
         $object->acreditations()->attach($acc_acti);
         $object->acreditations()->attach($acc_supp);
 
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = '1';
-        $object->id_user2 = $idLastUser;
-        $object->save();
-
         //////////////////////////////////////
-        $userSystem = User::where('email', 'lpesecours@gmail.com')->first();
 
         ///////admin/////////////////
         $object = new User();
@@ -78,7 +64,7 @@ class UserSeeder extends Seeder
         $object->telephone = '+237670256150';
         $object->email = 'menkam35@gmail.com';
         $object->password = bcrypt('MENKAMfrancis');
-        $idLastUser = $object->save();
+        $object->save();
 
         $object->groupe_users()->attach($groupe_admin);
         $object->acreditations()->attach($acc_lect);
@@ -87,16 +73,6 @@ class UserSeeder extends Seeder
         $object->acreditations()->attach($acc_desa);
         $object->acreditations()->attach($acc_acti);
         $object->acreditations()->attach($acc_supp);
-
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $userSystem['id'];
-        $object->id_user2 = $idLastUser;
-        $object->save();
 
 ///////////////personnel////////////////////
 
@@ -109,21 +85,11 @@ class UserSeeder extends Seeder
         $object->telephone = '+237600000000';
         $object->email = 'personnel@gmail.com';
         $object->password = bcrypt('12345678');
-        $idLastUser = $object->save();
+        $object->save();
         $object->groupe_users()->attach($groupe_personnel);
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
         $object->acreditations()->attach($acc_modi);
-
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $userSystem['id'];
-        $object->id_user2 = $idLastUser;
-        $object->save();
 
 ///////////////membre////////////////////
         $object = new User();
@@ -135,20 +101,10 @@ class UserSeeder extends Seeder
         $object->telephone = '+237600000001';
         $object->email = 'membre@gmail.com';
         $object->password = bcrypt('12345678');
-        $idLastUser = $object->save();
+        $object->save();
         $object->groupe_users()->attach($groupe_membre);
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
-
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $userSystem['id'];
-        $object->id_user2 = $idLastUser;
-        $object->save();
 
 ///////////////visiteur////////////////////
         $object = new User();
@@ -160,21 +116,10 @@ class UserSeeder extends Seeder
         $object->telephone = '+237600000002';
         $object->email = 'visiteur@gmail.com';
         $object->password = bcrypt('12345678');
-        $idLastUser = $object->save();
+        $object->save();
         $object->groupe_users()->attach($groupe_visiter);
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
-
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $userSystem['id'];
-        $object->id_user2 = $idLastUser;
-        $object->save();
-
 
 ///////////////bloquer////////////////////
         $object = new User();
@@ -186,17 +131,8 @@ class UserSeeder extends Seeder
         $object->telephone = '+237600000003';
         $object->email = 'bloquer@gmail.com';
         $object->password = bcrypt('12345678');
-        $idLastUser = $object->save();
+        $object->save();
         $object->groupe_users()->attach($groupe_bloquer);
 
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $userSystem['id'];
-        $object->id_user2 = $idLastUser;
-        $object->save();
     }
 }

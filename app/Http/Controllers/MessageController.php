@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
+use App\Models\message_user;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,7 +16,14 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages\inbox');
+        $content = '';
+        $idUser = \Auth::user()->id;
+
+        $message_list = message_user::loadListMessage($idUser);
+
+        if($message_list)
+            return view('messages\inbox', compact('message_list'));
+            return view('messages\inbox', compact('message_list'));
     }
 
     /**
@@ -85,13 +92,30 @@ class MessageController extends Controller
         //
     }
 
+    public  function sendMessage(Request $request)
+    {
+
+        $sol =  '';
+        $type = 'TCH';
+        $objet = $request->objet;
+        $libelle = $request->libelle;
+        $emailRecive = $request->email;
+        $sol = Message::newMessage($type,$objet,$libelle,$emailRecive);
+        if($sol)
+        {
+            return response()->json(['success'=>'Message envoyé']);
+        }
+        else
+            return response()->json(['error'=>'erreur d\'envoie']);
+    }
+
     public function showInfoNav(Request $request)
     {
 
-        $typeMessage='SYS';
-        $statut='0';
+        $typeMessage='TCH';
+        $statut= "= '0'";
 
-        $idUser = \Auth::user()->getGroupe_user();
+        $idUser = \Auth::user()->id;
         $type = $request->type;
         if($idUser)
         {

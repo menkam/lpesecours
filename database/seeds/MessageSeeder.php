@@ -20,11 +20,18 @@ class MessageSeeder extends Seeder
         $type_message = Tlist_message::where('code', 'SYS')->first();
 
         $object = new Message();
-        $object->id = '1';
         $object->type_message = $type_message['id'];
         $object->id_user_send = $userSend['id'];
         $object->objet = 'Félécitation';
-        $object->libelle = '<h1>Bonjour,</h1><hr><p> Félicitation votre compte a été créé avec success</p><br>Nous vous remercions pour votre confiance et heureux de vous compter parmis nous';
+        $object->libelle = '<h1>Bonjour,</h1><hr><p> Félicitation votre compte a été créé avec succès</p><p>Nous vous remercions pour votre confiance et heureux de vous compter parmi nous</p><u>Cordialement<u>';
         $object->save();
+
+        $admin = User::where('email', 'menkam35@gmail.com')->first();
+        $personnel = User::where('email', 'personnel@gmail.com')->first();
+        $visiteur = User::where('email', 'visiteur@gmail.com')->first();
+
+        $object->users()->attach($admin);
+        $object->users()->attach($personnel);
+        $object->users()->attach($visiteur);
     }
 }

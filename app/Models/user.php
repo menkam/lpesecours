@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Tlist_acreditation;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_groupe_user_user;
+use App\Models\Message;
 use App\Fonctions;
 use DB;
 
@@ -52,6 +53,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function acreditations()
     {
         return $this->belongsToMany(Tlist_acreditation::class);
+    }
+    public function messages()
+    {
+        return $this->belongsToMany(Message::class);
     }
 
     public static function updateUser($request)

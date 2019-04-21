@@ -325,7 +325,7 @@
 	}//initialize_form
 
 	//turn the recipient field into a tag input field!
-	/**	
+	/**
 	var tag_input = $('#form-field-recipient');
 	try { 
 		tag_input.tag({placeholder:tag_input.attr('placeholder')});
