@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
-use App\Models\Tlist_operation;
 use App\Models\Message;
+use App\Models\Message_user;
 
 
 use DB;
@@ -93,12 +93,14 @@ class RegisterController extends Controller
         $groupe_visiter = Tlist_groupe_user::where('code', 'VSTER')->first();
         $acc_lect = Tlist_acreditation::where('libelle', 'Lecture')->first();
         $acc_ecri = Tlist_acreditation::where('libelle', 'Ecriture')->first();
-        $typeOperation = Tlist_operation::where('code', 'CRE')->first();
 
         $newUser->groupe_users()->attach($groupe_visiter);
         $newUser->acreditations()->attach($acc_lect);
         $newUser->acreditations()->attach($acc_ecri);
-        $newUser->messages()->attach(Message::where('id', '1')->first());
+        $msg = Message::where('id', '1')->first();
+        $newUser->messages()->attach($msg);
+        $idUser = $newUser->id;
+        $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
         return $newUser;
     }

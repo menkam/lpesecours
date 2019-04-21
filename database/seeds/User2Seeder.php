@@ -102,7 +102,8 @@ class User2Seeder extends Seeder
         $object->photo = 'visiteur.png';
         $object->telephone = '+237600000002';
         $object->email = 'visiteur@gmail.com';
-        $object->password = bcrypt('12345678');
+        //$object->password = bcrypt('12345678');
+        $object->password = '$2y$10$bfET0B3jPb8hU/ZN9UWUiu0P1uRCtmlpPbZV/jN109Jw.gq2Jbazi';
         $object->save();
         $object->groupe_users()->attach($groupe_visiter);
         $object->acreditations()->attach($acc_lect);
