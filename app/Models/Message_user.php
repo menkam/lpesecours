@@ -29,6 +29,19 @@ class Message_user extends Model
 
 
 
+    public static function updateMesUser($idUser, $idMsg)
+    {
+        if(!empty($idUser) && !empty($idMsg))
+        {
+            $date = Fonctions::getCurentDate();
+            return DB::update("
+                UPDATE message_user
+                   SET created_at = '$date', updated_at = '$date'
+                WHERE user_id = '$idUser' AND message_id = '$idMsg';
+            ");
+        }
+        return 0;
+    }
     public static function updateStatut($id, $newStatut)
     {
         if(!empty($id) && !empty($newStatut))

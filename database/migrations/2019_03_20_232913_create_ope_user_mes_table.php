@@ -20,7 +20,7 @@ class CreateOpeUserMesTable extends Migration
             $table->integer('statut')->default('0');
             $table->timestamps();
 
-            //$table->primary(['id_operation','id_user','id_message']);
+            $table->unique(['user_id','message_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
         });

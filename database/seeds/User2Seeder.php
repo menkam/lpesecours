@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
 use App\Models\Message;
+use App\Models\Message_user;
 
 class User2Seeder extends Seeder
 {
@@ -51,6 +52,8 @@ class User2Seeder extends Seeder
         $object->acreditations()->attach($acc_acti);
         $object->acreditations()->attach($acc_supp);
         $object->messages()->attach($msg);
+        $idUser = $object->id;
+        $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
 ///////////////personnel////////////////////
 
@@ -69,6 +72,8 @@ class User2Seeder extends Seeder
         $object->acreditations()->attach($acc_ecri);
         $object->acreditations()->attach($acc_modi);
         $object->messages()->attach($msg);
+        $idUser = $object->id;
+        $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
 ///////////////membre////////////////////
         $object = new User();
@@ -85,6 +90,8 @@ class User2Seeder extends Seeder
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
         $object->messages()->attach($msg);
+        $idUser = $object->id;
+        $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
 ///////////////visiteur////////////////////
         $object = new User();
@@ -101,6 +108,8 @@ class User2Seeder extends Seeder
         $object->acreditations()->attach($acc_lect);
         $object->acreditations()->attach($acc_ecri);
         $object->messages()->attach($msg);
+        $idUser = $object->id;
+        $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
 ///////////////bloquer////////////////////
         $object = new User();

@@ -67,9 +67,12 @@ class Message extends Model
                     $object->libelle = $libelle;
                     $object->save();
                     $object->users()->attach($userrecive);
-                    $id = $object->id;
-                    if($id)
+                    $idMsg = $object->id;
+                    if($idMsg)
+                    {
+                        $sol = Message_user::updateMesUser($userrecive['id'],$idMsg);
                         return response()->json(["success"=>'Message envoyer avec succès']);
+                    }
                     else return response()->json(["error"=>'Message nom envoyé']);
                 }
                 else return response()->json(["error"=>'Impossible de s\'envoyer un msg']);
@@ -114,7 +117,7 @@ class Message extends Model
               messages.id as id_message, 
               messages.objet, 
               message_user.id as id_ope_user, 
-              messages.created_at, 
+              message_user.created_at, 
               message_user.statut
             FROM 
               public.users, 
@@ -142,7 +145,7 @@ class Message extends Model
               messages.objet, 
               messages.libelle, 
               message_user.statut, 
-              messages.created_at, 
+              message_user.created_at, 
               message_user.updated_at
             FROM 
               public.users, 
