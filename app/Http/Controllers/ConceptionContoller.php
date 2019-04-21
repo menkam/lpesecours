@@ -64,9 +64,13 @@ class ConceptionContoller extends Controller
 
         //$result = DB::update("UPDATE message_user SET statut='10', updated_at='$date' WHERE id='1';");
         //$sol=5;
-        $result = "test";
+        $msg = Message::where('id', '1')->first();
+        $object = new User();
+        $object->id = '2';
 
-        //dd($result);
+        $result = $object->messages()->attach($msg);
+
+        dd($result);
 
         return view("applications/Maintenance", compact('result'));
 

@@ -6,8 +6,7 @@ use App\Models\User;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_acreditation;
 use App\Models\Tlist_operation;
-use App\Models\Operation;
-use App\Models\Ope_user_user;
+use App\Models\Message;
 
 
 use DB;
@@ -99,16 +98,7 @@ class RegisterController extends Controller
         $newUser->groupe_users()->attach($groupe_visiter);
         $newUser->acreditations()->attach($acc_lect);
         $newUser->acreditations()->attach($acc_ecri);
-
-        $object = new Operation();
-        $object->type_operation = $typeOperation['id'];
-        $idLastOperation = $object->save();
-
-        $object = new Ope_user_user();
-        $object->id_operation = $idLastOperation;
-        $object->id_user = $newUser->id;
-        $object->id_user2 = $newUser->id;
-        $object->save();
+        $newUser->messages()->attach(Message::where('id', '1')->first());
 
         return $newUser;
     }

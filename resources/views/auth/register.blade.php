@@ -51,7 +51,10 @@
                         {{ __('Sexe :') }}
                         <span class="block input-icon input-icon-right">
                             <select id="sexe" class="form-control{{ $errors->has('sexe') ? ' is-invalid' : '' }}" name="sexe" value="{{ old('sexe') }}" required autofocus>
-                                </select>                                
+                                <option value=""></option>
+                                <option value="F">Féminin</option>
+                                <option value="M">Masculin</option>
+                            </select>
                             <i class="ace-icon fa fa-user"></i>
                         </span>
                         @if ($errors->has('sexe'))

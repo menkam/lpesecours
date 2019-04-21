@@ -17,11 +17,6 @@ class UserSeeder extends Seeder
 
 
         $groupe_system = Tlist_groupe_user::where('code', 'SYSTE')->first();
-        $groupe_admin = Tlist_groupe_user::where('code', 'ADMIN')->first();
-        $groupe_personnel = Tlist_groupe_user::where('code', 'PERSO')->first();
-        $groupe_membre = Tlist_groupe_user::where('code', 'MEBRE')->first();
-        $groupe_visiter = Tlist_groupe_user::where('code', 'VSTER')->first();
-        $groupe_bloquer = Tlist_groupe_user::where('code', 'BLOQU')->first();
 
         $acc_lect = Tlist_acreditation::where('libelle', 'Lecture')->first();
         $acc_ecri = Tlist_acreditation::where('libelle', 'Ecriture')->first();
@@ -53,86 +48,6 @@ class UserSeeder extends Seeder
         $object->acreditations()->attach($acc_supp);
 
         //////////////////////////////////////
-
-        ///////admin/////////////////
-        $object = new User();
-        $object->name = 'MENKAM';
-        $object->surname = 'Francis';
-        $object->date_nais = '02/03/1995';
-        $object->photo = 'francis.jpg';
-        $object->sexe = 'M';
-        $object->telephone = '+237670256150';
-        $object->email = 'menkam35@gmail.com';
-        $object->password = bcrypt('MENKAMfrancis');
-        $object->save();
-
-        $object->groupe_users()->attach($groupe_admin);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->acreditations()->attach($acc_modi);
-        $object->acreditations()->attach($acc_desa);
-        $object->acreditations()->attach($acc_acti);
-        $object->acreditations()->attach($acc_supp);
-
-///////////////personnel////////////////////
-
-        $object = new User();
-        $object->name = 'PERSONNEL';
-        $object->surname = 'Personnel';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'personnel.png';
-        $object->telephone = '+237600000000';
-        $object->email = 'personnel@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_personnel);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->acreditations()->attach($acc_modi);
-
-///////////////membre////////////////////
-        $object = new User();
-        $object->name = 'MEMBRE';
-        $object->surname = 'Membre';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'membre.png';
-        $object->telephone = '+237600000001';
-        $object->email = 'membre@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_membre);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-
-///////////////visiteur////////////////////
-        $object = new User();
-        $object->name = 'VISITEUR';
-        $object->surname = 'invite';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'visiteur.png';
-        $object->telephone = '+237600000002';
-        $object->email = 'visiteur@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_visiter);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-
-///////////////bloquer////////////////////
-        $object = new User();
-        $object->name = 'BLOQUER';
-        $object->surname = 'Bloquer';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'bloquer.png';
-        $object->telephone = '+237600000003';
-        $object->email = 'bloquer@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_bloquer);
 
     }
 }
