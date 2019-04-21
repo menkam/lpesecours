@@ -23,7 +23,7 @@ class MessageController extends Controller
 
         if($message_list)
             return view('messages\inbox', compact('message_list'));
-            return view('messages\inbox', compact('message_list'));
+        return view('messages\inbox' );
     }
 
     /**
