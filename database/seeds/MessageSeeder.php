@@ -22,7 +22,7 @@ class MessageSeeder extends Seeder
         $object = new Message();
         $object->type_message = $type_message['id'];
         $object->id_user_send = $userSend['id'];
-        $object->objet = 'Félécitation';
+        $object->objet = 'Félicitation-Bienvenue';
         $object->libelle = '<h1>Bonjour,</h1><hr><p> Félicitation votre compte a été créé avec succès</p><p>Nous vous remercions pour votre confiance et heureux de vous compter parmi nous</p><u>Cordialement<u>';
         $object->save();
 
