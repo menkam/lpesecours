@@ -64,7 +64,7 @@ class ConceptionContoller extends Controller
 
         //$result = DB::update("UPDATE message_user SET statut='10', updated_at='$date' WHERE id='1';");
         //$sol=5;
-        //$result = $sol==0 ? "ZERO" : "Message envoyé";
+        $result = "test";
 
         //dd($result);
 

@@ -1,4 +1,5 @@
 /resources/views/applications/test*.php
+/app/Http/Controllers/ConceptionContoller.php
 /zzzz/*
 /node_modules
 /public/hot

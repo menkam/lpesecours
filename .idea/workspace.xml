@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83f47e91-0ec4-4a7f-9c83-61a700008210" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" />
     </list>
@@ -18,16 +19,26 @@
       <file leaf-file-name="ConceptionContoller.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="65" column="10" lean-forward="false" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+            <state relative-caret-position="306">
+              <caret line="66" column="23" lean-forward="false" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
               <folding>
                 <element signature="e#40#63#0#PHP" expanded="true" />
-                <marker date="1555805823163" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
-                <marker date="1555805823163" expanded="true" signature="9360:9522" ph="..." />
-                <marker date="1555805823163" expanded="true" signature="9369:9474" ph="..." />
-                <marker date="1555805823163" expanded="true" signature="9564:9714" ph="..." />
-                <marker date="1555805823163" expanded="true" signature="9596:9708" ph="..." />
+                <marker date="1555806053620" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
+                <marker date="1555806053620" expanded="true" signature="9329:9491" ph="..." />
+                <marker date="1555806053620" expanded="true" signature="9338:9443" ph="..." />
+                <marker date="1555806053620" expanded="true" signature="9533:9683" ph="..." />
+                <marker date="1555806053620" expanded="true" signature="9565:9677" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/MoMoSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_06_081221_create_tlist_groupe_user_users_table.php" />
         <option value="$PROJECT_DIR$/public/js/modal.js" />
         <option value="$PROJECT_DIR$/app/FonctionAuth.php" />
@@ -157,6 +167,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/public/js/inbox2.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" />
       </list>
     </option>
@@ -552,12 +563,12 @@
       <workItem from="1555524011442" duration="700000" />
       <workItem from="1555582726424" duration="29046000" />
       <workItem from="1555659990737" duration="7658000" />
-      <workItem from="1555750750814" duration="47576000" />
+      <workItem from="1555750750814" duration="47805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251115000" />
+    <option name="totallyTimeSpent" value="251344000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -614,13 +625,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/gestions/RecettesPhoto.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="82" column="119" lean-forward="true" selection-start-line="82" selection-start-column="119" selection-end-line="82" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/footer.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1247,17 +1251,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="65" column="10" lean-forward="false" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+        <state relative-caret-position="306">
+          <caret line="66" column="23" lean-forward="false" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
           <folding>
             <element signature="e#40#63#0#PHP" expanded="true" />
-            <marker date="1555805823163" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
-            <marker date="1555805823163" expanded="true" signature="9360:9522" ph="..." />
-            <marker date="1555805823163" expanded="true" signature="9369:9474" ph="..." />
-            <marker date="1555805823163" expanded="true" signature="9564:9714" ph="..." />
-            <marker date="1555805823163" expanded="true" signature="9596:9708" ph="..." />
+            <marker date="1555806053620" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
+            <marker date="1555806053620" expanded="true" signature="9329:9491" ph="..." />
+            <marker date="1555806053620" expanded="true" signature="9338:9443" ph="..." />
+            <marker date="1555806053620" expanded="true" signature="9533:9683" ph="..." />
+            <marker date="1555806053620" expanded="true" signature="9565:9677" ph="..." />
           </folding>
         </state>
       </provider>
