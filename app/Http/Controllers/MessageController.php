@@ -100,13 +100,15 @@ class MessageController extends Controller
         $objet = $request->objet;
         $libelle = $request->libelle;
         $emailRecive = $request->email;
-        $sol = Message::newMessage($type,$objet,$libelle,$emailRecive);
-        if($sol)
-        {
-            return response()->json(['success'=>'Message envoyé']);
-        }
-        else
-            return response()->json(['error'=>'erreur d\'envoie']);
+        $sol = Message::newMessage(
+            new Request([
+                'type'=>$type,
+                'objet'=>$objet,
+                'libelle'=>$libelle,
+                'emailRecive'=>$emailRecive
+            ])
+        );
+        return $sol;
     }
 
     public function showInfoNav(Request $request)

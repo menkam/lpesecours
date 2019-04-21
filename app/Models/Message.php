@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use App\Fonctions;
+use Fonctions;
+use Validator;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 use App\Models\Tlist_message;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use DB;
 
 class Message extends Model
@@ -34,24 +36,47 @@ class Message extends Model
         
     ];
 
-    public static function newMessage($type,$objet,$libelle,$emailRecive)
+    public static function newMessage(Request $request)//$type,$objet,$libelle,$emailRecive
     {
+        //echo($request->type);
+        $type = $request->type;
+        $objet = $request->objet;
+        $libelle = $request->libelle;
+        $emailRecive = $request->emailRecive;
+
         $type_message = Tlist_message::where('code', $type)->first();
         $userrecive = User::where('email', $emailRecive)->first();
         $userSend = \Auth::user()->id;
 
-        $object = new Message();
-        $object->type_message = $type_message['id'];
-        $object->id_user_send = $userSend;
-        $object->objet = $objet;
-        $object->libelle = $libelle;
-        $object->save();
-        $object->users()->attach($userrecive);
-        $id = $object->id;
-        if($id)
-            return $id;
-        else
-            return 0;
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|string',
+            'objet' => 'required|string',
+            'objet' => 'required|string',
+            'libelle' => 'required|string',
+            'emailRecive' => 'required|email'
+        ]);
+        if ($validator->passes()) {
+            if(!empty($userrecive['id']))
+            {
+                if($userrecive['id']!=$userSend)
+                {
+                    $object = new Message();
+                    $object->type_message = $type_message['id'];
+                    $object->id_user_send = $userSend;
+                    $object->objet = $objet;
+                    $object->libelle = $libelle;
+                    $object->save();
+                    $object->users()->attach($userrecive);
+                    $id = $object->id;
+                    if($id)
+                        return response()->json(["success"=>'Message envoyer avec succès']);
+                    else return response()->json(["error"=>'Message nom envoyé']);
+                }
+                else return response()->json(["error"=>'Impossible de s\'envoyer un msg']);
+            }
+            else return (["error"=>'Impossible de trover le destinataire']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     public static function showInfoNav($type,$typeMessage,$idUser,$statut)

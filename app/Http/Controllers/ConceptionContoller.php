@@ -62,7 +62,6 @@ class ConceptionContoller extends Controller
         $object->libelle = 'juste des tests23';
         $object->save();*/
 
-        //$result = DB::update("UPDATE message_user SET statut='10', updated_at='$date' WHERE id='1';");
 
 
         return view("applications/Maintenance", compact('result'));

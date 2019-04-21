@@ -143,6 +143,7 @@ class Fonctions extends Model
     {
         $result = '';
         $tz = '+01:00';
+        $tz = 'UTC';
         $now = Carbon::now($tz);
         $nows = explode(' ',$now);
         $nowDates  = $nows[0]; $nowDate  = explode('-',$nowDates); $nowYear = $nowDate[0]; $nowMonth = $nowDate[1]; $nowDay = $nowDate[2];

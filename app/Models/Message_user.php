@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Fonctions;
+use Fonctions;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Operation;
@@ -52,7 +52,7 @@ class Message_user extends Model
 
         foreach ($inbox as $value) {
 
-            $infoUser = $value->name . ' ' . $value->surname;;
+            $infoUser = $value->name . ' ' . $value->surname;
             $dateTime = $value->created_at;
             $idOpeUserMes = (int)$value->id_ope_user;
             //$transfere = '<span class="message-flags"><i class="ace-icon fa fa-reply light-grey"></i></span>';
@@ -96,6 +96,7 @@ class Message_user extends Model
         foreach ($messages as $value) {
             //if ($value->statut == '0') $lue = "message-unread";
             $infoUser = $value->name . ' ' . $value->surname;
+            $email = $value->email;
             $photo = $value->photo;
             $dateTime = $value->created_at;
             $libelle = $value->libelle;
@@ -171,7 +172,8 @@ class Message_user extends Model
                     &nbsp;
                     <img class="middle" alt="'.$infoUser.' Avatar" src="assets/images/avatars/'.$photo.'" width="32" />
                     &nbsp;
-                    <a href="#" class="sender">'.$infoUser.'</a>
+                    <a href="#" class="">'.$infoUser.'</a>&nbsp;
+                    <a href="#" title="emailSend" class="sender">[ '.$email.' ]</a>
         
                     &nbsp;
                     <i class="ace-icon fa fa-clock-o bigger-110 orange middle"></i>

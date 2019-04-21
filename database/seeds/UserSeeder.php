@@ -26,8 +26,6 @@ class UserSeeder extends Seeder
         $acc_supp = Tlist_acreditation::where('libelle', 'Suppression')->first();
 
 
-        /*$typeOperation = Tlist_operation::where('code', 'CRE')->first();*/
-
         ///////System/////////////////
         $object = new User();
         $object->name = 'ROOT';

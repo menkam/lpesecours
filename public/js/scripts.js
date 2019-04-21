@@ -4,12 +4,16 @@ $.ajaxSetup({
     }
 });
 
+var functionShowAlertMessage;
+var temps = 10000;
+
 $(document).ready(function(){
     calculatrice();
-    showInfoInbox();
-    showInfoNotification();
-
-    //alert("yes...");
+    functionShowAlertMessage = setInterval(function () {
+        showInfoInbox();
+        showInfoNotification();
+    },temps);
+    //clearInterval(functionShowAlertMessage);
 });
 
 function showInfoInbox()
@@ -25,11 +29,11 @@ function showInfoInbox()
                 position.empty();
                 position.append(data.success);
             }else{
-                tostErreur(data.error);
+                //tostErreur(data.error);
             }
         },
         error: function (e) {
-            tostErreur("Fatal Error");
+            //tostErreur("Fatal Error");
         }
     });
 }
@@ -44,12 +48,7 @@ function showInfoNotification()
             if($.isEmptyObject(data.error)){
                 position.empty();
                 position.append(data.success);
-            }else{
-                tostErreur(data.error);
             }
-        },
-        error: function (e) {
-            tostErreur("Fatal Error");
         }
     });
 }

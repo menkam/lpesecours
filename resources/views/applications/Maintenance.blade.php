@@ -31,7 +31,7 @@
 
 @section("content")
 <div class=""><?php if(isset($result)) echo $result; ?>
-    <form id="formsaveRecettemomo" name="" method="post" action="">
+    <!--form id="formsaveRecettemomo" name="" method="post" action="">
             {{ csrf_field() }}
             <tbody>
                 <tr class="form-group-sm">
@@ -61,7 +61,7 @@
         </form>
     <p>
       Reponse : <small id="reponse"></small>
-    </p>
+    </p-->
 </div>
 @endsection
 
