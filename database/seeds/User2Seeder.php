@@ -75,23 +75,6 @@ class User2Seeder extends Seeder
         $idUser = $object->id;
         $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
-        $object = new User();
-        $object->name = 'NOUMSI';
-        $object->surname = 'Charleine';
-        $object->date_nais = '1992-04-22';
-        $object->sexe = 'F';
-        $object->photo = 'charleine.jpg';
-        $object->telephone = '674108498';
-        $object->email = 'charleinenoumsi@gmail.com';
-        $object->password = '$2y$10$VdkE.ziuTwQm.XR1mYthveYRskmETiZX5BKT5gl7UbONmscAWb5rW';
-        $object->save();
-        $object->groupe_users()->attach($groupe_membre);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->messages()->attach($msg);
-        $idUser = $object->id;
-        $sol = Message_user::updateMesUser($idUser,$msg['id']);
-
 ///////////////membre////////////////////
         $object = new User();
         $object->name = 'MEMBRE';

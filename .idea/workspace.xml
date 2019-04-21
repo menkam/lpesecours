@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83f47e91-0ec4-4a7f-9c83-61a700008210" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/user.php" afterPath="$PROJECT_DIR$/app/Models/user.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/User2Seeder.php" afterPath="$PROJECT_DIR$/database/seeds/User2Seeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/utilisateurs/ModifierUtilisateur.blade.php" afterPath="$PROJECT_DIR$/resources/views/utilisateurs/ModifierUtilisateur.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +13,20 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="User2Seeder.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/User2Seeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="75" column="63" lean-forward="false" selection-start-line="75" selection-start-column="63" selection-end-line="75" selection-end-column="63" />
+              <folding>
+                <element signature="e#7#38#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,7 +37,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.</find>
       <find>alex</find>
       <find>write</find>
       <find>message-form</find>
@@ -57,6 +66,7 @@
       <find>btn-round</find>
       <find>updateMesuser</find>
       <find>ve</find>
+      <find>charleine</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;td&gt;'+data[i].code_matiere+'&lt;/td&gt;</replace>
@@ -140,9 +150,9 @@
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/VerifiesEmails.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/database/seeds/User2Seeder.php" />
         <option value="$PROJECT_DIR$/resources/views/utilisateurs/ModifierUtilisateur.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
+        <option value="$PROJECT_DIR$/database/seeds/User2Seeder.php" />
       </list>
     </option>
   </component>
@@ -177,8 +187,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,14 +457,16 @@
       <workItem from="1555851775442" duration="1958000" />
       <workItem from="1555881358916" duration="2214000" />
       <workItem from="1555886727402" duration="103000" />
+      <workItem from="1555887158152" duration="215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269591000" />
+    <option name="totallyTimeSpent" value="269806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24816984" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -818,23 +830,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/User2Seeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="110" column="63" lean-forward="true" selection-start-line="95" selection-start-column="8" selection-end-line="110" selection-end-column="63" />
-          <folding>
-            <element signature="e#7#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="19" column="78" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="78" />
-          <folding>
-            <element signature="e#40#60#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -850,7 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="95" column="28" lean-forward="false" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -866,7 +862,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/User2Seeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="75" column="63" lean-forward="false" selection-start-line="75" selection-start-column="63" selection-end-line="75" selection-end-column="63" />
+          <folding>
+            <element signature="e#7#38#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
