@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\message_user;
+use App\Models\Message_user;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +19,7 @@ class MessageController extends Controller
         $content = '';
         $idUser = \Auth::user()->id;
 
-        $message_list = message_user::loadListMessage($idUser);
+        $message_list = Message_user::loadListMessage($idUser);
 
         if($message_list)
             return view('messages\inbox', compact('message_list'));
