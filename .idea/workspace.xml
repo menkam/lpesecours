@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83f47e91-0ec4-4a7f-9c83-61a700008210" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Models/Message_user.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/inbox2.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/OperationController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Models/Ope_user_me.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Http/Controllers/OpeUserMeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageUserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/images/gallery/thumbs/Thumbs.db" afterPath="$PROJECT_DIR$/public/assets/images/gallery/thumbs/Thumbs.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Fonctions.php" afterPath="$PROJECT_DIR$/app/Fonctions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Message.php" afterPath="$PROJECT_DIR$/app/Models/Message.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/user.php" afterPath="$PROJECT_DIR$/app/Models/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_232848_create_operations_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_232848_create_operations_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_232900_create_ope_user_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_232900_create_ope_user_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_232913_create_ope_user_mes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_232913_create_ope_user_mes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_03_22_121341_create_ope_user_gales_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_03_22_121341_create_ope_user_gales_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2019_04_01_090241_create_ope_user_gests_table.php" afterPath="$PROJECT_DIR$/database/migrations/2019_04_01_090241_create_ope_user_gests_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Galerie_images_accueilSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/Galerie_images_accueilSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/MessageSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/MessageSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Oper_user_mesSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/Oper_user_mesSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/inbox.js" afterPath="$PROJECT_DIR$/public/js/inbox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/messages/inbox.blade.php" afterPath="$PROJECT_DIR$/resources/views/messages/inbox.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/messages/message-content.blade.php" afterPath="$PROJECT_DIR$/resources/views/messages/message-content.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/messages/message-form.blade.php" afterPath="$PROJECT_DIR$/resources/views/messages/message-form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/messages/tab-content.blade.php" afterPath="$PROJECT_DIR$/resources/views/messages/tab-content.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,79 +15,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="inbox.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/messages/inbox.blade.php">
+      <file leaf-file-name="ConceptionContoller.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+            <state relative-caret-position="238">
+              <caret line="65" column="10" lean-forward="false" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
               <folding>
-                <marker date="1555800968844" expanded="true" signature="9:27" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="38:45" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="182:189" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="214:226" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="393:406" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="575:584" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="2803:2825" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="2930:2953" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="3069:3078" ph="..." />
-                <marker date="1555800968844" expanded="true" signature="3278:3288" ph="..." />
+                <element signature="e#40#63#0#PHP" expanded="true" />
+                <marker date="1555805823163" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
+                <marker date="1555805823163" expanded="true" signature="9360:9522" ph="..." />
+                <marker date="1555805823163" expanded="true" signature="9369:9474" ph="..." />
+                <marker date="1555805823163" expanded="true" signature="9564:9714" ph="..." />
+                <marker date="1555805823163" expanded="true" signature="9596:9708" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="94" column="32" lean-forward="false" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="32" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message-form.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/messages/message-form.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inbox.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/inbox.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="347" column="6" lean-forward="true" selection-start-line="347" selection-start-column="6" selection-end-line="347" selection-end-column="6" />
-              <folding>
-                <marker date="1555802880730" expanded="true" signature="9063:9205" ph="..." />
-                <marker date="1555802880730" expanded="true" signature="9117:9194" ph="..." />
-                <marker date="1555802880730" expanded="true" signature="10132:10139" ph="×" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tab-content.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/messages/tab-content.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="330" column="0" lean-forward="true" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inbox2.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/inbox2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="45" lean-forward="false" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -157,8 +71,8 @@
       <find>send</find>
       <find>Sen</find>
       <find>Send</find>
-      <find>btn-round</find>
       <find>wysiwyg-editor</find>
+      <find>btn-round</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;td&gt;'+data[i].code_matiere+'&lt;/td&gt;</replace>
@@ -236,7 +150,6 @@
         <option value="$PROJECT_DIR$/app/Models/Message_user.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageUserController.php" />
         <option value="$PROJECT_DIR$/app/Models/Message.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/inbox.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/tab-content.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/message-form.blade.php" />
@@ -244,6 +157,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/public/js/inbox2.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php" />
       </list>
     </option>
   </component>
@@ -638,15 +552,15 @@
       <workItem from="1555524011442" duration="700000" />
       <workItem from="1555582726424" duration="29046000" />
       <workItem from="1555659990737" duration="7658000" />
-      <workItem from="1555750750814" duration="47142000" />
+      <workItem from="1555750750814" duration="47576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250681000" />
+    <option name="totallyTimeSpent" value="251115000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30527085" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1142,21 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-          <folding>
-            <element signature="e#40#63#0#PHP" expanded="true" />
-            <marker date="1555800483470" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
-            <marker date="1555800483470" expanded="true" signature="9354:9516" ph="..." />
-            <marker date="1555800483470" expanded="true" signature="9363:9468" ph="..." />
-            <marker date="1555800483470" expanded="true" signature="9558:9708" ph="..." />
-            <marker date="1555800483470" expanded="true" signature="9590:9702" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageUserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-75">
@@ -1294,14 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/messages/message-form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/messages/tab-content.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -1328,6 +1219,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/inbox2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="45" lean-forward="false" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/inbox.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
@@ -1340,11 +1239,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/inbox2.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/messages/message-form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="45" lean-forward="false" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        <state relative-caret-position="119">
+          <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConceptionContoller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="65" column="10" lean-forward="false" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+          <folding>
+            <element signature="e#40#63#0#PHP" expanded="true" />
+            <marker date="1555805823163" expanded="true" signature="1904:1972" ph="UPDATE ope_u... " />
+            <marker date="1555805823163" expanded="true" signature="9360:9522" ph="..." />
+            <marker date="1555805823163" expanded="true" signature="9369:9474" ph="..." />
+            <marker date="1555805823163" expanded="true" signature="9564:9714" ph="..." />
+            <marker date="1555805823163" expanded="true" signature="9596:9708" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

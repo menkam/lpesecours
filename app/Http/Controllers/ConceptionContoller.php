@@ -63,10 +63,10 @@ class ConceptionContoller extends Controller
         $object->save();*/
 
         //$result = DB::update("UPDATE message_user SET statut='10', updated_at='$date' WHERE id='1';");
-        $sol=5;
-        $result = $sol==0 ? "ZERO" : "Message envoyé";
+        //$sol=5;
+        //$result = $sol==0 ? "ZERO" : "Message envoyé";
 
-        dd($result);
+        //dd($result);
 
         return view("applications/Maintenance", compact('result'));
 
