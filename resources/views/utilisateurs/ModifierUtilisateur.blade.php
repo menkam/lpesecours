@@ -61,7 +61,7 @@
                         <th>Sexe</th> <!-- Libelle -->
                         <th>Télephone</th> <!-- groupeUser -->
                         <th>Email</th> <!-- icon -->
-                        <th>Password</th> <!-- icon -->
+                        <!--th>Password</th> <!-- icon -->
                         <th>Groupe</th> <!-- valide -->
                         <th>Status</th> <!-- statut -->
                         <th>Actions</th> <!-- action -->

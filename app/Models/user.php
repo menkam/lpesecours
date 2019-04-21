@@ -213,7 +213,7 @@ class User extends Authenticatable implements MustVerifyEmail
             <td>'.Fonctions::formatNom($value->sexe).'</td>
             <td>'.$value->telephone.'</td>
             <td>'.$value->email.'</td>
-            <td>'.$value->password.'</td>
+            <!--td>'.$value->password.'</td-->
             <td title="'.$infoGroupeUser->libelle.'">'.$infoGroupeUser->code.'</td>
             <td>'.Fonctions::formatStatut($value->statut).'</td>
             <td>'.$action.'</td>
