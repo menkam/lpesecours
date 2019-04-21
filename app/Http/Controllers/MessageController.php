@@ -21,9 +21,9 @@ class MessageController extends Controller
 
         $message_list = Message_user::loadListMessage($idUser);
 
-        if($message_list)
-            return view('messages\inbox', compact('message_list'));
-        return view('messages\inbox' );
+        /*if($message_list)
+            return view('messages\inbox', compact('message_list'));*/
+        return view('messages\inbox');
     }
 
     /**
