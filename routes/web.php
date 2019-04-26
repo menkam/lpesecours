@@ -13,7 +13,7 @@ Route::singularResourceParameters();
 
 
 Auth::routes();
-Auth::routes(['verify' => false]);
+Auth::routes(['verify' => true]);
 
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });

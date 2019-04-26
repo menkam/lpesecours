@@ -184,7 +184,7 @@ class Fonctions extends Model
 
         return $result;
     }
-    public static function cheminAvatar($fichier){ return ('assets\\images\\avatars\\'.$fichier); }
-    public static function cheminCSV($fichier){ return ('fichiers\\'.$fichier.'.csv'); }
+    public static function cheminAvatar($fichier){ return ('assets/images/avatars/'.$fichier); }
+    public static function cheminCSV($fichier){ return ('fichiers/'.$fichier.'.csv'); }
     public static function delimiteurRows(){ return '-/-'; }
 }
