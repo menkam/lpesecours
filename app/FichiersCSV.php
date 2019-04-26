@@ -14,7 +14,7 @@ class FichiersCSV extends Model
     {
         $delimiteur = Fonctions::delimiteurRows();
         //lire le fichier csv
-        $csv = Reader::createFromPath(storage_path(Fonctions::cheminCSV($fichierCSV)));
+        $csv = Reader::createFromPath((Fonctions::cheminCSV($fichierCSV)));
         $nbr = $csv->count();
         //$csv->setDelimiter(";");
          $result = "";

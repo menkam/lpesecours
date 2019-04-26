@@ -184,6 +184,6 @@ class Fonctions extends Model
 
         return $result;
     }
-    public static function cheminCSV($fichier){ return 'app/public/fichiers/'.$fichier.'.csv'; }
+    public static function cheminCSV($fichier){ return 'fichiers/'.$fichier.'.csv'; }
     public static function delimiteurRows(){ return '-/-'; }
 }
