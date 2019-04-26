@@ -30,7 +30,18 @@
 @endsection
 
 @section("content")
-<div class=""><?php if(isset($result)) echo $result; ?></div>
+<div class="">
+    <p>
+    <form action="uploadFichierCSV" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <h2>Upload Fichier</h2>
+        <label for="fileUpload">Fichier:</label>
+        <input type="file" name="photo" id="fileUpload">
+        <input type="submit" name="submit" value="Upload">
+        <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
+    </form></p>
+    <?php if(isset($result)) echo $result; ?>
+</div>
 @endsection
 
 @section("scripts")

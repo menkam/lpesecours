@@ -42,7 +42,7 @@
                 <h6 class="modal-title" id="myModalLabel">Modification</h6>
             </div>
             <div class="modal-body">
-                <form data-toggle="validator" id="formUpdaterecette" action="#" method="POST">
+                <form data-toggle="validator" id="formUpdaterecette" action="#" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div id="bodyModaleUpdate"></div>
                     <div class="form-group" id="footerModal">

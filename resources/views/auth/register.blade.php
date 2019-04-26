@@ -17,7 +17,7 @@
             <div class="space-6"></div>
             <p> Enter your details to begin: </p>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
                 <fieldset>
 
@@ -63,6 +63,18 @@
                             </span>
                         @endif
                     </label>
+                    <label class="block clearfix">
+                        {{ __('Photo (Type : jpg, jpeg, png - <= 10 Ko)') }}
+                        <span class="block input-icon input-icon-right">
+                            <input type="file" class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" name="photo" id="photo" value="{{ old('photo') }}" required>
+                            <i class="ace-icon fa fa-picture-o"></i>
+                        </span>
+                        @if ($errors->has('photo'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('photo') }}</strong>
+                            </span>
+                        @endif
+                    </label>
 
                     <label class="block clearfix">
                         {{ __('Téléphone') }}
@@ -74,6 +86,20 @@
                         @if ($errors->has('telephone'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('telephone') }}</strong>
+                            </span>
+                        @endif
+                    </label>
+
+                    <label class="block clearfix">
+                        {{ __('Date Nais.') }}
+                        <span class="block input-icon input-icon-right">
+                            <input id="date_nais" type="date" class="form-control{{ $errors->has('date_nais') ? ' is-invalid' : '' }}" name="date_nais" value="{{ old('date_nais') }}" placeholder="JJ-MM-AAAA" required autofocus>
+                            <i class="ace-icon fa fa-calendar"></i>
+                        </span>
+
+                        @if ($errors->has('date_nais'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('date_nais') }}</strong>
                             </span>
                         @endif
                     </label>
