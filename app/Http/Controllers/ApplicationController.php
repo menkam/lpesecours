@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fonctions;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\Message;
@@ -10,7 +11,13 @@ use App\Models\Mobile_money;
 use App\Models\Cachet;
 use App\Models\Photo;
 use App\FichiersCSV;
+use App\UploadFile;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\FichePictures;   //Permet de mettre en place la validateur personnalisé
+use Validator;
+use Illuminate\Support\Facades\Redirect;
 
 
 class ApplicationController extends Controller
@@ -38,18 +45,49 @@ class ApplicationController extends Controller
         $result = $result.Cachet::saveCachet();
         $result = $result.Photo::savePhoto();
         $result = $result.Mobile_money::saveMomo();
+
         return view("applications/downloadDataBase", compact('result'));
     }
 
     public function uploadDataBase()
     {
         $result = 'Restauration de l`application en cours...<br>';
-        //$result = $result.User::createGlobalUser(FichiersCSV::lecture("user"));
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            $fichierCSV = $_FILES["fichierCSV"];
+            $allowed = array("csv" => "application/vnd.ms-excel");
+            $filename = $fichierCSV["name"];
+            $chemin = Fonctions::cheminCSV($filename);
+
+            $result = UploadFile::run($fichierCSV,$allowed,$filename,$chemin);
+            $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture($filename));
+            //$result = $result.User::createGlobalUser(FichiersCSV::lecture($filename));
+        }
+        /*
         //$result = $result.Message::createGlobalMessage(FichiersCSV::lecture("message"));
         $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture("cachet"));
         $result = $result.Photo::createGlobalPhoto(FichiersCSV::lecture("photo"));
-        $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture("momo"));
+        $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture("momo"));*/
         return view("applications/uploadDataBase", compact('result'));
+    }
+    public function uploadFichierCSV(Request $request)
+    {
+        $result = 'Upload en cours...<br>';
+        //dd();
+
+        // Vérifier si le formulaire a été soumis
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            $photo = $_FILES["photo"];
+            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
+            $filename = Fonctions::getCurentDateChaine("test");
+            $chemin = Fonctions::cheminAvatar($filename);
+            $maxsize = 10*1024;
+
+            //$result = UploadFile::run($photo,$allowed,$filename,$chemin,$maxsize);
+            $result = User::saveAvatar($photo,$filename);
+        }
+        return view("applications/Maintenance", compact('result'));
     }
 
     public function listMenu(Request $request){

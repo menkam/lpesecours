@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Fonctions;
 use Validator;
 use App\FichiersCSV;
+use App\UploadFile;
 use DB;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -336,6 +337,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getContentUpdate($id)
     {
+
         $sol = User::getAllLine($id, null);
         $page = "ras";
         $page ='
@@ -359,7 +361,8 @@ class User extends Authenticatable implements MustVerifyEmail
             </div>
             <div class="form-group"  style="">
                 <label class="control-label" for="espece">photo</label>
-                <input type="text" name="photo" id="photo" value="'.$sol->photo.'" class="form-control" data-error="choisir un phonto." >
+                <img src="'.Fonctions::cheminAvatar($sol->photo).'" width="50px" height="50px" alt="'.($sol->photo).'"/>
+                <input type="file" name="photo" id="photo" class="form-control" data-error="choisir un phonto." >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">
@@ -391,6 +394,19 @@ class User extends Authenticatable implements MustVerifyEmail
             </div>
         ';
         return $page;
+    }
+
+    public static function saveAvatar($photo,$filename)
+    {
+        //$photo = $_FILES["photo"];
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
+        $nomext  = explode('.',$photo['name']);
+        $filename = $filename.".".$nomext[1];
+        $chemin = Fonctions::cheminAvatar($filename);
+        $maxsize = 10*1024;
+
+        $result = UploadFile::run($photo,$allowed,$filename,$chemin,$maxsize);
+        return $filename;
     }
 
     public static function getUser($id)

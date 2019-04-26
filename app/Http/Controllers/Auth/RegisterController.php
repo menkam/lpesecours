@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\FonctionAuth;
+use App\Fonctions;
 
 
 
@@ -65,7 +66,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:50'],
             'surname' => ['required', 'string', 'max:50'],
             'sexe' => ['required', 'string', 'min:1', 'max:1'],
-            'telephone' => ['required', 'string', 'max:13'],            
+            'photo' => ['required', 'image','mimes:jpeg,jpg,png','max:10240'],
+            'telephone' => ['required', 'string', 'max:13'],
+            'date_nais' => ['required', 'date', 'max:2010-01-01'],
             'email' => ['required', 'string', 'email', 'max:70', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -79,15 +82,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $newUser = User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'sexe' => $data['sexe'],
-            'telephone' => $data['telephone'],            
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'api_token' => Str::random(60),
-        ]);
+        $namePhoto = User::saveAvatar($_FILES["photo"],Fonctions::getCurentDateChaine($data['name']));
+        if($namePhoto)
+        {
+            $newUser = User::create([
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'sexe' => $data['sexe'],
+                'photo' => $namePhoto,
+                'date_nais' => $data['date_nais'],
+                'telephone' => $data['telephone'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'api_token' => Str::random(60),
+            ]);
+        }
+
 
 
         $groupe_visiter = Tlist_groupe_user::where('code', 'VSTER')->first();

@@ -1,7 +1,3 @@
 name;surname;photo;date_nais;sexe;telephone;email;password;statut;created_at;updated_at
-ROOT;Admin;admin.jpg;1992-03-02;M;+237670928110;lpesecours@gmail.com;$2y$10$yTIeBZE74K4Ev1hwFWUE0uMtZ4GPdby4NZ5n4Bzw1.yB2bY4eza.G;1;"2019-04-18 20:25:24";"2019-04-18 20:25:24"
-MENKAM;Francis;francis.jpg;1995-03-02;M;+237670256150;menkam35@gmail.com;$2y$10$7wn6qAxVkR.dmrvhip/kR.zkci.a9bP2Gox/KRoSZRyenVCxF9ZkW;1;"2019-04-18 20:25:24";"2019-04-18 20:25:24"
-PERSONNEL;Personnel;personnel.png;1992-03-02;M;+237600000000;personnel@gmail.com;$2y$10$9Ya5K2iSCpLKrlDv8IS.cu0E7TF2mJ7LK1Dh7awgjd/sOvb7439m.;1;"2019-04-18 20:25:24";"2019-04-18 20:25:24"
-MEMBRE;Membre;membre.png;1992-03-02;M;+237600000001;membre@gmail.com;$2y$10$nQNKzR7c1w8MbMoc7tph8u.JCMj4uh5t0UhelIDCvdrCXiPFjF.q2;1;"2019-04-18 20:25:24";"2019-04-18 20:25:24"
-VISITEUR;invite;visiteur.png;1992-03-02;M;+237600000002;visiteur@gmail.com;$2y$10$/iVKFGJN3Ov1mSXpUOLWoOK5oKjqkK6oDYWGLtP3oLzaU39XRX0dG;1;"2019-04-18 20:25:24";"2019-04-18 20:25:24"
-BLOQUER;Bloquer;bloquer.png;1992-03-02;M;+237600000003;bloquer@gmail.com;$2y$10$upBmgGDDDXGSQ6sCF4aY6ekQFSEGMfiEIdIKL7mj35oOk6QKSei5S;1;"2019-04-18 20:25:25";"2019-04-18 20:25:25"
+ROOT;Admin;admin.jpg;1992-03-02;M;+237670928110;lpesecours@gmail.com;$2y$10$L1DJ5rEdtcOufgt2AIWG4.z5nfL5Yau6FXiHbvarMVFUxKvFStuuS;1;"2019-04-26 00:27:22";"2019-04-26 00:27:22"
+MENKAM;Francis;francis.jpg;1995-03-02;M;+237670256150;menkam35@gmail.com;$2y$10$hO6XravW56/sFaztOk9zHux/pxPpuy6x7B.t/r3bjzse5bp7l9k3S;1;"2019-04-26 00:27:22";"2019-04-26 00:27:22"

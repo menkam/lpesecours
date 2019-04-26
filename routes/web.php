@@ -13,7 +13,7 @@ Route::singularResourceParameters();
 
 
 Auth::routes();
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
 
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
@@ -120,6 +120,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveModalUpdate', 'ModalController@saveModalUpdate')->name('saveModalUpdate');
 
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
+        Route::post('uploadFichierCSV', 'ApplicationController@uploadFichierCSV')->name('uploadFichierCSV');
+        Route::post('uploadDataBase', 'ApplicationController@uploadDataBase')->name('uploadDataBase');
         Route::get('uploadDataBase', 'ApplicationController@uploadDataBase')->name('uploadDataBase');
         Route::get('downloadDataBase', 'ApplicationController@downloadDataBase')->name('downloadDataBase');
         Route::get('updateGestion', 'GestionsController@updateGestion')->name('updateGestion');

@@ -37,7 +37,7 @@ class FichiersCSV extends Model
         $resul = "=> Debut de creation de la sauvegade \"".$nomFichierCSV."\"";
         $date = '';//Fonctions::getCurentDateChaine().'_';
         //dd($date);
-        $chemin = storage_path(Fonctions::cheminCSV($date.$nomFichierCSV));
+        $chemin = Fonctions::cheminCSV($date.$nomFichierCSV);
         $delimiteur = ';';
 
         $fichier_csv = fopen($chemin, 'w+');
@@ -49,7 +49,7 @@ class FichiersCSV extends Model
         }
         fclose($fichier_csv);
 
-        $resul = $resul."<br>fichier sauvegarder avec succès.<br>";
+        $resul = $resul."<br>fichier sauvegarder avec succès. <p><b>Cliquer <a href='".$chemin."'><u>ICI</u></a> pour télécharger le fichier ".$nomFichierCSV.".csv</b></p><br>";
         return $resul;
     }
 }
