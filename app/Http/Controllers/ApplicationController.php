@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\User;
+use App\Models\Message;
+use App\Models\Message_user;
+use App\Models\Mobile_money;
+use App\Models\Cachet;
+use App\Models\Photo;
+use App\FichiersCSV;
 use Illuminate\Http\Request;
 
 
@@ -20,6 +27,29 @@ class ApplicationController extends Controller
         $menu = new Menu(\Auth::user()->getGroupe_user());
         $bodyListMenus = $menu->ListMenus();
         return view("applications/Menus", compact('bodyListMenus'));
+    }
+
+    public function downloadDataBase()
+    {
+        $result = 'Sauvegarde de l\'application en cours...<br>';
+        $result = $result.User::saveUser();
+        $result = $result.Message::saveMessage();
+        $result = $result.Message_user::saveMessage_user();
+        $result = $result.Cachet::saveCachet();
+        $result = $result.Photo::savePhoto();
+        $result = $result.Mobile_money::saveMomo();
+        return view("applications/downloadDataBase", compact('result'));
+    }
+
+    public function uploadDataBase()
+    {
+        $result = 'Restauration de l`application en cours...<br>';
+        //$result = $result.User::createGlobalUser(FichiersCSV::lecture("user"));
+        //$result = $result.Message::createGlobalMessage(FichiersCSV::lecture("message"));
+        $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture("cachet"));
+        $result = $result.Photo::createGlobalPhoto(FichiersCSV::lecture("photo"));
+        $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture("momo"));
+        return view("applications/uploadDataBase", compact('result'));
     }
 
     public function listMenu(Request $request){

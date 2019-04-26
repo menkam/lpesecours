@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Fonctions;
+use Validator;
+use App\FichiersCSV;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use DB;
 
 class Mobile_money extends Model
@@ -28,6 +32,106 @@ class Mobile_money extends Model
     protected $casts = [
 
     ];
+
+    public static function createMomo(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|date',
+            'fond' => 'required|integer',
+            'pret' => 'required|integer',
+            'espece' => 'required|integer',
+            'compte_momo' => 'required|integer',
+            'compte2' => 'required|integer',
+            'frais_transfert' => 'required|integer',
+            'commission' => 'required|integer',
+        ]);
+        if ($validator->passes()) {
+            $save = self::create([
+                'date' => $request['date'],
+                'fond' => $request['fond'],
+                'pret' => $request['pret'],
+                'espece' => $request['espece'],
+                'compte_momo' => $request['compte_momo'],
+                'compte2' => $request['compte2'],
+                'frais_transfert' => $request['frais_transfert'],
+                'commission' => $request['commission'],
+            ]);
+            if($save->id)
+                return response()->json(['success'=> 'Date: '.$request['date'].' -> Added success.']);
+            return response()->json(['error'=>'error']);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public static function createGlobalMomo($arrayss)
+    {
+        $sol = "<h1><u>Debut de la mise à jours MoMo</u></h1><br>";
+        $arrays = explode(Fonctions::delimiteurRows(), $arrayss);
+        for($i=0; $i<count($arrays); $i++)
+        {
+            $array = explode(";", $arrays[$i]);
+            if(count($array)==11)
+            {
+                if(!self::isExcist($array[0]))
+                {
+                    $request = new Request([
+                        'date' => $array[0],
+                        'fond' => $array[1],
+                        'pret' => $array[2],
+                        'espece' => $array[3],
+                        'compte_momo' => $array[4],
+                        'compte2' => $array[5],
+                        'frais_transfert' => $array[6],
+                        'commission' => $array[7],
+                        'statut' => $array[8],
+                        'created_at' => $array[9],
+                        'updated_at' => $array[10]
+                    ]);
+                    $sol = $sol.self::createMomo($request).'<br>';
+                }
+                else
+                {
+                    //$sol = $sol.response()->json(['warnings'=> 'Date: '.$array[0].' -> existe deja!!!.']).'<br>';
+                }
+            }
+            else
+            {
+                $sol = $sol.response()->json(['error'=> 'Le Format de Saisie de Données est Invalide !!!'.'<br>']);
+            }
+        }
+        $sol = $sol."<h1><u>Fin de la mise à jours MoMo</u></h1><br>";
+        return $sol;
+    }
+
+    public static function saveMomo()
+    {
+        $lignes = array();
+        $rows = self::getAllLine();
+        $lignes[] = array('date','fond','pret','espece','compte_momo','compte2','frais_transfert','commission','statut','created_at','updated_at');
+        foreach ($rows as $val)
+        {
+            $lignes[] = array(
+                $val->date,
+                $val->fond,
+                $val->pret,
+                $val->espece,
+                $val->compte_momo,
+                $val->compte2,
+                $val->frais_transfert,
+                $val->commission,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at,
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("momo", $lignes);
+    }
+
+    public static function isExcist($date)
+    {
+        return DB::select("SELECT COUNT(date) FROM mobile_moneys WHERE date = '$date';")[0]->count;
+    }
 
     public static function updateMomo($request)
     {
@@ -116,7 +220,7 @@ class Mobile_money extends Model
         $totalEC2[0] = 200000;
         $commission[0] = 23753;
 
-        foreach (Mobile_money::getAllLine('1') as $value)
+        foreach (self::getAllLine('1') as $value)
         {
             $totalEC2[$nbr] = (integer)$value->espece + (integer)$value->compte_momo + (integer)$value->compte2;
             $commission[$nbr] = (integer)$value->commission;
@@ -179,7 +283,7 @@ class Mobile_money extends Model
 
     public static function getContentUpdate($id)
     {
-        $sol = Mobile_money::getAllLine('1',$id);
+        $sol = self::getAllLine('1',$id);
         $page = "ras";
         $page ='
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
@@ -248,8 +352,8 @@ class Mobile_money extends Model
 
     public static function infoUtile()
     {
-        $info1 = Mobile_money::getAllLine('1',null,'ok');
-        $info2 = Mobile_money::somCommission();
+        $info1 = self::getAllLine('1',null,'ok');
+        $info2 = self::somCommission();
         //dd($info1);
 
         return ([

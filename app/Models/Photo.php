@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Fonctions;
+use Validator;
+use App\FichiersCSV;
+use Illuminate\Http\Request;
 use App\Models\Tlist_cachet;
 use DB;
 
@@ -20,6 +23,91 @@ class Photo extends Model
 
     protected $hidden = [
     ];
+
+    public static function createPhoto(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|date',
+            'type' => 'required|integer',
+            'nombre' => 'required|integer',
+            'prix_unitaire' => 'required|integer',
+        ]);
+
+        if ($validator->passes()) {
+            $save = Photo::create([
+                'date' => $request['date'],
+                'type' => $request['type'],
+                'nombre' => $request['nombre'],
+                'prix_unitaire' => $request['prix_unitaire'],
+            ]);
+            if($save)
+                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.']);
+            return response()->json(['error'=>$save]);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public static function createGlobalPhoto($arrayss)
+    {
+        $sol = "<h1><u>Debut de la mise à jours Photo</u></h1><br>";
+        $arrays = explode(Fonctions::delimiteurRows(), $arrayss);
+        //dd($arrayss);
+        for($i=0; $i<count($arrays); $i++)
+        {
+            $array = explode(";", $arrays[$i]);
+            if(count($array)==7)
+            {
+                if(!self::isExcist($array[0],$array[1],$array[2],$array[3]))
+                {
+                    $request = new Request([
+                        'date' => $array[0],
+                        'type' => $array[1],
+                        'nombre' => $array[2],
+                        'prix_unitaire' => $array[3],
+                        'statut' => $array[4],
+                        'created_at' => $array[5],
+                        'updated_at' => $array[6]
+                    ]);
+                    $sol = $sol.self::createPhoto($request).'<br>';
+                }
+                else
+                {
+                    //$sol = $sol.response()->json(['warnings'=> 'Date: '.$array[0].' type '.$array[1].' -> existe deja!!!.']).'<br>';
+                }
+            }
+            else
+            {
+                $sol = $sol.response()->json(['error'=> 'Le Format de Saisie de Données est Invalide !!!'.'<br>']);
+            }
+        }
+        $sol = $sol."<h1><u>Fin de la mise à jours photo</u></h1><br>";
+        return $sol;
+    }
+
+    public static function savePhoto()
+    {
+        $lignes = array();
+        $photos = self::getAllLine();
+        $lignes[] = array('date','type','nombre','prix_unitaire','statut','created_at','updated_at');
+        foreach ($photos as $val)
+        {
+            $lignes[] = array(
+                $val->date,
+                $val->type,
+                $val->nombre,
+                $val->prix_unitaire,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at,
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("photo", $lignes);
+    }
+    public static function isExcist($date,$type,$nombre,$prixU)
+    {
+        return DB::select("SELECT COUNT(date) FROM photos WHERE date='$date' AND type='$type' AND nombre='$nombre' AND prix_unitaire='$prixU';")[0]->count;
+    }
 
     public static function updatePhoto($request)
     {
@@ -50,7 +138,7 @@ class Photo extends Model
 
     public static  function seeder(){
         $content = '';
-        foreach (Photo::getAllLine() as $value){
+        foreach (self::getAllLine() as $value){
 
             $content = $content.'
                 $object = new Photo();<br>
@@ -70,7 +158,7 @@ class Photo extends Model
         $somqte=0;
         $rowBilan='';
 
-        foreach (Photo::getAllLine() as $value)
+        foreach (self::getAllLine() as $value)
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
 
@@ -97,7 +185,7 @@ class Photo extends Model
 
     public static function getContentUpdate($id)
     {
-        $sol = Photo::getAllLine($id);
+        $sol = self::getAllLine($id);
         $page = "ras";
         $page = '
             <input type="hidden" value="'.$sol->id.'" id="id" name="id">

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Fonctions;
+use Validator;
+use App\FichiersCSV;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Operation;
@@ -28,7 +30,28 @@ class Message_user extends Model
     ];
 
 
-
+    public static function saveMessage_user()
+    {
+        $lignes = array();
+        $rows = self::getAllLine();
+        $lignes[] = array('user_id','message_id','statut','created_at','updated_at');
+        foreach ($rows as $val)
+        {
+            $lignes[] = array(
+                $val->user_id,
+                $val->message_id,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("message_user", $lignes);
+    }
+    public static function getAllLine($id = null, $statut=null)
+    {
+        return DB::select("SELECT * FROM public.message_user;");
+    }
     public static function updateMesUser($idUser, $idMsg)
     {
         if(!empty($idUser) && !empty($idMsg))

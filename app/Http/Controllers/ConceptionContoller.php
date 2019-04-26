@@ -18,51 +18,19 @@ use App\Models\Photo;
 use App\Models\Mobile_money;
 use App\Models\Tlist_groupe_user_user;
 use App\Fonctions;
+use App\FichiersCSV;
 use DB;
 
 
 
 class ConceptionContoller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
 
     public function index()
     {
 
-        $result = "RAS";
-        $tz = '+01:00';
-        //$currentDates = new DateTime('2019-04-18 14:52:00');
-        $now = Carbon::now($tz);
-        //$date = Carbon::createFromDate('2019','04','18', '+01:00');
-        $date = Carbon::create('2019','04','18','17', '26', '00', $tz);
-        //$dif = (Carbon::parse(Carbon::now($tz))->diffInMinutes($date) < 2) ? 'à l\'instant' : $date->diffForHumans($now);
-        /*$dif = Carbon::parse(Carbon::now($tz))->diffInYears($date);
-        $dif = Carbon::parse(Carbon::now($tz))->diffInMonths($date);
-        $dif = Carbon::parse(Carbon::now($tz))->diffInDays($date);
-        $dif = Carbon::parse(Carbon::now($tz))->diffInHours($date);
-        $dif = Carbon::parse(Carbon::now($tz))->diffInMinutes($date);*/
-/*
- * $result = DB::insert("
-                    INSERT INTO messages(type_message, id_user_send, objet, libelle)
-                    VALUES ('1', '1','Test', 'juste des tests23');");
-
-        dd($result);
- */
-
-        /*$object = new Message();
-        $object->type_message = '1';
-        $object->id_user_send = '1';
-        $object->objet = 'Test';
-        $object->libelle = 'juste des tests23';
-        $object->save();*/
-
-
+        $result = "";
+        $result = $result."<h1><u>Fin.</u></h1><br>";
 
         return view("applications/Maintenance", compact('result'));
 
@@ -80,39 +48,6 @@ class ConceptionContoller extends Controller
         return $sol;
     }
 
-    /**
-     ** gérération galerie_accueilSeeder
-     **/
-    /*public function seedGalerie()
-    {
-        $content = '';
-        $nbr = 1;
-
-        $galeri = Galerie_images_accueil::all();
-        foreach ($galeri as $value){
-
-            $content = $content.'
-            /////////'.$nbr.'//////////<br>
-            $object = new Galerie_images_accueil();<br>
-            $object->libelle = \''.$value->libelle.'\';<br>
-            $object->info = \''.$value->info.'\';<br>
-            $object->position = \''.$value->position.'\';<br>
-            $idLastGalerie = $object->save();<br><br>
-
-            $object = new Operation();<br>
-            $object->type_operation = $typeOperation[\'id\'];<br>
-            $idLastOperation = $object->save();<br><br>
-
-            $object = new Ope_user_gale();<br>
-            $object->id_operation = $idLastOperation;<br>
-            $object->id_user = $user[\'id\'];<br>
-            $object->id_galerie = $idLastGalerie;<br>
-            $object->save();<br>
-            <br>
-          ';
-            $nbr++;
-        }
-    }*/
     public function initApp()
     {
         $titre = '';

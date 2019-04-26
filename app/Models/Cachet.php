@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Fonctions;
+use Validator;
+use App\FichiersCSV;
+use Illuminate\Http\Request;
 use App\Models\Tlist_cachet;
 use DB;
 
@@ -21,6 +24,91 @@ class Cachet extends Model
 
     protected $hidden = [
     ];
+
+    public static function createCachet(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|date',
+            'type' => 'required|integer',
+            'nombre' => 'required|integer',
+            'prix_unitaire' => 'required|integer',
+        ]);
+
+        if ($validator->passes()) {
+            $save = Cachet::create([
+                'date' => $request['date'],
+                'type' => $request['type'],
+                'nombre' => $request['nombre'],
+                'prix_unitaire' => $request['prix_unitaire'],
+            ]);
+            if($save)
+                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.']);
+            return response()->json(['error'=>$save]);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public static function createGlobalCachet($arrayss)
+    {
+        $sol = "<h1><u>Debut de la mise à jours Cachet</u></h1><br>";
+        $arrays = explode(Fonctions::delimiteurRows(), $arrayss);
+        //dd($arrays);
+        for($i=0; $i<count($arrays); $i++)
+        {
+            $array = explode(";", $arrays[$i]);
+            if(count($array)==7)
+            {
+                if(!self::isExcist($array[0],$array[1],$array[2],$array[3]))
+                {
+                    $request = new Request([
+                        'date' => $array[0],
+                        'type' => $array[1],
+                        'nombre' => $array[2],
+                        'prix_unitaire' => $array[3],
+                        'statut' => $array[4],
+                        'created_at' => $array[5],
+                        'updated_at' => $array[6]
+                    ]);
+                    $sol = $sol.self::createCachet($request).'<br>';
+                }
+                else
+                {
+                    //$sol = $sol.response()->json(['warnings'=> 'Date: '.$array[0].' type '.$array[1].' -> existe deja!!!.']).'<br>';
+                }
+            }
+            else
+            {
+                $sol = $sol.response()->json(['error'=> 'Le Format de Saisie de Données est Invalide !!!'.'<br>']);
+            }
+        }
+        $sol = $sol."<h1><u>Fin de la mise à jours photo</u></h1><br>";
+        return $sol;
+    }
+    public static function saveCachet()
+    {
+        $lignes = array();
+        $rows = self::getAllLine();
+        $lignes[] = array('date','type','nombre','prix_unitaire','statut','created_at','updated_at');
+        foreach ($rows as $val)
+        {
+            $lignes[] = array(
+                $val->date,
+                $val->type,
+                $val->nombre,
+                $val->prix_unitaire,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at,
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("cachet", $lignes);
+    }
+    public static function isExcist($date,$type,$nombre,$prixU)
+    {
+        return DB::select("SELECT COUNT(date) FROM cachets WHERE date='$date' AND type='$type' AND nombre='$nombre' AND prix_unitaire='$prixU';")[0]->count;
+    }
+
 
     public static function updateCachet($request)
     {
@@ -52,7 +140,7 @@ class Cachet extends Model
 
     public static  function seeder(){
         $content = '';
-        foreach (Cachet::getAllLine() as $value){
+        foreach (self::getAllLine() as $value){
 
             $content = $content.'
                 $object = new Cachet();<br>
@@ -76,7 +164,7 @@ class Cachet extends Model
         $somqte=0;
         $rowBilan='';
 
-        foreach (Cachet::getAllLine() as $value)
+        foreach (self::getAllLine() as $value)
         {
             $nxpu = (int)$value->nombre * (int)$value->prix_unitaire;
             $action = Fonctions::colActionTable("'cachet',$value->id");
@@ -102,7 +190,7 @@ class Cachet extends Model
 
     public static function getContentUpdate($id)
     {
-        $sol = Cachet::getAllLine($id);
+        $sol = self::getAllLine($id);
         $page = '
             <input type="hidden" value="'.$sol->id.'" id="id" name="id">
             <input type="hidden" value="'.$sol->date.'" id="date" name="date">

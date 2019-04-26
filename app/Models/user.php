@@ -10,7 +10,10 @@ use App\Models\Tlist_acreditation;
 use App\Models\Tlist_groupe_user;
 use App\Models\Tlist_groupe_user_user;
 use App\Models\Message;
+use Illuminate\Http\Request;
 use App\Fonctions;
+use Validator;
+use App\FichiersCSV;
 use DB;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -57,6 +60,107 @@ class User extends Authenticatable implements MustVerifyEmail
     public function messages()
     {
         return $this->belongsToMany(Message::class);
+    }
+
+    public static function createUser(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'photo' => 'required|string',
+            'date_nais' => 'required|string',
+            'sexe' => 'required|string',
+            'telephone' => 'required|string',
+            'photo' => 'required|string',
+            'email' => 'required|string'
+        ]);
+
+        if ($validator->passes()) {
+            $save = User::create([
+                'name' => $request['name'],
+                'surname' => $request['surname'],
+                'photo' => $request['photo'],
+                'date_nais' => $request['date_nais'],
+                'sexe' => $request['sexe'],
+                'telephone' => $request['telephone'],
+                'photo' => $request['date'],
+                'email' => $request['email']
+            ]);
+            if($save)
+                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.']);
+            return response()->json(['error'=>$save]);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+
+    public static function createGlobalUser($arrayss)
+    {
+        $sol = "<h1><u>Debut de la mise à jours Utilisateur</u></h1><br>";
+        $arrays = explode(Fonctions::delimiteurRows(), $arrayss);
+        //dd(count($array));
+        for($i=0; $i<count($arrays); $i++)
+        {
+            $array = explode(";", $arrays[$i]);
+            if(count($array)==11)
+            {
+                if(!self::isExcist($array[6]))
+                {
+                    $request = new Request([
+                        'name' => $array[0],
+                        'surname' => $array[1],
+                        'photo' => $array[2],
+                        'date_nais' => $array[3],
+                        'sexe' => $array[4],
+                        'telephone' => $array[5],
+                        'email' => $array[6],
+                        'password' => $array[7],
+                        'statut' => $array[8],
+                        'created_at' => $array[9],
+                        'updated_at' => $array[10]
+                    ]);
+                    $sol = $sol.self::createUser($request).'<br>';
+                }
+                else
+                {
+                    //$sol = $sol.response()->json(['warnings'=> 'Date: '.$array[0].' type '.$array[1].' -> existe deja!!!.']).'<br>';
+                }
+            }
+            else
+            {
+                $sol = $sol.response()->json(['error'=> 'Le Format de Saisie de Données est Invalide !!!'.'<br>']);
+            }
+        }
+        $sol = $sol."<h1><u>Fin de la mise à jours Utilisateur</u></h1><br>";
+        return $sol;
+    }
+
+    public static function saveUser()
+    {
+        $lignes = array();
+        $photos = self::getAllLine();
+        $lignes[] = array('name','surname','photo','date_nais','sexe','telephone','email','password','statut','created_at','updated_at');
+        foreach ($photos as $val)
+        {
+            $lignes[] = array(
+                $val->name,
+                $val->surname,
+                $val->photo,
+                $val->date_nais,
+                $val->sexe,
+                $val->telephone,
+                $val->email,
+                $val->password,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at,
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("user", $lignes);
+    }
+    public static function isExcist($email)
+    {
+        return DB::select("SELECT COUNT(email) FROM users WHERE email='$email';")[0]->count;
     }
 
     public static function updateUser($request)
@@ -227,7 +331,7 @@ class User extends Authenticatable implements MustVerifyEmail
         if(!empty($statut) && !empty($id)) return DB::select("SELECT * FROM public.users WHERE users.id = '$id' AND users.statut = '$statut';")[0];
         elseif(!empty($statut)) return DB::select("SELECT * FROM public.users WHERE users.statut = '$statut';")[0];
         elseif(!empty($id)) return DB::select("SELECT * FROM public.users WHERE  users.id = '$id';")[0];
-        else return DB::select("SELECT * FROM public.users;");
+        else return DB::select("SELECT name, surname, photo, date_nais, sexe, telephone, email, password, statut, created_at, updated_at FROM public.users;");
     }
 
     public static function getContentUpdate($id)

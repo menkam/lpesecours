@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Fonctions;
 use Validator;
+use App\FichiersCSV;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tlist_message;
 use Illuminate\Http\Request;
@@ -36,6 +37,17 @@ class Message extends Model
         
     ];
 
+    public static function validator(Request $request)
+    {
+        return Validator::make($request->all(), [
+            'type_message' => 'required|string',
+            'objet' => 'required|string',
+            'objet' => 'required|string',
+            'libelle' => 'required|string',
+            'emailRecive' => 'required|email'
+        ]);
+    }
+
     public static function newMessage(Request $request)//$type,$objet,$libelle,$emailRecive
     {
         //echo($request->type);
@@ -48,13 +60,7 @@ class Message extends Model
         $userrecive = User::where('email', $emailRecive)->first();
         $userSend = \Auth::user()->id;
 
-        $validator = Validator::make($request->all(), [
-            'type' => 'required|string',
-            'objet' => 'required|string',
-            'objet' => 'required|string',
-            'libelle' => 'required|string',
-            'emailRecive' => 'required|email'
-        ]);
+        $validator = self::validator($request);
         if ($validator->passes()) {
             if(!empty($userrecive['id']))
             {
@@ -81,7 +87,91 @@ class Message extends Model
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
+    public static function createMessage(Request $request)
+    {
+        $validator = self::validator($request);
 
+        if ($validator->passes()) {
+            $save = Message::create([
+                'type_message' => $request['type_message'],
+                'id_user_send' => $request['id_user_send'],
+                'objet' => $request['objet'],
+                'libelle' => $request['libelle'],
+                'statut' => $request['statut'],
+                'created_at' => $request['created_at'],
+                'updated_at' => $request['updated_at'],
+            ]);
+            if($save)
+                return response()->json(['success'=>'Added Date: '.$request['objet'].' -> success.']);
+            return response()->json(['error'=>$save]);
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
+    }
+    public static function createGlobalMessage($arrayss)
+    {
+        $sol = "<h1><u>Debut de la mise à jours Message</u></h1><br>";
+        $arrays = explode(Fonctions::delimiteurRows(), $arrayss);
+        dd($arrayss);
+        for($i=0; $i<count($arrays); $i++)
+        {
+            $array = explode(Fonctions::delimiteurRows(), $arrays[$i]);
+            if(count($array)==7)
+            {
+                if(!self::isExcist($array[0],$array[1],$array[2],$array[3]))
+                {
+                    $request = new Request([
+                        'type_message' => $array[0],
+                        'id_user_send' => $array[1],
+                        'objet' => $array[2],
+                        'libelle' => $array[3],
+                        'statut' => $array[4],
+                        'created_at' => $array[5],
+                        'updated_at' => $array[6]
+                    ]);
+                    $sol = $sol.self::createMessage($request).'<br>';
+                }
+                else
+                {
+                    //$sol = $sol.response()->json(['warnings'=> 'Date: '.$array[0].' type '.$array[1].' -> existe deja!!!.']).'<br>';
+                }
+            }
+            else
+            {
+                $sol = $sol.response()->json(['error'=> 'Le Format de Saisie de Données est Invalide !!!'.'<br>']);
+            }
+        }
+        $sol = $sol."<h1><u>Fin de la mise à jours message</u></h1><br>";
+        return $sol;
+    }
+    public static function saveMessage()
+    {
+        $lignes = array();
+        $rows = self::getAllLine();
+        $lignes[] = array('type_message','id_user_send','objet','libelle','statut','created_at','updated_at');
+        foreach ($rows as $val)
+        {
+            $lignes[] = array(
+                $val->type_message,
+                $val->id_user_send,
+                $val->objet,
+                $val->libelle,
+                $val->statut,
+                $val->created_at,
+                $val->updated_at
+            );
+        }
+        //dd($lignes);
+        return FichiersCSV::ecriture("message", $lignes);
+    }
+    public static function isExcist($type_message,$id_user_send,$objet,$libelle)
+    {
+        return DB::select("SELECT COUNT(date) FROM messages WHERE type_message='$type_message' AND id_user_send='$id_user_send' AND objet='$objet' AND libelle='$libelle';")[0]->count;
+    }
+
+    public static function getAllLine($id = null, $statut=null)
+    {
+        return DB::select("SELECT * FROM public.messages;");
+    }
     public static function showInfoNav($type,$typeMessage,$idUser,$statut)
     {
         $erreur = 0;
@@ -101,7 +191,6 @@ class Message extends Model
         }
         return ([$erreur,$sol]);
     }
-
     public static function getInbox($typeMessages=null, $idUser=null, $statut=null)
     {
         $typeMessage = "";
@@ -157,12 +246,10 @@ class Message extends Model
               message_user.id = '$idOpeUsermes' AND 
               message_user.statut ".$statut.";");
     }
-
     public static function countInbox($typeMessage=null, $idUser=null, $statut=null)
     {
 
     }
-
     public static function findInbox($typeMessage,$idUser,$statut)
     {
         $ligne = '';

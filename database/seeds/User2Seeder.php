@@ -54,93 +54,94 @@ class User2Seeder extends Seeder
         $object->messages()->attach($msg);
         $idUser = $object->id;
         $sol = Message_user::updateMesUser($idUser,$msg['id']);
+        /*
+        ///////////////personnel////////////////////
 
-///////////////personnel////////////////////
+                $object = new User();
+                $object->name = 'PERSONNEL';
+                $object->surname = 'Personnel';
+                $object->date_nais = '02/03/1992';
+                $object->sexe = 'M';
+                $object->photo = 'personnel.png';
+                $object->telephone = '+237600000000';
+                $object->email = 'personnel@gmail.com';
+                $object->password = bcrypt('12345678');
+                $object->save();
+                $object->groupe_users()->attach($groupe_personnel);
+                $object->acreditations()->attach($acc_lect);
+                $object->acreditations()->attach($acc_ecri);
+                $object->acreditations()->attach($acc_modi);
+                $object->messages()->attach($msg);
+                $idUser = $object->id;
+                $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
-        $object = new User();
-        $object->name = 'PERSONNEL';
-        $object->surname = 'Personnel';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'personnel.png';
-        $object->telephone = '+237600000000';
-        $object->email = 'personnel@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_personnel);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->acreditations()->attach($acc_modi);
-        $object->messages()->attach($msg);
-        $idUser = $object->id;
-        $sol = Message_user::updateMesUser($idUser,$msg['id']);
+        ///////////////membre////////////////////
+                $object = new User();
+                $object->name = 'MEMBRE';
+                $object->surname = 'Membre';
+                $object->date_nais = '02/03/1992';
+                $object->sexe = 'M';
+                $object->photo = 'membre.png';
+                $object->telephone = '+237600000001';
+                $object->email = 'membre@gmail.com';
+                $object->password = bcrypt('12345678');
+                $object->save();
+                $object->groupe_users()->attach($grou_membre);
+                $object->acreditations()->attach($acc_lect);
+                $object->acreditations()->attach($acc_ecri);
+                $object->messages()->attach($msg);
+                $idUser = $object->id;
+                $sol = Message_user::updateMesUser($idUser,$msg['id']);
+        */
+                $object = new User();
+                $object->name = 'NOUMSI';
+                $object->surname = 'Charleine';
+                $object->date_nais = '1992-04-22';
+                $object->sexe = 'F';
+                $object->photo = 'charleine.jpg';
+                $object->telephone = '674108498';
+                $object->email = 'charleinenoumsi@gmail.com';
+                $object->password = '$2y$10$VdkE.ziuTwQm.XR1mYthveYRskmETiZX5BKT5gl7UbONmscAWb5rW';
+                $object->save();
+                $object->groupe_users()->attach($groupe_membre);
+                $object->acreditations()->attach($acc_lect);
+                $object->acreditations()->attach($acc_ecri);
+                $object->messages()->attach($msg);
+                $idUser = $object->id;
+                $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
-///////////////membre////////////////////
-        $object = new User();
-        $object->name = 'MEMBRE';
-        $object->surname = 'Membre';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'membre.png';
-        $object->telephone = '+237600000001';
-        $object->email = 'membre@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_membre);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->messages()->attach($msg);
-        $idUser = $object->id;
-        $sol = Message_user::updateMesUser($idUser,$msg['id']);
+        ///////////////visiteur////////////////////
+       /*         $object = new User();
+                $object->name = 'VISITEUR';
+                $object->surname = 'invite';
+                $object->date_nais = '02/03/1992';
+                $object->sexe = 'M';
+                $object->photo = 'visiteur.png';
+                $object->telephone = '+237600000002';
+                $object->email = 'visiteur@gmail.com';
+                //$object->password = bcrypt('12345678');
+                $object->password = '$2y$10$bfET0B3jPb8hU/ZN9UWUiu0P1uRCtmlpPbZV/jN109Jw.gq2Jbazi';
+                $object->save();
+                $object->groupe_users()->attach($groupe_visiter);
+                $object->acreditations()->attach($acc_lect);
+                $object->acreditations()->attach($acc_ecri);
+                $object->messages()->attach($msg);
+                $idUser = $object->id;
+                $sol = Message_user::updateMesUser($idUser,$msg['id']);
 
-        $object = new User();
-        $object->name = 'NOUMSI';
-        $object->surname = 'Charleine';
-        $object->date_nais = '1992-04-22';
-        $object->sexe = 'F';
-        $object->photo = 'charleine.jpg';
-        $object->telephone = '674108498';
-        $object->email = 'charleinenoumsi@gmail.com';
-        $object->password = '$2y$10$VdkE.ziuTwQm.XR1mYthveYRskmETiZX5BKT5gl7UbONmscAWb5rW';
-        $object->save();
-        $object->groupe_users()->attach($groupe_membre);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->messages()->attach($msg);
-        $idUser = $object->id;
-        $sol = Message_user::updateMesUser($idUser,$msg['id']);
-
-///////////////visiteur////////////////////
-        $object = new User();
-        $object->name = 'VISITEUR';
-        $object->surname = 'invite';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'visiteur.png';
-        $object->telephone = '+237600000002';
-        $object->email = 'visiteur@gmail.com';
-        //$object->password = bcrypt('12345678');
-        $object->password = '$2y$10$bfET0B3jPb8hU/ZN9UWUiu0P1uRCtmlpPbZV/jN109Jw.gq2Jbazi';
-        $object->save();
-        $object->groupe_users()->attach($groupe_visiter);
-        $object->acreditations()->attach($acc_lect);
-        $object->acreditations()->attach($acc_ecri);
-        $object->messages()->attach($msg);
-        $idUser = $object->id;
-        $sol = Message_user::updateMesUser($idUser,$msg['id']);
-
-///////////////bloquer////////////////////
-        $object = new User();
-        $object->name = 'BLOQUER';
-        $object->surname = 'Bloquer';
-        $object->date_nais = '02/03/1992';
-        $object->sexe = 'M';
-        $object->photo = 'bloquer.png';
-        $object->telephone = '+237600000003';
-        $object->email = 'bloquer@gmail.com';
-        $object->password = bcrypt('12345678');
-        $object->save();
-        $object->groupe_users()->attach($groupe_bloquer);
-
+        ///////////////bloquer////////////////////
+                $object = new User();
+                $object->name = 'BLOQUER';
+                $object->surname = 'Bloquer';
+                $object->date_nais = '02/03/1992';
+                $object->sexe = 'M';
+                $object->photo = 'bloquer.png';
+                $object->telephone = '+237600000003';
+                $object->email = 'bloquer@gmail.com';
+                $object->password = bcrypt('12345678');
+                $object->save();
+                $object->groupe_users()->attach($groupe_bloquer);
+        */
     }
+
 }

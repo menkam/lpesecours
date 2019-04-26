@@ -32,9 +32,16 @@ class Fonctions extends Model
     }
     public static function getCurentDate()
     {
-        $tz = '+01:00';
+        $tz = '+01:30';
         $now = Carbon::now($tz);
         return $now;
+    }
+    public static function getCurentDateChaine()
+    {
+        $dts = explode(' ', self::getCurentDate());
+        $date = explode('-',$dts[0]);
+        $heure = explode(':',$dts[1]);
+        return $date[0].$date[1].$date[2].'_'.$heure[0].$heure[1];
     }
     public static function compactForm($sol, array $attribut, array $type)
     {
@@ -177,4 +184,6 @@ class Fonctions extends Model
 
         return $result;
     }
+    public static function cheminCSV($fichier){ return 'app\fichiers\\'.$fichier.'.csv'; }
+    public static function delimiteurRows(){ return '-/-'; }
 }

@@ -30,39 +30,7 @@
 @endsection
 
 @section("content")
-<div class=""><?php if(isset($result)) echo $result; ?>
-    <!--form id="formsaveRecettemomo" name="" method="post" action="">
-            {{ csrf_field() }}
-            <tbody>
-                <tr class="form-group-sm">
-                    <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="type">{{ __('Type') }}</label> </td>
-                    <td><input type="text" class="form-control " id="type" name="type" required>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-            <tr class="form-group-sm">
-                <td class=""><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="saverecettemomo">{{ __('Action') }}</label> </td>
-                <td>
-                    <div class="clearfix">
-                        <button type="reset" class="width-10 pull-left btn btn-sm">
-                            <i class="ace-icon fa fa-refresh"></i>
-                            <span class="bigger-50">{{ __('Reset') }}</span>
-                        </button>
-
-                        <button type="submit" id="sendtest" class="width-10 pull-right btn btn-sm btn-success">
-                            <span class="bigger-50">{{ __('Save') }}</span>
-                            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tfoot>
-        </form>
-    <p>
-      Reponse : <small id="reponse"></small>
-    </p-->
-</div>
+<div class=""><?php if(isset($result)) echo $result; ?></div>
 @endsection
 
 @section("scripts")

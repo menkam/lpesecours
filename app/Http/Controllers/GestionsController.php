@@ -11,6 +11,7 @@ use App\Models\Mobile_money;
 use App\Models\Photo;
 use App\Models\Cachet;
 use App\Models\Tlist_cachet;
+use App\FichiersCSV;
 
 
 use Illuminate\Http\Request;
@@ -84,6 +85,23 @@ class GestionsController extends Controller
     }
     
     public function personnelle(){ return view("gestions/Personnelle");}
+    public function updateGestion()
+    {
+        $result = 'En cours...';
+        $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture("cachet"));
+        $result = $result.Photo::createGlobalPhoto(FichiersCSV::lecture("photo"));
+        $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture("momo"));
+        //$result = '<h1><u>Cachet. ->'.$Cachet.'<br>finCachet.<br><h1><u>Photo. ->'.$Photo.'<br>finPhoto.<br><h1><u>MoMo. ->'.$Momo.'<br>finMoMo.<br><h1><u>Fin.</u></h1><br>';
+        return view("gestions/updateGestion", compact('result'));
+    }
+    public function saveGestion(){
+        $result = 'En cours...';
+        $result = Cachet::saveCachet();
+        $result = $result.Photo::savePhoto();
+        $result = $result.Mobile_money::saveMomo();
+
+        return view("gestions/SaveGestion", compact('result'));
+    }
 
     public function loadBodyBilan(Request $request)
     {
@@ -101,63 +119,20 @@ class GestionsController extends Controller
     public function saveRecetteGlobalMomo(Request $request)
     {
         $bilan = $request->bilan;
-        $requests = explode(":", $bilan);
+        $requests = explode(";", $bilan);
         if(count($requests)==8)
-            return response()->json($requests);
+            return Mobile_money::createGlobalMomo($bilan);
         return response()->json(['error'=>'Le Format de Saisie de Données est Invalide !!!']);
     }
 
     public function saveRecetteMoMo(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'fond' => 'required|integer',
-            'pret' => 'required|integer',
-            'espece' => 'required|integer',
-            'compte_momo' => 'required|integer',
-            'compte2' => 'required|integer',
-            'frais_transfert' => 'required|integer',
-            'commission' => 'required|integer',
-        ]);
-
-        if ($validator->passes()) {
-            $save = Mobile_money::create([
-                'date' => $request['date'],
-                'fond' => $request['fond'],
-                'pret' => $request['pret'],
-                'espece' => $request['espece'],
-                'compte_momo' => $request['compte_momo'],
-                'compte2' => $request['compte2'],
-                'frais_transfert' => $request['frais_transfert'],
-                'commission' => $request['commission'],
-            ]);
-            if($save->id)
-                return response()->json(['success'=>'Added new records.']);
-            return response()->json(['error'=>'error']);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
+        return Mobile_money::createMomo($request);
     }
+
     public function saveRecettePhoto(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'type' => 'required|integer',
-            'nombre' => 'required|integer',
-            'prix_unitaire' => 'required|integer',
-        ]);
-
-        if ($validator->passes()) {
-            $save = Photo::create([
-                'date' => $request['date'],
-                'type' => $request['type'],
-                'nombre' => $request['nombre'],
-                'prix_unitaire' => $request['prix_unitaire'],
-            ]);
-            if($save)
-                return response()->json(['success'=>'Added new records.']);
-            return response()->json(['error'=>$save]);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
+        return Photo::createPhoto($request);
 
     }
     public function saveRecetteCachet(Request $request)

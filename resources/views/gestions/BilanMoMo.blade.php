@@ -38,7 +38,7 @@
         <label for="bilan">Bilan Brute ici : </label>
         <input type="text" name="bilan" id="bilan" size="44" placeholder="Date:Fond:Pret:Espece:Compte1:Compte2:Frais:Commission" required>
         <button type="submit" class="btn btn-success" id="saveRecetteGlobalMomo">Submit</button>
-        <button type="reset" class="btn btn-wanrning" id="saveRecetteGlobalMomo">Reset</button>
+        <button type="reset" class="btn btn-wanrning" id="resetRecetteGlobalMomo">Reset</button>
     </form>
 </div>
 <div class="row">

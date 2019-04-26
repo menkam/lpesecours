@@ -153,8 +153,36 @@ class MenuSeeder extends Seeder
         $object->lien = 'Application\Menus';
         $object->icon = 'list';
         $object->route = 'menus';
-        $object->controller = 'ApplicationController@Menus';
+        $object->controller = 'ApplicationController@menus';
         $object->fichierview = 'application\Menus';
+        $object->save();
+
+        $object = new Menu();
+        $object->id = '13';
+        $object->idparent = '1';
+        $object->idfils = '2';
+        $object->libelle = 'Restaurer l\'application';
+        $object->groupeuser = '2';
+        $object->rang = '3';
+        $object->lien = 'Application\UploadDataBase';
+        $object->icon = 'cloud-upload';
+        $object->route = 'uploadDataBase';
+        $object->controller = 'ApplicationController@uploadDataBase';
+        $object->fichierview = 'application\uploadDataBase';
+
+        $object->save();
+        $object = new Menu();
+        $object->id = '14';
+        $object->idparent = '1';
+        $object->idfils = '2';
+        $object->groupeuser = '2';
+        $object->libelle = 'Creer un point de restauration';
+        $object->rang = '4';
+        $object->lien = 'Application\downloadDataBase';
+        $object->icon = 'cloud-download';
+        $object->route = 'downloadDataBase';
+        $object->controller = 'ApplicationController@downloadDataBase';
+        $object->fichierview = 'application\downloadDataBase';
         $object->save();
 
         $object = new Menu();
@@ -255,6 +283,34 @@ class MenuSeeder extends Seeder
         $object->route = 'gestionPerso';
         $object->controller = 'GestionsController@personnelle';
         $object->fichierview = 'Personnelle';
+        $object->save();
+
+        $object = new Menu();
+        $object->id = '45';
+        $object->idparent = '4';
+        $object->idfils = '2';
+        $object->libelle = 'Mise à jours';
+        $object->groupeuser = '2';
+        $object->rang = '5';
+        $object->lien = 'Gestions\updateGestion';
+        $object->icon = 'exchange';
+        $object->route = 'updateGestion';
+        $object->controller = 'GestionsController@updateGestion';
+        $object->fichierview = 'gestions\updateGestion';
+        $object->save();
+
+        $object = new Menu();
+        $object->id = '46';
+        $object->idparent = '4';
+        $object->idfils = '2';
+        $object->libelle = 'Enregistrer';
+        $object->groupeuser = '2';
+        $object->rang = '5';
+        $object->lien = 'Gestions\SaveGestion';
+        $object->icon = 'cloud-download';
+        $object->route = 'saveGestion';
+        $object->controller = 'GestionsController@saveGestion';
+        $object->fichierview = 'SaveGestion';
         $object->save();
 
         $object = new Menu();

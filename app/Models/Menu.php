@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Fonctions;
 use App\Models\Tlist_groupe_user;
+use App\FichiersCSV;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 

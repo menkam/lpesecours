@@ -16,8 +16,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $galerie = Galerie_images_accueil::loadGalerie();
-
+        $galerie = '';
+        //$galerie = Galerie_images_accueil::loadGalerie();
         return view('welcome', compact('galerie'));
         //dd($galerie);
         //return response()->json($object);

@@ -120,6 +120,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveModalUpdate', 'ModalController@saveModalUpdate')->name('saveModalUpdate');
 
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
+        Route::get('uploadDataBase', 'ApplicationController@uploadDataBase')->name('uploadDataBase');
+        Route::get('downloadDataBase', 'ApplicationController@downloadDataBase')->name('downloadDataBase');
+        Route::get('updateGestion', 'GestionsController@updateGestion')->name('updateGestion');
+        Route::get('saveGestion', 'GestionsController@saveGestion')->name('saveGestion');
 
         Route::post('updateRecetteMomo', 'GestionsController@updateRecetteMomo')->name('updateRecetteMomo');
         Route::post('updateRecettePhoto', 'GestionsController@updateRecettePhoto')->name('updateRecettePhoto');
