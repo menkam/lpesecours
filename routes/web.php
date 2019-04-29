@@ -13,13 +13,15 @@ Route::singularResourceParameters();
 
 
 Auth::routes();
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
+
 
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
 Route::get('bloquer', function () { return view('bloquer'); });
 
 Route::post('testpost', 'ConceptionContoller@testpost')->name('testpost');
+Route::get('testget', 'ConceptionContoller@testpost')->name('testget');
 Route::post('listMenu', 'MenuContoller@listMenu')->name('listMenu');
 
 Route::get('galerie', 'GalerieController@index')->name('Galeries');
@@ -79,16 +81,15 @@ Route::group(['middleware' => ['auth']], function () {
     */
     Route::group(['middleware' => ['personnel']], function() {
 
-        Route::post('saveRecetteGlobalMomo', 'GestionsController@saveRecetteGlobalMomo')->name('saveRecetteGlobalMomo');
-        Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
-        Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
-        Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
+
         
         Route::get('depenseCachet', 'GestionsController@depenseCachet')->name('Depenses Cachet');
         Route::get('depense', 'GestionsController@depensePhoto')->name('Depense Photo');
-        Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
-        Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
-        Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
+
+
+        Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
+        Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
+        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
 
     });
 
@@ -107,9 +108,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('updateStatutBilan', 'GestionsController@updateStatutBilan')->name('updateStatutBilan');
 
 
-        Route::get('bilanPhoto', 'GestionsController@bilanPhoto')->name('Bilan Photo');
-        Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
-        Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
+
+
+        Route::get('recettePhoto', 'GestionsController@recettePhoto')->name('Recette Photo');
+        Route::get('recetteMoMo', 'GestionsController@recetteMoMo')->name('Recettes MoMo');
+        Route::get('recetteCachet', 'GestionsController@recetteCachet')->name('Recettes Cachet');
 
         Route::post('loadBodyBilan', 'GestionsController@loadBodyBilan')->name('loadBodyBilan');
 
@@ -134,6 +137,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('deleteRecetteMomo', 'GestionsController@deleteRecetteMomo')->name('deleteRecetteMomo');
         Route::post('deleteRecettePhoto', 'GestionsController@deleteRecettePhoto')->name('deleteRecettePhoto');
         Route::post('deleteRecetteCachet', 'GestionsController@deleteRecetteCachet')->name('deleteRecetteCachet');
+
+        Route::post('saveRecetteGlobalMomo', 'GestionsController@saveRecetteGlobalMomo')->name('saveRecetteGlobalMomo');
+        Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
+        Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
+        Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
 
     });
 

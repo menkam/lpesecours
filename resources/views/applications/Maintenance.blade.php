@@ -32,12 +32,12 @@
 @section("content")
 <div class="">
     <p>
-    <form action="uploadFichierCSV" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <h2>Upload Fichier</h2>
         <label for="fileUpload">Fichier:</label>
         <input type="file" name="photo" id="fileUpload">
-        <input type="submit" name="submit" value="Upload">
+        <input id="sendtest" type="submit" name="submit" value="Upload">
         <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
     </form></p>
     <?php if(isset($result)) echo $result; ?>
@@ -55,22 +55,19 @@
         $("#sendtest").click(function(e){
             e.preventDefault();
             var _token = $("input[name='_token']").val();
-            var param = $("input[name='type']").val();
-            var reponse = $("#reponse");
-
+            var param = $("input[name='photo']").val();
             //alert ("date:"+date+"\nfond:"+fond+"\npret:"+pret+"\nespece:"+espece+"\ncompte_momo:"+compte_momo+"\ncompte2:"+compte2+"\nfrais_transfert:"+frais_transfert+"\ncommission:"+commission);
 
             $.ajax({
-                url: "http://lpesecours.herokuapp.com/",
-                //url: "testpost",
-                type:'POST',
+                url: "127.0.0.1/lpesecours/contact",
+                //url: "testget",
+                type:'GET',
                 data: {
                     _token:_token,
                     param:param
                 },
                 success: function(data) {
-                    reponse.empty();
-                    reponse.append(data);
+                    alert(data);
                 }
             });
 

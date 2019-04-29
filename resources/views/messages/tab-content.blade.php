@@ -4,8 +4,18 @@
             <div id="id-message-list-navbar" class="message-navbar clearfix">
                 <div class="message-bar">
                     <div class="message-infobar" id="id-message-infobar">
-                        <span class="blue bigger-150">Inbox</span>
-                        <span class="grey bigger-110">(2 unread messages)</span>
+                        <div class="infobar-content_inbox">
+                            <span class="blue bigger-150">Inbox</span>
+                            <span class="grey bigger-110">(2 unread messages)</span>
+                        </div>
+                        <div class="infobar-content_sent hide">
+                            <span class="blue bigger-150">Sent</span>
+                            <span class="grey bigger-110">(22 unread messages)</span>
+                        </div>
+                        <div class="infobar-content_draft hide">
+                            <span class="blue bigger-150">Draft</span>
+                            <span class="grey bigger-110">(1 unread message)</span>
+                        </div>
                     </div>
 
                     <div class="message-toolbar hide">
@@ -176,10 +186,10 @@
 
                     <div class="nav-search minimized">
                         <form class="form-search">
-										<span class="input-icon">
-											<input type="text" autocomplete="off" class="input-small nav-search-input" placeholder="Search inbox ..." />
-											<i class="ace-icon fa fa-search nav-search-icon"></i>
-										</span>
+                            <span class="input-icon">
+                                <input type="text" autocomplete="off" class="input-small nav-search-input" placeholder="Search inbox ..." />
+                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                            </span>
                         </form>
                     </div>
                 </div>
@@ -335,12 +345,17 @@
                     </div>
                 </div>
             </div>
-
             <div class="message-list-container">
                 <div class="message-list" id="message-list">
-                    <?php
-                        if(!empty($message_list)) echo $message_list;
-                    ?>
+                    <div class="content_inbox">
+                        <?php if(!empty($message_list)) echo $message_list; ?>
+                    </div>
+                    <div class="content_sent hide">
+                        <?php if(!empty($message_list)) echo $message_list; ?>
+                    </div>
+                    <div class="content_draft hide">
+                        <?php if(!empty($message_list)) echo $message_list; ?>
+                    </div>
                 </div>
             </div>
 
@@ -353,21 +368,21 @@
                     &nbsp; &nbsp;
                     <ul class="pagination middle">
                         <li class="disabled">
-										<span>
-											<i class="ace-icon fa fa-step-backward middle"></i>
-										</span>
+                            <span>
+                                <i class="ace-icon fa fa-step-backward middle"></i>
+                            </span>
                         </li>
 
                         <li class="disabled">
-										<span>
-											<i class="ace-icon fa fa-caret-left bigger-140 middle"></i>
-										</span>
+                            <span>
+                                <i class="ace-icon fa fa-caret-left bigger-140 middle"></i>
+                            </span>
                         </li>
 
                         <li>
-										<span>
-											<input value="1" maxlength="3" type="text" />
-										</span>
+                            <span>
+                                <input value="1" maxlength="3" type="text" />
+                            </span>
                         </li>
 
                         <li>
@@ -391,12 +406,11 @@
                 <div class="pull-right">
                     <div class="inline middle"> message 1 of 151 </div>
 
-                    &nbsp; &nbsp;
                     <ul class="pagination middle">
                         <li class="disabled">
-										<span>
-											<i class="ace-icon fa fa-angle-left bigger-150"></i>
-										</span>
+                            <span>
+                                <i class="ace-icon fa fa-angle-left bigger-150"></i>
+                            </span>
                         </li>
 
                         <li>

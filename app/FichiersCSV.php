@@ -14,7 +14,7 @@ class FichiersCSV extends Model
     {
         $delimiteur = Fonctions::delimiteurRows();
         //lire le fichier csv
-        $csv = Reader::createFromPath((Fonctions::cheminCSV($fichierCSV)));
+        $csv = Reader::createFromPath((Fonctions::cheminUpdateCSV($fichierCSV)));
         $nbr = $csv->count();
         //$csv->setDelimiter(";");
          $result = "";
@@ -35,9 +35,9 @@ class FichiersCSV extends Model
     public static function ecriture($nomFichierCSV, array $lignes)
     {
         $resul = "=> Debut de creation de la sauvegade \"".$nomFichierCSV."\"";
-        $date = '';//Fonctions::getCurentDateChaine().'_';
+        $date = Fonctions::getCurentDateChaine();
         //dd($date);
-        $chemin = Fonctions::cheminCSV($date.$nomFichierCSV);
+        $chemin = Fonctions::cheminSaveCSV($date.$nomFichierCSV);
         $delimiteur = ';';
 
         $fichier_csv = fopen($chemin, 'w+');
@@ -49,7 +49,7 @@ class FichiersCSV extends Model
         }
         fclose($fichier_csv);
 
-        $resul = $resul."<br>fichier sauvegarder avec succès. <p><b>Cliquer <a href='".$chemin."'><u>ICI</u></a> pour télécharger le fichier ".$nomFichierCSV.".csv</b></p><br>";
+        $resul = $resul."<br>fichier sauvegarder avec succès. <p><b>Cliquer <a href='".$chemin."'><u>ICI</u></a> pour télécharger le fichier ".$nomFichierCSV."</b></p><br>";
         return $resul;
     }
 }

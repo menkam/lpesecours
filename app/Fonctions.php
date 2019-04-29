@@ -41,7 +41,8 @@ class Fonctions extends Model
         $dts = explode(' ', self::getCurentDate());
         $date = explode('-',$dts[0]);
         $heure = explode(':',$dts[1]);
-        return $date[0].$date[1].$date[2].'_'.$val.'_'.$heure[0].$heure[1];
+        //return $date[0].$date[1].$date[2].'_'.$val.'_'.$heure[0].$heure[1];
+        return $date[0].$date[1].$date[2].'_'.$val;
     }
     public static function compactForm($sol, array $attribut, array $type)
     {
@@ -184,7 +185,8 @@ class Fonctions extends Model
 
         return $result;
     }
-    public static function cheminAvatar($fichier){ return ('assets/images/avatars/'.$fichier); }
-    public static function cheminCSV($fichier){ return ('fichiers/'.$fichier.'.csv'); }
+    public static function cheminAvatar($fichier){ return ('assets\\images\\avatars\\'.$fichier); }
+    public static function cheminSaveCSV($fichier){ return ('fichiers\\backup\\'.$fichier.'.csv'); }
+    public static function cheminUpdateCSV($fichier){ return ('fichiers\\update\\'.$fichier.'.csv'); }
     public static function delimiteurRows(){ return '-/-'; }
 }

@@ -57,17 +57,20 @@ class ApplicationController extends Controller
             $fichierCSV = $_FILES["fichierCSV"];
             $allowed = array("csv" => "application/vnd.ms-excel");
             $filename = $fichierCSV["name"];
-            $chemin = Fonctions::cheminCSV($filename);
+            $chemin = Fonctions::cheminUpdateCSV($filename);
 
             $result = UploadFile::run($fichierCSV,$allowed,$filename,$chemin);
-            $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture($filename));
-            //$result = $result.User::createGlobalUser(FichiersCSV::lecture($filename));
+
+            $nomFichiers = explode("_", $filename);
+            $nomFichier = $nomFichiers[1];
+            if($nomFichier=="momo.csv") $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture($filename));
+            elseif($nomFichier=="photo.csv") $result = $result.Photo::createGlobalPhoto(FichiersCSV::lecture($filename));
+            elseif($nomFichier=="cachet.csv") $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture($filename));
+            elseif($nomFichier=="user.csv") $result = $result.User::createGlobalUser(FichiersCSV::lecture($filename));
+            elseif($nomFichier=="message.csv") $result = $result.Message::createGlobalMessage(FichiersCSV::lecture($filename));
+            //elseif($nomFichier=="message_user.csv") $result = $result.Message_user::cre(FichiersCSV::lecture($filename));
+
         }
-        /*
-        //$result = $result.Message::createGlobalMessage(FichiersCSV::lecture("message"));
-        $result = $result.Cachet::createGlobalCachet(FichiersCSV::lecture("cachet"));
-        $result = $result.Photo::createGlobalPhoto(FichiersCSV::lecture("photo"));
-        $result = $result.Mobile_money::createGlobalMomo(FichiersCSV::lecture("momo"));*/
         return view("applications/uploadDataBase", compact('result'));
     }
     public function uploadFichierCSV(Request $request)

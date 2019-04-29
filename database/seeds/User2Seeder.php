@@ -54,7 +54,7 @@ class User2Seeder extends Seeder
         $object->messages()->attach($msg);
         $idUser = $object->id;
         $sol = Message_user::updateMesUser($idUser,$msg['id']);
-        /*
+        
         ///////////////personnel////////////////////
 
                 $object = new User();
@@ -74,7 +74,7 @@ class User2Seeder extends Seeder
                 $object->messages()->attach($msg);
                 $idUser = $object->id;
                 $sol = Message_user::updateMesUser($idUser,$msg['id']);
-
+/*
         ///////////////membre////////////////////
                 $object = new User();
                 $object->name = 'MEMBRE';

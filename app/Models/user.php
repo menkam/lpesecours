@@ -17,7 +17,7 @@ use App\FichiersCSV;
 use App\UploadFile;
 use DB;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable //implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -343,6 +343,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $page ='
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
             <div class="form-group"  style="">
+                <label class="control-label" for="espece">photo </label>
+                <img src="'.Fonctions::cheminAvatar($sol->photo).'" width="50px" height="50px" alt="'.($sol->photo).'"/>
+                <input type="hidden" name="photo" id="photo" value="'.$sol->photo.'" ass="form-control" data-error="choisir un phonto." >
+                <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group"  style="">
                 <label class="control-label" for="idGroupeuser">groupeuser</label>
                 <select name="idGroupeuser" id="idGroupeuser"class="form-control" data-error="Choisir le groupe utilisateur accessible au menu." required >
                     '.Tlist_groupe_user::getOption(null,$sol->id).'
@@ -357,12 +363,6 @@ class User extends Authenticatable implements MustVerifyEmail
             <div class="form-group"  style="">
                 <label class="control-label" for="surname">surname</label>
                 <input type="text" name="surname" id="surname" value="'.$sol->surname.'" class="form-control" data-error="Entrer le prenom." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="espece">photo</label>
-                <img src="'.Fonctions::cheminAvatar($sol->photo).'" width="50px" height="50px" alt="'.($sol->photo).'"/>
-                <input type="file" name="photo" id="photo" class="form-control" data-error="choisir un phonto." >
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group"  style="">

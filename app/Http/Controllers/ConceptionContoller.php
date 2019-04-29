@@ -43,9 +43,9 @@ class ConceptionContoller extends Controller
 
     public function testpost(Request $request)
     {
-        $sol = "le rapametre est ".$request->param;
+        $sol = "le parametre est ".$request->param;
         //dd($sol);
-        return $sol;
+        echo $sol;
     }
 
     public function initApp()
