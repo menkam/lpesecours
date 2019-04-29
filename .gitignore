@@ -3,7 +3,8 @@
 /zzzz/*
 /node_modules
 /public/hot
-/public/fichiers/*
+/public/fichiers/update/*.csv
+/public/fichiers/backup/*.csv
 /public/storage
 /storage/*.key
 /vendor
