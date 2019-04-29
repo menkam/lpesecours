@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $galerie = '';
-        //$galerie = Galerie_images_accueil::loadGalerie();
+        $galerie = Galerie_images_accueil::loadGalerie();
 
         return view('home', compact('galerie'));
 
