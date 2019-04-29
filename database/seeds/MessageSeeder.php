@@ -23,7 +23,7 @@ class MessageSeeder extends Seeder
         $object->type_message = $type_message['id'];
         $object->id_user_send = $userSend['id'];
         $object->objet = 'Félicitation-Bienvenue';
-        $object->libelle = '<h1>Bonjour,</h1><hr><p> Félicitation votre compte a été créé avec succès</p><p>Nous vous remercions pour votre confiance et heureux de vous compter parmi nous</p><u>Cordialement<u>';
+        $object->libelle = '<h1>Bonjour,</h1><hr><p> Félicitation votre compte a été créé avec succès</p><p>Nous vous remercions pour votre confiance et heureux de vous compter parmi nous</p><u>Cordialement</u><br>MENKAM Francis<br><a href="https://wa.me/237696559339?text=salut">(+237) 696559339 -> Watsapp Pro</a>';
         $object->save();
 
         /*$admin = User::where('email', 'menkam35@gmail.com')->first();
