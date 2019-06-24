@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::post('calculatrice', 'GestionsController@calculatrice')->name('calculatrice');
 
+        Route::post('existRecordComptePerso', 'Compte_persoController@existRecordComptePerso')->name('existRecordComptePerso');
+        Route::post('saveComptePerso', 'Compte_persoController@saveComptePerso')->name('saveComptePerso');
+        Route::post('updateComptePerso', 'Compte_persoController@updateComptePerso')->name('updateComptePerso');
         Route::post('sendMessage', 'MessageController@sendMessage')->name('sendMessage');
         Route::post('showInfoNav', 'MessageController@showInfoNav')->name('showInfoNav');
         Route::post('readInbox', 'MessageUserController@readInbox')->name('readInbox');
@@ -91,6 +94,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('bilanMoMo', 'GestionsController@bilanMoMo')->name('Bilan MoMo');
         Route::get('bilanCachet', 'GestionsController@bilanCachet')->name('Bilan Cachet');
 
+        Route::post('getSommeMonnaie', 'MonnaieController@getSommeMonnaie')->name('getSommeMonnaie');
+
     });
 
     /*
@@ -117,9 +122,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('loadBodyBilan', 'GestionsController@loadBodyBilan')->name('loadBodyBilan');
 
         Route::post('loadContentModalView', 'ModalController@loadContentModalView')->name('loadContentModalView');
+        Route::post('loadContentModalAdd', 'ModalController@loadContentModalAdd')->name('loadContentModalAdd');
         Route::post('loadContentModalUpdate', 'ModalController@loadContentModalUpdate')->name('loadContentModalUpdate');
         Route::post('loadContentModalDelete', 'ModalController@loadContentModalDelete')->name('loadContentModalDelete');
 
+        Route::post('saveModalAdd', 'ModalController@saveModalAdd')->name('saveModalAdd');
         Route::post('saveModalUpdate', 'ModalController@saveModalUpdate')->name('saveModalUpdate');
 
         Route::post('listMenu', 'ApplicationController@listMenu')->name('listMenu');
@@ -142,6 +149,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
         Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
         Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
+
+
+
+        Route::get('/homeFile', 'HomeController@indexFile')->name('home');
+        Route::post('file/upload', 'FileController@store')->name('file.upload');
+        Route::post('upload', 'FileController@upload')->name('upload');
 
     });
 

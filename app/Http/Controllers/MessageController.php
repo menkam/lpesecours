@@ -19,10 +19,12 @@ class MessageController extends Controller
         $content = '';
         $idUser = \Auth::user()->id;
 
-        $message_list = Message_user::loadListMessage($idUser);
+        $message_inbox = Message_user::loadListMessage($idUser,'inbox');
+        $message_send = Message_user::loadListMessage($idUser,'send');
+        $message_draft = Message_user::loadListMessage($idUser,'draft');
 
-        if($message_list)
-            return view('messages/inbox', compact('message_list'));
+        if($message_inbox)
+            return view('messages/inbox', compact(['message_inbox','message_send','message_draft']));
         return view('messages/inbox');
     }
 
@@ -32,13 +34,13 @@ class MessageController extends Controller
     {
 
         $sol =  '';
-        $type = 'TCH';
+        $type_message = $request->type_message;
         $objet = $request->objet;
         $libelle = $request->libelle;
         $emailRecive = $request->email;
         $sol = Message::newMessage(
             new Request([
-                'type'=>$type,
+                'type_message'=>$type_message,
                 'objet'=>$objet,
                 'libelle'=>$libelle,
                 'emailRecive'=>$emailRecive
@@ -68,5 +70,16 @@ class MessageController extends Controller
         else
             return response()->json(['error'=>'erreur idUser']);
 
+    }
+    public function loadMessageContent(Request $request)
+    {
+        $content = '';
+        $idUserSent = $request->id;
+
+        $content = message::loadMessage($idUserSent);
+
+        if($content)
+            return $content;
+        return response()->json(['error'=>'erreur']);
     }
 }

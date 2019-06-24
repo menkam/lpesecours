@@ -52,7 +52,20 @@
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="nombre">{{ __('Nombre') }}</label> </td>
-                    <td><input class="form-control" type="number" id="nombre" name="nombre" required></td>
+                    <td><select class="form-control" type="number" id="nombre" name="nombre" required>
+                        <option value="">----------------</option>
+                        <option value="1">Un (01)</option>
+                        <option value="2">Deux (02)</option>
+                        <option value="3">Troix (03)</option>
+                        <option value="4">Quatre (04)</option>
+                        <option value="5">Cinq (05)</option>
+                        <option value="5">Six (06)</option>
+                        <option value="5">Sept (07)</option>
+                        <option value="5">Huit (08)</option>
+                        <option value="5">Neuf (09)</option>
+                        <option value="5">Dix (10)</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="prix_unitaire">{{ __('Prix Unitaire') }}</label></td>

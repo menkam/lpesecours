@@ -210,4 +210,24 @@ class Photo extends Model
         ';
         return $page;
     }
+
+    public static function getOptionPrixUnitaire()
+    {
+        $option = '<option value="">------------------</option>';
+        $option = $option.'<option value="300">300 FCFA</option>';
+        $option = $option.'<option value="500">500 FCFA</option>';
+        $option = $option.'<option value="600">600 FCFA</option>';
+        $option = $option.'<option value="700">700 FCFA</option>';
+        $option = $option.'<option value="800">800 FCFA</option>';
+        $option = $option.'<option value="850">850 FCFA</option>';
+        $option = $option.'<option value="900">900 FCFA</option>';
+        $option = $option.'<option value="950">950 FCFA</option>';
+        $option = $option.'<option value="1000" selected>1.000 FCFA</option>';
+        $option = $option.'<option value="1200">1.200 FCFA</option>';
+        $option = $option.'<option value="1300">1.300 FCFA</option>';
+        $option = $option.'<option value="1400">1.400 FCFA</option>';
+        $option = $option.'<option value="1500">1.500 FCFA</option>';
+
+        return $option;
+    }
 }

@@ -7,8 +7,11 @@
 		if(currentTab == 'write') {
 			Inbox.show_form();
 		}
-		else if(currentTab == 'inbox') {
+		/*else if(currentTab == 'inbox') {
 			Inbox.show_list();
+		}*/
+		else{
+			Inbox.show_list(currentTab);
 		}
 	})
 
@@ -218,7 +221,11 @@
 	}
 
 	//show message list (back from writing mail or reading a message)
-	Inbox.show_list = function() {
+	Inbox.show_list = function(currentTab) {
+		if(currentTab=='inbox') afficher('content_inbox');
+		else if(currentTab=='sent') afficher('content_sent');
+		else if(currentTab=='draft') afficher('content_draft');
+
 		$('.message-navbar').addClass('hide');
 		$('#id-message-list-navbar').removeClass('hide');
 
@@ -227,7 +234,31 @@
 
 		$('.message-list').removeClass('hide').next().addClass('hide');
 		//hide the message item / new message window and go back to list
+
+        function afficher(e) {
+
+            $('.infobar-content_inbox').addClass('hide');
+            $('.infobar-content_sent').addClass('hide');
+            $('.infobar-content_draft').addClass('hide');
+
+            $('.content_inbox').addClass('hide');
+            $('.content_sent').addClass('hide');
+            $('.content_draft').addClass('hide');
+
+            $('.message-list').append('<div class="message-loading-overlay"><i class="fa-spin ace-icon fa fa-spinner orange2 bigger-160"></i></div>');
+
+            setTimeout(function() {
+                $('.message-list').find('.message-loading-overlay').remove();
+                $('.infobar-'+e+'').removeClass('hide').next().addClass('hide');
+                $('.'+e+'').removeClass('hide').next().addClass('hide');
+
+            }, 300 + parseInt(Math.random() * 300));
+
+        }
+
 	}
+
+
 
 	//show write mail form
 	Inbox.show_form = function() {
@@ -235,7 +266,6 @@
 		if(!form_initialized) {
 			initialize_form();
 		}
-		
 		
 		var message = $('.message-list');
 		$('.message-container').append('<div class="message-loading-overlay"><i class="fa-spin ace-icon fa fa-spinner orange2 bigger-160"></i></div>');

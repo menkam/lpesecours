@@ -60,16 +60,4 @@ class MessageUserController extends Controller
             return $content;
         return response()->json(['error'=>'erreur']);
     }
-
-    public function loadMessageContent(Request $request)
-    {
-        $content = '';
-        $idOpeUserMes = $request->id;
-
-        $content = message_user::loadMessage($idOpeUserMes);
-
-        if($content)
-            return $content;
-        return response()->json(['error'=>'erreur']);
-    }
 }

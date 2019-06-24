@@ -348,13 +348,13 @@
             <div class="message-list-container">
                 <div class="message-list" id="message-list">
                     <div class="content_inbox">
-                        <?php if(!empty($message_list)) echo $message_list; ?>
+                        <?php if(!empty($message_inbox)) echo $message_inbox; ?>
                     </div>
                     <div class="content_sent hide">
-                        <?php if(!empty($message_list)) echo $message_list; ?>
+                        <?php if(!empty($message_send)) echo $message_send; ?>
                     </div>
                     <div class="content_draft hide">
-                        <?php if(!empty($message_list)) echo $message_list; ?>
+                        <?php if(!empty($message_draft)) echo $message_draft; ?>
                     </div>
                 </div>
             </div>

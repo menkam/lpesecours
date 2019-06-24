@@ -189,4 +189,36 @@ class Fonctions extends Model
     public static function cheminSaveCSV($fichier){ return ('fichiers\\backup\\'.$fichier.'.csv'); }
     public static function cheminUpdateCSV($fichier){ return ('fichiers\\update\\'.$fichier.'.csv'); }
     public static function delimiteurRows(){ return '-/-'; }
+    public static function getIdUser(){ return (\Auth::user()->id); }
+    public static function getLettreNombre($indix)
+    {
+        $nombreLetter = [
+            '1' => 'Un',
+            '2' => 'Deux',
+            '3' => 'Trois',
+            '4' => 'Quatre',
+            '5' => 'Cinq',
+            '6' => 'Six',
+            '7' => 'Sept',
+            '8' => 'Huit',
+            '9' => 'Neuf',
+            '10' => 'Dix',
+            '11' => 'Onze',
+            '12' => 'Douze',
+            '13' => 'Trèze',
+            '14' => 'Quatoze'
+        ];
+        return $nombreLetter[$indix];
+    }
+    public static function getOptionNombre($selected = 1, $max = 10)
+    {
+        $option = "<option value=''>------------------</option>";
+
+        for($i=1; $i<=$max; $i++)
+        {
+            if($i==$selected) $option = $option."<option value='".$i."' selected>".self::getLettreNombre($i)." (".$i.")</option>";
+            else $option = $option."<option value='".$i."'>".self::getLettreNombre($i)." (".$i.")</option>";
+        }
+        return $option;
+    }
 }

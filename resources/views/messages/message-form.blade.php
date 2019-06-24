@@ -1,4 +1,5 @@
 <form id="id-message-form" class="hide form-horizontal message-form col-xs-12">
+    <input type="hidden" name="type" id="type" value="TCH" />
     <div>
         <div class="form-group">
             <label class="col-sm-3 control-label no-padding-right" for="form-field-recipient">Email To:</label>

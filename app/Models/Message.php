@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Fonctions;
+use App\Fonctions;
 use Validator;
 use App\FichiersCSV;
 use Illuminate\Database\Eloquent\Model;
@@ -51,7 +51,7 @@ class Message extends Model
     public static function newMessage(Request $request)//$type,$objet,$libelle,$emailRecive
     {
         //echo($request->type);
-        $type = $request->type;
+        $type = $request->type_message;
         $objet = $request->objet;
         $libelle = $request->libelle;
         $emailRecive = $request->emailRecive;
@@ -223,7 +223,44 @@ class Message extends Model
             ORDER BY
               messages.created_at DESC;");
     }
-    public static function getMessage($idOpeUsermes=null, $statut=" >= '0'")
+    public static function getContentMessage($typeMessages=null, $type, $idUser=null, $statut=null)
+    {
+        $typeMessage = "";
+        if($typeMessages=="TCH")
+            $typeMessage = "(tlist_messages.code = '$typeMessages' OR tlist_messages.code = 'SYS')";
+        else $typeMessage = "tlist_messages.code = '$typeMessages'";
+        $condition = '';
+        if($type=='inbox') $condition = "message_user.user_id = '$idUser' AND";
+        elseif($type=='send') $condition = "messages.id_user_send = '$idUser' AND";
+        elseif($type=='draft') $condition = "messages.id_user_send = '$idUser' AND";
+        return DB::select("
+            SELECT 
+              users.id as id_user, 
+              users.name, 
+              users.surname, 
+              users.photo, 
+              messages.id as id_message, 
+              messages.objet, 
+              message_user.id as id_mes_user, 
+              message_user.created_at, 
+              message_user.statut
+            FROM 
+              public.users, 
+              public.message_user, 
+              public.messages, 
+              public.tlist_messages
+            WHERE 
+              message_user.message_id = messages.id AND
+              messages.id_user_send = users.id AND
+              messages.type_message = tlist_messages.id AND
+              ".$condition." 
+              ".$typeMessage." AND 
+              message_user.statut ".$statut."
+            ORDER BY
+              messages.created_at DESC;");
+    }
+
+    public static function getMessage($idUserSent=null, $idUserRecive=null, $statut=" >= '0'")
     {
         return DB::select("
             SELECT 
@@ -235,25 +272,155 @@ class Message extends Model
               messages.libelle, 
               message_user.statut, 
               message_user.created_at, 
-              message_user.updated_at
+              message_user.updated_at 
             FROM 
               public.users, 
-              public.message_user, 
+              message_user,
               public.messages
             WHERE 
               message_user.message_id = messages.id AND
-              messages.id_user_send = users.id AND
-              message_user.id = '$idOpeUsermes' AND 
-              message_user.statut ".$statut.";");
+              users.id = messages.id_user_send AND
+              message_user.message_id IN(
+                SELECT 
+                  distinct(messages.id)
+                FROM 
+                  public.message_user, 
+                  public.messages
+                WHERE 
+                  message_user.message_id = messages.id AND
+                  (messages.id_user_send = '$idUserSent' AND message_user.user_id = '$idUserRecive') OR
+                  (message_user.user_id = '$idUserSent' AND messages.id_user_send = '$idUserRecive')
+         );");
     }
+
+    public static function loadMessage($idUserSent)
+    {
+        $pages = '';
+        $pieceJointe = '';
+        $idUserRecive = Fonctions::getIdUser();
+
+        $messages = self::getMessage($idUserSent,$idUserRecive);
+
+        foreach ($messages as $value) {
+            //if ($value->statut == '0') $lue = "message-unread";
+            $infoUser = $value->name . ' ' . $value->surname;
+            $email = $value->email;
+            $photo = $value->photo;
+            $dateTime = $value->created_at;
+            $libelle = $value->libelle;
+            //$transfere = '<span class="message-flags"><i class="ace-icon fa fa-reply light-grey"></i></span>';
+            /*$pieceJointe = '<div class="attachment-title">
+            <span class="blue bolder bigger-110">Attachments</span>
+                    &nbsp;
+                    <span class="grey">(2 files, 4.5 MB)</span>
+                    <div class="inline position-relative">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            &nbsp;
+                            <i class="ace-icon fa fa-caret-down bigger-125 middle"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-lighter">
+                            <li>
+                                <a href="#">Download all as zip</a>
+                            </li>
+                            <li>
+                                <a href="#">Display in slideshow</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            &nbsp;
+                <ul class="attachment-list pull-left list-unstyled">
+                    <li>
+                        <a href="#" class="attached-file">
+                            <i class="ace-icon fa fa-file-o bigger-110"></i>
+                            <span class="attached-name">Document1.pdf</span>
+                        </a>
+                        <span class="action-buttons">
+                            <a href="#">
+                                <i class="ace-icon fa fa-download bigger-125 blue"></i>
+                            </a>
+                            <a href="#">
+                                <i class="ace-icon fa fa-trash-o bigger-125 red"></i>
+                            </a>
+                        </span>
+                    </li>
+                    <li>
+                        <a href="#" class="attached-file">
+                            <i class="ace-icon fa fa-film bigger-110"></i>
+                            <span class="attached-name">Sample.mp4</span>
+                        </a>
+                        <span class="action-buttons">
+                            <a href="#">
+                                <i class="ace-icon fa fa-download bigger-125 blue"></i>
+                            </a>
+
+                            <a href="#">
+                                <i class="ace-icon fa fa-trash-o bigger-125 red"></i>
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+                <div class="attachment-images pull-right">
+                    <div class="vspace-4-sm"></div>
+                    <div>
+                        <img width="36" alt="image 4" src="assets/images/gallery/thumbs/thumb-4.jpg" />
+                        <img width="36" alt="image 3" src="assets/images/gallery/thumbs/thumb-3.jpg" />
+                        <img width="36" alt="image 2" src="assets/images/gallery/thumbs/thumb-2.jpg" />
+                        <img width="36" alt="image 1" src="assets/images/gallery/thumbs/thumb-1.jpg" />
+                    </div>
+                </div>';*/
+
+            $objet = $value->objet;
+
+            $pages = $pages . '<div class="message-header clearfix">
+                <div class="pull-left">
+                    <!--span class="blue bigger-125"> Clik to open this message </span-->        
+                    <div class="space-4"></div>        
+                    <i class="ace-icon fa fa-star orange2"></i>        
+                    &nbsp;
+                    <img class="middle" alt="'.$infoUser.' Avatar" src="assets/images/avatars/'.$photo.'" width="32" />
+                    &nbsp;
+                    <a href="#" class="">'.$infoUser.'</a>&nbsp;
+                    <a href="#" title="emailSend" class="sender">[ '.$email.' ]</a>
+        
+                    &nbsp;
+                    <i class="ace-icon fa fa-clock-o bigger-110 orange middle"></i>
+                    <span class="time grey">'.$dateTime.'</span>    
+                </div>        
+                <div class="pull-right action-buttons">
+                    <a href="#">
+                        <i class="ace-icon fa fa-reply green icon-only bigger-130"></i>
+                    </a>        
+                    <a href="#">
+                        <i class="ace-icon fa fa-mail-forward blue icon-only bigger-130"></i>
+                    </a>        
+                    <a href="#">
+                        <i class="ace-icon fa fa-trash-o red icon-only bigger-130"></i>
+                    </a>
+                </div>
+            </div>        
+            <div class="hr hr-double"></div>  
+            <div class="message-bar"><span class="blue bigger-125"><u>Objet</u> :</span> '.$objet.'</div>
+            <div class="hr hr-dotted"></div> 
+            <span class="blue bigger-125"><u>Contenu</u> : </span><br>
+            <div id="message-body" class="message-body">'.$libelle.'</div><!-- message-body -->        
+            <div class="hr hr-double"></div>        
+            <div class="message-attachment clearfix">
+                '.$pieceJointe.'
+            </div>';
+        }
+        return $pages;
+    }
+
     public static function countInbox($typeMessage=null, $idUser=null, $statut=null)
     {
 
     }
+
     public static function findInbox($typeMessage,$idUser,$statut)
     {
         $ligne = '';
-        $inbox = Message::getInbox($typeMessage, $idUser, $statut);
+        $inbox = self::getInbox($typeMessage, $idUser, $statut);
         $countMsg = count($inbox);
 
         foreach ($inbox as $value) {

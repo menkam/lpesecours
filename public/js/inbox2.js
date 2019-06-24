@@ -5,6 +5,7 @@ $(document).ready(function () {
         var email =  $("input[name='recipient']").val();
         var objet =  $("input[name='subject']").val();
         var libelle =  $(".wysiwyg-editor").html();
+        var type =  $("input[name='type']").val();
 
         //alert("email"+email+"\nobjet"+objet+"\nlibelle"+libelle);
         /*email.val('');
@@ -16,6 +17,7 @@ $(document).ready(function () {
             data: {
                 email:email,
                 objet:objet,
+                type:type,
                 libelle:libelle
             },
             success: function(data) {

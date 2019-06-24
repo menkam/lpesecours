@@ -10,7 +10,7 @@ use App\Models\Mobile_money;
 use App\Models\Photo;
 use App\Models\User;
 use App\Models\Tlist_groupe_user;
-use App\Models\Tlist_message;
+use App\Models\Monnaie;
 use App\Models\Tlist_cachet;
 use App\Models\Tlist_photo;
 
@@ -30,6 +30,12 @@ class ModalController extends Controller
     {
         //
     }
+    public function loadContentModalAdd(Request $request)
+    {
+        $page = 'Contenu vide';
+        if ($request['typeModal']=="monnaie") $page = Monnaie::getContentAdd();
+        return $page;
+    }
     public function loadContentModalUpdate(Request $request)
     {
         $page = 'Contenu vide';
@@ -39,6 +45,7 @@ class ModalController extends Controller
         if ($request['typeModal']=="momo")        $page = Mobile_money::getContentUpdate($request['id']);
         elseif ($request['typeModal']=="photo")   $page = Photo::getContentUpdate($request['id']);
         elseif ($request['typeModal']=="cachet")  $page = Cachet::getContentUpdate($request['id']);
+        elseif ($request['typeModal']=="detailEspeceMomo")  $page = Monnaie::getContentUpdate($request['date']);
         return $page;
         //return response()->json($page);
     }
@@ -48,15 +55,23 @@ class ModalController extends Controller
     }
 
 
+    public function saveModalAdd(Request $request)
+    {
+        $page = ['error'=>"error 99"];
+        if ($request['typeModal']=="saveMonnaie") $page = Monnaie::createMonnaie($request);
+        return $page;
+        //return response()->json($page);
+    }
     public function saveModalUpdate(Request $request)
     {
         $page = ['error'=>"error 99"];
         if ($request['typeModal']=="menu") $page = $this->updateMenu($request);
         elseif ($request['typeModal']=="groupeuser") $page = $this->updateGroupeUser($request);
         elseif ($request['typeModal']=="user") $page = $this->updateUser($request);
-        elseif ($request['typeModal']=="momo") $page = $this->updateRecetteMomo($request);
+        elseif ($request['typeModal']=="momo") $page = Mobile_money::updateMomo($request);
         elseif ($request['typeModal']=="photo")  $page = $this->updateRecettePhoto($request);
         elseif ($request['typeModal']=="cachet")  $page = $this->updateRecetteCachet($request);
+        elseif ($request['typeModal']=="updateMonnaie")  $page = Monnaie::updateValeur($request);
         return $page;
         //return response()->json($page);
     }
@@ -151,37 +166,6 @@ class ModalController extends Controller
         }
         return response()->json(['error'=>$validator->errors()->all()]);
     }
-    public function updateRecetteMomo($request)
-{
-    $validator = Validator::make($request->all(), [
-        'id' => 'required|integer',
-        'date' => 'required|date',
-        'fond' => 'required|integer',
-        'pret' => 'required|integer',
-        'espece' => 'required|integer',
-        'compte_momo' => 'required|integer',
-        'compte2' => 'required|integer',
-        'frais_transfert' => 'required|integer',
-        'commission' => 'required|integer',
-    ]);
-    if ($validator->passes()) {
-        $update = Mobile_money::updateMomo([
-            'id' => $request['id'],
-            'date' => $request['date'],
-            'fond' => $request['fond'],
-            'pret' => $request['pret'],
-            'espece' => $request['espece'],
-            'compte_momo' => $request['compte_momo'],
-            'compte2' => $request['compte2'],
-            'frais_transfert' => $request['frais_transfert'],
-            'commission' => $request['commission']
-        ]);
-        if($update)
-            return response()->json(['success'=>'Modification réussite.']);
-        return response()->json(['error'=>'error']);
-    }
-    return response()->json(['error'=>$validator->errors()->all()]);
-}
     public function updateRecettePhoto($request)
 {
     $validator = Validator::make($request->all(), [

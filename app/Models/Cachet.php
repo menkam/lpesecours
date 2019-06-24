@@ -214,4 +214,30 @@ class Cachet extends Model
         ';
         return $page;
     }
+
+    public static function getOptionPrixUnitaire()
+    {
+        $option = '<option value="">------------------</option>';
+        $option = $option.'<option value="1000">1.000 FCFA</option>';
+        $option = $option.'<option value="1500">1.500 FCFA</option>';
+        $option = $option.'<option value="2500">2.500 FCFA</option>';
+        $option = $option.'<option value="3000">3.000 FCFA</option>';
+        $option = $option.'<option value="3500">3.500 FCFA</option>';
+        $option = $option.'<option value="4000">4.000 FCFA</option>';
+        $option = $option.'<option value="4500">4.500 FCFA</option>';
+        $option = $option.'<option value="5000">5.000 FCFA</option>';
+        $option = $option.'<option value="5500">5.500 FCFA</option>';
+        $option = $option.'<option value="5500">6.000 FCFA</option>';
+        $option = $option.'<option value="5500">6.500 FCFA</option>';
+        $option = $option.'<option value="5500">7.000 FCFA</option>';
+        $option = $option.'<option value="5500">7.500 FCFA</option>';
+        $option = $option.'<option value="5500">8.000 FCFA</option>';
+        $option = $option.'<option value="5500">8.500 FCFA</option>';
+        $option = $option.'<option value="5500">9.000 FCFA</option>';
+        $option = $option.'<option value="5500">9.500 FCFA</option>';
+        $option = $option.'<option value="5500">10.000 FCFA</option>';
+        $option = $option.'<option value="5500">10.500 FCFA</option>';
+
+        return $option;
+    }
 }

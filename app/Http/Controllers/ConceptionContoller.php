@@ -12,13 +12,15 @@ use App\Models\Galerie_images_accueil;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
 use App\Models\Message_user_;
-use App\Models\Cachet;
+use App\Models\Monnaie;
+use App\Models\Compte_perso;
 use App\Models\Tlist_groupe_user;
 use App\Models\Photo;
 use App\Models\Mobile_money;
 use App\Models\Tlist_groupe_user_user;
 use App\Fonctions;
 use App\FichiersCSV;
+use Validator;
 use DB;
 
 
@@ -29,8 +31,17 @@ class ConceptionContoller extends Controller
     public function index()
     {
 
-        $result = "";
-        $result = $result."<h1><u>Fin.</u></h1><br>";
+        $result="";
+        $request = new Request([
+            'id'=>'7',
+            'date'=>'2019-06-8',
+            'type'=>'1',
+            'user'=>'9',
+            'somme'=>'2800',
+            'statut'=>'-1',
+            'commentaires'=>'juste un test'
+        ]);
+        $compte = Compte_perso::isExcist('2019-06-8','1');
 
         return view("applications/Maintenance", compact('result'));
 

@@ -8,9 +8,11 @@ use App\Models\Tlist_photo;
 use Illuminate\Http\Response;
 use Validator;
 use App\Models\Mobile_money;
+use App\Models\Tlist_compte_perso;
 use App\Models\Photo;
 use App\Models\Cachet;
 use App\Models\Tlist_cachet;
+use App\Models\Compte_perso;
 use App\FichiersCSV;
 
 
@@ -38,12 +40,18 @@ class GestionsController extends Controller
     public function recetteCachet()
     {
         $optionTypeCachet = Tlist_cachet::getOption();
-        return view("gestions/RecettesCachet", compact('optionTypeCachet'));
+        $optionNombret = Fonctions::getOptionNombre(1,6);
+        $optionPrixUnitaire = Cachet::getOptionPrixUnitaire();
+
+        return view("gestions/RecettesCachet", compact(['optionTypeCachet','optionNombret','optionPrixUnitaire']));
     }
     public function recettePhoto()
     {
         $optionTypePhoto = Tlist_photo::getOption();
-        return view("gestions/RecettesPhoto", compact('optionTypePhoto'));
+        $optionNombret = Fonctions::getOptionNombre(1,12);
+        $optionPrixUnitaire = Photo::getOptionPrixUnitaire();
+
+        return view("gestions/RecettesPhoto", compact(['optionTypePhoto','optionNombret','optionPrixUnitaire']));
     }
 
     public function depenseCachet(){ return view("gestions/DepensesCachet"); }
@@ -84,7 +92,25 @@ class GestionsController extends Controller
         return view("gestions/BilanCachet", compact('rowBilan','somQte','total'));
     }
     
-    public function personnelle(){ return view("gestions/Personnelle");}
+    public function personnelle()
+    {
+        $rowRPret = Compte_perso::bilanPret();
+        $rowRJournalier = Compte_perso::bilanJournalier();
+        $rowREpargne = Compte_perso::bilanEpargne();
+        $optiontype = Tlist_compte_perso::getOption();
+        $epargne = Compte_perso::getSomCompte("EPG");
+        $pret = Compte_perso::getSomCompte("PRT");
+        $journalier = Compte_perso::getSomCompte("JNL");
+        $epargnes['libelle'] = $epargne[0];
+        $epargnes['somme'] = Fonctions::formatPrix($epargne[1]);
+        $prets['libelle'] = $pret[0];
+        $prets['somme'] = Fonctions::formatPrix($pret[1]);
+        $journaliers['libelle'] = $journalier[0];
+        $journaliers['somme'] = Fonctions::formatPrix(Compte_perso::getLastCompte("JNL"));
+
+
+        return view("gestions/Personnelle", compact('epargnes','prets','journaliers','optiontype','rowRPret','rowRJournalier','rowREpargne'));
+    }
     public function updateGestion()
     {
         $result = 'En cours...';

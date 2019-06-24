@@ -14,6 +14,21 @@ $(document).ready(function(){
         showInfoNotification();
     },temps);
     //clearInterval(functionShowAlertMessage);
+    $(function () {
+
+        $('.carousel').carousel({ interval: 9000 });
+        $('#first').click(function() { $('.carousel').carousel(0); });
+        $('#previous').click(function() { $('.carousel').carousel('prev'); });
+        $('#pause').click(function() { $('.carousel').carousel('pause'); });
+        $('#play').click(function() { $('.carousel').carousel('cycle'); });
+        $('#next').click(function() { $('.carousel').carousel('next'); });
+        $('#last').click(function() { $('.carousel').carousel($('.item').length); });
+        $('.carousel').on('slid.bs.carousel', function () {
+            var total = $('.item').length;
+            var current = $('.item.active').index() + 1;
+            $('.label').text(current + ' / '+ total);
+        });
+    });
 });
 
 function showInfoInbox()
@@ -105,6 +120,9 @@ function calculatrice() {
 function tostSuccess(msg){
     toastr.success(msg, 'SUCCESS !!!', {timeOut: 5000});
     window.location.reload();
+}
+function tostSuccess2(msg){
+    toastr.success(msg, 'SUCCESS !!!', {timeOut: 5000});
 }
 
 /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Fonctions;
+use App\Models\Monnaie;
 use Validator;
 use App\FichiersCSV;
 use Illuminate\Http\Request;
@@ -33,18 +34,79 @@ class Mobile_money extends Model
 
     ];
 
-    public static function createMomo(Request $request)
+
+    public static function getAllLine($statut= null, $id=null, $last=null)
     {
-        $validator = Validator::make($request->all(), [
+        if(!empty($statut))
+        {
+            if(!empty($id))
+                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' AND  mobile_moneys.id='$id';")[0];
+            elseif(!empty($last))
+                return DB::select("
+                        SELECT 
+                          *
+                        FROM 
+                          public.mobile_moneys
+                        WHERE 
+                            mobile_moneys.date in(
+                            SELECT 
+                              MAX(mobile_moneys.date)
+                            FROM 
+                              public.mobile_moneys
+                            WHERE
+                              mobile_moneys.statut='$statut');
+                    ")[0];
+            else
+                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' ORDER BY  mobile_moneys.date ASC;");
+        }
+        else
+        {
+            return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+        }
+    }
+
+
+    public static function validator(Request $request)
+    {
+        $validatorEspece = Validator::make($request->all(), [
+            'espece' => 'required|string|min:15|max:23'
+        ]);
+
+        if ($validatorEspece->passes()) {
+            $especes = $request['espece'];
+            $nombre = explode(":", $especes);
+            $request["nombre_de_10000"] = $nombre[0];
+            $request["nombre_de_5000"] = $nombre[1];
+            $request["nombre_de_2000"] = $nombre[2];
+            $request["nombre_de_1000"] = $nombre[3];
+            $request["nombre_de_500"] = $nombre[4];
+            $request["nombre_de_100"] = $nombre[5];
+            $request["nombre_de_50"] = $nombre[6];
+            $request["nombre_de_25"] = $nombre[7];
+        }
+
+        return Validator::make($request->all(), [
             'date' => 'required|date',
             'fond' => 'required|integer',
             'pret' => 'required|integer',
-            'espece' => 'required|integer',
+            'espece' => 'required|string|min:15|max:23',
+            'nombre_de_10000' => 'required|integer|max:40|min:0',
+            'nombre_de_5000' => 'required|integer|max:80|min:0',
+            'nombre_de_2000' => 'required|integer|max:80|min:0',
+            'nombre_de_1000' => 'required|integer|max:160|min:0',
+            'nombre_de_500' => 'required|integer|max:160|min:0',
+            'nombre_de_100' => 'required|integer|max:100|min:0',
+            'nombre_de_50' => 'required|integer|max:100|min:0',
+            'nombre_de_25' => 'required|integer|max:100|min:0',
             'compte_momo' => 'required|integer',
             'compte2' => 'required|integer',
             'frais_transfert' => 'required|integer',
-            'commission' => 'required|integer',
+            'commission' => 'required|integer'
         ]);
+    }
+    public static function createMomo(Request $request)
+    {
+        $validator = self::validator($request);
         if ($validator->passes()) {
             $save = self::create([
                 'date' => $request['date'],
@@ -136,50 +198,28 @@ class Mobile_money extends Model
     public static function updateMomo($request)
     {
         $date = Fonctions::getCurentDate();
-        return DB::update("
-            UPDATE 
-              mobile_moneys
-            SET
-              fond='".$request['fond']."',
-              pret='".$request['pret']."', 
-              espece='".$request['espece']."', 
-              compte_momo='".$request['compte_momo']."', 
-              compte2='".$request['compte2']."', 
-              frais_transfert='".$request['frais_transfert']."', 
-              commission='".$request['commission']."',
-              updated_at='$date' 
-            WHERE  date='".$request['date']."';
-        ");
-    }
 
-    public static function getAllLine($statut= null, $id=null, $last=null)
-    {
-        if(!empty($statut))
-        {
-            if(!empty($id))
-                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' AND  mobile_moneys.id='$id';")[0];
-            elseif(!empty($last))
-                return DB::select("
-                        SELECT 
-                          *
-                        FROM 
-                          public.mobile_moneys
-                        WHERE 
-                            mobile_moneys.date in(
-                            SELECT 
-                              MAX(mobile_moneys.date)
-                            FROM 
-                              public.mobile_moneys
-                            WHERE
-                              mobile_moneys.statut='$statut');
-                    ")[0];
-            else
-                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' ORDER BY  mobile_moneys.date ASC;");
+        $validator = self::validator($request);
+        if ($validator->passes()) {
+            $save = DB::update("
+                UPDATE 
+                  mobile_moneys
+                SET
+                  fond='".$request['fond']."',
+                  pret='".$request['pret']."', 
+                  espece='".$request['espece']."', 
+                  compte_momo='".$request['compte_momo']."', 
+                  compte2='".$request['compte2']."', 
+                  frais_transfert='".$request['frais_transfert']."', 
+                  commission='".$request['commission']."',
+                  updated_at='$date' 
+                WHERE  date='".$request['date']."';
+            ");
+            if($save)
+                return response()->json(['success'=> 'Date: '.$request['date'].' -> Update success.']);
+            return response()->json(['error'=>'error']);
         }
-        else
-        {
-            return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
-        }
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     /**
@@ -222,7 +262,8 @@ class Mobile_money extends Model
 
         foreach (self::getAllLine('1') as $value)
         {
-            $totalEC2[$nbr] = (integer)$value->espece + (integer)$value->compte_momo + (integer)$value->compte2;
+            $espece = Monnaie::somme($value->espece);
+            $totalEC2[$nbr] = (integer)$espece + (integer)$value->compte_momo + (integer)$value->compte2;
             $commission[$nbr] = (integer)$value->commission;
 
 
@@ -256,7 +297,7 @@ class Mobile_money extends Model
                 <td title="Date">'.$value->date.'</td> <!-- date -->
                 <td title="Fond">'.Fonctions::formatPrix($value->fond).'</td> <!-- fond -->
                 <td title="Pret">'.Fonctions::formatPrix($value->pret).'</td> <!-- prêt -->
-                <td title="Espèce">'.Fonctions::formatPrix($value->espece).'</td> <!-- espèces -->
+                <td title="Espèce">'.Fonctions::formatPrix($espece).'</td> <!-- espèces -->
                 <td title="Compte MoMo">'.Fonctions::formatPrix($value->compte_momo).'</td> <!-- compteMoMo -->
                 <td title="Compte2">'.Fonctions::formatPrix($value->compte2).'</td> <!-- Compte2 -->
                 <td title="FraisT">'.Fonctions::formatPrix($value->frais_transfert).'</td> <!-- frais transfert -->
@@ -287,42 +328,43 @@ class Mobile_money extends Model
         $page = "ras";
         $page ='
             <input type="hidden" id="id" value="'.$sol->id.'" name="id">
-            <input type="hidden" id="date" value="'.$sol->date.'" value="19" name="date">
-            <div class="form-group"  style="">
-                <label class="control-label" for="fond">Fond</label>
-                <input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="pret">Prêt (+/-)</label>
-                <input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="espece">Espèce</label>
-                <input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="compte_momo">CompteMomo</label>
-                <input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="compte2">Compte2</label>
-                <input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="frais_transfert">FraisTransfère</label>
-                <input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required >
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group"  style="">
-                <label class="control-label" for="commission">Commission</label>
-                <input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required >
-                <div class="help-block with-errors"></div>
-            </div>
+            <input type="hidden" id="dateRecetteMomo" value="'.$sol->date.'" value="19" name="date">
+<table  class="table table-hover">
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="fond">Fond</label></td>    
+        <td colspan="2"><input type="number" name="fond" id="fond" value="'.$sol->fond.'" class="form-control" data-error="Entrer le Fond de MoMO." required ></td>    
+    </tr>  
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="pret">Prêt (+/-)</label></td>    
+        <td colspan="2"><input type="number" name="pret" id="pret" value="'.$sol->pret.'" class="form-control" data-error="Entrer le montant de Prêt (-/+)." required ></td>    
+    </tr>  
+    <tr class="form-group-sm">
+        <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="detail_espece">Espèce</label></td>
+        <td><input class="form-control btn btn-warning update_detail_espece" type="button" value="Update Detail" id="update_detail_espece_bilan" onclick="loadContentModalUpdate2();" data-toggle="modal" data-target="#modalTemp"></td>
+        <td><input class="form-control" id="totalEspece" value="'.Monnaie::somme($sol->espece).'" FCFA">
+        <input class="form-control espece" type="hidden" id="espece" value="'.$sol->espece.'" name="espece" required></td>
+    </tr>
+    <!--tr class="form-group-sm">
+        <td><label class="control-label" for="espece">Espèce</label></td>    
+        <td><input type="number" name="espece" id="espece" value="'.$sol->espece.'" class="form-control" data-error="Entrer le montant en Espèce." required ></td>    
+    </tr-->  
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="compte_momo">CompteMomo</label></td>    
+        <td colspan="2"><input type="number" name="compte_momo" id="compte_momo" value="'.$sol->compte_momo.'" class="form-control" data-error="Entrer Le montant se trouvant dans le compte MoMo." required ></td>    
+    </tr>  
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="compte2">Compte2</label></td>    
+        <td colspan="2"><input type="number" name="compte2" id="compte2" value="'.$sol->compte2.'" class="form-control" data-error="Entrer le montant du second compte." required ></td>    
+    </tr>  
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="frais_transfert">FraisTransfère</label></td>    
+        <td colspan="2"><input type="number" name="frais_transfert" id="frais_transfert" value="'.$sol->frais_transfert.'" class="form-control" data-error="Entrer le montant total des frais de transaction du second compte." required ></td>    
+    </tr>  
+    <tr class="form-group-sm">
+        <td><label class="control-label" for="commission">Commission</label></td>    
+        <td colspan="2"><input type="number" name="commission" id="commission" value="'.$sol->commission.'" class="form-control" data-error="Entrer la valeur des Commissions." required ></td>    
+    </tr>         
+</table>
         ';
         return $page;
     }
