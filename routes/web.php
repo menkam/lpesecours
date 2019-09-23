@@ -23,8 +23,8 @@ Route::get('api_getMenus', 'api\ApiController@getMenus')->name('api_getMenus');
 Route::get('api_getListMomo', 'api\ApiController@getListMomo')->name('getListMomo');
 Route::get('api_getInfoCompte/{id}', 'api\ApiController@getInfoCompte')->name('getInfoCompte');
 
-Route::get('api_setCompteMomo/{date}/{pret}/{espece}/{comptemomo}/{compteperso}/{commission}/', 'api\ApiController@setCompteMomo')->name('setCompteMomo');
-//Route::post('api_setCompteMomo', 'api\ApiController@setCompteMomo')->name('setCompteMomo');
+Route::get('api_newCompteMomo/{date}/{fond}/{pret}/{espece}/{comptemomo}/{compteperso}/{commission}/', 'api\ApiController@newCompteMomo')->name('newCompteMomo');
+Route::get('api_updateCompteMomo/{date}/{fond}/{pret}/{espece}/{comptemomo}/{compteperso}/{commission}/', 'api\ApiController@updateCompteMomo')->name('updateCompteMomo');
 
 
 

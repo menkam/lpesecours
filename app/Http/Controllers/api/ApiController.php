@@ -76,7 +76,6 @@ class ApiController extends Controller
         //return json_encode([$menu,$page]);
     }
 
-
     public function getListMomo() {
         $listJson = [];
         $list = Mobile_money::getAllLine();
@@ -100,8 +99,8 @@ class ApiController extends Controller
         //return json_encode([$sol]);
         return $sol;
     }
-
-    public function setCompteMomo() {
+    
+    public function newCompteMomo() {
         $solution = 0;
         $last_info = Mobile_money::getAllLine('1',null,'ok');
         $exit = Mobile_money::isExcist(Request('date'));
@@ -119,6 +118,32 @@ class ApiController extends Controller
             ]);
             try {
                 $result = Mobile_money::createMomo($request);
+                $solution = 2;
+            } catch (Exception $e) {
+                return json_encode([$e]);
+            }
+        } else {
+            $solution = 1;
+        }
+        return json_encode($solution);
+    }
+    public function updateCompteMomo() {
+        $solution = 0;
+        $exit = Mobile_money::isExcist(Request('date'));
+        if($exit){
+            $request = new Request();
+            $request->replace([
+                'date' => Request('date'),
+                'fond' => Request('fond'),
+                'pret' => Request('pret'),
+                'espece' => Request('espece'),
+                'compte_momo' => Request('comptemomo'),
+                'compte2' => Request('compteperso'),
+                'frais_transfert' => 0,
+                'commission' => Request('commission'),
+            ]);
+            try {
+                $result = Mobile_money::updateMomo($request);
                 $solution = 2;
             } catch (Exception $e) {
                 return json_encode([$e]);
@@ -154,7 +179,5 @@ class ApiController extends Controller
         ];
         //return json_encode([$sol]);
         return $sol;
-
     }
-
 }
