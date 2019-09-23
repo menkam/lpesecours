@@ -38,18 +38,4 @@ class HomeController extends Controller
         //return response()->json($object);
 
     }
-
-
-    public function indexFile()
-    {
-        $galerie = '';
-        $galerie = Galerie_images_accueil::loadGalerie();
-
-        return view('applications/home', compact('galerie'));
-
-        //dd($galerie);
-        //return response()->json($object);
-
-    }
-
 }

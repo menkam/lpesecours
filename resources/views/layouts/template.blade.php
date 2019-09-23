@@ -14,7 +14,8 @@
 
     <!-- page specific plugin styles -->
 
-    @yield('style')
+    @yield('style')    
+    <link rel="stylesheet" href="css/styles.css" />
 
 
 <!-- text fonts -->
@@ -114,8 +115,12 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
+                                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                                <a href="https://api.whatsapp.com/send?phone=23796559339&text=Bonjour Francis." class="float" title="Contacter l'administrateur" target="_blank">
+                                <i class="fa fa-whatsapp my-float"></i>
+                                </a>
                             @yield('content')
-                            <!-- PAGE CONTENT ENDS -->
+                            <!-- PAGE CONTENT ENDS --
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.page-content -->

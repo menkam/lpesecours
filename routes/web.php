@@ -11,11 +11,33 @@ Route::singularResourceParameters();
 |
 */
 
+/**
+ * API_ROUTES
+ */
+Route::get('api_login', function(){
+    $date = array('token' => '457822_menkam', 'name' => 'MENKAM');
+    return json_encode('457822_menkam');
+});
+
+Route::get('api_getMenus', 'api\ApiController@getMenus')->name('api_getMenus');
+Route::get('api_getListMomo', 'api\ApiController@getListMomo')->name('getListMomo');
+Route::get('api_getInfoCompte/{id}', 'api\ApiController@getInfoCompte')->name('getInfoCompte');
+
+Route::get('api_setCompteMomo/{date}/{pret}/{espece}/{comptemomo}/{compteperso}/{commission}/', 'api\ApiController@setCompteMomo')->name('setCompteMomo');
+//Route::post('api_setCompteMomo', 'api\ApiController@setCompteMomo')->name('setCompteMomo');
+
+
+
+
 
 Auth::routes();
 Auth::routes(['verify' => false]);
 
-
+Route::get('/php', function () { 
+    $phpinfo = 'ras';
+    $phpinfo = phpinfo();
+    dd($phpinfo); 
+});
 Route::get('/license', function () { return view('license'); });
 Route::get('apropos', function () { return view('Apropos'); });
 Route::get('bloquer', function () { return view('bloquer'); });
@@ -103,6 +125,8 @@ Route::group(['middleware' => ['auth']], function () {
     */
     Route::group(['middleware' => ['admin']], function() {
 
+        Route::post('/uploads', 'ConceptionContoller@uploads')->name('uploads');
+
         Route::get('maintenance', 'ConceptionContoller@index')->name('maintenance');
         Route::get('menus', 'ApplicationController@menus')->name('menus');
         Route::get('test', 'ConceptionContoller@test')->name('test');
@@ -149,12 +173,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveRecetteMomo', 'GestionsController@saveRecetteMomo')->name('saveRecetteMomo');
         Route::post('saveRecettePhoto', 'GestionsController@saveRecettePhoto')->name('saveRecettePhoto');
         Route::post('saveRecetteCachet', 'GestionsController@saveRecetteCachet')->name('saveRecetteCachet');
-
-
-
-        Route::get('/homeFile', 'HomeController@indexFile')->name('home');
-        Route::post('file/upload', 'FileController@store')->name('file.upload');
-        Route::post('upload', 'FileController@upload')->name('upload');
 
     });
 

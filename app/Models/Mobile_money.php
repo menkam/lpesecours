@@ -37,12 +37,16 @@ class Mobile_money extends Model
 
     public static function getAllLine($statut= null, $id=null, $last=null)
     {
+        $soll = 0;
+        $sol = 0;
         if(!empty($statut))
         {
-            if(!empty($id))
-                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' AND  mobile_moneys.id='$id';")[0];
-            elseif(!empty($last))
-                return DB::select("
+            if(!empty($id)){
+                $sol = DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' AND  mobile_moneys.id='$id';");
+                if($sol) $soll = $sol[0];
+            }
+            elseif(!empty($last)) {
+                $sol = DB::select("
                         SELECT 
                           *
                         FROM 
@@ -55,14 +59,22 @@ class Mobile_money extends Model
                               public.mobile_moneys
                             WHERE
                               mobile_moneys.statut='$statut');
-                    ")[0];
-            else
-                return DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' ORDER BY  mobile_moneys.date ASC;");
+                    ");
+                if($sol) $soll = $sol[0];
+            }
+            else {
+                $sol = DB::select("SELECT * FROM public.mobile_moneys WHERE mobile_moneys.statut='$statut' ORDER BY  mobile_moneys.date ASC;");
+                if($sol) $soll = $sol;
+            }
+                
         }
         else
         {
-            return DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+            $sol = DB::select("SELECT * FROM public.mobile_moneys ORDER BY  mobile_moneys.date ASC;");
+            if($sol) $soll = $sol;
         }
+
+        return $soll;
     }
 
 
@@ -90,7 +102,7 @@ class Mobile_money extends Model
             'fond' => 'required|integer',
             'pret' => 'required|integer',
             'espece' => 'required|string|min:15|max:23',
-            'nombre_de_10000' => 'required|integer|max:40|min:0',
+            'nombre_de_10000' => 'required|integer|max:100|min:0',
             'nombre_de_5000' => 'required|integer|max:80|min:0',
             'nombre_de_2000' => 'required|integer|max:80|min:0',
             'nombre_de_1000' => 'required|integer|max:160|min:0',
@@ -118,8 +130,10 @@ class Mobile_money extends Model
                 'frais_transfert' => $request['frais_transfert'],
                 'commission' => $request['commission'],
             ]);
-            if($save->id)
-                return response()->json(['success'=> 'Date: '.$request['date'].' -> Added success.']);
+            if($save->id) {
+                $infoSave = self::saveMomo();
+                return response()->json(['success'=> 'Date: '.$request['date'].' -> success.<br>'.$infoSave]);
+            }
             return response()->json(['error'=>'error']);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
@@ -216,7 +230,8 @@ class Mobile_money extends Model
                 WHERE  date='".$request['date']."';
             ");
             if($save)
-                return response()->json(['success'=> 'Date: '.$request['date'].' -> Update success.']);
+                 $infoSave = self::saveMomo();
+                return response()->json(['success'=> 'Date: '.$request['date'].' -> Update success.<br>'.$infoSave]);
             return response()->json(['error'=>'error']);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
@@ -394,18 +409,29 @@ class Mobile_money extends Model
 
     public static function infoUtile()
     {
+        $date = "01-01-2019";
+        $sum = 0;
+        $commission = 0;
+        $fond = 0;
+        $fondsum = 0;
+        $fond2 = 0;
+
+        $total = 0;
         $info1 = self::getAllLine('1',null,'ok');
         $info2 = self::somCommission();
         //dd($info1);
+        if($info1){
+            
+            $date = $info1->date;
+            $fond = Fonctions::formatPrix($info1->fond);
+            $sum = Fonctions::formatPrix($info2->sum);
+            $commission = Fonctions::formatPrix($info1->commission);
+            $fondsum = Fonctions::formatPrix((int)$info1->fond+(int)$info2->sum);
+            $fond2 = $info1->fond;
+            
+        }
 
-        return ([
-            $info1->date,
-            Fonctions::formatPrix($info1->fond),
-            Fonctions::formatPrix($info2->sum),
-            Fonctions::formatPrix($info1->commission),
-            Fonctions::formatPrix((int)$info1->fond+(int)$info2->sum),
-            $info1->fond
-        ]);
+        return ([$date,$fond,$sum,$commission,$fondsum,$fond2]);
 
     }
 

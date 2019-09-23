@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="css/styles.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -121,6 +122,10 @@ if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                                <a href="https://api.whatsapp.com/send?phone=23796559339&text=Bonjour Francis." class="float" title="Contacter l'administrateur" target="_blank">
+                                <i class="fa fa-whatsapp my-float"></i>
+                                </a>
                         <div class="col-xs-12 col-md-2 col-sm-2 col-lg-2"></div>
                         <div class="col-xs-12 col-md-8 col-sm-8 col-lg-8 panel panel-primary">
                             <div class="panel-heading titre">
@@ -182,9 +187,10 @@ if((int)$date["mon"] >= 10 && (int)$date["mday"] >= 10){
 <script type="text/javascript">
     var dateCourante = "<?= $dateCourante?>";
     //alert("nous somme le, "+dateCourante);
-    $(function(){
+    /*$(function(){
         $(".carousel").carousel({ interval: 9000 });
-    });
+    });*/
+
 </script>
 </body>
 </html>

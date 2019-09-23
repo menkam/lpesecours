@@ -1,7 +1,7 @@
 @extends('layouts.error')
 @section('title')
     <title>Erreur interne</title>
-    <meta name="description" content="401 Error Page" />
+    <meta name="description" content="500 Error Page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 @endsection
 

@@ -40,8 +40,10 @@ class Photo extends Model
                 'nombre' => $request['nombre'],
                 'prix_unitaire' => $request['prix_unitaire'],
             ]);
-            if($save)
-                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.']);
+            if($save) {
+                $infoSAve = self::savePhoto();
+                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.<br>'.$infoSAve]);
+            }
             return response()->json(['error'=>$save]);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
@@ -112,7 +114,7 @@ class Photo extends Model
     public static function updatePhoto($request)
     {
         $date = Fonctions::getCurentDate();
-        return DB::update("
+        $update = DB::update("
             UPDATE 
               photos
             SET 
@@ -124,6 +126,8 @@ class Photo extends Model
             WHERE 
               id='".$request['id']."';
         ");
+        self::savePhoto();
+        return $update;
     }
 
     public static function getAllLine($id = null, $statut=null)

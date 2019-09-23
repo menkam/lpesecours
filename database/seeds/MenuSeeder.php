@@ -415,7 +415,7 @@ class MenuSeeder extends Seeder
         $object->id = '431';
         $object->idparent = '43';
         $object->idfils = '3';
-        $object->libelle = 'Recettes MoMo';
+        $object->libelle = 'Compte MoMo';
         $object->groupeuser = '2';
         $object->rang = '1';
         $object->lien = 'Gestions\MoMo\Recette';

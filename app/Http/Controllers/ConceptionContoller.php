@@ -28,20 +28,40 @@ use DB;
 class ConceptionContoller extends Controller
 {
 
+public static function validationProfil(Request $request) {
+    return Validator::make($request->all(), ['photo' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048']);
+}
+
+public function uploads(Request $request) {
+
+    $validator = self::validationProfil($request);
+    $result = "ras";
+    $errors = '';
+    if($validator->passes()) {
+        $file = $request->file('photo');
+        $name = 'daengweb-' . \Carbon\Carbon::now()->format('Y-m-dH:i:s') . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('uploads', $name);
+        /*$image = $request->file('photo');
+        $images = 'daengweb-' . \Carbon\Carbon::now()->format('Y-m-dH:i:s') . '.' . $image->getClientOriginalExtension();
+        \Image::make($image)->resize(300, 200)->save(storage_path('app\uploads'.$images));
+        //$path = $file->storeAs('uploads', $name, 's3');*/
+        
+        $result = $path;
+    }else{
+        $errors = $validator->errors()->all();
+        //dd($errors);
+    }
+   
+
+    return view("applications/Maintenance", compact(['result','errors']));
+    //dd($sol);
+
+}
+
     public function index()
     {
 
-        $result="";
-        $request = new Request([
-            'id'=>'7',
-            'date'=>'2019-06-8',
-            'type'=>'1',
-            'user'=>'9',
-            'somme'=>'2800',
-            'statut'=>'-1',
-            'commentaires'=>'juste un test'
-        ]);
-        $compte = Compte_perso::isExcist('2019-06-8','1');
+        $result="ras";
 
         return view("applications/Maintenance", compact('result'));
 

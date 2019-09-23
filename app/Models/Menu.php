@@ -248,6 +248,40 @@ class Menu extends Model
     }
 
 
+    public static function getSMenu2($idmenu){
+        return DB::select("
+            SELECT 
+              menus.id, 
+              menus.idparent, 
+              menus.idfils, 
+              menus.libelle, 
+              menus.lien, 
+              menus.icon, 
+              menus.controller, 
+              menus.fichiercontroller, 
+              menus.fichierview, 
+              menus.route, 
+              menus.rang
+            FROM 
+              public.menus
+            WHERE 
+              menus.idparent = '$idmenu'
+            ORDER BY
+              menus.rang ASC;
+        ");
+    }
+    public static function isSMenu2($idmenu){
+        return DB::select("
+          SELECT 
+            count(*) 
+          FROM 
+            menus 
+          WHERE 
+            menus.idparent = '$idmenu';
+        ")[0]->count;
+    }
+
+
     /**
      ** gérération menu
      **/
@@ -385,10 +419,11 @@ class Menu extends Model
 
     public static function getAllLine($id = null, $statut=null)
     {
-        if(!empty($statut)) return DB::select("SELECT * FROM public.menus WHERE  menus.id = '$id' AND menus.statut = '$statut';")[0];
+        /*if(!empty($statut)) return DB::select("SELECT * FROM public.menus WHERE  menus.id = '$id' AND menus.statut = '$statut';")[0];
         if(!empty($statut)) return DB::select("SELECT * FROM public.menus WHERE menus.statut = '$statut';");
         if(!empty($id)) return DB::select("SELECT * FROM public.menus WHERE  menus.id = '$id';")[0];
-        else return DB::select("SELECT * FROM public.menus;");
+        else return DB::select("SELECT * FROM public.menus;");*/
+        return DB::select("SELECT * FROM public.menus WHERE  menus.idparent = '$id';");
     }
 
     public static function getContentUpdate($id)

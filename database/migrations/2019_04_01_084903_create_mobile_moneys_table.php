@@ -18,7 +18,7 @@ class CreateMobileMoneysTable extends Migration
             $table->date('date')->unique();
             $table->integer('fond');
             $table->integer('pret');
-            $table->integer('espece');
+            $table->string('espece');
             $table->integer('compte_momo');
             $table->integer('compte2');
             $table->integer('frais_transfert');

@@ -34,6 +34,7 @@ class FichiersCSV extends Model
 
     public static function ecriture($nomFichierCSV, array $lignes)
     {
+
         $resul = "=> Debut de creation de la sauvegade \"".$nomFichierCSV."\"";
         $date = Fonctions::getCurentDateChaine();
         //dd($date);

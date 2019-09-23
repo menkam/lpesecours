@@ -17,16 +17,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h6 class="modal-title" id="myModalLabel">Ajout d'un menu</h6>
+                <h6 class="modal-title" id="myModalLabel">Nouvelle Données</h6>
             </div>
             <div class="modal-body">
-                <form data-toggle="validator" id="formUpdateModal" action="#" method="POST">
+                <form data-toggle="validator" id="formAddModal" action="#" method="POST">
                     {{ csrf_field() }}
                     <div id="bodyModalAdd"></div>
                     <div class="form-group">
-                        <button id="submitModalAdd" type="submit" class="btn btn-success" style="display: none">Ajouter</button>
-                        <button type="reset" class="btn btn-warning crud-reset-edit">Effacer</button>
-                        <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Annuler</button>
+                        <br>
+                        <button id="submitModalAdd" type="submit" class="btn btn-success" style="">Ajouter</button>
+                        <button id="resetModalAdd" type="reset" class="btn btn-warning crud-reset-edit">Effacer</button>
+                        <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Fermer</button>
                     </div>
                 </form>
             </div>
@@ -42,7 +43,7 @@
                 <h6 class="modal-title" id="myModalLabel">Modification</h6>
             </div>
             <div class="modal-body">
-                <form data-toggle="validator" id="formUpdaterecette" action="#" method="POST" enctype="multipart/form-data">
+                <form data-toggle="validator" id="formUpdateModal" action="#" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div id="bodyModaleUpdate"></div>
                     <div class="form-group" id="footerModal">
@@ -116,6 +117,29 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- formulaire temporaire -->
+<div class="modal fade" id="modalTemp" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h6 class="modal-title" id="myModalLabel">Nouvelle Données</h6>
+            </div>
+            <div class="modal-body">
+                <form data-toggle="validator" id="formTempModal" action="#" method="POST">
+                    {{ csrf_field() }}
+                    <div id="bodyModalTemp"></div>
+                    <div class="form-group">
+                        <br>
+                        <button class="btn btn-default close crud-close-edit" data-dismiss="modal" aria-label="Close">Fermer</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

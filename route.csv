@@ -1,0 +1,98 @@
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+--------------------+
+| Domain | Method   | URI                                     | Name                              | Action                                                                    | Middleware         |
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+--------------------+
+|        | GET|HEAD | /                                       | welcome                           | App\Http\Controllers\WelcomeController@index                              | web,guest          |
+|        | GET|HEAD | addGroupeUser                           | Nouveau Groupe Utilisateur        | App\Http\Controllers\TlistGroupeUserController@nouveau                    | web,auth,admin     |
+|        | GET|HEAD | addUser                                 | Nouveau Utilisateur               | App\Http\Controllers\UserController@nouveau                               | web,auth,admin     |
+|        | POST     | api/auth/login                          | login                             | App\Http\Controllers\Auth\AuthController@login                            | api                |
+|        | GET|HEAD | api/auth/logout                         |                                   | App\Http\Controllers\Auth\AuthController@logout                           | api,auth:api       |
+|        | POST     | api/auth/register                       |                                   | App\Http\Controllers\Auth\AuthController@register                         | api                |
+|        | GET|HEAD | api/auth/user                           |                                   | App\Http\Controllers\Auth\AuthController@user                             | api,auth:api       |
+|        | GET|HEAD | apropos                                 |                                   | Closure                                                                   | web                |
+|        | GET|HEAD | bilanCachet                             | Bilan Cachet                      | App\Http\Controllers\GestionsController@bilanCachet                       | web,auth,personnel |
+|        | GET|HEAD | bilanMoMo                               | Bilan MoMo                        | App\Http\Controllers\GestionsController@bilanMoMo                         | web,auth,personnel |
+|        | GET|HEAD | bilanPhoto                              | Bilan Photo                       | App\Http\Controllers\GestionsController@bilanPhoto                        | web,auth,personnel |
+|        | GET|HEAD | bloquer                                 |                                   | Closure                                                                   | web                |
+|        | POST     | calculatrice                            | calculatrice                      | App\Http\Controllers\GestionsController@calculatrice                      | web,auth,visiteur  |
+|        | GET|HEAD | contact                                 | Contacts                          | App\Http\Controllers\ContactController@index                              | web,auth,visiteur  |
+|        | POST     | deleteRecetteCachet                     | deleteRecetteCachet               | App\Http\Controllers\GestionsController@deleteRecetteCachet               | web,auth,admin     |
+|        | POST     | deleteRecetteMomo                       | deleteRecetteMomo                 | App\Http\Controllers\GestionsController@deleteRecetteMomo                 | web,auth,admin     |
+|        | POST     | deleteRecettePhoto                      | deleteRecettePhoto                | App\Http\Controllers\GestionsController@deleteRecettePhoto                | web,auth,admin     |
+|        | GET|HEAD | depense                                 | Depense Photo                     | App\Http\Controllers\GestionsController@depensePhoto                      | web,auth,personnel |
+|        | GET|HEAD | depenseCachet                           | Depenses Cachet                   | App\Http\Controllers\GestionsController@depenseCachet                     | web,auth,personnel |
+|        | GET|HEAD | downloadDataBase                        | downloadDataBase                  | App\Http\Controllers\ApplicationController@downloadDataBase               | web,auth,admin     |
+|        | POST     | existRecordComptePerso                  | existRecordComptePerso            | App\Http\Controllers\Compte_persoController@existRecordComptePerso        | web,auth,visiteur  |
+|        | GET|HEAD | galerie                                 | Galeries                          | App\Http\Controllers\GalerieController@index                              | web                |
+|        | GET|HEAD | gestionPerso                            | Personnelle                       | App\Http\Controllers\GestionsController@personnelle                       | web,auth,visiteur  |
+|        | POST     | getOptionTypeCachet                     | getOptionTypeCachet               | App\Http\Controllers\GestionsController@getOptionTypeCachet               | web,auth,visiteur  |
+|        | POST     | getOptionTypePhoto                      | getOptionTypePhoto                | App\Http\Controllers\GestionsController@getOptionTypePhoto                | web,auth,visiteur  |
+|        | POST     | getSommeMonnaie                         | getSommeMonnaie                   | App\Http\Controllers\MonnaieController@getSommeMonnaie                    | web,auth,personnel |
+|        | GET|HEAD | home                                    | home                              | App\Http\Controllers\HomeController@index                                 | web,auth,visiteur  |
+|        | GET|HEAD | inbox                                   | inbox                             | App\Http\Controllers\MessageController@index                              | web,auth,visiteur  |
+|        | GET|HEAD | license                                 |                                   | Closure                                                                   | web                |
+|        | POST     | listMenu                                | listMenu                          | App\Http\Controllers\ApplicationController@listMenu                       | web,auth,admin     |
+|        | POST     | loadBodyBilan                           | loadBodyBilan                     | App\Http\Controllers\GestionsController@loadBodyBilan                     | web,auth,admin     |
+|        | POST     | loadContentModalAdd                     | loadContentModalAdd               | App\Http\Controllers\ModalController@loadContentModalAdd                  | web,auth,admin     |
+|        | POST     | loadContentModalDelete                  | loadContentModalDelete            | App\Http\Controllers\ModalController@loadContentModalDelete               | web,auth,admin     |
+|        | POST     | loadContentModalUpdate                  | loadContentModalUpdate            | App\Http\Controllers\ModalController@loadContentModalUpdate               | web,auth,admin     |
+|        | POST     | loadContentModalView                    | loadContentModalView              | App\Http\Controllers\ModalController@loadContentModalView                 | web,auth,admin     |
+|        | POST     | loadListMessage                         | loadListMessage                   | App\Http\Controllers\MessageUserController@loadListMessage                | web,auth,visiteur  |
+|        | POST     | loadMessageContent                      | loadMessageContent                | App\Http\Controllers\MessageUserController@loadMessageContent             | web,auth,visiteur  |
+|        | POST     | login                                   |                                   | App\Http\Controllers\Auth\LoginController@login                           | web,guest          |
+|        | GET|HEAD | login                                   | login                             | App\Http\Controllers\Auth\LoginController@showLoginForm                   | web,guest          |
+|        | POST     | logout                                  | logout                            | App\Http\Controllers\Auth\LoginController@logout                          | web                |
+|        | GET|HEAD | maintenance                             | maintenance                       | App\Http\Controllers\ConceptionContoller@index                            | web,auth,admin     |
+|        | GET|HEAD | menus                                   | menus                             | App\Http\Controllers\ApplicationController@menus                          | web,auth,admin     |
+|        | POST     | oauth/authorize                         | passport.authorizations.approve   | Laravel\Passport\Http\Controllers\ApproveAuthorizationController@approve  | web,auth           |
+|        | GET|HEAD | oauth/authorize                         | passport.authorizations.authorize | Laravel\Passport\Http\Controllers\AuthorizationController@authorize       | web,auth           |
+|        | DELETE   | oauth/authorize                         | passport.authorizations.deny      | Laravel\Passport\Http\Controllers\DenyAuthorizationController@deny        | web,auth           |
+|        | POST     | oauth/clients                           | passport.clients.store            | Laravel\Passport\Http\Controllers\ClientController@store                  | web,auth           |
+|        | GET|HEAD | oauth/clients                           | passport.clients.index            | Laravel\Passport\Http\Controllers\ClientController@forUser                | web,auth           |
+|        | DELETE   | oauth/clients/{client_id}               | passport.clients.destroy          | Laravel\Passport\Http\Controllers\ClientController@destroy                | web,auth           |
+|        | PUT      | oauth/clients/{client_id}               | passport.clients.update           | Laravel\Passport\Http\Controllers\ClientController@update                 | web,auth           |
+|        | POST     | oauth/personal-access-tokens            | passport.personal.tokens.store    | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@store     | web,auth           |
+|        | GET|HEAD | oauth/personal-access-tokens            | passport.personal.tokens.index    | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@forUser   | web,auth           |
+|        | DELETE   | oauth/personal-access-tokens/{token_id} | passport.personal.tokens.destroy  | Laravel\Passport\Http\Controllers\PersonalAccessTokenController@destroy   | web,auth           |
+|        | GET|HEAD | oauth/scopes                            | passport.scopes.index             | Laravel\Passport\Http\Controllers\ScopeController@all                     | web,auth           |
+|        | POST     | oauth/token                             | passport.token                    | Laravel\Passport\Http\Controllers\AccessTokenController@issueToken        | throttle           |
+|        | POST     | oauth/token/refresh                     | passport.token.refresh            | Laravel\Passport\Http\Controllers\TransientTokenController@refresh        | web,auth           |
+|        | GET|HEAD | oauth/tokens                            | passport.tokens.index             | Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@forUser | web,auth           |
+|        | DELETE   | oauth/tokens/{token_id}                 | passport.tokens.destroy           | Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController@destroy | web,auth           |
+|        | POST     | password/email                          | password.email                    | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail     | web,guest          |
+|        | POST     | password/reset                          | password.update                   | App\Http\Controllers\Auth\ResetPasswordController@reset                   | web,guest          |
+|        | GET|HEAD | password/reset                          | password.request                  | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm    | web,guest          |
+|        | GET|HEAD | password/reset/{token}                  | password.reset                    | App\Http\Controllers\Auth\ResetPasswordController@showResetForm           | web,guest          |
+|        | GET|HEAD | php                                     |                                   | Closure                                                                   | web                |
+|        | GET|HEAD | profile                                 | profile                           | App\Http\Controllers\ProfileController@index                              | web,auth,visiteur  |
+|        | POST     | readInbox                               | readInbox                         | App\Http\Controllers\MessageUserController@readInbox                      | web,auth,visiteur  |
+|        | GET|HEAD | recetteCachet                           | Recettes Cachet                   | App\Http\Controllers\GestionsController@recetteCachet                     | web,auth,admin     |
+|        | GET|HEAD | recetteMoMo                             | Recettes MoMo                     | App\Http\Controllers\GestionsController@recetteMoMo                       | web,auth,admin     |
+|        | GET|HEAD | recettePhoto                            | Recette Photo                     | App\Http\Controllers\GestionsController@recettePhoto                      | web,auth,admin     |
+|        | GET|HEAD | register                                | register                          | App\Http\Controllers\Auth\RegisterController@showRegistrationForm         | web,guest          |
+|        | POST     | register                                |                                   | App\Http\Controllers\Auth\RegisterController@register                     | web,guest          |
+|        | POST     | saveComptePerso                         | saveComptePerso                   | App\Http\Controllers\Compte_persoController@saveComptePerso               | web,auth,visiteur  |
+|        | GET|HEAD | saveGestion                             | saveGestion                       | App\Http\Controllers\GestionsController@saveGestion                       | web,auth,admin     |
+|        | POST     | saveModalAdd                            | saveModalAdd                      | App\Http\Controllers\ModalController@saveModalAdd                         | web,auth,admin     |
+|        | POST     | saveModalUpdate                         | saveModalUpdate                   | App\Http\Controllers\ModalController@saveModalUpdate                      | web,auth,admin     |
+|        | POST     | saveRecetteCachet                       | saveRecetteCachet                 | App\Http\Controllers\GestionsController@saveRecetteCachet                 | web,auth,admin     |
+|        | POST     | saveRecetteGlobalMomo                   | saveRecetteGlobalMomo             | App\Http\Controllers\GestionsController@saveRecetteGlobalMomo             | web,auth,admin     |
+|        | POST     | saveRecetteMomo                         | saveRecetteMomo                   | App\Http\Controllers\GestionsController@saveRecetteMomo                   | web,auth,admin     |
+|        | POST     | saveRecettePhoto                        | saveRecettePhoto                  | App\Http\Controllers\GestionsController@saveRecettePhoto                  | web,auth,admin     |
+|        | POST     | sendMessage                             | sendMessage                       | App\Http\Controllers\MessageController@sendMessage                        | web,auth,visiteur  |
+|        | POST     | showInfoNav                             | showInfoNav                       | App\Http\Controllers\MessageController@showInfoNav                        | web,auth,visiteur  |
+|        | GET|HEAD | test                                    | test                              | App\Http\Controllers\ConceptionContoller@test                             | web,auth,admin     |
+|        | GET|HEAD | testget                                 | testget                           | App\Http\Controllers\ConceptionContoller@testpost                         | web                |
+|        | POST     | testpost                                | testpost                          | App\Http\Controllers\ConceptionContoller@testpost                         | web                |
+|        | POST     | updateComptePerso                       | updateComptePerso                 | App\Http\Controllers\Compte_persoController@updateComptePerso             | web,auth,visiteur  |
+|        | GET|HEAD | updateGestion                           | updateGestion                     | App\Http\Controllers\GestionsController@updateGestion                     | web,auth,admin     |
+|        | GET|HEAD | updateGroupeUser                        | Modifier Groupe Utilisateur       | App\Http\Controllers\TlistGroupeUserController@modification               | web,auth,admin     |
+|        | POST     | updateRecetteCachet                     | updateRecetteCachet               | App\Http\Controllers\GestionsController@updateRecetteCachet               | web,auth,admin     |
+|        | POST     | updateRecetteMomo                       | updateRecetteMomo                 | App\Http\Controllers\GestionsController@updateRecetteMomo                 | web,auth,admin     |
+|        | POST     | updateRecettePhoto                      | updateRecettePhoto                | App\Http\Controllers\GestionsController@updateRecettePhoto                | web,auth,admin     |
+|        | POST     | updateStatutBilan                       | updateStatutBilan                 | App\Http\Controllers\GestionsController@updateStatutBilan                 | web,auth,admin     |
+|        | GET|HEAD | updateUser                              | Modifier Utilisateur              | App\Http\Controllers\UserController@modification                          | web,auth,admin     |
+|        | POST     | uploadDataBase                          | uploadDataBase                    | App\Http\Controllers\ApplicationController@uploadDataBase                 | web,auth,admin     |
+|        | GET|HEAD | uploadDataBase                          | uploadDataBase                    | App\Http\Controllers\ApplicationController@uploadDataBase                 | web,auth,admin     |
+|        | POST     | uploadFichierCSV                        | uploadFichierCSV                  | App\Http\Controllers\ApplicationController@uploadFichierCSV               | web,auth,admin     |
+|        | POST     | uploads                                 | uploads                           | App\Http\Controllers\ConceptionContoller@uploads                          | web,auth,admin     |
++--------+----------+-----------------------------------------+-----------------------------------+---------------------------------------------------------------------------+--------------------+

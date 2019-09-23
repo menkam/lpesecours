@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Tlist_ope_gestionSeeder::class);
         $this->call(Tlist_cachetSeeder::class);
         $this->call(Tlist_photoSeeder::class);
+        $this->call(Tlist_compte_persoSeeder::class);        
+        $this->call(Tlist_deviseSeeder::class);
 /*
         $this->call(MoMoSeeder::class);
         $this->call(PhotoSeeder::class);

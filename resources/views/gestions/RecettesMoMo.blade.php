@@ -65,7 +65,7 @@
             <tbody>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="date">{{ __('Date') }}</label> </td>
-                    <td><input id="date" type="date" class="form-control hasDatepicker" name="date" value="<?php if(isset($courentdate)) echo $courentdate; ?>" required autofocus>
+                    <td colspan="2"><input id="dateRecetteMomo" type="date" class="form-control hasDatepicker" name="date" value="<?php if(isset($courentdate)) echo $courentdate; ?>" required autofocus>
                         <!--span class="input-group-addon">
                             <i class="ace-icon fa fa-calendar"></i>
                         </span-->
@@ -73,38 +73,43 @@
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="fond">{{ __('Fond') }}</label> </td>
-                    <td><input class="form-control " type="text" id="" name="" value="<?php if(isset($lastFond)) echo $lastFond; ?> FCFA" disabled></td>
+                    <td colspan="2"><input class="form-control " type="text" id="" name="" value="<?php if(isset($lastFond)) echo $lastFond; ?> FCFA" disabled></td>
                     <input class="form-control " type="hidden" id="fond" name="fond" value="<?php if(isset($lastFond2)) echo $lastFond2; ?>" required>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="pret">{{ __('Prêt') }}</label> </td>
-                    <td><input class="form-control" type="number" id="pret" name="pret" required></td>
+                    <td colspan="2"><input class="form-control" type="number" id="pret" name="pret" value="0" required></td>
                 </tr>
                 <tr class="form-group-sm">
-                    <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="espece">{{ __('Espèce') }}</label></td>
-                    <td><input class="form-control" type="number" id="espece" name="espece" required></td>
+                    <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="detail_espece">{{ __('Espèce') }}</label></td>
+                    <td>
+                        <input class="form-control btn btn-default" type="button" value="Détail" style="display: none;" id="detail_espece" onclick="loadContentModalAdd('monnaie');" data-toggle="modal" data-target="#modalTemp">
+                        <input class="form-control btn btn-warning update_detail_espece" type="button" value="Update Detail" style="display: none;" id="" onclick="loadContentModalUpdate2();" data-toggle="modal" data-target="#modalTemp">
+                    </td>
+                    <td><input class="form-control"  style="display: none;" id="totalEspece" value="0 FCFA">
+                    <input class="form-control espece" type="hidden" id="espece" name="espece" required></td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="compte_momo">{{ __('CompteMomo') }}</label> </td>
-                    <td><input  class="form-control" type="number" id="compte_emomo" name="compte_momo" required></td>
+                    <td colspan="2"><input  class="form-control" type="number" id="compte_emomo" name="compte_momo" required></td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="compte2">{{ __('Compte2') }}</label> </td>
-                    <td><input class="form-control" type="number" id="compte2" name="compte2" required></td>
+                    <td colspan="2"><input class="form-control" type="number" id="compte2" name="compte2" value="0" required></td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="frais_transfert">{{ __('FraisTransfère') }}</label> </td>
-                    <td><input class="form-control" type="number" id="frais_transfert" name="frais_transfert" required></td>
+                    <td colspan="2"><input class="form-control" type="number" id="frais_transfert" name="frais_transfert" value="0" required></td>
                 </tr>
                 <tr class="form-group-sm">
                     <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="commission">{{ __('Commission') }}</label> </td>
-                    <td><input class="form-control" type="number" id="commission" name="commission" required></td>
+                    <td colspan="2"><input class="form-control" type="number" id="commission" name="commission" required></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr class="form-group-sm">
                     <td class=""><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="saverecettemomo">{{ __('Action') }}</label> </td>
-                    <td>
+                    <td colspan="2">
                         <div class="clearfix">
                             <button type="reset" class="width-10 pull-left btn btn-sm">
                                 <i class="ace-icon fa fa-refresh"></i>

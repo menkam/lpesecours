@@ -1,0 +1,5 @@
+name;surname;photo;date_nais;sexe;telephone;email;password;statut;created_at;updated_at
+ROOT;Admin;admin.jpg;1992-03-02;M;+237670928110;lpesecours@gmail.com;$2y$10$se5ZLX6b/M84a7mfNGvVM.UTOmrA101dj/prqpD1tbkOqD2sHFwX2;1;"2019-06-04 01:09:45";"2019-06-04 01:09:45"
+MENKAM;Francis;francis.jpg;1995-03-02;M;+237670256150;menkam35@gmail.com;$2y$10$juNJ.R.l63lzqrH5H2R7wegRt7qH.0pgc/4F3PyAkFOW2l3DoOK42;1;"2019-06-04 01:09:45";"2019-06-04 01:09:45"
+PERSONNEL;Personnel;personnel.png;1992-03-02;M;+237600000000;personnel@gmail.com;$2y$10$d/xAsG3oXlPPwwSvTGgVO.Pxpc/3llFkpP0QZRZHuoHWseZLKV/BK;1;"2019-06-04 01:09:45";"2019-06-04 01:09:45"
+NOUMSI;Charleine;charleine.jpg;1992-04-22;F;674108498;charleinenoumsi@gmail.com;$2y$10$VdkE.ziuTwQm.XR1mYthveYRskmETiZX5BKT5gl7UbONmscAWb5rW;1;"2019-06-04 01:09:45";"2019-06-04 01:09:45"

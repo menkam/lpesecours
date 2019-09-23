@@ -41,8 +41,10 @@ class Cachet extends Model
                 'nombre' => $request['nombre'],
                 'prix_unitaire' => $request['prix_unitaire'],
             ]);
-            if($save)
-                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.']);
+            if($save) {
+                $infoSAve = self::saveCachet();
+                return response()->json(['success'=>'Added Date: '.$request['date'].' -> success.<br>'.$infoSAve]);
+            }
             return response()->json(['error'=>$save]);
         }
         return response()->json(['error'=>$validator->errors()->all()]);
@@ -113,7 +115,7 @@ class Cachet extends Model
     public static function updateCachet($request)
     {
         $date = Fonctions::getCurentDate();
-        return DB::update("
+        $update = DB::update("
             UPDATE 
               cachets
             SET 
@@ -125,6 +127,8 @@ class Cachet extends Model
             WHERE 
               id='".$request['id']."';
         ");
+        self::saveCachet();
+        return $update;
     }
 
     public static function getAllLine($id = null, $statut=null)
@@ -220,6 +224,7 @@ class Cachet extends Model
         $option = '<option value="">------------------</option>';
         $option = $option.'<option value="1000">1.000 FCFA</option>';
         $option = $option.'<option value="1500">1.500 FCFA</option>';
+        $option = $option.'<option value="2000">2.000 FCFA</option>';
         $option = $option.'<option value="2500">2.500 FCFA</option>';
         $option = $option.'<option value="3000">3.000 FCFA</option>';
         $option = $option.'<option value="3500">3.500 FCFA</option>';
@@ -227,16 +232,16 @@ class Cachet extends Model
         $option = $option.'<option value="4500">4.500 FCFA</option>';
         $option = $option.'<option value="5000">5.000 FCFA</option>';
         $option = $option.'<option value="5500">5.500 FCFA</option>';
-        $option = $option.'<option value="5500">6.000 FCFA</option>';
-        $option = $option.'<option value="5500">6.500 FCFA</option>';
-        $option = $option.'<option value="5500">7.000 FCFA</option>';
-        $option = $option.'<option value="5500">7.500 FCFA</option>';
-        $option = $option.'<option value="5500">8.000 FCFA</option>';
-        $option = $option.'<option value="5500">8.500 FCFA</option>';
-        $option = $option.'<option value="5500">9.000 FCFA</option>';
-        $option = $option.'<option value="5500">9.500 FCFA</option>';
-        $option = $option.'<option value="5500">10.000 FCFA</option>';
-        $option = $option.'<option value="5500">10.500 FCFA</option>';
+        $option = $option.'<option value="6000">6.000 FCFA</option>';
+        $option = $option.'<option value="6500">6.500 FCFA</option>';
+        $option = $option.'<option value="7000">7.000 FCFA</option>';
+        $option = $option.'<option value="7500">7.500 FCFA</option>';
+        $option = $option.'<option value="8000">8.000 FCFA</option>';
+        $option = $option.'<option value="8500">8.500 FCFA</option>';
+        $option = $option.'<option value="9000">9.000 FCFA</option>';
+        $option = $option.'<option value="9500">9.500 FCFA</option>';
+        $option = $option.'<option value="10000">10.000 FCFA</option>';
+        $option = $option.'<option value="10500">10.500 FCFA</option>';
 
         return $option;
     }

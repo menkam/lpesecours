@@ -53,27 +53,14 @@
             <tr class="form-group-sm">
                 <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="nombre">{{ __('Nombre') }}</label> </td>
                 <td><select class="form-control" id="nombre" name="nombre" required>
-                        <option value="">----------------</option>
-                        <option value="1" selected>Un (01)</option>
-                        <option value="2">Deux (02)</option>
-                        <option value="3">Troix (03)</option>
-                        <option value="4">Quatre (04)</option>
-                        <option value="5">Cinq (05)</option>
-                        <option value="5">Six (06)</option>
-                        <option value="5">Sept (07)</option>
-                        <option value="5">Huit (08)</option>
-                        <option value="5">Neuf (09)</option>
-                        <option value="5">Dix (10)</option>
+                        <?php if(isset($optionNombret)) echo $optionNombret;?>
                     </select>
                 </td>
             </tr>
             <tr class="form-group-sm">
                 <td><label class="form-control-label col-xl-6 col-md-2 col-lg-1" for="prix_unitaire">{{ __('Prix Unitaire') }}</label></td>
                 <td><select class="form-control" id="prix_unitaire" name="prix_unitaire" required>
-                        <option value="">----------------</option>
-                        <option value="500">500 FCFA</option>
-                        <option value="1000" selected>1.000 FCFA</option>
-                        <option value="1300">1.300 FCFA</option>
+                        <?php if(isset($optionPrixUnitaire)) echo $optionPrixUnitaire;?>
                     </select>
                 </td>
             </tr>

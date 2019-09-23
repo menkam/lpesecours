@@ -26,13 +26,21 @@ class GestionsController extends Controller
      */
     public function recetteMoMo()
     {
+        $lastDate = "";
+        $lastFond = "";
+        $pret = "";
+        $lastComm = "";
+        $total = "";
+        $lastFond2 = "";
         $result = Mobile_money::infoUtile();
-        $lastDate = $result[0];
-        $lastFond = $result[1];
-        $pret = $result[2];
-        $lastComm = $result[3];
-        $total = $result[4];
-        $lastFond2 = $result[5];
+        if(!empty($result)){
+            $lastDate = $result[0];
+            $lastFond = $result[1];
+            $pret = $result[2];
+            $lastComm = $result[3];
+            $total = $result[4];
+            $lastFond2 = $result[5];
+        }
         $courentdate = Fonctions::getCurentDate();
 
         return view("gestions/RecettesMoMo", compact('lastDate','lastFond','pret','lastComm','total','lastFond2','courentdate'));
@@ -47,7 +55,7 @@ class GestionsController extends Controller
     }
     public function recettePhoto()
     {
-        $optionTypePhoto = Tlist_photo::getOption();
+        $optionTypePhoto = Tlist_photo::getOption(1);
         $optionNombret = Fonctions::getOptionNombre(1,12);
         $optionPrixUnitaire = Photo::getOptionPrixUnitaire();
 
@@ -163,25 +171,7 @@ class GestionsController extends Controller
     }
     public function saveRecetteCachet(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'date' => 'required|date',
-            'type' => 'required|integer',
-            'nombre' => 'required|integer',
-            'prix_unitaire' => 'required|integer',
-        ]);
-
-        if ($validator->passes()) {
-            $save = Cachet::create([
-                'date' => $request['date'],
-                'type' => $request['type'],
-                'nombre' => $request['nombre'],
-                'prix_unitaire' => $request['prix_unitaire'],
-            ]);
-            if($save)
-                return response()->json(['success'=>'Added new records.']);
-            return response()->json(['error'=>$save]);
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
+         return Cachet::createCachet($request);
     }
 
 
