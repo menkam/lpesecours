@@ -81,7 +81,7 @@ class ApiController extends Controller
         $list = Mobile_money::getAllLine();
         foreach ($list as $val) {
             $espece = Monnaie::somme($val->espece);
-            $total_compte_espece = ($val->compte_momo + $val->compte2 + $espece + $val->pret);
+            $total_compte_espece = ($val->compte_momo + $val->compte2 + $espece);
             $bilan = $val->fond - $total_compte_espece;
             $listJson[] = [
               "id" =>  $val->id,
