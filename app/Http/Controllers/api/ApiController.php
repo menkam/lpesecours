@@ -92,11 +92,14 @@ class ApiController extends Controller
             $commission[$nbr] = (integer)$val->commission;
             $diffCom = (integer)$val->commission - $commission[$nbr-1];
             $margeEC2 =  ($totalEC2[$nbr] +(integer)$val->frais_transfert - ($totalEC2[$nbr-1] + (integer)$val->pret));
-            if($margeEC2<0) $valMargerEC2 = '<span class="label label-sm label-warning">'.Fonctions::formatPrix($margeEC2).'</span>';
-            elseif($margeEC2>=0) $valMargerEC2 = '<span class="label label-sm label-success">'.Fonctions::formatPrix($margeEC2).'</span>';
+
+            if($margeEC2<0) $valMargerEC2 = ["alert" => 1, "val" => Fonctions::formatPrix($margeEC2)];
+            elseif($margeEC2>=0) $valMargerEC2 = ["alert" => 0, "val" => Fonctions::formatPrix($margeEC2)];
+
             $Supplement = ($totalEC2[$nbr]-((integer)$val->fond));
-            if((((integer)$val->fond+(integer)$val->pret))<=$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-success">Bon</span></td>';
-            elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-warning">Mauvais</span></td>';
+
+            if((((integer)$val->fond+(integer)$val->pret))<=$totalEC2[$nbr]) $msgStatut = 1;
+            elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = 0;label-warning\'>Mauvais</span></td>';*/
             
             $bilan = $val->fond - $total_compte_espece;
 
