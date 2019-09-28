@@ -78,25 +78,51 @@ class ApiController extends Controller
 
     public function getListMomo() {
         $listJson = [];
+        $totalEC2[0] = 200000;
+        $commission[0] = 23753;
+        $msgStatut = '';
+        $nbr=1;
+        $compteur = 0;
+
         $list = Mobile_money::getAllLine();
         foreach ($list as $val) {
             $espece = Monnaie::somme($val->espece);
             $total_compte_espece = ($val->compte_momo + $val->compte2 + $espece);
+            $totalEC2[$nbr] = (integer)$espece + (integer)$val->compte_momo + (integer)$val->compte2;
+            $commission[$nbr] = (integer)$val->commission;
+            $diffCom = (integer)$val->commission - $commission[$nbr-1];
+            $margeEC2 =  ($totalEC2[$nbr] +(integer)$val->frais_transfert - ($totalEC2[$nbr-1] + (integer)$val->pret));
+            if($margeEC2<0) $valMargerEC2 = '<span class="label label-sm label-warning">'.Fonctions::formatPrix($margeEC2).'</span>';
+            elseif($margeEC2>=0) $valMargerEC2 = '<span class="label label-sm label-success">'.Fonctions::formatPrix($margeEC2).'</span>';
+            $Supplement = ($totalEC2[$nbr]-((integer)$val->fond));
+            if((((integer)$val->fond+(integer)$val->pret))<=$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-success">Bon</span></td>';
+            elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = '<td><span class="label label-sm label-warning">Mauvais</span></td>';
+            
             $bilan = $val->fond - $total_compte_espece;
-            $listJson[] = [
-              "id" =>  $val->id,
-              "date" =>  $val->date,
-              "fond" =>  Fonctions::formatPrix($val->fond),
-              "pret" =>  Fonctions::formatPrix($val->pret),
-              "compte" =>  Fonctions::formatPrix($val->compte_momo + $val->compte2),
-              "espece" =>  Fonctions::formatPrix($espece),
-              "total" =>  Fonctions::formatPrix($total_compte_espece),
-              "bilan" =>  Fonctions::formatPrix($bilan),
-              "commission" =>  Fonctions::formatPrix($val->commission),
-            ];
+
+            if($compteur >= count($list) - 10) {
+                $listJson[] = [
+                  "id" =>  $val->id,
+                  "date" =>  $val->date,
+                  "fond" =>  Fonctions::formatPrix($val->fond),
+                  "pret" =>  Fonctions::formatPrix($val->pret),
+                  "espece" =>  Fonctions::formatPrix($espece),
+                  "compte" =>  Fonctions::formatPrix($val->compte_momo + $val->compte2),
+                  "commission" =>  Fonctions::formatPrix($val->commission),
+                  "totalEC" =>  Fonctions::formatPrix($total_compte_espece),
+
+                  "margeEC" =>  $valMargerEC2,
+                  "diffCom" =>  Fonctions::formatPrix($diffCom),
+                  "supplements" =>  Fonctions::formatPrix($Supplement),
+                  "statut" =>  $msgStatut,
+                ];
+            }
+            $compteur++;
         }
+
         $sol['momo'] = $listJson;
         //return json_encode([$sol]);
+        //dd($sol);
         return $sol;
     }
     
