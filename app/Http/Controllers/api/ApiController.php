@@ -83,6 +83,7 @@ class ApiController extends Controller
         $msgStatut = '';
         $nbr=1;
         $compteur = 0;
+
         $list = Mobile_money::getAllLine();
         foreach ($list as $val) {
             $espece = Monnaie::somme($val->espece);
@@ -95,7 +96,7 @@ class ApiController extends Controller
             elseif($margeEC2>=0) $valMargerEC2 = ["alert" => 0, "val" => Fonctions::formatPrix($margeEC2)];
             $Supplement = ($totalEC2[$nbr]-((integer)$val->fond));
             if((((integer)$val->fond+(integer)$val->pret))<=$totalEC2[$nbr]) $msgStatut = 1;
-            elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = 0;label-warning\'>Mauvais</span></td>';*/
+            elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = 0;            
             $bilan = $val->fond - $total_compte_espece;
             if($compteur >= count($list) - 10) {
                 $listJson[] = [
