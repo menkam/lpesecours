@@ -108,7 +108,6 @@ class ApiController extends Controller
                   "compte" =>  Fonctions::formatPrix($val->compte_momo + $val->compte2),
                   "commission" =>  Fonctions::formatPrix($val->commission),
                   "totalEC" =>  Fonctions::formatPrix($total_compte_espece),
-
                   "margeEC" =>  $valMargerEC2,
                   "diffCom" =>  Fonctions::formatPrix($diffCom),
                   "supplements" =>  Fonctions::formatPrix($Supplement),
@@ -118,7 +117,6 @@ class ApiController extends Controller
             $compteur++;
             $nbr++;
         }
-
         $sol['momo'] = $listJson;
         //return json_encode([$sol]);
         //dd($sol);
