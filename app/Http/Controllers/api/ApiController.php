@@ -121,7 +121,7 @@ class ApiController extends Controller
 
         $sol['momo'] = $listJson;
         //return json_encode([$sol]);
-        dd($sol);
+        //dd($sol);
         return $sol;
     }
     
