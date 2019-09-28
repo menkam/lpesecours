@@ -98,7 +98,7 @@ class ApiController extends Controller
             if((((integer)$val->fond+(integer)$val->pret))<=$totalEC2[$nbr]) $msgStatut = 1;
             elseif((((integer)$val->fond+(integer)$val->pret))>$totalEC2[$nbr]) $msgStatut = 0;            
             $bilan = $val->fond - $total_compte_espece;
-            if($compteur >= count($list) - 10) {
+            if($compteur >= count($list) - 15) {
                 $listJson[] = [
                   "id" =>  $val->id,
                   "date" =>  $val->date,
