@@ -116,11 +116,12 @@ class ApiController extends Controller
                 ];
             }
             $compteur++;
+            $nbr++;
         }
 
         $sol['momo'] = $listJson;
         //return json_encode([$sol]);
-        //dd($sol);
+        dd($sol);
         return $sol;
     }
     
